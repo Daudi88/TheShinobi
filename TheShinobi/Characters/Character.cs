@@ -6,5 +6,6 @@ namespace TheShinobi.Characters
 {
     abstract class Character
     {
+
     }
 }
