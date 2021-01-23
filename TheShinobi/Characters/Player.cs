@@ -1,4 +1,8 @@
-﻿namespace TheShinobi.Characters
+﻿using System.Collections.Generic;
+using TheShinobi.Items;
+using TheShinobi.Items.Weapons;
+
+namespace TheShinobi.Characters
 {
     class Player : Character
     {
