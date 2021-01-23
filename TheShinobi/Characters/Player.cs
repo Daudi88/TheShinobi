@@ -14,14 +14,14 @@
         }
         public void LevelUp()
         {
-            LevelUp++;
-            MaxExp += 2++ * LevelUp;
-            MaxHp += LevelUp;
+            Level++;
+            MaxExp += 200 * Level;
+            MaxHp += Level;
             if (MaxHp > 1000)
             {
                 MaxHp = 1000;
             }
-            MaxHp = MaxHp;
+            Hp = MaxHp;
         }
     }
 }
