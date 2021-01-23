@@ -14,7 +14,7 @@ namespace TheShinobi.Items.Armors
             {
                 player.Backpack.Add(player.Armor);
             }
-            Console.WriteLine($"\t You equipped {Item.Name} with {Defence} defence!");
+            Console.WriteLine($"\t You equipped {item.Name} with {Defence} defence!");
             player.Armor = (Armor)item;
             player.Defence = Defence;
         }
