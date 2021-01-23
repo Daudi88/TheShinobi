@@ -1,4 +1,4 @@
-﻿using System;
+﻿using TheShinobi.Structures;
 
 namespace TheShinobi
 {
@@ -6,7 +6,9 @@ namespace TheShinobi
     {
         static void Main()
         {
-            
+            Game game = new Game();
+            game.Setup();
+            game.Start();
         }
     }
 }
