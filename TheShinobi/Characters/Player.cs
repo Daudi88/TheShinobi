@@ -8,7 +8,7 @@
         public List<Item> Backpack { get; set; } = new List<Item>();
         public Player()
         {
-            MaxHp = MaxHp;
+            MaxHp = Hp;
             MaxExp = 200 * Level;
             Weapon = new Fists();
         }
