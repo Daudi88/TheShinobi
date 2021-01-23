@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TheShinobi.Characters
 {
-    class Character
+    abstract class Character
     {
     }
 }

@@ -4,7 +4,8 @@ using System.Text;
 
 namespace TheShinobi.Characters
 {
-    class Enemy
+    abstract class Enemy : Character 
     {
+        public abstract void DropItems(Player player);
     }
 }
