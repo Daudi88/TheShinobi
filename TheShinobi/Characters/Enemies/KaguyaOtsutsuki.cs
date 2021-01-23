@@ -4,21 +4,19 @@ using System.Text;
 
 namespace TheShinobi.Characters.Enemies
 {
-    class Ginkaku : Character
+    class KaguyaOtsutsuki : Character
     {
-        public Ginkaku() // "Ginkaku", 2, 20, 6, "2d4", 100
+        public KaguyaOtsutsuki()
         {
-            Name = "Ginkaku";
+            Name = "KaguyaOtsutsuki´s Ghost";
             Level = 2;
-            Hp = 35;
-            Exp = 10;
+            Hp = 100;
+            Exp = 120;
             Gold = Utility.RollDice(100 * Level);
             Armor = new FlakJacket();
             Defence = Armor.Defence;
-            Weapon = new Shichiseiken();
+            Weapon = new Fists();
             Damage = Weapon.Damage;
         }
-        
-        
     }
 }
