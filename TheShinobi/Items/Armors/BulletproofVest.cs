@@ -6,7 +6,7 @@
         {
             Name = "Bulletproof vest";
             Cost = 10000;
-            Defence = 20;
+            Defence = 100;
         }
     }
 }

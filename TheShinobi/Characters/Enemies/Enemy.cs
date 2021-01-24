@@ -1,6 +1,4 @@
-﻿using TheShinobi.HelperMethods;
-
-namespace TheShinobi.Characters.Enemies
+﻿namespace TheShinobi.Characters.Enemies
 {
     abstract class Enemy : Character
     {

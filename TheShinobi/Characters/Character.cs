@@ -18,7 +18,7 @@ namespace TheShinobi.Characters
 
         public virtual int Attack(Character defender)
         {
-            if (Utility.random.Next(1, 21 + Level) >= defender.Defence)
+            if (Utility.random.Next(100) >= defender.Defence)
             {
                 return Utility.RollDice(Damage);
             }

@@ -19,12 +19,8 @@ namespace TheShinobi.HelperMethods
             return result;
         }
 
-        public static void TypeOverWrongDoings(string input, string message = null)
+        public static void TypeOverWrongDoings(string input, string message = "Invalid choice. Try again!")
         {
-            if (message == null)
-            {
-                message = "Invalid choice. Try again!";
-            }
             ColorConsole.Write($"\t {message}", ConsoleColor.Red);
             Thread.Sleep(1800);
             int left = 9;

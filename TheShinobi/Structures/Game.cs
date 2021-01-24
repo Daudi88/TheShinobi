@@ -27,8 +27,7 @@ namespace TheShinobi.Structures
 
         public void Test()
         {
-            Enemy enemy = new Daudi();
-            Console.WriteLine($"{enemy.Name}, {enemy.Hp}");
+            CharacterCreation();
             Console.ReadLine();
         }
 
@@ -51,17 +50,17 @@ namespace TheShinobi.Structures
             while (true)
             {
                 name = ColorConsole.ReadLine();
-                if (name.Length < 3)
+                if (name.Any(char.IsDigit))
                 {
-                    Utility.TypeOverWrongDoings("The name is too short. Try again!");
+                    Utility.TypeOverWrongDoings(name, "The name cannot contain digits. Try again!");
+                }
+                else if (name.Length < 3)
+                {
+                    Utility.TypeOverWrongDoings(name, "The name is too short. Try again!");
                 }
                 else if (name.Length > 12)
                 {
-                    Utility.TypeOverWrongDoings("The name is too long. Try again!");
-                }
-                else if (name.Any(char.IsDigit))
-                {
-                    Utility.TypeOverWrongDoings("The name cannot contain digits. Try again!");
+                    Utility.TypeOverWrongDoings(name, "The name is too long. Try again!");
                 }
                 else
                 {
