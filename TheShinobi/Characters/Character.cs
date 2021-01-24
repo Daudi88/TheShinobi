@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using TheShinobi.Items.Armors;
+using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Characters
 {

@@ -10,8 +10,9 @@ namespace TheShinobi.Characters
         public int MaxHp { get; set; }
         public int MaxExp { get; set; }
         public List<Item> Backpack { get; set; } = new List<Item>();
-        public Player()
+        public Player(string name)
         {
+            Name = name;
             MaxHp = Hp;
             MaxExp = 200 * Level;
             Weapon = new Fists();
