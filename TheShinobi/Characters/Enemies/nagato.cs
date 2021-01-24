@@ -8,7 +8,7 @@ namespace TheShinobi.Characters.Enemies
     {
         public Nagato()
         {
-            Name = "Obito´s Ghost"; // SKa inte den här heta Nagato?
+            Name = "Nagato";
             Level = 2;
             Hp = 20;
             Exp = 70;
