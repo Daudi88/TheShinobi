@@ -6,7 +6,7 @@ namespace TheShinobi.Characters.Enemies
 {
     class Ginkaku : Character
     {
-        public Ginkaku() // "Ginkaku", 2, 20, 6, "2d4", 100
+        public Ginkaku()
         {
             Name = "Ginkaku";
             Level = 2;
@@ -18,7 +18,6 @@ namespace TheShinobi.Characters.Enemies
             Weapon = new Shichiseiken();
             Damage = Weapon.Damage;
         }
-        
-        
+
     }
 }
