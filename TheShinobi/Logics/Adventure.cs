@@ -88,8 +88,83 @@ namespace TheShinobi.Logics
                                     innerExit = false;
                                     break;
                             }
+                        } while (!innerExit);
+                    }
+                }
+                else if (player.Pos == -1.1 || player.Pos == 1.1)
+                {
+                    while (!outerExit)
+                    {
+                        Console.WriteLine("\n\t What do you want to do?");
+                        string[] content = new string[]
+                        {
+                          "1. Go North",
+                            "2. Go East",
+                            "3. Go West",
+                            "D. Show Details",
+                            "B. Open Backpack",
+                            "M. Open Map"
+                        };
+                        Display.WithFrame("", content);
+                        Console.Write("\t > ");
+                        innerExit = true;
+                        do
+                        {
+                            string choice = ColorConsole.ReadInBlue();
+                            switch (choice.ToUpper())
+                            {
+                                case "1":
+                                    Console.WriteLine("\t You went north...");
+                                    if (player.Pos == -1.1)
+                                    {
+                                        player.Pos -= 0.1;
+                                    }
+                                    else
+                                    {
+                                        player.Pos += 0.1; 
+                                    }
+                                    EnCounterCheck();
+                                    outerExit = true;
+                                    break;
+                                case "2":
+                                    Console.WriteLine("\t You went east...");
+                                    if (player.Pos == -1.1)
+                                    {
+                                        player.Pos += 1.2;
+                                    }
+                                    else
+                                    {
+                                        player.Pos += 1.0;
+                                    }
+                                    EncounterCheck();
+                                    outerExit = true;
+                                    break;
+                                case "3":
+                                    Console.WriteLine("\t You went west...");
+                                    player.pos -= 1.0;
+                                    EncounterCheck();
+                                    outerExit = true;
+                                    break;
+                                case "D":
+                                    Display.Details();
+                                    break;
+                                case "B":
+                                    if (!Display.Backpack())
+                                    {
+                                        innerExit = false;
+                                    }
+                                    break;
+                                case "M":
+                                    Display.map();
+                                    break;
+                                default:
+                                    Utility.TypeOverWrongDoings("Invald choise. Try again!");
+                                    innerExit = false;
+                                    break;
+                            }
 
                         } while (!innerExit);
+
                     }
                 }
             }
