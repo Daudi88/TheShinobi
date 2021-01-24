@@ -9,14 +9,14 @@ namespace TheShinobi.Enemies
     {
         public Deidara()
         {
-            Name = "Deidara";
-            Level = 4;
-            Hp = 40;
-            Exp = 80;
+            Name = "Daudi (Deidara)";
+            Level = 9;
+            Hp = 90;
+            Exp = 200;
             Gold = Utility.RollDice(100 * Level);
-            Armor = new FlakJacket;
+            Armor = new BulletproofVest();
             Defence = Armor.Defence;
-            Weapon = new Fist();
+            Weapon = new AK47(); // osäker på om det är ok att använda siffror eller om det skall skrivas ut?
         }
         public override void DropItems(Player player)
         {
