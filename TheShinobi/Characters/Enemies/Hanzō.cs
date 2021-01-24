@@ -11,12 +11,13 @@ namespace TheShinobi.Characters.Enemies
             Name = "Hanzō";
             Level = 7;
             Hp = 100;
-            Exp = 100;
+            //Exp = 100;
             Armor = new FlakJacket();
             Weapon = new Kusarigama();
             Defence = Armor.Defence;
             Damage = Weapon.Damage;
-            Gold = Utility.random.Next(1, 100 * Level);
+            Gold = Utility.random.Next(1, 100 * Level + 1);
+            Exp = Utility.random.Next(10 * Level, 40 * Level + 1);
         }
     }
 }

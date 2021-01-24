@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Threading;
+using TheShinobi.Characters.Enemies;
+using TheShinobi.Items.Armors;
+using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.HelperMethods
 {
@@ -37,6 +40,16 @@ namespace TheShinobi.HelperMethods
             }
             Console.SetCursorPosition(left, top);
             Console.Write("> ");
+        }
+
+        public static Enemy[] GetEnemies()
+        {
+            Enemy[] enemies = new Enemy[]
+            {
+                new Enemy("Hanzō", 7, 100, new FlakJacket(), new Kusarigama()),
+
+            };
+            return enemies;
         }
     }
 }
