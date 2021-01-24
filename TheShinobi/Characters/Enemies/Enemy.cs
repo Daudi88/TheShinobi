@@ -21,16 +21,30 @@ namespace TheShinobi.Characters.Enemies
             Gold = Utility.random.Next(1, 100 * Level + 1);
             Exp = Utility.random.Next(10 * Level, 40 * Level + 1);
         }
+
+        public override int Attack(Character defender)
+        {
+            if (Utility.random.Next(100) >= defender.Defence)
+            {
+                return Utility.RollDice(Damage);
+            }
+            else
+            {
+
+                return 0;
+            }
+        }
+
         public void DropItems(Player player)
         {
             Potion potion;
             if (Name == "Hocke")
             {
-                potion = new Potion("Monster Energy", 100, player.MaxHp, "Mmm bästa drickan");
+                potion = new Potion("Monster Energy", 100, player.MaxHp, "You unleashed the beast");
             }
             else if (Name == "Daudi")
             {
-                potion = new Potion("Cola Zero", 100, player.MaxHp);
+                potion = new Potion("Coke Zero", 100, 1000, "You taste the feeling");
             }
             else
             {

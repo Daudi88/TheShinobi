@@ -26,8 +26,11 @@ namespace TheShinobi.Structures
         }
 
         public void Test()
-        {            
-            Enemy enemy2 = new Hanzō();
+        {
+            Player player = CharacterCreation();
+            player.Hp -= 20;
+            Potion monster = new Potion("Monster Energy", 100, player.MaxHp, "You unleash the beast");
+            monster.Consume(player);
             Console.ReadLine();
         }
 
@@ -83,7 +86,7 @@ namespace TheShinobi.Structures
             };
             kakashi.Defence = kakashi.Armor.Defence;
             kakashi.Damage = kakashi.Weapon.Damage;
-            Potion redBull = new RedBull();
+            Potion redBull = new Potion("Red Bull", 50, 20, "");
             redBull.Quantity = 100;
             kakashi.Backpack.Add(redBull);
             return kakashi;

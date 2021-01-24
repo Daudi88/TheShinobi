@@ -46,7 +46,7 @@ namespace TheShinobi.Characters
             }
             else
             {
-                return 0; // När den här metoden returnerar 0 ska det skrivas ut att attacken missade/misslyckades :)
+                return 0;
             }
         }
     }

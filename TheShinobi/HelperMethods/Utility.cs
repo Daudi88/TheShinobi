@@ -71,9 +71,11 @@ namespace TheShinobi.HelperMethods
         {
             Potion[] potions = new Potion[]
             {
-                new Potion(),
-                new HealingPotion(),
-                new RedBull()
+                //new Potion("Lesser Healing Potion"),
+                //new Potion(),
+                //new Potion()
+                
+                new Potion("Lesser Healing Potion", , ,""),
             };
             return potions;
         }

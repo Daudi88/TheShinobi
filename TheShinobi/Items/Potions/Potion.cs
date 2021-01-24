@@ -5,29 +5,31 @@ namespace TheShinobi.Items.Potions
 {
     class Potion : Item
     {
-        public int
         public int Health { get; set; }
         public string Text { get; set; }
 
-        public Potion() // namn, kostnad, hälsa och text
+        public Potion(string name, int cost, int health, string text)
         {
-
+            Name = name;
+            Cost = cost;
+            Health = health;
+            Text = text;
         }
 
         public void Consume(Player player)
         {
-            Console.WriteLine($"\t {Text}");
+            Console.Write($"\t {Text} ");
             if (player.Hp < player.MaxHp)
             {
                 player.Hp += Health;
                 if (player.Hp >= player.MaxHp)
                 {
                     player.Hp = player.MaxHp;
-                    Console.WriteLine("\t You gained full health!");
+                    Console.WriteLine("and gain full health!");
                 }
                 else
                 {
-                    Console.WriteLine($"\t You gained {Health} health");
+                    Console.WriteLine($"and gain {Health} health");
                 }
             }
         }
