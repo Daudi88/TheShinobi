@@ -5,6 +5,7 @@ namespace TheShinobi.Items.Potions
 {
     class Potion : Item
     {
+        public int
         public int Health { get; set; }
         public string Text { get; set; }
 
