@@ -965,9 +965,9 @@
 
 //        }
 
-//        private static void FightTheBoss(Player player)
+//        private static void BossFight(Player player)
 //        {
-//            Character boss = new KaguyaOtsutsuki();
+//            Character boss = new Enemy("Orochimaru", 10, 100, new ShinobiBattleArmor(), new ChakraBlade());
 //            player.Hp -= 1000;
 //            Console.WriteLine("\n\t You were not ready!");
 //            string[] haha = new string[] { "Ha! ", "Ha! ", "Ha! ", };
