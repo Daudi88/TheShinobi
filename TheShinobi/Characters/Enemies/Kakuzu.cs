@@ -11,7 +11,7 @@ namespace TheShinobi.Characters.Enemies
             Name = "Kakuzu";
             Level = 5;
             Hp = 50;
-            Exp = 50;
+            Exp = ;
             Armor = new FlakJacket();
             Weapon = new Sword(); // vilket är hans vapen? 
             Defence = Armor.Defence;
