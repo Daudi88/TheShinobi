@@ -1,4 +1,5 @@
-﻿using TheShinobi.HelperMethods;
+﻿using System;
+using TheShinobi.HelperMethods;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
 
@@ -24,6 +25,7 @@ namespace TheShinobi.Characters
             }
             else
             {
+                
                 return 0; // När den här metoden returnerar 0 ska det skrivas ut att attacken missade/misslyckades :)
             }
         }

@@ -20,10 +20,22 @@ namespace TheShinobi.Characters.Enemies
         }
         public void DropItems(Player player)
         {
-            if (Name == "Daudi" || Name == "Hocke")
+            Potion potion;
+            if (Name == "Hocke")
             {
-
+                potion = new Potion($"Monster Energy", 100, player.NaxHp, "You unleashed the beast and have full {Max.Hp} again!");
             }
+            else if(Name == "Daudi")
+            {
+                potion = new Potion($"Cola Zero", 100, player.NaxHp, "Davids slogan and have full {Max.Hp} again!");
+            }
+            else
+            {
+                Potion[] potions = Utility.GetPotions();
+                potion = potions[Utility.random.Next(potions.Lenght)];
+            }
+            potion.Quantity = Utility.random.Next(1, 11);
+            player.Backpack.Add(potion);
         }
     }
 }
