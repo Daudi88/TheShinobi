@@ -3,10 +3,10 @@ using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
-using System.Web;
 using TheShinobi.Characters;
+using TheShinobi.HelperMethods;
 
-namespace TheShinobi.Logics
+namespace TheShinobi.Structures
 {
     class Game
     {
@@ -25,14 +25,11 @@ namespace TheShinobi.Logics
         {
             Display.Title();
             Player player = CharacterCreation();
-            string[] intro = new string[]
-            {
-                $"You, {player.Name} wake up in the Hidden Leaf Village and sense that something is wrong!",
-                "Kaguya Otsutsuki have kidnapped Hanare and taken her to his cave in the mountains.",
-                "It is your duty to find and rescue her!"
-            };
-            Display.Intro(intro);
-            RunLoop();
+            string intro = $"You, {player.Name} wake up in the Hidden Leaf Village and sense that something is wrong!" +
+                "\n\tKaguya Otsutsuki have kidnapped Hanare and taken her to his cave in the mountains." +
+                "\n\tIt is your duty to find and rescue her!";
+            Display.Delayed(intro, ConsoleColor.Yellow);
+            LeafVillage.Menu();
         }
 
         private static Player CharacterCreation()

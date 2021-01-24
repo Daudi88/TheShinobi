@@ -21,7 +21,7 @@ namespace TheShinobi.Logics
                 player.Pos = Math.Round(player.pos, 1);
                 bool outerExit = false;
                 bool innerExit = true;
-                if(player.Pos == 0.0)
+                if (player.Pos == 0.0)
                 {
                     break;
                 }
@@ -121,7 +121,7 @@ namespace TheShinobi.Logics
                                     }
                                     else
                                     {
-                                        player.Pos += 0.1; 
+                                        player.Pos += 0.1;
                                     }
                                     EnCounterCheck();
                                     outerExit = true;
