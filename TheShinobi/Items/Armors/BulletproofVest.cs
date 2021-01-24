@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TheShinobi.Items.Armors
+﻿namespace TheShinobi.Items.Armors
 {
     class BulletproofVest : Armor
     {
@@ -10,7 +6,7 @@ namespace TheShinobi.Items.Armors
         {
             Name = "Bulletproof vest";
             Cost = 10000;
-            Defence = 100;
+            Defence = 20;
         }
     }
 }

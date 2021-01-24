@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using TheShinobi.HelperMethods;
+using TheShinobi.Items.Armors;
+using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Characters.Enemies
 {
-    class Nagato
+    class Nagato : Enemy
     {
-        class Nagato : Character
+        public Nagato()
         {
-            public Nagato()
-            {
-                Name = "Obito´s Ghost";
-                Level = 2;
-                Hp = 20;
-                Exp = 70;
-                Gold = Utility.RollDice(100 * Level);
-                Armor = new FlakJacket();
-                Defence = Armor.Defence;
-                Weapon = new Sword();
-                Damage = Weapon.Damage;
-            }
+            Name = "Obito´s Ghost"; // SKa inte den här heta Nagato?
+            Level = 2;
+            Hp = 20;
+            Exp = 70;
+            Armor = new FlakJacket();
+            Weapon = new Sword();
+            Defence = Armor.Defence;
+            Damage = Weapon.Damage;
+            Gold = Utility.random.Next(1, 100 * Level);
         }
     }
 }

@@ -4,16 +4,16 @@ using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Characters.Enemies
 {
-    class Madara : Enemy
+    class Hanzō : Enemy
     {
-        public Madara()
+        public Hanzō()
         {
-            Name = "Madara";
-            Level = 1;
-            Hp = 10;
-            Exp = 5;
+            Name = "Hanzō";
+            Level = 7;
+            Hp = 100;
+            Exp = 100;
             Armor = new FlakJacket();
-            Weapon = new Gunbai();
+            Weapon = new Kusarigama();
             Defence = Armor.Defence;
             Damage = Weapon.Damage;
             Gold = Utility.random.Next(1, 100 * Level);

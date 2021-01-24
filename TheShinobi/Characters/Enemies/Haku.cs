@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using TheShinobi.HelperMethods;
+using TheShinobi.Items.Armors;
+using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Characters.Enemies
 {
-    class Haku : Character
+    class Haku : Enemy
     {
         public Haku()
         {
@@ -12,10 +12,11 @@ namespace TheShinobi.Characters.Enemies
             Level = 4;
             Hp = 50;
             Exp = 50;
-            Gold = Utility.RollDice(100 * Level);
-            Armor = new FlackJacket();
+            Armor = new FlakJacket();
+            Weapon = new Crossbow();
             Defence = Armor.Defence;
-            Weapon = new Crossbow
+            Damage = Weapon.Damage;
+            Gold = Utility.random.Next(1, 100 * Level);
         }
     }
 }

@@ -4,7 +4,11 @@ using System.Linq;
 using System.Media;
 using System.Text;
 using TheShinobi.Characters;
+using TheShinobi.Characters.Enemies;
 using TheShinobi.HelperMethods;
+using TheShinobi.Items.Armors;
+using TheShinobi.Items.Potions;
+using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Structures
 {
@@ -19,6 +23,13 @@ namespace TheShinobi.Structures
             string soundLocation = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\NarutoFinal.Wav");
             SoundPlayer player = new SoundPlayer(soundLocation);
             player.PlayLooping();
+        }
+
+        public void Test()
+        {
+            Enemy enemy = new Daudi();
+            Console.WriteLine($"{enemy.Name}, {enemy.Hp}");
+            Console.ReadLine();
         }
 
         public void Start()
@@ -54,10 +65,29 @@ namespace TheShinobi.Structures
                 }
                 else
                 {
+                    name = char.ToUpper(name[0]) + name[1..].ToLower();
                     break;
                 }
             }
             return name.ToLower() == "robin" ? GodMode() : new Player(name);
+        }
+
+        private static Player GodMode()
+        {
+            Player kakashi = new Player("Kakashi Hatake")
+            {
+                Hp = 1000,
+                MaxHp = 1000,
+                Gold = 100000,
+                Armor = new InfiniteArmor(),
+                Weapon = new Kubikiribōchō(),
+            };
+            kakashi.Defence = kakashi.Armor.Defence;
+            kakashi.Damage = kakashi.Weapon.Damage;
+            Potion redBull = new RedBull();
+            redBull.Quantity = 100;
+            kakashi.Backpack.Add(redBull);
+            return kakashi;
         }
     }
 }

@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using TheShinobi.HelperMethods;
+using TheShinobi.Items.Armors;
+using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Characters.Enemies
 {
-    class Ginkaku : Character
+    class Ginkaku : Enemy
     {
         public Ginkaku()
         {
@@ -12,11 +12,11 @@ namespace TheShinobi.Characters.Enemies
             Level = 2;
             Hp = 35;
             Exp = 10;
-            Gold = Utility.RollDice(100 * Level);
             Armor = new FlakJacket();
-            Defence = Armor.Defence;
             Weapon = new Shichiseiken();
+            Defence = Armor.Defence;
             Damage = Weapon.Damage;
+            Gold = Utility.random.Next(1, 100 * Level);
         }
 
     }

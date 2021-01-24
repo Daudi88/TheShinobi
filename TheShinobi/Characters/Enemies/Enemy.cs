@@ -1,7 +1,12 @@
-﻿namespace TheShinobi.Characters.Enemies
+﻿using TheShinobi.HelperMethods;
+
+namespace TheShinobi.Characters.Enemies
 {
     abstract class Enemy : Character
     {
-        public abstract void DropItems(Player player);
+        public virtual void DropItems(Player player)
+        {
+
+        }
     }
 }

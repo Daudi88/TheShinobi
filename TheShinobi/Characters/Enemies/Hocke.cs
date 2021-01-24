@@ -4,19 +4,24 @@ using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Characters.Enemies
 {
-    class Deidara : Enemy
+    class Hocke : Enemy
     {
-        public Deidara()
+        public Hocke()
         {
-            Name = "Deidara";
+            Name = "Hocke";
             Level = 9;
-            Hp = 90;
-            Exp = 200;
+            Hp = 1000;
+            Exp = 1000;
             Armor = new BulletproofVest();
             Weapon = new AK47();
             Defence = Armor.Defence;
             Damage = Weapon.Damage;
             Gold = Utility.random.Next(1, 100 * Level);
+        }
+
+        public override void DropItems(Player player)
+        {
+            base.DropItems(player);
         }
     }
 }

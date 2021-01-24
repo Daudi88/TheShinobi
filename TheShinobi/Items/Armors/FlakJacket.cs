@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TheShinobi.Items.Armors
+﻿namespace TheShinobi.Items.Armors
 {
     class FlakJacket : Armor
     {

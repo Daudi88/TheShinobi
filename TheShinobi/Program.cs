@@ -7,8 +7,8 @@ namespace TheShinobi
         static void Main()
         {
             Game game = new Game();
-            game.Setup();
-            game.Start();
+            game.Test();
+
         }
     }
 }

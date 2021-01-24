@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using TheShinobi.HelperMethods;
+using TheShinobi.Items.Armors;
+using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Characters.Enemies
 {
-    class Kisame : Character
+    class Kisame : Enemy
     {
         public Kisame()
         {
@@ -12,12 +12,11 @@ namespace TheShinobi.Characters.Enemies
             Level = 1;
             Hp = 25;
             Exp = 50;
-            Gold = Utility.RollDice(100 * Level);
             Armor = new FlakJacket();
-            Defence = Armor.Defence;
             Weapon = new Kunai();
+            Defence = Armor.Defence;
             Damage = Weapon.Damage;
-
+            Gold = Utility.random.Next(1, 100 * Level);
         }
     }
 }

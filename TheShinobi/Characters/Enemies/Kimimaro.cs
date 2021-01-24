@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using TheShinobi.HelperMethods;
+using TheShinobi.Items.Armors;
+using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Characters.Enemies
 {
-    class Kimimaro : Character
+    class Kimimaro : Enemy
     {
-        public Kimimaro() // "Kimimaro", 3, 30, 7, "2d6", 150
+        public Kimimaro()
         {
-            Name = "Kimimaro´s Ghost";
+            Name = "Kimimaro";
             Level = 3;
             Hp = 55;
             Exp = 15;
-            Gold = Utility.RollDice(100 * Level);
             Armor = new FlakJacket();
-            Defence = Armor.Defence;
             Weapon = new Fists();
+            Defence = Armor.Defence;
             Damage = Weapon.Damage;
+            Gold = Utility.random.Next(1, 100 * Level);
         }
     }
 }

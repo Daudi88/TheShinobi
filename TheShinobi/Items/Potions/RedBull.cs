@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TheShinobi.Items.Potions
+﻿namespace TheShinobi.Items.Potions
 {
     class RedBull : Potion
     {
@@ -10,7 +6,7 @@ namespace TheShinobi.Items.Potions
         {
             Name = "Red Bull";
             Cost = 50;
-            Healing = 20;
+            Health = 20;
             Text = "You drink a powerfull potion that gives you wings!";
         }
     }

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TheShinobi.Items.Weapons
+﻿namespace TheShinobi.Items.Weapons
 {
     class Kiba : Weapon
     {
-        public Gunbai()
+        public Kiba()
         {
-            Name = "Gunbai";
+            Name = "Kiba";
             Cost = 4500;
             Damage = "2d12";
         }

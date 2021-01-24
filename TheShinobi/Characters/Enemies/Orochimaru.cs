@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using TheShinobi.HelperMethods;
+using TheShinobi.Items.Armors;
+using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Characters.Enemies
 {
-    class Orochimaru : Character
+    class Orochimaru : Enemy
     {
         public Orochimaru()
         {
@@ -12,11 +12,11 @@ namespace TheShinobi.Characters.Enemies
             Level = 5;
             Hp = 50;
             Exp = 50;
-            Gold = Utility.RollDice(100 * Level);
             Armor = new InfiniteArmor();
+            Weapon = new Shuriken();
             Defence = Armor.Defence;
-            Weapon = new Shuriken;
             Damage = Weapon.Damage;
+            Gold = Utility.random.Next(1, 100 * Level);
         }
     }
 }
