@@ -2,6 +2,7 @@
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
 using System;
+using TheShinobi.Items.Potions;
 
 namespace TheShinobi.HelperMethods
 {
@@ -58,6 +59,7 @@ namespace TheShinobi.HelperMethods
                 new Crossbow(),
                 new ChakraBlade(),
             };
+            return weapons;
         }
 
         public static Potion[] GetPotions()
