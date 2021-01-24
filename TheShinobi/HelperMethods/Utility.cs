@@ -5,7 +5,7 @@ namespace TheShinobi.HelperMethods
 {
     static class Utility
     {
-        static readonly Random random = new Random();
+        public static readonly Random random = new Random();
 
         public static int RollDice(string dice)
         {

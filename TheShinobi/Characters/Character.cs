@@ -1,4 +1,5 @@
-﻿using TheShinobi.Items.Armors;
+﻿using TheShinobi.HelperMethods;
+using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Characters
@@ -17,7 +18,14 @@ namespace TheShinobi.Characters
 
         public virtual int Attack(Character defender)
         {
-            return Utility.RollDice(Damage) - defender.Defence;
+            if (Utility.random.Next(1, 21) >= defender.Defence)
+            {
+                return Utility.RollDice(Damage);
+            }
+            else
+            {
+                return 0; // När den här metoden returnerar 0 ska det skrivas ut att attacken missade/misslyckades :)
+            }
         }
     }
 }
