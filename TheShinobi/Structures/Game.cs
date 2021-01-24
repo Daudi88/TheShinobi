@@ -26,8 +26,8 @@ namespace TheShinobi.Structures
         }
 
         public void Test()
-        {
-            CharacterCreation();
+        {            
+            Enemy enemy2 = new Hanzō();
             Console.ReadLine();
         }
 
