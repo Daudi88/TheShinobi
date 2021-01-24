@@ -1,5 +1,8 @@
-﻿using TheShinobi.HelperMethods;
+﻿using System;
+using TheShinobi.HelperMethods;
+using TheShinobi.Items;
 using TheShinobi.Items.Armors;
+using TheShinobi.Items.Potions;
 using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Characters.Enemies
@@ -20,10 +23,22 @@ namespace TheShinobi.Characters.Enemies
         }
         public void DropItems(Player player)
         {
-            if (Name == "Daudi" || Name == "Hocke")
+            Potion potion;
+            if (Name == "Hocke")
             {
-
+                potion = new Potion("Monster Energy", 100, player.MaxHp, "Mmm bästa drickan");
             }
+            else if (Name == "Daudi")
+            {
+                potion = new Potion("Cola Zero", 100, player.MaxHp);
+            }
+            else
+            {
+                Potion[] potions = Utility.GetPotions();
+                potion = potions[Utility.random.Next(potions.Length)];                
+            }
+            potion.Quantity = Utility.random.Next(1, 11);
+            player.Backpack.Add(potion);
         }
     }
 }

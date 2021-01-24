@@ -2,6 +2,7 @@
 using System.Threading;
 using TheShinobi.Characters.Enemies;
 using TheShinobi.Items.Armors;
+using TheShinobi.Items.Potions;
 using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.HelperMethods
@@ -47,7 +48,7 @@ namespace TheShinobi.HelperMethods
             Enemy[] enemies = new Enemy[]
             {
                 new Enemy("Hanzō", 7, 100, new FlakJacket(), new Kusarigama()),
-                new Enemy("Dadui", 9, 100, new BulletproofVest(), new AK47()),
+                new Enemy("Daudi", 9, 100, new BulletproofVest(), new AK47()),
                 new Enemy("Hocke", 9, 100, new BulletproofVest(), new AK47()),
                 new Enemy("Deidara", 7, 100, new FlakJacket(), new Gunbai()),
                 new Enemy("Ginkaku", 2, 100, new FlakJacket(), new Shichiseiken()),
@@ -64,6 +65,17 @@ namespace TheShinobi.HelperMethods
 
             };
             return enemies;
+        }
+
+        public static Potion[] GetPotions()
+        {
+            Potion[] potions = new Potion[]
+            {
+                new Potion(),
+                new HealingPotion(),
+                new RedBull()
+            };
+            return potions;
         }
     }
 }

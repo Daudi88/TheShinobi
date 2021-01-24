@@ -7,6 +7,12 @@ namespace TheShinobi.Items.Potions
     {
         public int Health { get; set; }
         public string Text { get; set; }
+
+        public Potion() // namn, kostnad, hälsa och text
+        {
+
+        }
+
         public void Consume(Player player)
         {
             Console.WriteLine($"\t {Text}");
