@@ -8,7 +8,7 @@ namespace TheShinobi.Characters.Enemies
     {
         public Obito()
         {
-            Name = "Obito´s Ghost";
+            Name = "Obito";
             Level = 2;
             Hp = 20;
             Exp = 70;
