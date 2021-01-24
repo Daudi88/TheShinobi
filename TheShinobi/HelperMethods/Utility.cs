@@ -47,7 +47,7 @@ namespace TheShinobi.HelperMethods
                 new Enemy("Daudi", 9, 74, new BulletproofVest(), new AK47()),
                 new Enemy("Hocke", 9, 74, new BulletproofVest(), new AK47()),
                 new Enemy("Kakuzu", 10, 84, new InfiniteArmor(), new Spear())
-               // new Enemy("Orochimaru", 10, 100, new ShinobiBattleArmor(), new ChakraBlade()) Lägg i bossfight
+               
 
             };
             return enemies;
