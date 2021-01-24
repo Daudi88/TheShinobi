@@ -1,9 +1,7 @@
-﻿using System;
-using System.Threading;
-using TheShinobi.Characters.Enemies;
+﻿using TheShinobi.Characters.Enemies;
 using TheShinobi.Items.Armors;
-using TheShinobi.Items.Potions;
 using TheShinobi.Items.Weapons;
+using System;
 
 namespace TheShinobi.HelperMethods
 {
@@ -23,25 +21,7 @@ namespace TheShinobi.HelperMethods
             return result;
         }
 
-        public static void TypeOverWrongDoings(string input, string message = "Invalid choice. Try again!")
-        {
-            ColorConsole.Write($"\t {message}", ConsoleColor.Red);
-            Thread.Sleep(1800);
-            int left = 9;
-            int top = Console.CursorTop;
-            Console.SetCursorPosition(left, top--);
-            for (int j = 0; j < message.Length; j++)
-            {
-                Console.Write(" ");
-            }
-            Console.SetCursorPosition(left, top);
-            for (int i = 0; i < input.Length + 2; i++)
-            {
-                Console.Write(" ");
-            }
-            Console.SetCursorPosition(left, top);
-            Console.Write("> ");
-        }
+
 
         public static Enemy[] GetEnemies()
         {
@@ -62,22 +42,8 @@ namespace TheShinobi.HelperMethods
                 new Enemy("Nagato", 2, 100, new FlakJacket(), new Sword()),
                 new Enemy("Obito", 2, 100, new FlakJacket(), new Shichiseiken()),
                 new Enemy("Orochimaru", 5, 100, new ShinobiBattleArmor(), new Spear())
-
             };
             return enemies;
-        }
-
-        public static Potion[] GetPotions()
-        {
-            Potion[] potions = new Potion[]
-            {
-                //new Potion("Lesser Healing Potion"),
-                //new Potion(),
-                //new Potion()
-                
-                new Potion("Lesser Healing Potion", , ,""),
-            };
-            return potions;
         }
     }
 }

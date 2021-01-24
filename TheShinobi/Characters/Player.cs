@@ -29,11 +29,10 @@ namespace TheShinobi.Characters
         public void LevelUp()
         {
             Level++;
-            MaxExp += 500 * Level;
-            MaxHp += Level;
-            if (MaxHp > 1000)
+            MaxExp += 500 * Level;            
+            if (MaxHp + Level <= 100)
             {
-                MaxHp = 1000;
+                MaxHp += Level;
             }
             Hp = MaxHp;
         }

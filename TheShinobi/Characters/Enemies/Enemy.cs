@@ -1,6 +1,4 @@
-﻿using System;
-using TheShinobi.HelperMethods;
-using TheShinobi.Items;
+﻿using TheShinobi.HelperMethods;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Potions;
 using TheShinobi.Items.Weapons;
@@ -30,29 +28,28 @@ namespace TheShinobi.Characters.Enemies
             }
             else
             {
-
                 return 0;
             }
         }
 
-        public void DropItems(Player player)
-        {
-            Potion potion;
-            if (Name == "Hocke")
-            {
-                potion = new Potion("Monster Energy", 100, player.MaxHp, "You unleashed the beast");
-            }
-            else if (Name == "Daudi")
-            {
-                potion = new Potion("Coke Zero", 100, 1000, "You taste the feeling");
-            }
-            else
-            {
-                Potion[] potions = Utility.GetPotions();
-                potion = potions[Utility.random.Next(potions.Length)];                
-            }
-            potion.Quantity = Utility.random.Next(1, 11);
-            player.Backpack.Add(potion);
-        }
+        //public void DropItems(Player player)
+        //{
+        //    Potion potion;
+        //    if (Name == "Hocke")
+        //    {
+        //        potion = new Potion("Monster Energy", 100, player.MaxHp, "You unleashed the beast");
+        //    }
+        //    else if (Name == "Daudi")
+        //    {
+        //        potion = new Potion("Coke Zero", 100, 1000, "You taste the feeling");
+        //    }
+        //    else
+        //    {
+        //        Potion[] potions = Utility.GetPotions();
+        //        potion = potions[Utility.random.Next(potions.Length)];
+        //    }
+        //    potion.Quantity = Utility.random.Next(1, 11);
+        //    player.Backpack.Add(potion);
+        //}
     }
 }

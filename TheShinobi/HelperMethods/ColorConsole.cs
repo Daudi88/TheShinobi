@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace TheShinobi.HelperMethods
 {
@@ -40,6 +41,26 @@ namespace TheShinobi.HelperMethods
                 Write(hightlight, col);
                 text = text.Substring(match.Index + match.Value.Length);
             }
+        }
+
+        public static void TypeOverWrongDoings(string input, string message = "Invalid choice. Try again!")
+        {
+            ColorConsole.Write($"\t {message}", ConsoleColor.Red);
+            Thread.Sleep(1800);
+            int left = 9;
+            int top = Console.CursorTop;
+            Console.SetCursorPosition(left, top--);
+            for (int j = 0; j < message.Length; j++)
+            {
+                Console.Write(" ");
+            }
+            Console.SetCursorPosition(left, top);
+            for (int i = 0; i < input.Length + 2; i++)
+            {
+                Console.Write(" ");
+            }
+            Console.SetCursorPosition(left, top);
+            Console.Write("> ");
         }
     }
 }

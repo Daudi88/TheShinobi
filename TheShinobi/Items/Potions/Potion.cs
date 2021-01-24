@@ -1,5 +1,5 @@
-﻿using System;
-using TheShinobi.Characters;
+﻿using TheShinobi.Characters;
+using System;
 
 namespace TheShinobi.Items.Potions
 {
@@ -8,7 +8,7 @@ namespace TheShinobi.Items.Potions
         public int Health { get; set; }
         public string Text { get; set; }
 
-        public Potion(string name, int cost, int health, string text)
+        public Potion(string name, int cost, int health, string text = "You drink a potion")
         {
             Name = name;
             Cost = cost;
