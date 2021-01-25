@@ -8,8 +8,6 @@ namespace TheShinobi.HelperMethods
 {
     class Display
     {
-        
-
         public static void WithFrame(List<string> content, string title = "", bool std = false, string ending = null)
         {
             if (std)

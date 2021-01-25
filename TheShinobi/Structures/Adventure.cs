@@ -1,4 +1,7 @@
-﻿using TheShinobi.Characters;
+﻿using TheShinobi.HelperMethods;
+using TheShinobi.Characters;
+using TheShinobi.Items.Weapons;
+using System;
 
 namespace TheShinobi.Structures
 {
@@ -7,6 +10,24 @@ namespace TheShinobi.Structures
         public static void GoOnAdventure(Player player)
         {
 
+        }
+
+        private static void Graveyard(Player player)
+        {
+            if (!isGraveyardVisited)
+            {
+                Weapon[] swords = new Weapon[7];
+                Weapon sword = swords[Utility.random.Next()];
+                Console.WriteLine("\n\t Yeay! you got a treasure!");
+                isGraveyardVisited = true;
+            }
+            else
+            {
+                Console.WriteLine("\n\t The graveyard is dead silent");
+            }
+            Console.WriteLine("\t [Press enter to continue]");
+            Console.ReadLine();
+            Console.SetWindowPosition(0, Console.CursorTop - 30);
         }
     }
 }
@@ -883,33 +904,7 @@ namespace TheShinobi.Structures
 //            Console.SetWindowPosition(0, Console.CursorTop - 30);
 //        }
 
-//        private static void Graveyard(Player player)
-//        {
-//            if (!graveyardVisited)
-//            {
-//                Weapon[] swords = new Weapon[]
-//                {
-//                    new Kunai(),
-//                    //new Kiba(),
-//                    //new Kubikiribōchō("Kubikiribōchō", 10000, "2d18"),
-//                    //new Weapon("Nuibari", 10000, "2d18"),
-//                    //new Weapon("Samehada", 10000, "2d18"),
-//                    //new Weapon("Shibuki", 10000, "2d18"),
-//                    //new Weapon("Hiramekarei", 10000, "2d18"),
-//                    //new Weapon("Kabutowari", 10000, "2d18")
-//                };
-//                Weapon sword = swords[Utility.RollDice(7)];
-//                Console.WriteLine("\n\t Yeay! you got a treasure!");
-//                graveyardVisited = true;
-//            }
-//            else
-//            {
-//                Console.WriteLine("\n\t The graveyard is dead silent");
-//            }
-//            Console.WriteLine("\t [Press enter to continue]");
-//            Console.ReadLine();
-//            Console.SetWindowPosition(0, Console.CursorTop - 30);
-//        }
+
 
 //        private static void MeetHiruzen(Player player)
 //        {
