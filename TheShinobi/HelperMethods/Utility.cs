@@ -170,17 +170,15 @@ namespace TheShinobi.HelperMethods
                 
                 new BowAndArrow(),
                 new Crossbow(),
-                new ChakraBlade(),
-                new Sword(),
-                new Gunbai(),
-                new Kusarigama(),
-                new Kunai(),
-                new Shuriken(),
                 new Spear(),
-                new Kiba(),
+                new Sword(),
+                new TekagiShuko(),
+                new Kunai(),
+                new Gunbai(),
+                new Shuriken(),   
                 new Shichiseiken(),
-                new Kubikiribōchō(),
-                new TekagiShuko()
+                new Kusarigama()
+
             };
             return weapons;
         }
