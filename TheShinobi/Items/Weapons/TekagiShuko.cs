@@ -5,7 +5,7 @@
         public TekagiShuko()
         {
             Name = "Tekagi-Shuko";
-            Cost = 1000;
+            Cost = 3000;
             Damage = "2d6";
         }
     }

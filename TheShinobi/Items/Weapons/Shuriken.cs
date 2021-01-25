@@ -5,7 +5,7 @@
         public Shuriken()
         {
             Name = "Shuriken";
-            Cost = 250;
+            Cost = 2000;
             Damage = "1d8";
         }
     }

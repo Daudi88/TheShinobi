@@ -5,7 +5,7 @@
         public Shirt()
         {
             Name = "Shirt";
-            Cost = 10;
+            Cost = 100;
             Defence = 0;
         }
     }
