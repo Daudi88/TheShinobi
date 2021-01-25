@@ -2,7 +2,7 @@
 using TheShinobi.Characters;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
-using TheShinobi.Items.Potions;
+using TheShinobi.Items.Consumables;
 using TheShinobi.Items;
 using System.Collections.Generic;
 using System;
