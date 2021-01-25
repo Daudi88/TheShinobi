@@ -5,8 +5,8 @@
         public Kubikiribōchō()
         {
             Name = "Kubikiribōchō";
-            Cost = 4500;
-            Damage = "3d6";
+            Cost = 3500;
+            Damage = "3d8";
         }
     }
 }

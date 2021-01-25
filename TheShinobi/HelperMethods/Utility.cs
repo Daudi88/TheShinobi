@@ -122,6 +122,8 @@ namespace TheShinobi.HelperMethods
         {
             Weapon[] weapons = new Weapon[]
             {
+                
+                new BowAndArrow(),
                 new Crossbow(),
                 new ChakraBlade(),
                 new Sword(),
@@ -130,7 +132,6 @@ namespace TheShinobi.HelperMethods
                 new Kunai(),
                 new Shuriken(),
                 new Spear(),
-                new BowAndArrow(),
                 new Kiba(),
                 new Shichiseiken(),
                 new Kubikiribōchō(),
@@ -138,7 +139,20 @@ namespace TheShinobi.HelperMethods
             };
             return weapons;
         }
-
+        public static Weapon[] GetSevenSwords()
+        {
+            Weapon[] weapons = new Weapon[]
+            {
+                new Kabutowari(),
+                new Hiramekarei(),
+                new Kubikiribōchō(),
+                new Samehada(),
+                new Kiba(),
+                new Nuibari(),
+                new Shibuki()
+            };
+            return weapons;
+        }
         public static Consumable[] GetPotions()
         {
             Consumable[] potions = new Consumable[]
