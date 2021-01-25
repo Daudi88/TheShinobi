@@ -107,7 +107,13 @@ namespace TheShinobi.HelperMethods
         {
             Armor[] armors = new Armor[]
             {
-
+                new BulletproofVest(),
+                new ChakraArmor(),
+                new FlakJacket(),
+                new InfiniteArmor(),
+                new ShinobiBattleArmor(),
+                new Shirt(),
+                new SteamArmor()
             };
             return armors;
         }
