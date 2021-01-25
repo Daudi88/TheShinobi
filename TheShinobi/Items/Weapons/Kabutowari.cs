@@ -9,7 +9,7 @@ namespace TheShinobi.Items.Weapons
         public Kabutowari()
         {
             Name = "Kabutowari";
-            Cost = 2500;
+            Cost = 4000;
             Damage = "2d10";
         }
     }

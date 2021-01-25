@@ -9,7 +9,7 @@ namespace TheShinobi.Items.Weapons
         public Shibuki()
         {
             Name = "Shuriken";
-            Cost = 5000;
+            Cost = 4000;
             Damage = "2d16";
         }
     }
