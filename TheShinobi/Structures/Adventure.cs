@@ -1,10 +1,16 @@
-﻿//using System;
-//using System.Collections.Generic;
+﻿using TheShinobi.Characters;
 
-//namespace TheShinobi.Logics
-//{
-//    class Adventure
-//    {
+namespace TheShinobi.Structures
+{
+    class Adventure
+    {
+        public static void GoOnAdventure(Player player)
+        {
+
+        }
+    }
+}
+
 //        private static bool treasureTaken = false;
 //        private static bool haveYouMetHim = false;
 //        private static bool graveyardVisited = false;

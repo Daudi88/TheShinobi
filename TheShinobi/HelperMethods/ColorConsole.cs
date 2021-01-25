@@ -23,6 +23,13 @@ namespace TheShinobi.HelperMethods
             Console.ForegroundColor = ConsoleColor.White;
         }
 
+        public static void WriteLine(string text, ConsoleColor color)
+        {
+            Console.ForegroundColor = color;
+            Console.WriteLine(text);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
         public static void WriteEmbeddedColor(string text)
         {
             Regex colorRegex = new Regex(@"\[(?<color>.*?)\](?<text>[^[]*)\[/\k<color>\]");
@@ -43,23 +50,22 @@ namespace TheShinobi.HelperMethods
             }
         }
 
-        public static void TypeOver(string message, ConsoleColor color)
+        public static void TypeOver(string message, ConsoleColor color, int time = 1800)
         {
             Write($"\t {message}", color);
-            Thread.Sleep(1800);
-            int left = 9;
+            Thread.Sleep(time);
             int top = Console.CursorTop;
-            Console.SetCursorPosition(left, top--);
+            Console.SetCursorPosition(Utility.left, top--);
             for (int j = 0; j < message.Length; j++)
             {
                 Console.Write(" ");
             }
-            Console.SetCursorPosition(left, top);
+            Console.SetCursorPosition(Utility.left, top);
             for (int i = 0; i < 100; i++)
             {
                 Console.Write(" ");
             }
-            Console.SetCursorPosition(left, top);
+            Console.SetCursorPosition(Utility.left, top);
             Console.Write("> ");
         }
     }

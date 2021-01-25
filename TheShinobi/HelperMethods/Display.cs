@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using TheShinobi.Characters;
 
 namespace TheShinobi.HelperMethods
 {
@@ -12,9 +13,9 @@ namespace TheShinobi.HelperMethods
 
         }
 
-        public static void WithFrame(List<string> content, string title = "", int ?std = null, string ending = null)
+        public static void WithFrame(List<string> content, string title = "", bool std = false, string ending = null)
         {
-            if (std.HasValue)
+            if (std)
             {
                 List<string> standards = new List<string>()
                 {
@@ -27,7 +28,7 @@ namespace TheShinobi.HelperMethods
 
             if (ending != null)
             {
-                content.Add(ending);
+                content.Add($"E. {ending}");
             }
 
             List<int> lengths = new List<int>();
@@ -70,6 +71,21 @@ namespace TheShinobi.HelperMethods
             }
             Console.WriteLine("┛");
             Console.Write("\t > ");
+        }
+
+        internal static bool Backpack(Player player)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static void Details(Player player)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static void Map(Player player)
+        {
+            throw new NotImplementedException();
         }
 
         private static int ColorLength(string text)

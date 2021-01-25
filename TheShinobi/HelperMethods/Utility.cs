@@ -3,11 +3,15 @@ using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
 using TheShinobi.Items.Potions;
 using System;
+using TheShinobi.Characters;
+using TheShinobi.Items;
+using TheShinobi.Interfaces;
 
 namespace TheShinobi.HelperMethods
 {
     static class Utility
     {
+        public const int left = 9;
         public static readonly Random random = new Random();
 
         public static int RollDice(string dice)
@@ -20,6 +24,54 @@ namespace TheShinobi.HelperMethods
                 result += random.Next(1, sides + 1);
             }
             return result;
+        }
+
+        public static bool MakeAChoice(int length, out int choice, bool std = true) // Implementera BDM
+        {
+            bool result = false;
+            while (true)
+            {
+                string input = ColorConsole.ReadLine();
+                int.TryParse(input, out choice);
+                if (choice > 0 && choice <= length)
+                {
+                    result = true;
+                    break;
+                }
+                else if (input.ToUpper() == "E")
+                {
+                    break;
+                }
+                else if (choice == 0)
+                {
+                    ColorConsole.TypeOver("Invalid choice. Try again!", ConsoleColor.Red);
+                }
+            }
+            return result;
+        }
+
+        public static void BuyItem(Player player, Item item, bool eat = false)
+        {
+            if (player.Gold >= item.Cost)
+            {
+                if (eat && item is Consumable meal)
+                {
+                    meal.Consume(player);
+                }
+                else
+                {
+                    AddToBackpack(player, item);
+                }
+            }
+            else
+            {
+                ColorConsole.TypeOver("You don't have enough gold.", ConsoleColor.Red);
+            }
+        }
+
+        private static void AddToBackpack(Player player, Item item)
+        {
+            throw new NotImplementedException();
         }
 
         public static Enemy[] GetEnemies()
@@ -51,7 +103,14 @@ namespace TheShinobi.HelperMethods
             return enemies;
         }
 
-        // Skapa GetArmors()
+        public static Armor[] GetArmors()
+        {
+            Armor[] armors = new Armor[]
+            {
+
+            };
+            return armors;
+        }
 
         public static Weapon[] GetWeapons()
         {
@@ -98,6 +157,11 @@ namespace TheShinobi.HelperMethods
                 new Consumable("Super sour Lemon Burger", 45, 25, "You eat a Super sour Lemon Burger")
             };
             return meals;
+        }
+
+        internal static void SellItems(Player player, int top, int bottom)
+        {
+            throw new NotImplementedException();
         }
     }
 }
