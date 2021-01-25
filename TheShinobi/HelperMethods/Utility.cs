@@ -2,10 +2,10 @@
 using TheShinobi.Characters;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
+using TheShinobi.Items.Consumables;
 using TheShinobi.Items;
 using System.Collections.Generic;
 using System;
-using TheShinobi.Items.Consumables;
 
 namespace TheShinobi.HelperMethods
 {
