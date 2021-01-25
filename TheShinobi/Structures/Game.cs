@@ -21,7 +21,7 @@ namespace TheShinobi.Structures
             Console.CursorVisible = false;
             string soundLocation = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\NarutoFinal.Wav");
             SoundPlayer player = new SoundPlayer(soundLocation);
-            //player.PlayLooping();
+            player.PlayLooping();
         }
 
         public void Test()
@@ -37,7 +37,7 @@ namespace TheShinobi.Structures
             string intro = $"You, {player.Name} wake up in the Hidden Leaf Village and sense that something is wrong!" +
                 "\n\tKaguya Otsutsuki have kidnapped Hanare and taken her to his cave in the mountains." +
                 "\n\tIt is your duty to find and rescue her!";
-            Display.Delayed(intro, color: ConsoleColor.Yellow);
+            Display.Story(intro);
             Village.Menu(player);
         }
 

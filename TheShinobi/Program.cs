@@ -8,7 +8,7 @@ namespace TheShinobi
         {
             Game game = new Game();
             game.Setup();
-            game.Test();
+            game.Start();
 
         }
     }

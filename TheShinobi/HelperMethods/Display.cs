@@ -8,10 +8,7 @@ namespace TheShinobi.HelperMethods
 {
     class Display
     {
-        public static void Title()
-        {
-
-        }
+        
 
         public static void WithFrame(List<string> content, string title = "", bool std = false, string ending = null)
         {
@@ -103,6 +100,77 @@ namespace TheShinobi.HelperMethods
                 ColorConsole.Write(letter.ToString(), color);
                 Thread.Sleep(delay);
             }
+            Console.WriteLine();
+        }
+
+        public static void Story(params string[] content)
+        {
+            bool isKeyPressed = false;
+            for (int i = 0; i < content.Length; i++)
+            {
+                Console.Write("\n\t ");
+                for (int j = 0; j < content[i].Length; j++)
+                {
+                    ColorConsole.Write(content[i][j].ToString(), ConsoleColor.Yellow);
+                    if (Console.KeyAvailable)
+                    {
+                        isKeyPressed = true;
+                    }
+
+                    if (!isKeyPressed)
+                    {
+                        Thread.Sleep(40);
+                    }
+                }
+            }
+            Console.WriteLine();
+        }
+
+        public static void Title()
+        {
+            int top = 2;
+            int left = 8;
+            int ctr = 0;
+            bool isKeyPressed = false;
+
+            string t = " ▀       █       █       █▀    ▄████████████████████████ █▀    █ █▀    ▀ ██      ▄█▀    ";
+            string h = "            ▀      ▄▀    ███████▄███████████████   ▄▀      ▄▀      ▄▀   ████████▄██████▀ ██████    ▄▀      ▄    ";
+            string e = "            ▀      ▄▀    ███████▄████████████████  ▄▀  ██  ▄▀  ██  ▄▀  ████  █████▀  ▄████    ██";
+            string space = "                                                ";
+            string s = "            ▀       █  ▄ ████  █▄████ ▄██████ ███   █  ██   █  ██   █  ██   █  ████ ██████▀ ███▀██  ███ ";
+            string i = "         ███████▄██████▀███████   ▌▌▌   ";
+            string n = "        ███████ ███████▀████████▄▀      ▄▀      ▄▀      ▄███████ ██████▀ ▄█████ ";
+            string o = "         ██████ ▄██████▀█████████      ██      ██      █████████▄██████▀ ██████ ";
+            string b = "        ▀   ▀  ▀█  ▄▀  ██████████████████████████  ▄▀  ██  ▄▀  ██  ▄▀  ██  ██  █████████▄██▀▄██▀ ██  ▄█ ";
+            string[] title = new string[] { t, h, e, space, s, h, i, n, o, b, i };
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            foreach (var letter in title)
+            {
+                for (int j = 0; j < letter.Length; j++)
+                {
+                    ctr++;
+                    Console.SetCursorPosition(left, top++);
+                    Console.Write(letter[j]);
+
+                    if (Console.KeyAvailable)
+                    {
+                        isKeyPressed = true;
+                    }
+
+                    if (!isKeyPressed)
+                    {
+                        Thread.Sleep(1);
+                    }
+
+                    if (ctr % 10 == 8)
+                    {
+                        ctr = 0;
+                        top = 2;
+                        left++;
+                    }
+                }
+            }
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
         }
     }
