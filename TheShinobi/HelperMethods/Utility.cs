@@ -3,7 +3,6 @@ using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
 using TheShinobi.Items.Potions;
 using System;
-using TheShinobi.Items.Potions;
 
 namespace TheShinobi.HelperMethods
 {
@@ -52,20 +51,6 @@ namespace TheShinobi.HelperMethods
             return enemies;
         }
 
-        internal static Consumable[] GetMeals()
-        {
-            Consumable[] meals = new Consumable[]
-            {
-                new Consumable("Chips", 10, 5, "You eat some Chips"),
-                new Consumable("Chūnin Exams Burger Combo", 80, 50, "You eat the Chūnin Exams Burger Combo"),
-                new Consumable("Green Chilli Hamburger", 50, 30, "You eat a Green Chilli Hamburger"),
-                new Consumable("Habanero Burger", 35, 20, "You eat a Habanero Burger"),
-                new Consumable("Jolokia Burger", 25, 15, "You eat a Jolokia Burger"),
-                new Consumable("Super sour Lemon Burger", 45, 25, "You eat a Super sour Lemon Burger")
-            };
-            return meals;
-        }
-
         // Skapa GetArmors()
 
         public static Weapon[] GetWeapons()
@@ -99,6 +84,20 @@ namespace TheShinobi.HelperMethods
                 new Consumable("Superior Healing Potion", 30, 12)
             };
             return potions;
+        }
+
+        internal static Consumable[] GetMeals()
+        {
+            Consumable[] meals = new Consumable[]
+            {
+                new Consumable("Chips", 10, 5, "You eat some Chips"),
+                new Consumable("Chūnin Exams Burger Combo", 80, 50, "You eat the Chūnin Exams Burger Combo"),
+                new Consumable("Green Chilli Hamburger", 50, 30, "You eat a Green Chilli Hamburger"),
+                new Consumable("Habanero Burger", 35, 20, "You eat a Habanero Burger"),
+                new Consumable("Jolokia Burger", 25, 15, "You eat a Jolokia Burger"),
+                new Consumable("Super sour Lemon Burger", 45, 25, "You eat a Super sour Lemon Burger")
+            };
+            return meals;
         }
     }
 }

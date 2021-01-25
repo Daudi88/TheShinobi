@@ -6,7 +6,7 @@
         {
             Name = "AK-47";
             Cost = 50000;
-            Damage = "30d4";
+            Damage = "8d12";
         }
     }
 }
