@@ -2,7 +2,7 @@
 using TheShinobi.Characters;
 using System;
 
-namespace TheShinobi.Items.Potions
+namespace TheShinobi.Items.Consumables
 {
     class Consumable : Item
     {

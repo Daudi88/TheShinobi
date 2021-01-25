@@ -8,6 +8,7 @@ namespace TheShinobi.Structures
 {
     class Adventure
     {
+        private static bool treasureTaken = false;
         private static bool isGraveyardVisited = false;
         public static void GoOnAdventure(Player player)
         {
@@ -31,6 +32,24 @@ namespace TheShinobi.Structures
                 ColorConsole.TypeOver("\t The graveyard is dead silent.", ConsoleColor.Yellow);             
             }
         }
+        private static void Treasure(Player player)
+        {
+            if (!treasureTaken)
+            {
+                
+                player.Gold += (Utility.random.Next(1000, 10000));
+                Console.WriteLine($"\n\t You found a treasure and gained {player.Gold}!");
+                treasureTaken = true;
+            }
+            else
+            {
+                Console.WriteLine("\n\t The treasue is no more...");
+            }
+            Console.WriteLine("\t [Press enter to continue]");
+            Console.ReadLine();
+            Console.SetWindowPosition(0, Console.CursorTop - 30);
+        }
+
     }
 }
 
@@ -890,21 +909,6 @@ namespace TheShinobi.Structures
 //            Console.ReadLine();
 //        }
 
-//        private static void Treasure(Player player)
-//        {
-//            if (!treasureTaken)
-//            {
-//                Console.WriteLine("\n\t Yeay! you got a treasure!");
-//                treasureTaken = true;
-//            }
-//            else
-//            {
-//                Console.WriteLine("\n\t The treasue is no more...");
-//            }
-//            Console.WriteLine("\t [Press enter to continue]");
-//            Console.ReadLine();
-//            Console.SetWindowPosition(0, Console.CursorTop - 30);
-//        }
 
 
 
