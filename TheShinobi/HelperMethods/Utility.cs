@@ -3,6 +3,7 @@ using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
 using TheShinobi.Items.Potions;
 using System;
+using TheShinobi.Items.Potions;
 
 namespace TheShinobi.HelperMethods
 {
@@ -45,7 +46,7 @@ namespace TheShinobi.HelperMethods
                 new Enemy("Daudi", 9, 74, new BulletproofVest(), new AK47()),
                 new Enemy("Hocke", 9, 74, new BulletproofVest(), new AK47()),
                 new Enemy("Kakuzu", 10, 84, new InfiniteArmor(), new Spear())
-               // new Enemy("Orochimaru", 10, 100, new ShinobiBattleArmor(), new ChakraBlade()) Lägg i bossfight
+               
 
             };
             return enemies;
@@ -72,8 +73,18 @@ namespace TheShinobi.HelperMethods
             Weapon[] weapons = new Weapon[]
             {
                 new Crossbow(),
-                //new ChakraBlade(), Stoppa i MeetHiruzen()
-                // Fyll på med basic vapen (inte de exklusiva)
+                new ChakraBlade(),
+                new Sword(),
+                new Gunbai(),
+                new Kusarigama(),
+                new Kunai(),
+                new Shuriken(),
+                new Spear(),
+                new BowAndArrow(),
+                new Kiba(),
+                new Shichiseiken(),
+                new Kubikiribōchō(),
+                new TekagiShuko()
             };
             return weapons;
         }
