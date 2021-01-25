@@ -34,10 +34,10 @@ namespace TheShinobi.Structures
         {
             Display.Title();
             Player player = CharacterCreation();
-            string intro = $"You, {player.Name} wake up in the Hidden Leaf Village and sense that something is wrong!" +
-                "\n\tKaguya Otsutsuki have kidnapped Hanare and taken her to his cave in the mountains." +
-                "\n\tIt is your duty to find and rescue her!";
-            Display.Story(intro);
+            string intro = $"\t You, {player.Name} wake up in the Hidden Leaf Village and sense that something is wrong!" +
+                "\n\t Kaguya Otsutsuki have kidnapped Hanare and taken her to his cave in the mountains." +
+                "\n\t It is your duty to find and rescue her!";
+            Display.Delayed(intro, color: ConsoleColor.Yellow);
             Village.Menu(player);
         }
 

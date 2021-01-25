@@ -92,15 +92,25 @@ namespace TheShinobi.HelperMethods
             return text.Substring(at, at2 - at + 1).Length * 2 + 1;
         }
 
-        public static void Delayed(string text, int delay = 50, ConsoleColor color = ConsoleColor.White)
+        public static void Delayed(string text, int delay = 40, ConsoleColor color = ConsoleColor.White)
         {
+            bool isKeyPressed = false;
             Thread.Sleep(delay);
             foreach (var letter in text)
             {
                 ColorConsole.Write(letter.ToString(), color);
-                Thread.Sleep(delay);
+                if (Console.KeyAvailable)
+                {
+                    isKeyPressed = true;
+                }
+
+                if (!isKeyPressed)
+                {
+                    Thread.Sleep(delay);
+                }
             }
-            Console.WriteLine();
+            Thread.Sleep(800);
+            Console.WriteLine("\n");
         }
 
         public static void Story(params string[] content)

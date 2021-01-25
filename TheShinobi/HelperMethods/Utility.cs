@@ -31,7 +31,7 @@ namespace TheShinobi.HelperMethods
             while (true)
             {
                 int top = Console.CursorTop;
-                Console.WriteLine($"What {name.ToLower()} do you want to buy?");
+                Console.WriteLine($"\t What {name.ToLower()} do you want to buy?");
                 List<string> options = new List<string>();
                 int ctr = 1;
                 foreach (var item in items)
@@ -70,7 +70,7 @@ namespace TheShinobi.HelperMethods
                 }
                 else if (choice == 0)
                 {
-                    ColorConsole.TypeOver("Invalid choice. Try again!", ConsoleColor.Red);
+                    ColorConsole.TypeOver("\t Invalid choice. Try again!", ConsoleColor.Red);
                 }
             }
             return result;
@@ -91,7 +91,7 @@ namespace TheShinobi.HelperMethods
             }
             else
             {
-                ColorConsole.TypeOver("You don't have enough gold.", ConsoleColor.Red);
+                ColorConsole.TypeOver("\t You don't have enough gold.", ConsoleColor.Red);
             }
         }
         

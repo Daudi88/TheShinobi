@@ -52,9 +52,9 @@ namespace TheShinobi.HelperMethods
 
         public static void TypeOver(string message, ConsoleColor color, int time = 1800)
         {
-            Write($"\t {message}", color);
-            Thread.Sleep(time);
             int top = Console.CursorTop;
+            WriteLine(message, color);
+            Thread.Sleep(time);
             Console.SetCursorPosition(Utility.left, top--);
             for (int j = 0; j < message.Length; j++)
             {
