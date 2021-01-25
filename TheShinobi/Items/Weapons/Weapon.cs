@@ -11,7 +11,7 @@ namespace TheShinobi.Items.Weapons
 
         public void Equip(Player player, IEquipable item)
         {
-            if (player.Weapon.Name != "Fists")
+            if (!(player.Weapon is Fists))
             {
                 player.Backpack.Add(player.Weapon);
             }

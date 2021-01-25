@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Linq;
 using System;
+using TheShinobi.Items;
+using TheShinobi.Interfaces;
+using TheShinobi.Items.Potions;
 
 namespace TheShinobi.HelperMethods
 {
@@ -37,14 +40,14 @@ namespace TheShinobi.HelperMethods
                 lengths.Add(length);
             }
             int width = lengths.OrderByDescending(i => i).First();
-            
+
             ColorConsole.WriteEmbeddedColor($"\t┏━{title}");
             int colorLength = 0;
             if (title.Contains("["))
             {
                 colorLength = ColorLength(title);
             }
-            
+
             for (int i = 0; i < width - title.Length + colorLength + 2; i++)
             {
                 Console.Write("━");
@@ -56,7 +59,7 @@ namespace TheShinobi.HelperMethods
                 if (text.Contains("["))
                 {
                     colorLength = ColorLength(text);
-                }                
+                }
                 ColorConsole.WriteEmbeddedColor($"\t┃ {text.PadRight(width + colorLength)}  ┃\n");
             }
             Console.Write("\t┗");
@@ -68,9 +71,59 @@ namespace TheShinobi.HelperMethods
             Console.Write("\t > ");
         }
 
-        internal static bool Backpack(Player player)
+        internal static bool Backpack(Player player, bool sell = false)
         {
-            throw new NotImplementedException();
+            if (player.Backpack.Count > 0)
+            {
+                string text = sell ? "sell" : "do";
+                Console.WriteLine($"\n\t What do you want to {text}?");
+                int top = Console.CursorTop;
+                while (true)
+                {                    
+                    List<string> content = new List<string>();
+                    int ctr = 1;
+                    foreach (var item in player.Backpack)
+                    {
+                        content.Add($"{ctr++}. [Yellow]{item.Quantity} {item}[/Yellow]");
+                    }
+                    WithFrame(content, "[DarkCyan]BACKPACK[/DarkCyan]", ending: "Close backpack");
+                    int bottom = Console.CursorTop;
+                    if (Utility.MakeAChoice(player.Backpack.Count, out int choice))
+                    {
+                        Item item = player.Backpack[choice - 1];
+                        if (item is IEquipable e)
+                        {
+                            e.Equip(player, e);
+                        }
+                        else if (item is Consumable c)
+                        {
+                            c.Consume(player);
+                            if (item is EnergyDrink energy)
+                            {
+                                Utility.isCaffeine = true;
+                                player.AttackBonus += energy.AttackBonus;
+                            }
+                        }
+
+                        item.Quantity--;
+                        if (item.Quantity < 1)
+                        {
+                            player.Backpack.Remove(item);
+                        }
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                return true;
+            }
+            else
+            {
+                ColorConsole.TypeOver("\t Your backpack is empty...", ConsoleColor.Red);
+                return false;
+            }
         }
 
         internal static void Details(Player player)

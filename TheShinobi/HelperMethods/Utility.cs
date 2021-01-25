@@ -13,6 +13,7 @@ namespace TheShinobi.HelperMethods
     {
         public const int left = 9;
         public static readonly Random random = new Random();
+        public static bool isCaffeine = false;
 
         public static int RollDice(string dice)
         {
@@ -52,7 +53,7 @@ namespace TheShinobi.HelperMethods
             }
         }
 
-        public static bool MakeAChoice(int length, out int choice, bool std = true) // Implementera BDM
+        public static bool MakeAChoice(int length, out int choice, Player player = null, bool std = false, bool ending = false) // Implementera BDM
         {
             bool result = false;
             while (true)
@@ -64,8 +65,28 @@ namespace TheShinobi.HelperMethods
                     result = true;
                     break;
                 }
-                else if (input.ToUpper() == "E")
+                else if (ending && input.ToUpper() == "E")
                 {
+                    break;
+                }
+                else if (std && player != null && input.ToUpper() == "B")
+                {
+                    if (Display.Backpack(player))
+                    {
+                        result = true;
+                        break;
+                    }
+                }
+                else if (std && player != null && input.ToUpper() == "D")
+                {
+                    Display.Details(player);
+                    result = true;
+                    break;
+                }
+                else if (std && player != null && input.ToUpper() == "M")
+                {
+                    Display.Map(player);
+                    result = true;
                     break;
                 }
                 else if (choice == 0)
