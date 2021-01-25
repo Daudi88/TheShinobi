@@ -1,11 +1,11 @@
 ﻿using TheShinobi.Characters.Enemies;
+using TheShinobi.Characters;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
 using TheShinobi.Items.Potions;
-using System;
-using TheShinobi.Characters;
 using TheShinobi.Items;
-using TheShinobi.Interfaces;
+using System.Collections.Generic;
+using System;
 
 namespace TheShinobi.HelperMethods
 {
@@ -24,6 +24,32 @@ namespace TheShinobi.HelperMethods
                 result += random.Next(1, sides + 1);
             }
             return result;
+        }
+
+        public static void Shop(Player player, string name, Item[] items, bool eat = false)
+        {
+            while (true)
+            {
+                int top = Console.CursorTop;
+                Console.WriteLine($"What {name.ToLower()} do you want to buy?");
+                List<string> options = new List<string>();
+                int ctr = 1;
+                foreach (var item in items)
+                {
+                    options.Add($"{ctr++}. {item}");
+                }
+                Display.WithFrame(options, $"[Yellow]{name.ToUpper()}S[/Yellow]", ending: "Go back to shop menu");
+                int bottom = Console.CursorTop;
+                if (MakeAChoice(items.Length, out int choice))
+                {
+                    BuyItem(player, items[choice - 1], eat);
+                }
+                else
+                {
+                    Remove(top, bottom);
+                    break;
+                }
+            }
         }
 
         public static bool MakeAChoice(int length, out int choice, bool std = true) // Implementera BDM
@@ -69,9 +95,28 @@ namespace TheShinobi.HelperMethods
             }
         }
 
+        internal static void SellItems(Player player)
+        {
+            throw new NotImplementedException();
+        }
+
         private static void AddToBackpack(Player player, Item item)
         {
             throw new NotImplementedException();
+        }
+
+        public static void Remove(int top, int bottom)
+        {
+            int ctr = top;
+            for (int i = 0; i <= bottom - top; i++)
+            {
+                Console.SetCursorPosition(0, ctr++);
+                for (int j = 0; j < 100; j++)
+                {
+                    Console.Write(" ");
+                }
+            }
+            Console.SetCursorPosition(left, top);
         }
 
         public static Enemy[] GetEnemies()
@@ -97,7 +142,7 @@ namespace TheShinobi.HelperMethods
                 new Enemy("Daudi", 9, 74, new BulletproofVest(), new AK47()),
                 new Enemy("Hocke", 9, 74, new BulletproofVest(), new AK47()),
                 new Enemy("Kakuzu", 10, 84, new InfiniteArmor(), new Spear())
-               
+
 
             };
             return enemies;
@@ -163,27 +208,6 @@ namespace TheShinobi.HelperMethods
                 new Consumable("Super sour Lemon Burger", 45, 25, "You eat a Super sour Lemon Burger")
             };
             return meals;
-        }
-
-        internal static void SellItems(Player player, int top, int bottom)
-        {
-            throw new NotImplementedException();
-        }
-        public static void Remove(Player player, int top, int bottom)
-        {
-            int ctr = top;
-            for (int i = 0; i <= bottom - top; i++)
-            {
-                Console.SetCursorPosition(0, ctr++);
-                Console.WriteLine("\t\t\t\t");
-            }
-            while (true)
-            {
-                Console.SetCursorPosition(Utility.left, top);
-                Console.WriteLine("What item do you want to remove?" );
-                
-
-            }
         }
     }
 }

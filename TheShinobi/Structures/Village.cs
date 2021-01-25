@@ -7,6 +7,7 @@ using TheShinobi.Characters;
 using TheShinobi.HelperMethods;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Potions;
+using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Structures
 {
@@ -39,12 +40,12 @@ namespace TheShinobi.Structures
                             break;
                         case "3":
                             // Tycker den här biten är så liten att den inte behöver en egen metod. 
-                            // Om vi utvecklar den men kan vi såklart göra det! :)
+                            // Om vi utvecklar den men kan vi såklart göra ewn metod för den! :)
                             if (player.Gold >= 300)
                             {
                                 player.Gold -= 300;
                                 player.Hp = player.MaxHp;
-                                ColorConsole.TypeOver("Tsunade patch you up to full health!", ConsoleColor.Yellow, 3000);
+                                ColorConsole.TypeOver("Tsunade, the medical-nin, patch you up to full health!", ConsoleColor.Yellow, 3000);
                             }
                             else
                             {
@@ -78,9 +79,10 @@ namespace TheShinobi.Structures
                 } while (!innerExit);
             }
         }
-        
+
         private static void LightningBurger(Player player)
         {
+
             Consumable[] meals = Utility.GetMeals();
             bool exit = false;
             while (!exit)
@@ -98,11 +100,11 @@ namespace TheShinobi.Structures
                 {
                     if (Utility.MakeAChoice(meals.Length, out int choice))
                     {
-                        Utility.BuyItem(player, meals[choice - 1]);
+                        Utility.BuyItem(player, meals[choice - 1], true);
                     }
                     else
                     {
-                        Console.WriteLine("\t Thank you for visiting Lightning Burger!\n");
+                        ColorConsole.WriteLine("\t Thank you for visiting Lightning Burger!\n", ConsoleColor.Yellow);
                         Thread.Sleep(1800);
                         exit = true;
                         break;
@@ -128,14 +130,15 @@ namespace TheShinobi.Structures
                 };
                 Display.WithFrame(options, "[Yellow]SHOP[/Yellow]", ending: "Leave");
                 int bottom = Console.CursorTop;
-                var methods = new Action<Player, int, int>[]
+                var methods = new Action<Player>[]
                 {
                     BuyArmor, BuyWeapons, BuyPotions, Utility.SellItems
                 };
 
                 if (Utility.MakeAChoice(methods.Length, out int choice))
                 {
-                    methods[choice - 1].DynamicInvoke(player, top, bottom);
+                    Utility.Remove(top, bottom);
+                    methods[choice - 1].DynamicInvoke(player);
                 }
                 else
                 {
@@ -145,46 +148,22 @@ namespace TheShinobi.Structures
             }
         }
 
-        private static void BuyArmor(Player player, int top, int bottom)
+        private static void BuyArmor(Player player)
         {
-            int ctr = top;
-            for (int i = 0; i <= bottom - top; i++)
-            {
-                Console.SetCursorPosition(0, ctr++);
-                Console.WriteLine("\t\t\t\t");
-            }
-            while (true)
-            {
-                Console.SetCursorPosition(Utility.left, top);
-                Console.WriteLine("What armor do you want to buy?");
-                Armor[] armors = Utility.GetArmors();
-                List<string> options = new List<string>();
-                ctr = 1;
-                foreach (var armor in armors)
-                {
-                    options.Add($"{ctr++}. {armor}");
-                }
-                Display.WithFrame(options, "[Yellow]ARMORS[/Yellow]", ending: "Go back to shop menu");
-
-                if (Utility.MakeAChoice(armors.Length, out int choice))
-                {
-                    Utility.BuyItem(player, armors[choice - 1]);
-                }
-                else
-                {
-                    break;
-                }
-            }
+            Armor[] armors = Utility.GetArmors();
+            Utility.Shop(player, "armor", armors);            
         }
 
-        private static void BuyWeapons(Player player, int top, int bottom)
+        private static void BuyWeapons(Player player)
         {
-            throw new NotImplementedException();
+            Weapon[] weapons = Utility.GetWeapons();
+            Utility.Shop(player, "weapon", weapons);
         }
 
-        private static void BuyPotions(Player player, int top, int bottom)
+        private static void BuyPotions(Player player)
         {
-            throw new NotImplementedException();
+            Consumable[] potions = Utility.GetPotions();
+            Utility.Shop(player, "potion", potions);
         }
     }
 }
