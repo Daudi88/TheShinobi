@@ -79,12 +79,13 @@ namespace TheShinobi.HelperMethods
             return text.Substring(at, at2 - at + 1).Length * 2 + 1;
         }
 
-        public static void Delayed(string text, ConsoleColor color)
+        public static void Delayed(string text, int delay = 50, ConsoleColor color = ConsoleColor.White)
         {
+            Thread.Sleep(delay);
             foreach (var letter in text)
             {
                 ColorConsole.Write(letter.ToString(), color);
-                Thread.Sleep(50);
+                Thread.Sleep(delay);
             }
             Console.WriteLine();
         }

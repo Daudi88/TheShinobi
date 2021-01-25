@@ -43,9 +43,9 @@ namespace TheShinobi.HelperMethods
             }
         }
 
-        public static void TypeOverWrongDoings(string input, string message = "Invalid choice. Try again!")
+        public static void TypeOver(string message, ConsoleColor color)
         {
-            ColorConsole.Write($"\t {message}", ConsoleColor.Red);
+            Write($"\t {message}", color);
             Thread.Sleep(1800);
             int left = 9;
             int top = Console.CursorTop;
@@ -55,7 +55,7 @@ namespace TheShinobi.HelperMethods
                 Console.Write(" ");
             }
             Console.SetCursorPosition(left, top);
-            for (int i = 0; i < input.Length + 2; i++)
+            for (int i = 0; i < 100; i++)
             {
                 Console.Write(" ");
             }

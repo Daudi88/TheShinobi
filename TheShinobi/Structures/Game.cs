@@ -8,7 +8,6 @@ using System.Text;
 using System.Linq;
 using System.IO;
 using System.Media;
-using System.Collections.Generic;
 
 namespace TheShinobi.Structures
 {
@@ -17,7 +16,7 @@ namespace TheShinobi.Structures
         public void Setup()
         {
             Console.Title = "The Shinobi";
-            Console.SetWindowSize(130, 75);
+            Console.SetWindowSize(130, 50);
             Console.OutputEncoding = Encoding.UTF8;
             Console.CursorVisible = false;
             string soundLocation = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\NarutoFinal.Wav");
@@ -27,33 +26,8 @@ namespace TheShinobi.Structures
 
         public void Test()
         {
-            Console.WriteLine();
-            List<string> list = new List<string>()
-            {
-                "1. [Yellow]Eat[/Yellow]", 
-                "2. [DarkCyan]Sleep[/DarkCyan]", 
-                "3. [Green]Repeat[/Green]"
-            };
-            Display.WithFrame(list, "[Red]CHOICES[/Red]", 1, "E. [Magenta]Go home[/Magenta]");
-            Console.WriteLine("\n");
-
-            List<string> list1 = new List<string>()
-            {
-                "1. [Yellow]Eat[/Yellow]",
-                "2. [DarkCyan]Sleep[/DarkCyan]",
-                "3. [Green]Repeat[/Green]"
-            };
-            Display.WithFrame(content: list1, std: 1, ending: "E. [Magenta]Go home[/Magenta]");
-            Console.WriteLine("\n");
-
-            List<string> list2 = new List<string>()
-            {
-                "1. [Yellow]Eat[/Yellow]",
-                "2. [DarkCyan]Sleep[/DarkCyan]",
-                "3. [Green]Repeat[/Green]"
-            };
-            Display.WithFrame(content: list2);
-            Console.ReadLine();
+            Player player = CharacterCreation();
+            Village.Menu(player);
         }
 
         public void Start()
@@ -63,8 +37,8 @@ namespace TheShinobi.Structures
             string intro = $"You, {player.Name} wake up in the Hidden Leaf Village and sense that something is wrong!" +
                 "\n\tKaguya Otsutsuki have kidnapped Hanare and taken her to his cave in the mountains." +
                 "\n\tIt is your duty to find and rescue her!";
-            Display.Delayed(intro, ConsoleColor.Yellow);
-            Village.Menu();
+            Display.Delayed(intro, color: ConsoleColor.Yellow);
+            Village.Menu(player);
         }
 
         private static Player CharacterCreation()
@@ -77,15 +51,15 @@ namespace TheShinobi.Structures
                 name = ColorConsole.ReadLine();
                 if (name.Any(char.IsDigit))
                 {
-                    Utility.TypeOverWrongDoings(name, "The name cannot contain digits. Try again!");
+                    ColorConsole.TypeOver("The name cannot contain digits. Try again!", ConsoleColor.Red);
                 }
                 else if (name.Length < 3)
                 {
-                    Utility.TypeOverWrongDoings(name, "The name is too short. Try again!");
+                    ColorConsole.TypeOver("The name is too short. Try again!", ConsoleColor.Red);
                 }
                 else if (name.Length > 12)
                 {
-                    Utility.TypeOverWrongDoings(name, "The name is too long. Try again!");
+                    ColorConsole.TypeOver("The name is too long. Try again!", ConsoleColor.Red);
                 }
                 else
                 {
@@ -93,8 +67,9 @@ namespace TheShinobi.Structures
                     break;
                 }
             }
+            Console.WriteLine();
             return name.ToLower() == "robin" ? GodMode() : new Player(name);
-        }
+        }        
 
         private static Player GodMode()
         {
@@ -108,10 +83,17 @@ namespace TheShinobi.Structures
             };
             kakashi.Defence = kakashi.Armor.Defence;
             kakashi.Damage = kakashi.Weapon.Damage;
-            Potion redBull = new Potion("Red Bull", 50, 20, "You get wings");
+            Consumable redBull = new Consumable("Red Bull", 50, 20, "You get wings");
             redBull.Quantity = 100;
             kakashi.Backpack.Add(redBull);
             return kakashi;
+        }
+
+        public static void ExitGame()
+        {
+            ColorConsole.Write("\t Exiting game", ConsoleColor.Red);
+            Display.Delayed("...", 800, ConsoleColor.Red);
+            Environment.Exit(0);
         }
     }
 }

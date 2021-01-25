@@ -32,24 +32,24 @@ namespace TheShinobi.Characters.Enemies
             }
         }
 
-        //public void DropItems(Player player)
-        //{
-        //    Potion potion;
-        //    if (Name == "Hocke")
-        //    {
-        //        potion = new Potion("Monster Energy", 100, player.MaxHp, "You unleashed the beast");
-        //    }
-        //    else if (Name == "Daudi")
-        //    {
-        //        potion = new Potion("Coke Zero", 100, 1000, "You taste the feeling");
-        //    }
-        //    else
-        //    {
-        //        Potion[] potions = Utility.GetPotions();
-        //        potion = potions[Utility.random.Next(potions.Length)];
-        //    }
-        //    potion.Quantity = Utility.random.Next(1, 11);
-        //    player.Backpack.Add(potion);
-        //}
+        public void DropItems(Player player)
+        {
+            Consumable potion;
+            if (Name == "Hocke")
+            {
+                potion = new Consumable("Monster Energy", 100, player.MaxHp, "You unleash the beast");
+            }
+            else if (Name == "Daudi")
+            {
+                potion = new Consumable("Coke Zero", 100, player.MaxHp, "You taste the feeling");
+            }
+            else
+            {
+                Consumable[] potions = Utility.GetPotions();
+                potion = potions[Utility.random.Next(potions.Length)];
+            }
+            potion.Quantity = Utility.random.Next(1, 11);
+            player.Backpack.Add(potion);
+        }
     }
 }
