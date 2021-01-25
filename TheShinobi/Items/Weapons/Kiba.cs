@@ -6,7 +6,7 @@
         {
             Name = "Kiba";
             Cost = 4500;
-            Damage = "2d12";
+            Damage = "3d10";
         }
     }
 }
