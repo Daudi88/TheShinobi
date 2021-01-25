@@ -95,8 +95,9 @@ namespace TheShinobi.HelperMethods
             }
         }
         
-        private static void AddToBackpack(Player player, Item item)
+        public static void AddToBackpack(Player player, Item item)
         {
+            
             throw new NotImplementedException();
         }
 

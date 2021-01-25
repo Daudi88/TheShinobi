@@ -2,11 +2,13 @@
 using TheShinobi.Characters;
 using TheShinobi.Items.Weapons;
 using System;
+using System.Threading;
 
 namespace TheShinobi.Structures
 {
     class Adventure
     {
+        private static bool isGraveyardVisited = false;
         public static void GoOnAdventure(Player player)
         {
 
@@ -16,18 +18,18 @@ namespace TheShinobi.Structures
         {
             if (!isGraveyardVisited)
             {
-                Weapon[] swords = new Weapon[7];
-                Weapon sword = swords[Utility.random.Next()];
-                Console.WriteLine("\n\t Yeay! you got a treasure!");
+                Weapon[] swords = Utility.GetSevenSwords();
+                Weapon sword = swords[Utility.random.Next(swords.Length)];
+                ColorConsole.WriteLine($"\t You find {sword.Name}, a sword of the Seven Swordsmen!", ConsoleColor.Yellow);
+                Utility.AddToBackpack(player, sword);
                 isGraveyardVisited = true;
+                Thread.Sleep(1800);
+                Console.SetWindowPosition(0, Console.CursorTop - 30);
             }
             else
             {
-                Console.WriteLine("\n\t The graveyard is dead silent");
+                ColorConsole.TypeOver("\t The graveyard is dead silent.", ConsoleColor.Yellow);             
             }
-            Console.WriteLine("\t [Press enter to continue]");
-            Console.ReadLine();
-            Console.SetWindowPosition(0, Console.CursorTop - 30);
         }
     }
 }
