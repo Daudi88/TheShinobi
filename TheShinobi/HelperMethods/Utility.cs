@@ -128,20 +128,21 @@ namespace TheShinobi.HelperMethods
                 new Enemy("Ukon", 2, 32, new Shirt(), new Kusarigama()),
                 new Enemy("Sasori", 2, 32, new Shirt(), new TekagiShuko()),
                 new Enemy("Konan", 3, 35, new FlakJacket(), new Kubikiribōchō()),
-                new Enemy("Nagato", 3, 35, new SteamArmor(), new Sword()),
-                new Enemy("Haku", 4, 39, new FlakJacket(), new Crossbow()),
+                new Enemy("Nagato", 3, 35, new SteamArmor(), new Fists()),
+                new Enemy("Haku", 4, 39, new FlakJacket(), new Hiramekarei()),
                 new Enemy("Obito", 4, 39, new ChakraArmor(), new Gunbai()),
                 new Enemy("Kaguya", 5, 44, new FlakJacket(), new FistsOfBones()),
                 new Enemy("Ginkaku", 5, 44, new SteamArmor(), new Shichiseiken()),
                 new Enemy("Madara", 6, 50, new InfiniteArmor(), new Gunbai()),
                 new Enemy("Hanzō", 6, 50, new InfiniteArmor(), new Kusarigama()),
                 new Enemy("Deidara", 7, 57, new SteamArmor(), new Shuriken()),
-                new Enemy("Kimimaro", 7, 100, new ChakraArmor(), new FistsOfBones()),
+                new Enemy("Kimimaro", 7, 57, new ChakraArmor(), new FistsOfBones()),
                 new Enemy("Kabuto", 8, 65, new SteamArmor(), new Shichiseiken()),
                 new Enemy("Kisame", 8, 65, new FlakJacket(), new Kunai()),
-                new Enemy("Daudi", 9, 74, new BulletproofVest(), new AK47()),
-                new Enemy("Hocke", 9, 74, new BulletproofVest(), new AK47()),
-                new Enemy("Kakuzu", 10, 84, new InfiniteArmor(), new Spear())
+                new Enemy("Kakuzu", 8, 65, new InfiniteArmor(), new Kusarigama()),
+                new Enemy("Daudi", 8, 70, new BulletproofVest(), new AK47()),
+                new Enemy("Hocke", 9, 74, new BulletproofVest(), new AK47())
+                
 
 
             };
@@ -167,13 +168,8 @@ namespace TheShinobi.HelperMethods
         {
             Weapon[] weapons = new Weapon[]
             {
-                
-                new BowAndArrow(),
-                new Crossbow(),
-                new Spear(),
-                new Sword(),
-                new TekagiShuko(),
                 new Kunai(),
+                new TekagiShuko(),
                 new Gunbai(),
                 new Shuriken(),   
                 new Shichiseiken(),
