@@ -169,5 +169,21 @@ namespace TheShinobi.HelperMethods
         {
             throw new NotImplementedException();
         }
+        public static void Remove(Player player, int top, int bottom)
+        {
+            int ctr = top;
+            for (int i = 0; i <= bottom - top; i++)
+            {
+                Console.SetCursorPosition(0, ctr++);
+                Console.WriteLine("\t\t\t\t");
+            }
+            while (true)
+            {
+                Console.SetCursorPosition(Utility.left, top);
+                Console.WriteLine("What item do you want to remove?" );
+                
+
+            }
+        }
     }
 }
