@@ -157,10 +157,6 @@ namespace TheShinobi.HelperMethods
                 new ShinobiBattleArmor(),
                 new ChakraArmor(),
                 new InfiniteArmor()
-                
-
-
-
             };
             return armors;
         }
