@@ -2,7 +2,7 @@
 using TheShinobi.Characters;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
-using TheShinobi.Items.Potions;
+using TheShinobi.Items.Consumables;
 using System.Collections.Generic;
 using System.Threading;
 using System;
@@ -29,15 +29,19 @@ namespace TheShinobi.Structures
                 {
                     Adventure.GoOnAdventure, LightningBurger, KonohaHospital, NinjaToolShop
                 };
-
                 while (true)
                 {
                     if (Utility.MakeAChoice(methods.Length, out int choice, player, true, true))
-                    {
+                    {                        
                         if (choice > 0)
                         {
                             methods[choice - 1].DynamicInvoke(player);
-                        }                        
+                        }
+                        else
+                        {
+                            Console.WriteLine();
+                            break;
+                        }
                     }
                     else
                     {
@@ -48,57 +52,57 @@ namespace TheShinobi.Structures
                 }
                 
                 
-                bool innerExit = true;
-                do
-                {
-                    string choice = ColorConsole.ReadLine();
-                    switch (choice.ToUpper())
-                    {
-                        case "1":
-                            Adventure.GoOnAdventure(player);
-                            break;
-                        case "2":
-                            LightningBurger(player);
-                            break;
-                        case "3":
-                            // Tycker den här biten är så liten att den inte behöver en egen metod. 
-                            // Om vi utvecklar den men kan vi såklart göra ewn metod för den! :)
-                            if (player.Gold >= 300)
-                            {
-                                player.Gold -= 300;
-                                player.Hp = player.MaxHp;
-                                ColorConsole.TypeOver("\t Tsunade, the medical-nin, patch you up to full health!", ConsoleColor.Yellow, 3000);
-                            }
-                            else
-                            {
-                                ColorConsole.TypeOver("\t You don't have enough gold.", ConsoleColor.Red);
-                            }
-                            innerExit = false;
-                            break;
-                        case "4":
-                            NinjaToolShop(player);
-                            break;
-                        case "B":
-                            if (!Display.Backpack(player))
-                            {
-                                innerExit = false;
-                            }
-                            break;
-                        case "D":
-                            Display.Details(player);
-                            break;
-                        case "M":
-                            Display.Map(player);
-                            break;
-                        case "E":
-                            Game.ExitGame();
-                            break;
-                        default:
-                            ColorConsole.TypeOver("\t Invalid choice. Try again!", ConsoleColor.Red);
-                            innerExit = false;
-                            break;
-                    }
-                } while (!innerExit);
+                //bool innerExit = true;
+                //do
+                //{
+                //    string choice = ColorConsole.ReadLine();
+                //    switch (choice.ToUpper())
+                //    {
+                //        case "1":
+                //            Adventure.GoOnAdventure(player);
+                //            break;
+                //        case "2":
+                //            LightningBurger(player);
+                //            break;
+                //        case "3":
+                //            // Tycker den här biten är så liten att den inte behöver en egen metod. 
+                //            // Om vi utvecklar den men kan vi såklart göra ewn metod för den! :)
+                //            if (player.Gold >= 300)
+                //            {
+                //                player.Gold -= 300;
+                //                player.Hp = player.MaxHp;
+                //                ColorConsole.TypeOver("\t Tsunade, the medical-nin, patch you up to full health!", ConsoleColor.Yellow, 3000);
+                //            }
+                //            else
+                //            {
+                //                ColorConsole.TypeOver("\t You don't have enough gold.", ConsoleColor.Red);
+                //            }
+                //            innerExit = false;
+                //            break;
+                //        case "4":
+                //            NinjaToolShop(player);
+                //            break;
+                //        case "B":
+                //            if (!Display.Backpack(player))
+                //            {
+                //                innerExit = false;
+                //            }
+                //            break;
+                //        case "D":
+                //            Display.Details(player);
+                //            break;
+                //        case "M":
+                //            Display.Map(player);
+                //            break;
+                //        case "E":
+                //            Game.ExitGame();
+                //            break;
+                //        default:
+                //            ColorConsole.TypeOver("\t Invalid choice. Try again!", ConsoleColor.Red);
+                //            innerExit = false;
+                //            break;
+                //    }
+                //} while (!innerExit);
             }
         }
 

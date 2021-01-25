@@ -2,10 +2,10 @@
 using TheShinobi.Characters;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
-using TheShinobi.Items.Potions;
 using TheShinobi.Items;
 using System.Collections.Generic;
 using System;
+using TheShinobi.Items.Consumables;
 
 namespace TheShinobi.HelperMethods
 {
@@ -59,6 +59,7 @@ namespace TheShinobi.HelperMethods
             while (true)
             {
                 string input = ColorConsole.ReadLine();
+                Console.SetWindowPosition(0, Console.CursorTop - 25);
                 int.TryParse(input, out choice);
                 if (choice > 0 && choice <= length)
                 {
@@ -138,7 +139,7 @@ namespace TheShinobi.HelperMethods
                     Console.Write(" ");
                 }
             }
-            Console.SetCursorPosition(left, top);
+            Console.SetCursorPosition(0, top);
         }
 
         public static Enemy[] GetEnemies()

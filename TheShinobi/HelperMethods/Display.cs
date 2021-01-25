@@ -1,11 +1,11 @@
-﻿using TheShinobi.Characters;
+﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Linq;
-using System;
-using TheShinobi.Items;
+using System.Threading;
+using TheShinobi.Characters;
 using TheShinobi.Interfaces;
-using TheShinobi.Items.Potions;
+using TheShinobi.Items;
+using TheShinobi.Items.Consumables;
 
 namespace TheShinobi.HelperMethods
 {
@@ -79,7 +79,7 @@ namespace TheShinobi.HelperMethods
                 Console.WriteLine($"\n\t What do you want to {text}?");
                 int top = Console.CursorTop;
                 while (true)
-                {                    
+                {
                     List<string> content = new List<string>();
                     int ctr = 1;
                     foreach (var item in player.Backpack)
@@ -88,7 +88,7 @@ namespace TheShinobi.HelperMethods
                     }
                     WithFrame(content, "[DarkCyan]BACKPACK[/DarkCyan]", ending: "Close backpack");
                     int bottom = Console.CursorTop;
-                    if (Utility.MakeAChoice(player.Backpack.Count, out int choice))
+                    if (Utility.MakeAChoice(player.Backpack.Count, out int choice, ending: true))
                     {
                         Item item = player.Backpack[choice - 1];
                         if (item is IEquipable e)
@@ -101,7 +101,7 @@ namespace TheShinobi.HelperMethods
                             if (item is EnergyDrink energy)
                             {
                                 Utility.isCaffeine = true;
-                                player.AttackBonus += energy.AttackBonus;
+                                player.AttackBonus += energy.Caffeine;
                             }
                         }
 
@@ -110,13 +110,13 @@ namespace TheShinobi.HelperMethods
                         {
                             player.Backpack.Remove(item);
                         }
+                        Utility.Remove(top, bottom);
                     }
                     else
                     {
                         break;
                     }
                 }
-
                 return true;
             }
             else

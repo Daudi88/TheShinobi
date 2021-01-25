@@ -1,13 +1,13 @@
-﻿using TheShinobi.HelperMethods;
-using TheShinobi.Characters;
-using TheShinobi.Items.Armors;
-using TheShinobi.Items.Weapons;
-using TheShinobi.Items.Potions;
-using System.Media;
+﻿using System;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
-using System;
+using TheShinobi.Characters;
+using TheShinobi.HelperMethods;
+using TheShinobi.Items.Armors;
+using TheShinobi.Items.Consumables;
+using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Structures
 {
@@ -69,7 +69,7 @@ namespace TheShinobi.Structures
             }
             Console.WriteLine();
             return name.ToLower() == "robin" ? GodMode() : new Player(name);
-        }        
+        }
 
         private static Player GodMode()
         {

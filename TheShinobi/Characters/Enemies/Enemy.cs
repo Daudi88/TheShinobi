@@ -1,6 +1,6 @@
 ﻿using TheShinobi.HelperMethods;
 using TheShinobi.Items.Armors;
-using TheShinobi.Items.Potions;
+using TheShinobi.Items.Consumables;
 using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Characters.Enemies
@@ -34,22 +34,22 @@ namespace TheShinobi.Characters.Enemies
 
         public void DropItems(Player player)
         {
-            Consumable potion;
+            Consumable consumable;
             if (Name == "Hocke")
             {
-                potion = new Consumable("Monster Energy", 100, player.MaxHp, "You unleash the beast");
+                consumable = new EnergyDrink("Monster Energy", 100, player.MaxHp, "You unleash the beast", 20);
             }
             else if (Name == "Daudi")
             {
-                potion = new Consumable("Coke Zero", 100, player.MaxHp, "You taste the feeling");
+                consumable = new EnergyDrink("NOCCO BCAA", 100, player.MaxHp, "You are NOCCO enough", 20);
             }
             else
             {
                 Consumable[] potions = Utility.GetPotions();
-                potion = potions[Utility.random.Next(potions.Length)];
+                consumable = potions[Utility.random.Next(potions.Length)];
             }
-            potion.Quantity = Utility.random.Next(1, 11);
-            player.Backpack.Add(potion);
+            consumable.Quantity = Utility.random.Next(1, 11);
+            player.Backpack.Add(consumable);
         }
     }
 }
