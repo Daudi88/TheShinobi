@@ -5,7 +5,7 @@
         public FlakJacket()
         {
             Name = "Flak Jacket";
-            Cost = 100;
+            Cost = 500;
             Defence = 3;
         }
     }

@@ -5,7 +5,7 @@
         public InfiniteArmor()
         {
             Name = "Infinite Armour";
-            Cost = 5000;
+            Cost = 10000;
             Defence = 45;
         }
     }

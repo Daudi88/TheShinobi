@@ -5,7 +5,7 @@
         public ChakraBlade()
         {
             Name = "Chakra Blade";
-            Cost = 1500;
+            Cost = 4000;
             Damage = "2d8";
         }
     }
