@@ -3,11 +3,11 @@ using TheShinobi.Characters;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
 using TheShinobi.Items.Potions;
-using System;
-using System.Text;
-using System.Linq;
-using System.IO;
 using System.Media;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System;
 
 namespace TheShinobi.Structures
 {

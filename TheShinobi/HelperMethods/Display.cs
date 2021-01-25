@@ -1,8 +1,8 @@
-﻿using System;
+﻿using TheShinobi.Characters;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
-using TheShinobi.Characters;
+using System.Linq;
+using System;
 
 namespace TheShinobi.HelperMethods
 {

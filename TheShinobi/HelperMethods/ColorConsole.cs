@@ -1,6 +1,6 @@
-﻿using System;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using System.Threading;
+using System;
 
 namespace TheShinobi.HelperMethods
 {

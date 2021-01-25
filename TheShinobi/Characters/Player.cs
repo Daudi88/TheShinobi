@@ -1,7 +1,7 @@
-﻿using TheShinobi.Items;
+﻿using TheShinobi.HelperMethods;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
-using TheShinobi.HelperMethods;
+using TheShinobi.Items;
 using System.Collections.Generic;
 
 namespace TheShinobi.Characters

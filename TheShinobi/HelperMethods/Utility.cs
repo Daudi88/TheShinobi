@@ -94,13 +94,13 @@ namespace TheShinobi.HelperMethods
                 ColorConsole.TypeOver("You don't have enough gold.", ConsoleColor.Red);
             }
         }
-
-        internal static void SellItems(Player player)
+        
+        private static void AddToBackpack(Player player, Item item)
         {
             throw new NotImplementedException();
         }
 
-        private static void AddToBackpack(Player player, Item item)
+        public static void SellItems(Player player)
         {
             throw new NotImplementedException();
         }
@@ -142,8 +142,6 @@ namespace TheShinobi.HelperMethods
                 new Enemy("Daudi", 9, 74, new BulletproofVest(), new AK47()),
                 new Enemy("Hocke", 9, 74, new BulletproofVest(), new AK47()),
                 new Enemy("Kakuzu", 10, 84, new InfiniteArmor(), new Spear())
-
-
             };
             return enemies;
         }
