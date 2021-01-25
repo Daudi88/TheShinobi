@@ -13,8 +13,8 @@ namespace TheShinobi.Structures
     {
         public static void Menu(Player player)
         {
-            bool outerExit = false;
-            while (!outerExit)
+            bool exit = false;
+            while (!exit)
             {
                 List<string> options = new List<string>()
                 {
@@ -24,6 +24,30 @@ namespace TheShinobi.Structures
                     "4. Go to the Ninja Tool Shop",
                 };
                 Display.WithFrame(options, "[Green]VILLAGE[/Green]", true, "Exit Game");
+                
+                var methods = new Action<Player>[]
+                {
+                    Adventure.GoOnAdventure, LightningBurger, KonohaHospital, NinjaToolShop
+                };
+
+                while (true)
+                {
+                    if (Utility.MakeAChoice(methods.Length, out int choice, player, true, true))
+                    {
+                        if (choice > 0)
+                        {
+                            methods[choice - 1].DynamicInvoke(player);
+                        }                        
+                    }
+                    else
+                    {
+                        Game.ExitGame();
+                        exit = true;
+                        break;
+                    }
+                }
+                
+                
                 bool innerExit = true;
                 do
                 {
@@ -108,6 +132,11 @@ namespace TheShinobi.Structures
                     }
                 }
             }
+        }
+
+        private static void KonohaHospital(Player player)
+        {
+
         }
 
         private static void NinjaToolShop(Player player)

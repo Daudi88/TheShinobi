@@ -83,7 +83,7 @@ namespace TheShinobi.Structures
             };
             kakashi.Defence = kakashi.Armor.Defence;
             kakashi.Damage = kakashi.Weapon.Damage;
-            Consumable redBull = new Consumable("Red Bull", 50, 20, "You get wings");
+            Consumable redBull = new EnergyDrink("Red Bull", 50, 20, "You get wings", 10);
             redBull.Quantity = 100;
             kakashi.Backpack.Add(redBull);
             return kakashi;
