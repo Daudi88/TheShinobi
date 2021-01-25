@@ -43,11 +43,11 @@ namespace TheShinobi.Structures
                             {
                                 player.Gold -= 300;
                                 player.Hp = player.MaxHp;
-                                ColorConsole.TypeOver("Tsunade, the medical-nin, patch you up to full health!", ConsoleColor.Yellow, 3000);
+                                ColorConsole.TypeOver("\t Tsunade, the medical-nin, patch you up to full health!", ConsoleColor.Yellow, 3000);
                             }
                             else
                             {
-                                ColorConsole.TypeOver("You don't have enough gold.", ConsoleColor.Red);
+                                ColorConsole.TypeOver("\t You don't have enough gold.", ConsoleColor.Red);
                             }
                             innerExit = false;
                             break;
@@ -70,7 +70,7 @@ namespace TheShinobi.Structures
                             Game.ExitGame();
                             break;
                         default:
-                            ColorConsole.TypeOver("Invalid choice. Try again!", ConsoleColor.Red);
+                            ColorConsole.TypeOver("\t Invalid choice. Try again!", ConsoleColor.Red);
                             innerExit = false;
                             break;
                     }
@@ -92,7 +92,7 @@ namespace TheShinobi.Structures
                 {
                     menu.Add($"{ctr++}. {meal}");
                 }
-                Display.WithFrame(menu, "[Yellow]⚡BURGER[/Yellow]", ending: "Leave");
+                Display.WithFrame(menu, "[Yellow]MENU[/Yellow]", ending: "Leave");
                 while (true)
                 {
                     if (Utility.MakeAChoice(meals.Length, out int choice))
@@ -116,8 +116,8 @@ namespace TheShinobi.Structures
             int top = Console.CursorTop;
             while (true)
             {
-                Console.SetCursorPosition(Utility.left, top);
-                Console.WriteLine("What do you want to do?");
+                Console.SetCursorPosition(0, top);
+                Console.WriteLine("\t What do you want to do?");
                 List<string> options = new List<string>()
                 {
                     "1. Buy Armor",

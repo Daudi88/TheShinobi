@@ -25,16 +25,16 @@ namespace TheShinobi.Items.Potions
                 if (player.Hp >= player.MaxHp)
                 {
                     player.Hp = player.MaxHp;
-                    ColorConsole.TypeOver($"{Text} and gain full health!", ConsoleColor.Yellow);
+                    ColorConsole.TypeOver($"\t {Text} and gain full health!", ConsoleColor.Yellow);
                 }
                 else
                 {
-                    ColorConsole.TypeOver($"{Text} and gain {Health} health!", ConsoleColor.Yellow);
+                    ColorConsole.TypeOver($"\t {Text} and gain {Health} health!", ConsoleColor.Yellow);
                 }
             }
             else
             {
-                ColorConsole.TypeOver($"{Text}!", ConsoleColor.Yellow);
+                ColorConsole.TypeOver($"\t {Text}!", ConsoleColor.Yellow);
             }
         }
 
