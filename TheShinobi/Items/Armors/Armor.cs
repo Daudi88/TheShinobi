@@ -21,7 +21,7 @@ namespace TheShinobi.Items.Armors
 
         public override string ToString()
         {
-            return $"{Name} ({Defence} Defence)";
+            return $"{Name} - {Cost}g (+{Defence} Defence)";
         }
     }
 }

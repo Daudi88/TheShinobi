@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading;
+﻿using TheShinobi.HelperMethods;
 using TheShinobi.Characters;
-using TheShinobi.HelperMethods;
 using TheShinobi.Items.Armors;
-using TheShinobi.Items.Potions;
 using TheShinobi.Items.Weapons;
+using TheShinobi.Items.Potions;
+using System.Collections.Generic;
+using System.Threading;
+using System;
 
 namespace TheShinobi.Structures
 {
@@ -82,7 +80,6 @@ namespace TheShinobi.Structures
 
         private static void LightningBurger(Player player)
         {
-
             Consumable[] meals = Utility.GetMeals();
             bool exit = false;
             while (!exit)
@@ -151,7 +148,7 @@ namespace TheShinobi.Structures
         private static void BuyArmor(Player player)
         {
             Armor[] armors = Utility.GetArmors();
-            Utility.Shop(player, "armor", armors);            
+            Utility.Shop(player, "armor", armors);
         }
 
         private static void BuyWeapons(Player player)

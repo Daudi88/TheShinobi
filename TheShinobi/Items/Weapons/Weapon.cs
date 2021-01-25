@@ -22,7 +22,7 @@ namespace TheShinobi.Items.Weapons
 
         public override string ToString()
         {
-            return $"{Name} ({Damage} Damage)";
+            return $"{Name} - {Cost}g (+{Damage} Damage)";
         }
     }
 }
