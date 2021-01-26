@@ -5,7 +5,7 @@
         public ChakraArmor()
         {
             Name = "Chakra Armor";
-            Cost = 1000;
+            Price = 1000;
             Defence = 8;
         }
     }

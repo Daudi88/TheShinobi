@@ -9,7 +9,7 @@ namespace TheShinobi.Items.Weapons
         public Hiramekarei()
         {
             Name = "Hiramekarei";
-            Cost = 4000;
+            Price = 4000;
             Damage = "2d12";
         }
     }

@@ -5,7 +5,7 @@
         public Kunai()
         {
             Name = "Kunai";
-            Cost = 1000;
+            Price = 1000;
             Damage = "1d6";
         }
     }

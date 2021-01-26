@@ -1,4 +1,5 @@
-﻿using TheShinobi.HelperMethods;
+﻿using static TheShinobi.HelperMethods.Utility;
+using TheShinobi.HelperMethods;
 using TheShinobi.Characters;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
@@ -6,6 +7,7 @@ using TheShinobi.Items.Consumables;
 using System.Collections.Generic;
 using System.Threading;
 using System;
+using TheShinobi.Items;
 
 namespace TheShinobi.Structures
 {
@@ -24,18 +26,19 @@ namespace TheShinobi.Structures
                     "4. Go to the Ninja Tool Shop",
                 };
                 Display.WithFrame(options, "[Green]VILLAGE[/Green]", true, "Exit Game");
-                
-                var methods = new Action<Player>[]
+
+                Action<Player>[] methods = new Action<Player>[]
                 {
                     Adventure.GoOnAdventure, LightningBurger, KonohaHospital, NinjaToolShop
                 };
                 while (true)
                 {
-                    if (Utility.MakeAChoice(methods.Length, out int choice, player, true, true))
+                    if (MakeAChoice(methods.Length, out int choice, player, true, true))
                     {                        
                         if (choice > 0)
                         {
                             methods[choice - 1].DynamicInvoke(player);
+                            break;
                         }
                         else
                         {
@@ -49,66 +52,13 @@ namespace TheShinobi.Structures
                         exit = true;
                         break;
                     }
-                }
-                
-                
-                //bool innerExit = true;
-                //do
-                //{
-                //    string choice = ColorConsole.ReadLine();
-                //    switch (choice.ToUpper())
-                //    {
-                //        case "1":
-                //            Adventure.GoOnAdventure(player);
-                //            break;
-                //        case "2":
-                //            LightningBurger(player);
-                //            break;
-                //        case "3":
-                //            // Tycker den här biten är så liten att den inte behöver en egen metod. 
-                //            // Om vi utvecklar den men kan vi såklart göra ewn metod för den! :)
-                //            if (player.Gold >= 300)
-                //            {
-                //                player.Gold -= 300;
-                //                player.Hp = player.MaxHp;
-                //                ColorConsole.TypeOver("\t Tsunade, the medical-nin, patch you up to full health!", ConsoleColor.Yellow, 3000);
-                //            }
-                //            else
-                //            {
-                //                ColorConsole.TypeOver("\t You don't have enough gold.", ConsoleColor.Red);
-                //            }
-                //            innerExit = false;
-                //            break;
-                //        case "4":
-                //            NinjaToolShop(player);
-                //            break;
-                //        case "B":
-                //            if (!Display.Backpack(player))
-                //            {
-                //                innerExit = false;
-                //            }
-                //            break;
-                //        case "D":
-                //            Display.Details(player);
-                //            break;
-                //        case "M":
-                //            Display.Map(player);
-                //            break;
-                //        case "E":
-                //            Game.ExitGame();
-                //            break;
-                //        default:
-                //            ColorConsole.TypeOver("\t Invalid choice. Try again!", ConsoleColor.Red);
-                //            innerExit = false;
-                //            break;
-                //    }
-                //} while (!innerExit);
+                }                              
             }
         }
 
         private static void LightningBurger(Player player)
         {
-            Consumable[] meals = Utility.GetMeals();
+            Consumable[] meals = GetMeals();
             bool exit = false;
             while (!exit)
             {
@@ -118,19 +68,20 @@ namespace TheShinobi.Structures
                 int ctr = 1;
                 foreach (var meal in meals)
                 {
-                    menu.Add($"{ctr++}. {meal}");
+                    menu.Add($"{ctr++}. {meal.Name} - {meal.Price}g {meal.Bonus()}");
                 }
                 Display.WithFrame(menu, "[Yellow]MENU[/Yellow]", ending: "Leave");
                 while (true)
                 {
-                    if (Utility.MakeAChoice(meals.Length, out int choice))
+                    if (MakeAChoice(meals.Length, out int choice, ending: true))
                     {
-                        Utility.BuyItem(player, meals[choice - 1], true);
+                        BuyItem(player, meals[choice - 1], true);
                     }
                     else
                     {
                         ColorConsole.WriteLine("\t Thank you for visiting Lightning Burger!\n", ConsoleColor.Yellow);
                         Thread.Sleep(1800);
+                        Console.SetWindowPosition(0, Console.CursorTop - 20);
                         exit = true;
                         break;
                     }
@@ -140,12 +91,12 @@ namespace TheShinobi.Structures
 
         private static void KonohaHospital(Player player)
         {
-
+            Console.SetWindowPosition(0, Console.CursorTop - 20);
         }
 
         private static void NinjaToolShop(Player player)
         {
-            Console.WriteLine("\n\t Welcome to the Ninja Shop");
+            Console.WriteLine("\n\t Welcome to the Ninja Tool Shop");
             int top = Console.CursorTop;
             while (true)
             {
@@ -160,19 +111,24 @@ namespace TheShinobi.Structures
                 };
                 Display.WithFrame(options, "[Yellow]SHOP[/Yellow]", ending: "Leave");
                 int bottom = Console.CursorTop;
-                var methods = new Action<Player>[]
+                Action<Player>[] methods = new Action<Player>[]
                 {
-                    BuyArmor, BuyWeapons, BuyPotions, Utility.SellItems
+                    BuyArmor, BuyWeapons, BuyPotions, SellItems
                 };
 
-                if (Utility.MakeAChoice(methods.Length, out int choice))
+                if (MakeAChoice(methods.Length, out int choice, ending: true))
                 {
-                    Utility.Remove(top, bottom);
+                    if (choice != 4 || player.Backpack.Count > 0)
+                    {
+                        Remove(top, bottom);
+                    }                   
                     methods[choice - 1].DynamicInvoke(player);
                 }
                 else
                 {
                     ColorConsole.WriteLine("\t Thank you for visiting!\n", ConsoleColor.Yellow);
+                    Thread.Sleep(1800);
+                    Console.SetWindowPosition(0, Console.CursorTop - 20);
                     break;
                 }
             }
@@ -180,20 +136,20 @@ namespace TheShinobi.Structures
 
         private static void BuyArmor(Player player)
         {
-            Armor[] armors = Utility.GetArmors();
-            Utility.Shop(player, "armor", armors);
+            Armor[] armors = GetArmors();
+            Shop(player, "armor", armors);
         }
 
         private static void BuyWeapons(Player player)
         {
-            Weapon[] weapons = Utility.GetWeapons();
-            Utility.Shop(player, "weapon", weapons);
+            Weapon[] weapons = GetWeapons();
+            Shop(player, "weapon", weapons);
         }
 
         private static void BuyPotions(Player player)
         {
-            Consumable[] potions = Utility.GetPotions();
-            Utility.Shop(player, "potion", potions);
+            Consumable[] potions = GetPotions();
+            Shop(player, "potion", potions);
         }
     }
 }

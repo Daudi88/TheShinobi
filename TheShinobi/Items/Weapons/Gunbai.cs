@@ -5,7 +5,7 @@
         public Gunbai()
         {
             Name = "Gunbai";
-            Cost = 5000;
+            Price = 5000;
             Damage = "2d12";
         }
     }

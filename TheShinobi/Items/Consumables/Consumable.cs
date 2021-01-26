@@ -9,10 +9,10 @@ namespace TheShinobi.Items.Consumables
         public int Health { get; set; }
         public string Text { get; set; }
 
-        public Consumable(string name, int cost, int health, string text = "You drink a potion")
+        public Consumable(string name, int price, int health, string text = "You drink a potion")
         {
             Name = name;
-            Cost = cost;
+            Price = price;
             Health = health;
             Text = text;
         }
@@ -38,9 +38,9 @@ namespace TheShinobi.Items.Consumables
             }
         }
 
-        public override string ToString()
+        public override string Bonus()
         {
-            return $"{Name} - {Cost}g (+{Health} Hp)";
+            return $"(+{Health} Hp)";
         }
     }
 }

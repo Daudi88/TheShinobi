@@ -5,7 +5,7 @@
         public Shichiseiken()
         {
             Name = "Shichiseiken";
-            Cost = 10000;
+            Price = 10000;
             Damage = "1d20";
         }
     }

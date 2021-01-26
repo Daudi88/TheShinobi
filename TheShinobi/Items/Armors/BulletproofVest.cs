@@ -5,7 +5,7 @@
         public BulletproofVest()
         {
             Name = "Bulletproof vest";
-            Cost = 50000;
+            Price = 50000;
             Defence = 100;
         }
     }

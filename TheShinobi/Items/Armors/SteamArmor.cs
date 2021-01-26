@@ -5,7 +5,7 @@
         public SteamArmor()
         {
             Name = "Steam Armor";
-            Cost = 800;
+            Price = 800;
             Defence = 5;
         }
     }

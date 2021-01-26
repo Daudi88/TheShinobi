@@ -19,9 +19,9 @@ namespace TheShinobi.Items.Armors
             player.Defence = Defence;
         }
 
-        public override string ToString()
+        public override string Bonus()
         {
-            return $"{Name} - {Cost}g (+{Defence} Defence)";
+            return $"({Defence} Defence)";
         }
     }
 }

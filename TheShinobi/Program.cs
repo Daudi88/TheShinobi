@@ -12,9 +12,8 @@ namespace TheShinobi
         }
 
         // TODO
+        // StoryTime()
         // Fixa implementeringen av Abu Hassans Shop. => AK-47, Bulletproof vest, Red Bull
-        // Fiender ska droppa items när de dör!
-        // Kan man köpa/sälja flera quantity på samma gång? Hur många vill du köpa? Bara om det är en consumable.    
-        // Backpack sell måste fixas
+        // Fiender ska droppa items när de dör!    
     }
 }

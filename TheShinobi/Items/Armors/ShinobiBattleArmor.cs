@@ -9,7 +9,7 @@ namespace TheShinobi.Items.Armors
         public ShinobiBattleArmor()
         {
             Name = "Shinobi Battle Armor";
-            Cost = 1000;
+            Price = 1000;
             Defence = 8;
         }
     }
