@@ -71,64 +71,36 @@ namespace TheShinobi.HelperMethods
             Console.Write("\t > ");
         }
 
-        internal static bool Backpack(Player player, bool sell = false)
+        internal static void Backpack(Player player, bool sell = false)
         {
-            if (player.Backpack.Count > 0)
+            List<string> content = new List<string>();
+            int ctr = 1;
+            foreach (var item in player.Backpack)
             {
-                string text = sell ? "sell" : "do";
-                Console.WriteLine($"\n\t What do you want to {text}?");
-                int top = Console.CursorTop;
-                while (true)
-                {
-                    List<string> content = new List<string>();
-                    int ctr = 1;
-                    foreach (var item in player.Backpack)
-                    {
-                        content.Add($"{ctr++}. [Yellow]{item.Quantity} {item}[/Yellow]");
-                    }
-                    WithFrame(content, "[DarkCyan]BACKPACK[/DarkCyan]", ending: "Close backpack");
-                    int bottom = Console.CursorTop;
-                    if (Utility.MakeAChoice(player.Backpack.Count, out int choice, ending: true))
-                    {
-                        Item item = player.Backpack[choice - 1];
-                        if (item is IEquipable e)
-                        {
-                            e.Equip(player, e);
-                        }
-                        else if (item is Consumable c)
-                        {
-                            c.Consume(player);
-                            if (item is EnergyDrink energy)
-                            {
-                                Utility.isCaffeine = true;
-                                player.AttackBonus += energy.Caffeine;
-                            }
-                        }
-
-                        item.Quantity--;
-                        if (item.Quantity < 1)
-                        {
-                            player.Backpack.Remove(item);
-                        }
-                        Utility.Remove(top, bottom);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-                return true;
+                string price = sell ? $"- {item.Price}g " : "";
+                content.Add($"{ctr++}. [Yellow]{item.Quantity} {item.Name} {price}{item.Bonus()}[/Yellow]");
             }
-            else
-            {
-                ColorConsole.TypeOver("\t Your backpack is empty...", ConsoleColor.Red);
-                return false;
-            }
+            WithFrame(content, "[DarkCyan]BACKPACK[/DarkCyan]", ending: "Close backpack");
         }
 
         internal static void Details(Player player)
         {
-            throw new NotImplementedException();
+            string[] content = new string[]
+            {
+                $"Name: [yellow]{player.Name}[/yellow]",
+                $"Level: [yellow]{player.Level}[/yellow]",
+                $"Hp: [yellow]{player.Hp}/{player.MaxHp}[/yellow]",
+                $"Exp: [yellow]{player.Exp}/{player.MaxExp}[/yellow]",
+                $"Damage: [yellow]{player.Damage}[/yellow]",
+                $"Gold: [yellow]{player.Gold}[/yellow]",
+            };
+
+            string[] content2 = new string[]
+            {
+                $"Armor: [yellow]{player.Armor}[/yellow]",
+                $"Weapon: [yellow]{player.Weapon}[/yellow]"
+            };
+
         }
 
         internal static void Map(Player player)
@@ -162,29 +134,6 @@ namespace TheShinobi.HelperMethods
             }
             Thread.Sleep(800);
             Console.WriteLine("\n");
-        }
-
-        public static void Story(params string[] content)
-        {
-            bool isKeyPressed = false;
-            for (int i = 0; i < content.Length; i++)
-            {
-                Console.Write("\n\t ");
-                for (int j = 0; j < content[i].Length; j++)
-                {
-                    ColorConsole.Write(content[i][j].ToString(), ConsoleColor.Yellow);
-                    if (Console.KeyAvailable)
-                    {
-                        isKeyPressed = true;
-                    }
-
-                    if (!isKeyPressed)
-                    {
-                        Thread.Sleep(40);
-                    }
-                }
-            }
-            Console.WriteLine();
         }
 
         public static void Title()

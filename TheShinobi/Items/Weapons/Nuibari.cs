@@ -9,7 +9,7 @@ namespace TheShinobi.Items.Weapons
         public Nuibari()
         {
             Name = "Nuibari";
-            Cost = 4000;
+            Price = 4000;
             Damage = "3d10";
         }
     }

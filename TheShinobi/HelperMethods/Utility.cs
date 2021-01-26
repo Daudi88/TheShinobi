@@ -6,6 +6,7 @@ using TheShinobi.Items.Consumables;
 using TheShinobi.Items;
 using System.Collections.Generic;
 using System;
+using TheShinobi.Interfaces;
 
 namespace TheShinobi.HelperMethods
 {
@@ -37,13 +38,26 @@ namespace TheShinobi.HelperMethods
                 int ctr = 1;
                 foreach (var item in items)
                 {
-                    options.Add($"{ctr++}. {item}");
+                    options.Add($"{ctr++}. {item.Name} - {item.Price}g {item.Bonus()}");
                 }
                 Display.WithFrame(options, $"[Yellow]{name.ToUpper()}S[/Yellow]", ending: "Go back to shop menu");
                 int bottom = Console.CursorTop;
-                if (MakeAChoice(items.Length, out int choice))
+                if (MakeAChoice(items.Length, out int choice, ending: true))
                 {
-                    BuyItem(player, items[choice - 1], eat);
+                    Item item = items[choice - 1];
+                    if (!eat && item is Consumable c)
+                    {
+                        item.Quantity = HowMany(player, item, out int price);
+                        item.Price = price;
+                    }
+                    if (item.Quantity < 1)
+                    {
+                        Remove(top, bottom);
+                    }
+                    else
+                    {
+                        BuyItem(player, item, eat);
+                    }
                 }
                 else
                 {
@@ -53,13 +67,12 @@ namespace TheShinobi.HelperMethods
             }
         }
 
-        public static bool MakeAChoice(int length, out int choice, Player player = null, bool std = false, bool ending = false) // Implementera BDM
+        public static bool MakeAChoice(int length, out int choice, Player player = null, bool std = false, bool ending = false)
         {
             bool result = false;
             while (true)
             {
                 string input = ColorConsole.ReadLine();
-                Console.SetWindowPosition(0, Console.CursorTop - 25);
                 int.TryParse(input, out choice);
                 if (choice > 0 && choice <= length)
                 {
@@ -72,7 +85,7 @@ namespace TheShinobi.HelperMethods
                 }
                 else if (std && player != null && input.ToUpper() == "B")
                 {
-                    if (Display.Backpack(player))
+                    if (OpenBackpack(player))
                     {
                         result = true;
                         break;
@@ -90,7 +103,7 @@ namespace TheShinobi.HelperMethods
                     result = true;
                     break;
                 }
-                else if (choice == 0)
+                else
                 {
                     ColorConsole.TypeOver("\t Invalid choice. Try again!", ConsoleColor.Red);
                 }
@@ -100,8 +113,9 @@ namespace TheShinobi.HelperMethods
 
         public static void BuyItem(Player player, Item item, bool eat = false)
         {
-            if (player.Gold >= item.Cost)
+            if (player.Gold >= item.Price)
             {
+                player.Gold -= item.Price;
                 if (eat && item is Consumable meal)
                 {
                     meal.Consume(player);
@@ -111,27 +125,146 @@ namespace TheShinobi.HelperMethods
                     AddToBackpack(player, item);
                 }
             }
-            else
-            {
-                ColorConsole.TypeOver("\t You don't have enough gold.", ConsoleColor.Red);
-            }
         }
-        
+
         public static void AddToBackpack(Player player, Item item)
         {
-            
+
             throw new NotImplementedException();
+        }
+
+        public static bool OpenBackpack(Player player)
+        {
+            if (player.Backpack.Count > 0)
+            {
+                Console.WriteLine($"\n\t What do you want to use?");
+                int top = Console.CursorTop;
+                while (true)
+                {
+
+                    Display.Backpack(player);
+                    int bottom = Console.CursorTop;
+                    if (MakeAChoice(player.Backpack.Count, out int choice, ending: true))
+                    {
+                        Item item = player.Backpack[choice - 1];
+                        if (item is IEquipable e)
+                        {
+                            e.Equip(player, e);
+                        }
+                        else if (item is Consumable c)
+                        {
+                            c.Consume(player);
+                            if (item is EnergyDrink energy)
+                            {
+                                isCaffeine = true;
+                                player.AttackBonus += energy.Caffeine;
+                            }
+                        }
+                        item.Quantity--;
+                        if (item.Quantity < 1)
+                        {
+                            player.Backpack.Remove(item);
+                        }
+                        Remove(top, bottom);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                Console.SetWindowPosition(0, Console.CursorTop - 20);
+                return true;
+            }
+            else
+            {
+                ColorConsole.TypeOver("\t Your backpack is empty...", ConsoleColor.Red);
+                return false;
+            }
         }
 
         public static void SellItems(Player player)
         {
-            throw new NotImplementedException();
+            if (player.Backpack.Count > 0)
+            {
+                Console.WriteLine($"\t What do you want to sell?");
+                int top = Console.CursorTop;
+                int bottom;
+                while (true)
+                {
+                    Display.Backpack(player, true);
+                    bottom = Console.CursorTop;
+                    if (MakeAChoice(player.Backpack.Count, out int choice, ending: true))
+                    {
+                        Item item = player.Backpack[choice - 1];
+                        item.Quantity -= HowMany(player, item, out int price, true);
+                        player.Gold += price;
+                        if (item.Quantity < 1)
+                        {
+                            player.Backpack.Remove(item);
+                        }
+                        Remove(top, bottom);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                Remove(top, bottom);
+            }
+            else
+            {
+                ColorConsole.TypeOver("\t Your backpack is empty...", ConsoleColor.Red);
+            }
+        }
+
+        private static int HowMany(Player player, Item item, out int price, bool sell = false)
+        {
+            price = item.Price;
+            int amount;
+            Console.Write("                                              ");
+            Console.SetCursorPosition(0, Console.CursorTop - 1);
+            string text = sell ? "sell" : "buy";
+            Console.WriteLine($"\t How many {item.Name}s do you want to {text}?");
+            Console.Write("\t > ");
+            while (true)
+            {
+                if (int.TryParse(ColorConsole.ReadLine(), out amount))
+                {
+                    if (sell && amount <= item.Quantity && amount != 69)
+                    {
+                        price *= amount;
+                        string plural = amount > 1 ? "s" : "";
+                        ColorConsole.TypeOver($"\t You sell {amount} {item.Name}{plural} and gain {price} gold.", ConsoleColor.Yellow);
+                        break;
+                    }
+                    else if (!sell && player.Gold >= price * amount)
+                    {
+                        price *= amount;
+                        break;
+                    }
+                    else if (amount == 69)
+                    {
+                        ColorConsole.TypeOver("\t You naughty ninja!", ConsoleColor.Red);
+                    }
+                    else
+                    {
+                        ColorConsole.TypeOver($"\t You cannot {text} that many {item.Name}s...", ConsoleColor.Red);
+                    }
+                }
+                else
+                {
+                    text = sell ? "Sale" : "Purchase";
+                    ColorConsole.TypeOver($"\t Invalid choice! {text} canceled...", ConsoleColor.Red);
+                    break;
+                }
+            }
+            return amount;
         }
 
         public static void Remove(int top, int bottom)
         {
             int ctr = top;
-            for (int i = 0; i <= bottom - top; i++)
+            for (int i = 0; i <= bottom - top + 1; i++)
             {
                 Console.SetCursorPosition(0, ctr++);
                 for (int j = 0; j < 100; j++)

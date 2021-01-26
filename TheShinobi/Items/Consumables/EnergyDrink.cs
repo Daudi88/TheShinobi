@@ -7,5 +7,10 @@
         {
             Caffeine = caffeine;
         }
+
+        public override string Bonus()
+        {
+            return $"(+{Health} Hp, +{Caffeine} Attack Bonus)";
+        }
     }
 }

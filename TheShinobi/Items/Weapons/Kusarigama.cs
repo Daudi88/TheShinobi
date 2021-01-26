@@ -5,7 +5,7 @@
         public Kusarigama()
         {
             Name = "Kusarigama";
-            Cost = 8000;
+            Price = 8000;
             Damage = "3d8";
         }
     }

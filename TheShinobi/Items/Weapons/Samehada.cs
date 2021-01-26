@@ -9,7 +9,7 @@ namespace TheShinobi.Items.Weapons
         public Samehada()
         {
             Name = "Samehada";
-            Cost = 4000;
+            Price = 4000;
             Damage = "3d8";
         }
     }
