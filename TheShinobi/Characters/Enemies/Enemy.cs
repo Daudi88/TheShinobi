@@ -1,9 +1,7 @@
 ﻿using System;
 using TheShinobi.HelperMethods;
-using TheShinobi.Interfaces;
 using TheShinobi.Items;
 using TheShinobi.Items.Armors;
-using TheShinobi.Items.Consumables;
 using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Characters.Enemies
@@ -82,7 +80,7 @@ namespace TheShinobi.Characters.Enemies
                     consumable.Quantity = Utility.random.Next(1, 11);
                     player.Backpack.Add(consumable);
                     cDropText = $"{consumable.Quantity} {consumable.Name} and ";
-                    
+
                 }
             }
             string separator = eDrop ? " and " : eDrop && cDrop ? ", " : "";
