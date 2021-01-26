@@ -84,9 +84,9 @@ namespace TheShinobi.Structures
         {
             Player kakashi = new Player("Kakashi Hatake")
             {
-                Hp = 1000,
+                Hp = 500,
                 MaxHp = 1000,
-                Gold = 100000,
+                Gold = 200,
                 Armor = new FlakJacket(),
                 Weapon = new Kubikiribōchō()
             };

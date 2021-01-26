@@ -62,18 +62,24 @@ namespace TheShinobi.Structures
                 };
                 Display.WithFrame(options, "[Yellow]SHOP[/Yellow]", ending: "Leave");
                 int bottom = Console.CursorTop;
-                Action<Player>[] methods = new Action<Player>[]
+                if (Utility.ChooseANumber(options.Count, out int choice, ending: true))
                 {
-                    Utility.BuySomeStuff, Utility.SellItems
-                };
-
-                if (Utility.ChooseANumber(methods.Length, out int choice, ending: true))
-                {
-                    if (choice != 4 || player.Backpack.Count > 0)
+                    switch (choice)
                     {
-                        Utility.Remove(top, bottom);
+                        case 1:
+                            Utility.Remove(Utility.left, top);
+                            Store.BuyItems(player, "item", Get.AbuHassanItems());
+                            break;
+                        case 2:
+                            if (player.Backpack.Count > 0)
+                            {
+                                Utility.Remove(Utility.left, top);
+                            }
+                            Store.SellItems(player);
+                            break;
+                        default:
+                            break;
                     }
-                    methods[choice - 1].DynamicInvoke(player);
                 }
                 else
                 {

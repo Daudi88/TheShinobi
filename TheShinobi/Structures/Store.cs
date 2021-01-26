@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TheShinobi.Characters;
 using TheShinobi.HelperMethods;
+using TheShinobi.Interfaces;
 using TheShinobi.Items;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Consumables;
@@ -12,7 +13,7 @@ namespace TheShinobi.Structures
 {
     static class Store
     {
-        public static void BuyItems(Player player, string name, Item[] items) //Buy
+        public static void BuyItems(Player player, string name, Item[] items, string ending = "Go back to shop menu") //Buy
         {
             while (true)
             {
@@ -24,9 +25,9 @@ namespace TheShinobi.Structures
                 {
                     options.Add($"{ctr++}. {item.Name} - {item.Price}g {item.BonusText()}");
                 }
-                Display.WithFrame(options, $"[Yellow]{name.ToUpper()}S[/Yellow]", ending: "Go back to shop menu");
+                Display.WithFrame(options, $"[Yellow]{name.ToUpper()}S[/Yellow]", ending: ending);
                 int bottom = Console.CursorTop;
-                if (MakeAChoice(items.Length, out int choice, ending: true))
+                if (Utility.ChooseANumber(items.Length, out int choice, ending: true))
                 {
                     Item item = items[choice - 1];
                     if (player.Gold >= item.Price)
@@ -78,11 +79,11 @@ namespace TheShinobi.Structures
                     {
                         ColorConsole.TypeOver($"\t You don't have enough gold to buy {item.IndefiniteArticle} {item.Name}!", ConsoleColor.Red);
                     }
-                    Remove(top, bottom);
+                    Utility.Remove(top, bottom);
                 }
                 else
                 {
-                    Remove(top, bottom);
+                    Utility.Remove(top, bottom);
                     break;
                 }
             }
@@ -99,7 +100,7 @@ namespace TheShinobi.Structures
                 {
                     Display.Backpack(player, true);
                     bottom = Console.CursorTop;
-                    if (MakeAChoice(player.Backpack.Count, out int choice, ending: true))
+                    if (Utility.ChooseANumber(player.Backpack.Count, out int choice, ending: true))
                     {
                         Item item = player.Backpack[choice - 1];
                         int price = item.Price;
@@ -140,14 +141,14 @@ namespace TheShinobi.Structures
                         {
                             player.Backpack.Remove(item);
                         }
-                        Remove(top, bottom);
+                        Utility.Remove(top, bottom);
                     }
                     else
                     {
                         break;
                     }
                 }
-                Remove(top, bottom);
+                Utility.Remove(top, bottom);
             }
             else
             {
@@ -164,32 +165,32 @@ namespace TheShinobi.Structures
             }
             else
             {
-                AddToBackpack(player, item);
+                Utility.AddToBackpack(player, item);
             }
         }
 
-        public static void BuyArmor(Player player)
-        {
-            Armor[] armors = Get.Armors();
-            Shop(player, "armor", armors);
-        }
+        //public static void BuyArmor(Player player)
+        //{
+        //    Armor[] armors = Get.Armors();
+        //    Shop(player, "armor", armors);
+        //}
 
-        public static void BuyWeapons(Player player)
-        {
-            Weapon[] weapons = Get.Weapons();
-            Shop(player, "weapon", weapons);
-        }
+        //public static void BuyWeapons(Player player)
+        //{
+        //    Weapon[] weapons = Get.Weapons();
+        //    Shop(player, "weapon", weapons);
+        //}
 
-        public static void BuyPotions(Player player)
-        {
-            Consumable[] potions = Get.Potions();
-            BuyItems(player, "potion", potions);
-        }
+        //public static void BuyPotions(Player player)
+        //{
+        //    Consumable[] potions = Get.Potions();
+        //    BuyItems(player, "potion", potions);
+        //}
 
-        public static void BuySomeStuff(Player player)
-        {
-            Item[] items = Get.AbuHassanItems();
-            Buy(player, "item", items);
-        }
+        //public static void BuyStuff(Player player)
+        //{
+        //    Item[] items = Get.AbuHassanItems();
+        //    Buy(player, "item", items);
+        //}
     }
 }

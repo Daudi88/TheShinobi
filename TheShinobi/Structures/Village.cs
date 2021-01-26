@@ -29,7 +29,8 @@ namespace TheShinobi.Structures
             {
                 if (isVisitingVillage)
                 {
-                    Console.WriteLine("\n\t Welcome to Leaf Village!\n\t What do you want to do?");
+                    Console.WriteLine("\n\t Welcome to the Hidden Leaf Village!" +
+                        "\n\t What do you want to do?");
                     isVisitingVillage = false;
                 }
                 else
@@ -95,7 +96,7 @@ namespace TheShinobi.Structures
                     if (ChooseANumber(meals.Length, out int choice, ending: true))
                     {
                         Consumable meal = meals[choice - 1];
-                        BuyItem(player, meal, meal.Price, true);
+                        Store.BuyItem(player, meal, meal.Price, true);
                     }
                     else
                     {
@@ -117,7 +118,7 @@ namespace TheShinobi.Structures
         // ending: "Leave"
         private static void KonohaHospital(Player player)
         {
-            Console.WriteLine("\n\t Welcome to Konoha Hospital");
+            Console.WriteLine("\n\t Welcome to Konoha Hospital!");
             int top = Console.CursorTop;
             while (true)
             {
@@ -125,12 +126,12 @@ namespace TheShinobi.Structures
                 Console.WriteLine("\t What do you want to do?");
                 List<string> options = new List<string>()
                 {
-                    "1. See Tsunade (300g)",
+                    "1. See Tsunade the medical-nin (300g)",
                     "2. Buy potions"
                 };
                 Display.WithFrame(options, "[Yellow]HOSPITAL[/Yellow]", ending: "Leave");
-                
-                if (MakeAChoice(options.Count, out int choice, ending: true))
+                int bottom = Console.CursorTop;
+                if (ChooseANumber(2, out int choice, ending: true))
                 {
                     switch (choice)
                     {
@@ -138,21 +139,20 @@ namespace TheShinobi.Structures
                             SeeTsunade(player);
                             break;
                         case 2:
-                            Remove(left, top);
-                            Store.BuyItems(player, "Potion", Get.Potions());
+                            Utility.Remove(top, bottom);
+                            Store.BuyItems(player, "Potion", Get.Potions(), "Go back");
                             break;
                         default:
                             break;
                     }
-                    
                 }
                 else
                 {
-                    ColorConsole.WriteLine("\t Thank you for visiting Konoha Hospital!\n", ConsoleColor.Yellow);
+                    ColorConsole.WriteLine("\t Thank you for visiting Konoha Hospital!", ConsoleColor.Yellow);
                     Thread.Sleep(1800);
                     Console.SetWindowPosition(0, Console.CursorTop - V);
+                    break;
                 }
-                Console.SetWindowPosition(0, Console.CursorTop - V);
             }
         }
 
@@ -160,17 +160,17 @@ namespace TheShinobi.Structures
         {
             if (player.Hp == player.MaxHp)
             {
-                ColorConsole.WriteLine("\n\t No need to see Tsunade, you have full health!", ConsoleColor.Yellow);
+                ColorConsole.TypeOver("\t No need to see Tsunade, you have full health!", ConsoleColor.Yellow);
             }
             else if (player.Gold >= 300) // om spelaren inte har tillräckligt med guld, men vad ska priset för ett sjukhusbesök vara?
             {
                 player.Hp = player.MaxHp;
                 player.Gold -= 300;
-                ColorConsole.WriteLine("\n\t Tsunade patches you up and you feel much better!", ConsoleColor.Yellow);
+                ColorConsole.TypeOver("\t Tsunade patch you up and you gain full health!", ConsoleColor.Yellow);
             }
             else
             {
-                ColorConsole.TypeOver("\n\t You don't have enough gold to see Tsunade!", ConsoleColor.Red);
+                ColorConsole.TypeOver("\t You don't have enough gold to see Tsunade!", ConsoleColor.Red);
             }
         }
 
@@ -189,22 +189,23 @@ namespace TheShinobi.Structures
                     "3. Sell Items"
                 };
                 Display.WithFrame(options, "[Yellow]SHOP[/Yellow]", ending: "Leave");
-                if (ChooseANumber(options.Count, out int choice, ending: true))
+                int bottom = Console.CursorTop;
+                if (ChooseANumber(3, out int choice, ending: true))
                 {
                     switch (choice)
                     {
                         case 1:
-                            Remove(left, top);
+                            Remove(top, bottom);
                             Store.BuyItems(player, "armor", Get.Armors());
                             break;
                         case 2:
-                            Remove(left, top);
+                            Remove(top, bottom);
                             Store.BuyItems(player, "weapon", Get.Weapons());
                             break;
                         case 3:
                             if (player.Backpack.Count > 0)
                             {
-                                Remove(left, top);
+                                Remove(top, bottom);
                             }
                             Store.SellItems(player);
                             break;
@@ -214,7 +215,7 @@ namespace TheShinobi.Structures
                 }
                 else
                 {
-                    ColorConsole.WriteLine("\t Thank you for visiting the Ninja Tool Shop!\n", ConsoleColor.Yellow);
+                    ColorConsole.WriteLine("\t Thank you for visiting the Ninja Tool Shop!", ConsoleColor.Yellow);
                     Thread.Sleep(1800);
                     Console.SetWindowPosition(0, Console.CursorTop - V);
                     break;
