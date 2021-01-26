@@ -3,6 +3,7 @@ using TheShinobi.Characters;
 using TheShinobi.Items.Weapons;
 using System;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace TheShinobi.Structures
 {
@@ -48,9 +49,47 @@ namespace TheShinobi.Structures
         }
         private static void AbuHassan(Player player)
         {
+            Console.WriteLine("\n\t Welcome to Abu Hassan's One stop shop for everything a Shinobi could ever need!");
+            Utility.Shop(player, "ABU HASSAN'S", Utility.GetAbuHassanItems());
+            
+            
+            //while (true)
+            //{
+            //    Console.SetCursorPosition(0, top);
+            //    Console.WriteLine("\t What do you want to do?");
+            //    List<string> options = new List<string>()
+            //    {
+            //        "1. Bulletproof Vest",
+            //        "2. AK-47",
+            //        "3. RedBull"  
+                    
+            //    };
+            //    Display.WithFrame(options, "[Yellow]Abu Hassans Shop[/Yellow]", ending: "Leave");
+            //    int bottom = Console.CursorTop;
+                //Action<Player>[] methods = new Action<Player>[]
+                //{
+                //    BuyArmor, BuyWeapons, BuyPotions,
+                //};
 
+                //if (MakeAChoice(methods.Length, out int choice, ending: true))
+                //{
+                //    if (choice != 4 || player.Backpack.Count > 0)
+                //    {
+                //        Remove(top, bottom);
+                //    }
+                //    methods[choice - 1].DynamicInvoke(player);
+                //}
+                //else
+                //{
+                //    ColorConsole.WriteLine("\t Thank you for visiting!\n", ConsoleColor.Yellow);
+                //    Thread.Sleep(1800);
+                //    Console.SetWindowPosition(0, Console.CursorTop - 20);
+                //    break;
+                //}
+            }
 
         }
+          // AK-47, Bulletproof vest, Red Bull
 
     }
 }

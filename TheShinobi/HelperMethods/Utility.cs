@@ -67,6 +67,11 @@ namespace TheShinobi.HelperMethods
             }
         }
 
+        internal static Item[] GetAbuHassanItems()
+        {
+            throw new NotImplementedException();
+        }
+
         public static bool MakeAChoice(int length, out int choice, Player player = null, bool std = false, bool ending = false)
         {
             bool result = false;
