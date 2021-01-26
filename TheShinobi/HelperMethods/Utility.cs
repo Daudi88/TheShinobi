@@ -12,18 +12,19 @@ namespace TheShinobi.HelperMethods
 {
     static class Utility
     {
-        /* The class Utility contains these methods:
-         * RollDice()           - Uses the Random function to to simulate dice's beeing rolled. 
-         * Shop()               - Method for the shops, ask's the player what items to buy wich are different depending on the shop.         
-         * MakeAChoice()        - Lets the player make a choice while listening to see if it is E, B, D or M.
-         * BuyItem()            - Lets the player buy an item and checks if the player can afford the item / items.
-         * AddToBackpack()      - If the player buys or picks up drops from enemies this method is used to add the item / items to the backpack.
-         * OpenBackpack()       - Displays the items inside the backpack and gives the player the option to use items if any.
-         * SellItems()          - Lets the user sell items for gold.
-         * HowMany()            - Asks the player how many of an item to buy and checks if the player have enough gold.
-         * Remove()             - Removes texts in order to make the player experience cleaner.
-         
+        /* This class contains the folowing methods:
+         * RollDice()           - Uses the Random function to to simulate dice's
+         *                        beeing rolled.                  
+         * ChooseANumber()      - Lets the player make a choice while listening 
+         *                        to see if it is Backpack, Details, Map or Ending.        
+         * AddToBackpack()      - If the player buys or picks up loot from enemies
+         *                        this method is used to add the item / items to 
+         *                        the backpack.
+         * OpenBackpack()       - Displays the items inside the backpack and gives
+         *                        the player the option to use items if any.         
+         * Remove()             - Removes texts in order to give a cleaner experience.         
          */
+
         public const int left = 9;
         public const int V = 15;
         public static readonly Random random = new Random();
@@ -87,8 +88,6 @@ namespace TheShinobi.HelperMethods
             return result;
         }
 
-        
-
         public static void AddToBackpack(Player player, Item thing)
         {
             if (player.Backpack.Contains(thing))
@@ -149,52 +148,6 @@ namespace TheShinobi.HelperMethods
                 ColorConsole.TypeOver("\t Your backpack is empty...", ConsoleColor.Red);
                 return false;
             }
-        }
-
-        
-
-        private static int HowMany(Player player, Item item, out int price, bool sell = false)
-        {
-            price = item.Price;
-            int quantity;
-            Console.Write("                                              ");
-            Console.SetCursorPosition(0, Console.CursorTop - 1);
-            string text = sell ? "sell" : "buy";
-            Console.WriteLine($"\t How many {item.Name}s do you want to {text}?");
-            Console.Write("\t > ");
-            while (true)
-            {
-                if (int.TryParse(ColorConsole.ReadLine(), out quantity))
-                {
-                    if (sell && quantity <= item.Quantity && quantity != 69)
-                    {
-                        price *= quantity;
-                        string plural = quantity > 1 ? "s" : "";
-                        ColorConsole.TypeOver($"\t You sell {quantity} {item.Name}{plural} and gain {price} gold.", ConsoleColor.Yellow);
-                        break;
-                    }
-                    else if (!sell && player.Gold >= price * quantity)
-                    {
-                        price *= quantity;
-                        break;
-                    }
-                    else if (quantity == 69)
-                    {
-                        ColorConsole.TypeOver("\t You naughty ninja!", ConsoleColor.Red);
-                    }
-                    else
-                    {
-                        ColorConsole.TypeOver($"\t You cannot {text} that many {item.Name}s...", ConsoleColor.Red);
-                    }
-                }
-                else
-                {
-                    text = sell ? "Sale" : "Purchase";
-                    ColorConsole.TypeOver($"\t Invalid choice! {text} canceled...", ConsoleColor.Red);
-                    break;
-                }
-            }
-            return quantity;
         }
 
         public static void Remove(int top, int bottom)

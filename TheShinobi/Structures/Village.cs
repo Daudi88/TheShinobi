@@ -10,12 +10,15 @@ namespace TheShinobi.Structures
 {
     class Village
     {
-        /* The class Village contains these methods:
-         * Menu()               - Method for Menu of the Hidden Leaf Village. 
-         * LightningBurger()    - Method that lets the player eat a meal at Lightning Burger to restore health.
-         * KonohaHospital()     - Method that lets the player heal by visiting the Doctor.
-         * NinjaToolShop()      - Method that lets the player buy and sell items.
+        /* This class contains the foloowing methods:
+         * Menu()               - Menu of the Hidden Leaf Village. 
+         * LightningBurger()    - Lets the player eat at Lightning Burger to 
+         *                        restore health.
+         * KonohaHospital()     - Lets the player heal by visiting Tsunade or
+         *                        buy potions.
+         * NinjaToolShop()      - Lets the player buy and sell items.
          */
+
         public static void Menu(Player player)
         {
             bool exit = false;

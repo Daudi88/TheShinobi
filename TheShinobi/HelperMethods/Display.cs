@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using TheShinobi.Characters;
-using TheShinobi.Interfaces;
-using TheShinobi.Items;
 using TheShinobi.Items.Armors;
-using TheShinobi.Items.Consumables;
 using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.HelperMethods
 {
     class Display
     {
+        /* This class contains the following methods:
+         * 
+         * 
+         */
+
         public static void WithFrame(List<string> content, string title = "", bool std = false, string ending = null)
         {
             if (std)
@@ -37,7 +39,7 @@ namespace TheShinobi.HelperMethods
                 int length = text.Length;
                 if (text.Contains("["))
                 {
-                    length -= ColorLength(text);
+                    length -= Get.ColorLength(text);
                 }
                 lengths.Add(length);
             }
@@ -47,7 +49,7 @@ namespace TheShinobi.HelperMethods
             int colorLength = 0;
             if (title.Contains("["))
             {
-                colorLength = ColorLength(title);
+                colorLength = Get.ColorLength(title);
             }
 
             for (int i = 0; i < width - title.Length + colorLength + 2; i++)
@@ -60,7 +62,7 @@ namespace TheShinobi.HelperMethods
                 colorLength = 0;
                 if (text.Contains("["))
                 {
-                    colorLength = ColorLength(text);
+                    colorLength = Get.ColorLength(text);
                 }
                 ColorConsole.WriteEmbeddedColor($"\t┃ {text.PadRight(width + colorLength)}  ┃\n");
             }
@@ -84,7 +86,7 @@ namespace TheShinobi.HelperMethods
                 int length = text.Length;
                 if (text.Contains("["))
                 {
-                    length -= ColorLength(text);
+                    length -= Get.ColorLength(text);
                 }
                 lengths.Add(length);
             }
@@ -93,7 +95,7 @@ namespace TheShinobi.HelperMethods
             int colorLength = 0;
             if (title.Contains("["))
             {
-                colorLength = ColorLength(title);
+                colorLength = Get.ColorLength(title);
             }
 
             for (int i = 0; i < width - title.Length + colorLength + 2; i++)
@@ -107,14 +109,14 @@ namespace TheShinobi.HelperMethods
                 colorLength = 0;
                 if (text.Contains("["))
                 {
-                    colorLength = ColorLength(text);
+                    colorLength = Get.ColorLength(text);
                 }
                 ColorConsole.WriteEmbeddedColor($"\t┃ {text.PadRight(width + colorLength)}  ┃\n");
             }
             ColorConsole.WriteEmbeddedColor($"\t┣━{title2}");
             if (title2.Contains("["))
             {
-                colorLength = ColorLength(title2);
+                colorLength = Get.ColorLength(title2);
             }
             for (int i = 0; i < width - title2.Length + colorLength + 2; i++)
             {
@@ -126,7 +128,7 @@ namespace TheShinobi.HelperMethods
                 colorLength = 0;
                 if (text.Contains("["))
                 {
-                    colorLength = ColorLength(text);
+                    colorLength = Get.ColorLength(text);
                 }
                 ColorConsole.WriteEmbeddedColor($"\t┃ {text.PadRight(width + colorLength)}  ┃\n");
             }
@@ -215,14 +217,7 @@ namespace TheShinobi.HelperMethods
 
         private static void PlayerOnMap(int top)
         {
-            
-        }
 
-        private static int ColorLength(string text)
-        {
-            int at = text.IndexOf("[");
-            int at2 = text.IndexOf("]");
-            return text.Substring(at, at2 - at + 1).Length * 2 + 1;
         }
 
         public static void Delayed(string text, int delay = 40, ConsoleColor color = ConsoleColor.White)

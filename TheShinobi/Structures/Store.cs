@@ -13,7 +13,16 @@ namespace TheShinobi.Structures
 {
     static class Store
     {
-        public static void BuyItems(Player player, string name, Item[] items, string ending = "Go back to shop menu") //Buy
+        /* This class contains the following methods:
+        * BuyItems()           - Method for the shops, ask's the player what 
+        *                        items to buy that are different depending on 
+        *                        the shop. Lets the player buy items and checks 
+        *                        if the player can afford them.
+        * MakePurchase()       - ...
+        * SellItems()          - Lets the user sell items for gold.
+        */
+
+        public static void BuyItems(Player player, string name, Item[] items, string ending = "Go back to shop menu")
         {
             while (true)
             {
@@ -89,6 +98,19 @@ namespace TheShinobi.Structures
             }
         }
 
+        public static void MakePurchase(Player player, Item item, int price, bool eat = false)
+        {
+            player.Gold -= price;
+            if (eat && item is IConsumable meal)
+            {
+                meal.Consume(player);
+            }
+            else
+            {
+                Utility.AddToBackpack(player, item);
+            }
+        }
+
         public static void SellItems(Player player)
         {
             if (player.Backpack.Count > 0)
@@ -153,19 +175,6 @@ namespace TheShinobi.Structures
             else
             {
                 ColorConsole.TypeOver("\t Your backpack is empty...", ConsoleColor.Red);
-            }
-        }
-
-        public static void MakePurchase(Player player, Item item, int price, bool eat = false)
-        {
-            player.Gold -= price;
-            if (eat && item is IConsumable meal)
-            {
-                meal.Consume(player);
-            }
-            else
-            {
-                Utility.AddToBackpack(player, item);
             }
         }
     }

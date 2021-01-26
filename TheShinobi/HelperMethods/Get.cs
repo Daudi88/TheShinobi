@@ -10,15 +10,28 @@ namespace TheShinobi.HelperMethods
 {
     static class Get
     {
-        /*
-         * GetEnemies()         - Instantiates the Enemies the hero can encountered in the game.
-         * GetArmors()          - Instantiates the Armors common enemies use in the game.
-         * GetWeapons()         - Instantiates the Weapons common enemies use in the game.
-         * GetSevenSwords()     - Instantiates the seven legendary swords in the game.
-         * Getpotions()         - Instantiates the common potions used in the game.
-         * GetMeals()           - Instantiates the meals in Lightning Burger Shop.
-         * GetAbuHassanItems()  - Gets Abu Hassan's special items.
+        /* This class contains the following methods:
+         * GetEnemies()         - Returns an array of Enemies the player can 
+         *                        encountered in the game.
+         * GetArmors()          - Returns an array of Armors common enemies use 
+         *                        in the game and that can be purchased at the  
+         *                        Ninja Tool Shop.
+         * GetWeapons()         - Returns an array of Weapons common enemies use
+         *                        in the game that can be purchased at the  
+         *                        Ninja Tool Shop.
+         * GetSevenSwords()     - Returns an array of the seven legendary swords 
+         *                        that can be found at the graveyard.
+         * Getpotions()         - Returns an array of common potions used in the game.
+         * GetMeals()           - Returns an array of meals for Lightning Burger Shop.
+         * GetAbuHassanItems()  - Returns an array of Abu Hassan's special items.
          */
+
+        public static int ColorLength(string text)
+        {
+            int at = text.IndexOf("[");
+            int at2 = text.IndexOf("]");
+            return text.Substring(at, at2 - at + 1).Length * 2 + 1;
+        }
 
         public static Enemy[] Enemies()
         {
