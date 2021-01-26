@@ -109,23 +109,27 @@ namespace TheShinobi.Structures
         }
 
         // HÅKAN
+        // Vad vill du göra?
+        // With frame runt med titel HOSPITAL
+        // 1. besök the medical-nin, 2. Köp potions
+        // Make a choice
+        // ending: "Leave"
         private static void KonohaHospital(Player player)
         {
-            Console.WriteLine("\n\t Welcome to the Konoha Hospital");
+            Console.WriteLine("\n\t Welcome to Konoha Hospital");
             if (player.Hp == player.MaxHp)
             {
                 ColorConsole.WriteLine("\n\t No need to see the Doctor, you have full health!", ConsoleColor.Yellow);
             }
-            else if (player.Gold <= )// om spelaren inte har tillräckligt med guld, men vad ska priset för ett sjukhusbesök vara?
+            else if (player.Gold >= 0) // om spelaren inte har tillräckligt med guld, men vad ska priset för ett sjukhusbesök vara?
             {
-                ColorConsole.WriteLine("\n\t You dont have enough gold to see the Doctor!", ConsoleColor.Red);
+                player.MaxHp = player.MaxHp; // Hp = MaxHp
+                ColorConsole.WriteLine("\n\t The Doctor patches you up and you feel much better!", ConsoleColor.Yellow); // medical-nin
             }
             else
             {
-                player.MaxHp = player.MaxHp;
-                ColorConsole.WriteLine("\n\t The Doctor patches you up and you feel much better!", ConsoleColor.Yellow);
-            }
-                
+                ColorConsole.WriteLine("\n\t You dont have enough gold to see the Doctor!", ConsoleColor.Red);
+            }            
             Console.SetWindowPosition(0, Console.CursorTop - V);
         }
 
@@ -140,15 +144,14 @@ namespace TheShinobi.Structures
                 List<string> options = new List<string>()
                 {
                     "1. Buy Armor",
-                    "2. Buy Weapons",
-                    "3. Buy Potions",
-                    "4. Sell Items"
+                    "2. Buy Weapons",                    
+                    "3. Sell Items"
                 };
                 Display.WithFrame(options, "[Yellow]SHOP[/Yellow]", ending: "Leave");
                 int bottom = Console.CursorTop;
                 Action<Player>[] methods = new Action<Player>[]
                 {
-                    BuyArmor, BuyWeapons, BuyPotions, SellItems
+                    BuyArmor, BuyWeapons, SellItems
                 };
 
                 if (MakeAChoice(methods.Length, out int choice, ending: true))
