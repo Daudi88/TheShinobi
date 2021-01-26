@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using TheShinobi.Characters;
 using TheShinobi.HelperMethods;
-using TheShinobi.Items;
-using TheShinobi.Items.Armors;
 using TheShinobi.Items.Consumables;
-using TheShinobi.Items.Weapons;
 using static TheShinobi.HelperMethods.Utility;
 
 namespace TheShinobi.Structures
@@ -14,13 +11,10 @@ namespace TheShinobi.Structures
     class Village
     {
         /* The class Village contains these methods:
-         * Menu()               - Method for Menu of Leaf Village. 
+         * Menu()               - Method for Menu of the Hidden Leaf Village. 
          * LightningBurger()    - Method that lets the player eat a meal at Lightning Burger to restore health.
          * KonohaHospital()     - Method that lets the player heal by visiting the Doctor.
          * NinjaToolShop()      - Method that lets the player buy and sell items.
-         * BuyArmor()           - Method That is accessed if the player wants to buy armors from the Ninja shop.
-         * BuyWeapons()         - Method That is accessed if the player wants to buy weaponss from the Ninja shop..
-         * Buypotions()         - Method That is accessed if the player wants to buy potions from the Ninja shop..
          */
         public static void Menu(Player player)
         {
@@ -96,7 +90,7 @@ namespace TheShinobi.Structures
                     if (ChooseANumber(meals.Length, out int choice, ending: true))
                     {
                         Consumable meal = meals[choice - 1];
-                        Store.BuyItem(player, meal, meal.Price, true);
+                        Store.MakePurchase(player, meal, meal.Price, true);
                     }
                     else
                     {
@@ -110,12 +104,6 @@ namespace TheShinobi.Structures
             }
         }
 
-        // HÅKAN
-        // Vad vill du göra?
-        // With frame runt med titel HOSPITAL
-        // 1. besök the medical-nin, 2. Köp potions
-        // Make a choice
-        // ending: "Leave"
         private static void KonohaHospital(Player player)
         {
             Console.WriteLine("\n\t Welcome to Konoha Hospital!");
@@ -139,7 +127,7 @@ namespace TheShinobi.Structures
                             SeeTsunade(player);
                             break;
                         case 2:
-                            Utility.Remove(top, bottom);
+                            Remove(top, bottom);
                             Store.BuyItems(player, "Potion", Get.Potions(), "Go back");
                             break;
                         default:
@@ -162,7 +150,7 @@ namespace TheShinobi.Structures
             {
                 ColorConsole.TypeOver("\t No need to see Tsunade, you have full health!", ConsoleColor.Yellow);
             }
-            else if (player.Gold >= 300) // om spelaren inte har tillräckligt med guld, men vad ska priset för ett sjukhusbesök vara?
+            else if (player.Gold >= 300)
             {
                 player.Hp = player.MaxHp;
                 player.Gold -= 300;
@@ -185,7 +173,7 @@ namespace TheShinobi.Structures
                 List<string> options = new List<string>()
                 {
                     "1. Buy Armor",
-                    "2. Buy Weapons",                    
+                    "2. Buy Weapons",
                     "3. Sell Items"
                 };
                 Display.WithFrame(options, "[Yellow]SHOP[/Yellow]", ending: "Leave");

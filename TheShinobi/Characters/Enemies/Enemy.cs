@@ -1,4 +1,5 @@
-﻿using TheShinobi.HelperMethods;
+﻿using System;
+using TheShinobi.HelperMethods;
 using TheShinobi.Interfaces;
 using TheShinobi.Items;
 using TheShinobi.Items.Armors;
@@ -36,22 +37,57 @@ namespace TheShinobi.Characters.Enemies
 
         public void DropItems(Player player)
         {
-            Item item;
+            int rnd = Utility.random.Next(10);
+            bool eDrop = false;
+            bool cDrop = false;
+            string eDropText = "";
+            string cDropText = "";
+            if (rnd > 7)
+            {
+                eDrop = true;
+                Item equipable;
+                if (rnd > 8)
+                {
+                    equipable = Weapon;
+                }
+                else
+                {
+                    equipable = Armor;
+                }
+                eDropText = $"{equipable.IndefiniteArticle} {equipable.Name}";
+            }
+            Item consumable;
             if (Name == "Hocke")
             {
-                item = new EnergyDrink("Monster Energy", 100, 15, "You unleash the beast");
+                cDrop = true;
+                consumable = new EnergyDrink("Monster Energy", 100, 15, "You unleash the beast");
+                consumable.Quantity = Utility.random.Next(1, 11);
+                player.Backpack.Add(consumable);
+                cDropText = $"{consumable.Quantity} Monster Energy and ";
             }
             else if (Name == "Daudi")
             {
-                item = new EnergyDrink("NOCCO", 100, 12, "You are NOCCO enough");
+                cDrop = true;
+                consumable = new EnergyDrink("NOCCO", 100, 12, "You are NOCCO enough");
+                consumable.Quantity = Utility.random.Next(1, 11);
+                player.Backpack.Add(consumable);
+                cDropText = $"{consumable.Quantity} NOCCO and ";
             }
             else
             {
-                Consumable[] potions = Get.Potions();
-                item = potions[Utility.random.Next(potions.Length)];
+                if (Utility.random.Next(10) > 6)
+                {
+                    cDrop = true;
+                    consumable = Get.Potions()[Utility.random.Next(Get.Potions().Length)];
+                    consumable.Quantity = Utility.random.Next(1, 11);
+                    player.Backpack.Add(consumable);
+                    cDropText = $"{consumable.Quantity} {consumable.Name} and ";
+                    
+                }
             }
-            item.Quantity = Utility.random.Next(1, 11);
-            player.Backpack.Add(item);
+            string separator = eDrop ? " and " : eDrop && cDrop ? ", " : "";
+            ColorConsole.Write($"\t {Name} drops {eDropText}{separator}{cDropText}{Gold} gold!", ConsoleColor.Yellow);
+            player.Gold += Gold;
         }
     }
 }
