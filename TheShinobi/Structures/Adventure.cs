@@ -20,7 +20,7 @@ namespace TheShinobi.Structures
         {
             if (!isGraveyardVisited)
             {
-                Weapon[] swords = Utility.GetSevenSwords(player);
+                Weapon[] swords = Get.SevenSwords(player);
                 Weapon sword = swords[Utility.random.Next(swords.Length)];               
                 ColorConsole.WriteLine($"\t You find {sword.Name}, a sword of the Seven Swordsmen!", ConsoleColor.Yellow);
                 Utility.AddToBackpack(player, sword);

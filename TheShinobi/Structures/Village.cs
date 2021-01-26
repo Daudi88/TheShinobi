@@ -76,7 +76,7 @@ namespace TheShinobi.Structures
 
         private static void LightningBurger(Player player)
         {
-            Consumable[] meals = GetMeals();
+            Consumable[] meals = Get.Meals();
             bool exit = false;
             while (!exit)
             {
@@ -174,19 +174,19 @@ namespace TheShinobi.Structures
 
         private static void BuyArmor(Player player)
         {
-            Armor[] armors = GetArmors();
+            Armor[] armors = Get.Armors();
             Shop(player, "armor", armors);
         }
 
         private static void BuyWeapons(Player player)
         {
-            Weapon[] weapons = GetWeapons();
+            Weapon[] weapons = Get.Weapons();
             Shop(player, "weapon", weapons);
         }
 
         private static void BuyPotions(Player player)
         {
-            Consumable[] potions = GetPotions();
+            Consumable[] potions = Get.Potions();
             Shop(player, "potion", potions);
         }
     }

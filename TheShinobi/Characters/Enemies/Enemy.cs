@@ -47,7 +47,7 @@ namespace TheShinobi.Characters.Enemies
             }
             else
             {
-                Consumable[] potions = Utility.GetPotions();
+                Consumable[] potions = Get.Potions();
                 item = potions[Utility.random.Next(potions.Length)];
             }
             item.Quantity = Utility.random.Next(1, 11);
