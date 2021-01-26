@@ -14,20 +14,21 @@ namespace TheShinobi.HelperMethods
             ConsoleKey key;
             do
             {
-                //Varje knapptryck sparas i keyInfo men syns inte på skärmen.
+                // Varje knapptryck sparas i keyInfo men syns inte på skärmen.
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                
                 key = keyInfo.Key;
                 if (key == ConsoleKey.Backspace && text.Length > 0)
                 {
-                    //Om man trycker Backspace raderas asterisken från skärmen
-                    //och tecknet som tidigare sparats i password tas bort.
+                    // Om man trycker Backspace raderas asterisken från skärmen
+                    // och tecknet som tidigare sparats i password tas bort.
                     Console.Write("\b \b");
                     text = text[0..^1];
                 }
                 else if (!char.IsControl(keyInfo.KeyChar)) // kolla efter siffror!
                 {
-                    //Här skrivs en asterisk ut till skärmen och knapptrycket
-                    //sparas till password.
+                    // Här skrivs en asterisk ut till skärmen och knapptrycket
+                    // sparas till password.
                     if (int.TryParse(keyInfo.KeyChar.ToString(), out int digit))
                     {
                         Console.Write(digit);
@@ -47,7 +48,7 @@ namespace TheShinobi.HelperMethods
                     text += keyInfo.KeyChar;
                 }
 
-            //loopen körs så länge man inte trycker på Enter.
+            // Loopen körs så länge man inte trycker på Enter.
             } while (key != ConsoleKey.Enter);
             Console.WriteLine();
             Console.CursorVisible = false;
@@ -89,7 +90,7 @@ namespace TheShinobi.HelperMethods
             }
         }
 
-        public static void TypeOver(string message, ConsoleColor color, int time = 1800)
+        public static void TypeOver(string message, ConsoleColor color, int time = 2000)
         {
             int top = Console.CursorTop;
             WriteLine(message, color);

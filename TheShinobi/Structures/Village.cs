@@ -1,13 +1,12 @@
-﻿using static TheShinobi.HelperMethods.Utility;
-using TheShinobi.HelperMethods;
-using TheShinobi.Characters;
-using TheShinobi.Items.Armors;
-using TheShinobi.Items.Weapons;
-using TheShinobi.Items.Consumables;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using System;
-using TheShinobi.Items;
+using TheShinobi.Characters;
+using TheShinobi.HelperMethods;
+using TheShinobi.Items.Armors;
+using TheShinobi.Items.Consumables;
+using TheShinobi.Items.Weapons;
+using static TheShinobi.HelperMethods.Utility;
 
 namespace TheShinobi.Structures
 {
@@ -18,6 +17,15 @@ namespace TheShinobi.Structures
             bool exit = false;
             while (!exit)
             {
+                if (isVisitingVillage)
+                {
+                    Console.WriteLine("\n\t Welcome to Leaf Village!\n\t What do you want to do?");
+                    isVisitingVillage = false;
+                }
+                else
+                {
+                    Console.WriteLine("\n\t What do you want to do?");
+                }
                 List<string> options = new List<string>()
                 {
                     "1. Go on an Adventure",
@@ -25,7 +33,7 @@ namespace TheShinobi.Structures
                     "3. Heal yourself at Konoha Hospital",
                     "4. Go to the Ninja Tool Shop",
                 };
-                Display.WithFrame(options, "[Green]VILLAGE[/Green]", true, "Exit Game");
+                Display.WithFrame(options, "[Yellow]VILLAGE[/Yellow]", true, "Exit Game");
 
                 Action<Player>[] methods = new Action<Player>[]
                 {
@@ -34,7 +42,7 @@ namespace TheShinobi.Structures
                 while (true)
                 {
                     if (MakeAChoice(methods.Length, out int choice, player, true, true))
-                    {                        
+                    {
                         if (choice > 0)
                         {
                             Console.SetWindowPosition(0, Console.CursorTop - V);
@@ -53,7 +61,7 @@ namespace TheShinobi.Structures
                         exit = true;
                         break;
                     }
-                }                              
+                }
             }
         }
 
@@ -76,7 +84,8 @@ namespace TheShinobi.Structures
                 {
                     if (MakeAChoice(meals.Length, out int choice, ending: true))
                     {
-                        BuyItem(player, meals[choice - 1], true);
+                        Consumable meal = meals[choice - 1];
+                        BuyItem(player, meal, meal.Price, true);
                     }
                     else
                     {
@@ -90,6 +99,7 @@ namespace TheShinobi.Structures
             }
         }
 
+        // HÅKAN
         private static void KonohaHospital(Player player)
         {
             Console.SetWindowPosition(0, Console.CursorTop - V);
@@ -122,12 +132,12 @@ namespace TheShinobi.Structures
                     if (choice != 4 || player.Backpack.Count > 0)
                     {
                         Remove(top, bottom);
-                    }                   
+                    }
                     methods[choice - 1].DynamicInvoke(player);
                 }
                 else
                 {
-                    ColorConsole.WriteLine("\t Thank you for visiting!\n", ConsoleColor.Yellow);
+                    ColorConsole.WriteLine("\t Thank you for visiting the Ninja Tool Shop!\n", ConsoleColor.Yellow);
                     Thread.Sleep(1800);
                     Console.SetWindowPosition(0, Console.CursorTop - V);
                     break;

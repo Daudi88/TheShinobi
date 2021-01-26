@@ -4,7 +4,7 @@
     {
         public BulletproofVest()
         {
-            Name = "Bulletproof vest";
+            Name = "Bulletproof Vest";
             Price = 50000;
             Defence = 100;
         }

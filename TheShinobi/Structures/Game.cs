@@ -44,7 +44,7 @@ namespace TheShinobi.Structures
         {
             Display.Title();
             Player player = CharacterCreation();
-            string intro = $"\t You, {player.Name} wake up in the Hidden Leaf Village and sense that something is wrong!" +
+            string intro = $"\n\t You, {player.Name} wake up in the Hidden Leaf Village and sense that something is wrong!" +
                 "\n\t Kaguya Otsutsuki have kidnapped Hanare and taken her to his cave in the mountains." +
                 "\n\t It is your duty to find and rescue her!";
             Display.Delayed(intro, color: ConsoleColor.Yellow);
@@ -77,7 +77,6 @@ namespace TheShinobi.Structures
                     break;
                 }
             }
-            Console.WriteLine();
             return name.ToLower() == "robin" ? GodMode() : new Player(name);
         }
 
@@ -85,11 +84,11 @@ namespace TheShinobi.Structures
         {
             Player kakashi = new Player("Kakashi Hatake")
             {
-                Hp = 100,
-                MaxHp = 100,
+                Hp = 1000,
+                MaxHp = 1000,
                 Gold = 100000,
-                Armor = new InfiniteArmor(),
-                Weapon = new Kubikiribōchō(),
+                Armor = new FlakJacket(),
+                Weapon = new Kubikiribōchō()
             };
             kakashi.Defence = kakashi.Armor.Defence;
             kakashi.Damage = kakashi.Weapon.Damage;

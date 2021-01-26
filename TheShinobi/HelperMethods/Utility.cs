@@ -35,6 +35,7 @@ namespace TheShinobi.HelperMethods
         public static readonly Random random = new Random();
         public static bool isEnergyDrink = false;
         public static string energyBonus = "";
+        public static bool isVisitingVillage = true;
 
         public static int RollDice(string dice)
         {
@@ -48,12 +49,18 @@ namespace TheShinobi.HelperMethods
             return result;
         }
 
-        public static void Shop(Player player, string name, Item[] items, bool eat = false)
+        internal static void BuySomeStuff(Player player)
+        {
+            Item[] items = GetAbuHassanItems();
+            Shop(player, "item", items);
+        }
+
+        public static void Shop(Player player, string name, Item[] items)
         {
             while (true)
             {
                 int top = Console.CursorTop;
-                Console.WriteLine($"\t What {name.ToLower()} do you want to buy?"); // item do you want to buy?
+                Console.WriteLine($"\t What {name.ToLower()} do you want to buy?");
                 List<string> options = new List<string>();
                 int ctr = 1;
                 foreach (var item in items)
@@ -65,14 +72,54 @@ namespace TheShinobi.HelperMethods
                 if (MakeAChoice(items.Length, out int choice, ending: true))
                 {
                     Item item = items[choice - 1];
-                    if (!eat && item is Consumable c)
+                    if (player.Gold >= item.Price)
                     {
-                        item.Quantity = HowMany(player, item, out int price);
-                        item.Price = price;
+                        if (item is IConsumable c)
+                        {
+                            int quantity;
+                            Console.Write("                                              ");
+                            Console.SetCursorPosition(0, Console.CursorTop - 1);
+                            Console.WriteLine($"\t How many {item.Name}s do you want to buy?");
+                            Console.Write("\t > ");
+                            while (true)
+                            {
+                                if (int.TryParse(ColorConsole.ReadLine(), out quantity) && quantity > 0)
+                                {
+                                    int price = item.Price;
+                                    string amount = quantity > 1 ? $"{quantity}" : item.IndefiniteArticle;
+                                    string plural = quantity > 1 ? "s" : "";
+                                    if (quantity == 69)
+                                    {
+                                        ColorConsole.TypeOver("\t You naughty ninja!", ConsoleColor.Red);
+                                    }
+                                    else if (player.Gold >= price * quantity)
+                                    {
+                                        price *= quantity;
+                                        ColorConsole.TypeOver($"\t You buy {amount} {item.Name}{plural} for {price} gold.", ConsoleColor.Yellow);
+                                        BuyItem(player, item, price);
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        ColorConsole.TypeOver($"\t You don't have enough gold to buy {amount} {item.Name}{plural}!", ConsoleColor.Red);
+                                    }
+                                }
+                                else
+                                {
+                                    ColorConsole.TypeOver($"\t Invalid choice! Purshase is canceled...", ConsoleColor.Red);
+                                    break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            ColorConsole.TypeOver($"\t You buy {item.IndefiniteArticle} {item.Name} for {item.Price} gold!", ConsoleColor.Yellow);
+                            BuyItem(player, item, item.Price);
+                        }
                     }
-                    if (item.Quantity > 0)
+                    else
                     {
-                        BuyItem(player, item, eat);
+                        ColorConsole.TypeOver($"\t You don't have enough gold to buy {item.IndefiniteArticle} {item.Name}!", ConsoleColor.Red);
                     }
                     Remove(top, bottom);
                 }
@@ -88,7 +135,8 @@ namespace TheShinobi.HelperMethods
         {
             Item[] items = new Item[]
             {
-                new BulletproofVest(), new AK47()
+                new BulletproofVest(), new AK47(),
+                new EnergyDrink("Red Bull", 50, 10, "You get wings")
             };
             return items;
         }
@@ -137,21 +185,16 @@ namespace TheShinobi.HelperMethods
             return result;
         }
 
-        public static void BuyItem(Player player, Item item, bool eat = false)
+        public static void BuyItem(Player player, Item item, int price, bool eat = false)
         {
-            if (player.Gold >= item.Price)
+            player.Gold -= price;
+            if (eat && item is IConsumable meal)
             {
-                player.Gold -= item.Price;
-                if (eat && item is IConsumable meal)
-                {
-                    meal.Consume(player);
-                }
-                else
-                {
-                    string plural = item.Quantity > 1 ? "s" : "";
-                    ColorConsole.TypeOver($"\t You buy {item.Quantity} {item.Name}{plural} for {item.Price} gold.", ConsoleColor.Yellow);
-                    AddToBackpack(player, item);
-                }
+                meal.Consume(player);
+            }
+            else
+            {
+                AddToBackpack(player, item);
             }
         }
 
@@ -193,7 +236,7 @@ namespace TheShinobi.HelperMethods
                         }
                         else if (item is IConsumable c)
                         {
-                            c.Consume(player);                            
+                            c.Consume(player);
                         }
                         item.Quantity--;
                         if (item.Quantity < 1)
@@ -231,7 +274,39 @@ namespace TheShinobi.HelperMethods
                     if (MakeAChoice(player.Backpack.Count, out int choice, ending: true))
                     {
                         Item item = player.Backpack[choice - 1];
-                        item.Quantity -= HowMany(player, item, out int price, true);
+                        int price = item.Price;
+                        int quantity;
+                        Console.Write("                                              ");
+                        Console.SetCursorPosition(0, Console.CursorTop - 1);
+                        Console.WriteLine($"\t How many {item.Name}s do you want to sell?");
+                        Console.Write("\t > ");
+                        while (true)
+                        {
+                            if (int.TryParse(ColorConsole.ReadLine(), out quantity) && quantity > 0)
+                            {
+                                if (quantity <= item.Quantity && quantity != 69)
+                                {
+                                    price *= quantity;
+                                    string plural = quantity > 1 ? "s" : "";
+                                    ColorConsole.TypeOver($"\t You sell {quantity} {item.Name}{plural} and gain {price} gold.", ConsoleColor.Yellow);
+                                    break;
+                                }
+                                else if (quantity == 69)
+                                {
+                                    ColorConsole.TypeOver("\t You naughty ninja!", ConsoleColor.Red);
+                                }
+                                else
+                                {
+                                    ColorConsole.TypeOver($"\t You cannot sell that many {item.Name}s...", ConsoleColor.Red);
+                                }
+                            }
+                            else
+                            {
+                                ColorConsole.TypeOver($"\t Invalid choice! Sale is canceled...", ConsoleColor.Red);
+                                break;
+                            }
+                        }
+                        item.Quantity -= quantity;
                         player.Gold += price;
                         if (item.Quantity < 1)
                         {
@@ -366,19 +441,23 @@ namespace TheShinobi.HelperMethods
             };
             return weapons;
         }
-        public static Weapon[] GetSevenSwords()
+        public static Weapon[] GetSevenSwords(Player player)
         {
-            Weapon[] weapons = new Weapon[]
+            List<Weapon> weapons = new List<Weapon>()
             {
                 new Kabutowari(),
                 new Hiramekarei(),
-                new Kubikiribōchō(),
                 new Samehada(),
                 new Kiba(),
                 new Nuibari(),
                 new Shibuki()
             };
-            return weapons;
+
+            if (player.Name != "Kakashi Hatake")
+            {
+                weapons.Add(new Kubikiribōchō());
+            }
+            return weapons.ToArray();
         }
         public static Consumable[] GetPotions()
         {

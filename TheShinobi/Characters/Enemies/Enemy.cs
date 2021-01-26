@@ -39,11 +39,11 @@ namespace TheShinobi.Characters.Enemies
             Item item;
             if (Name == "Hocke")
             {
-                item = new EnergyDrink("Monster Energy", 100, 20, "You unleash the beast");
+                item = new EnergyDrink("Monster Energy", 100, 15, "You unleash the beast");
             }
             else if (Name == "Daudi")
             {
-                item = new EnergyDrink("NOCCO", 100, 20, "You are NOCCO enough");
+                item = new EnergyDrink("NOCCO", 100, 12, "You are NOCCO enough");
             }
             else
             {

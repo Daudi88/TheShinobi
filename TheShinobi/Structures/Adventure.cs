@@ -20,8 +20,8 @@ namespace TheShinobi.Structures
         {
             if (!isGraveyardVisited)
             {
-                Weapon[] swords = Utility.GetSevenSwords();
-                Weapon sword = swords[Utility.random.Next(swords.Length)];
+                Weapon[] swords = Utility.GetSevenSwords(player);
+                Weapon sword = swords[Utility.random.Next(swords.Length)];               
                 ColorConsole.WriteLine($"\t You find {sword.Name}, a sword of the Seven Swordsmen!", ConsoleColor.Yellow);
                 Utility.AddToBackpack(player, sword);
                 isGraveyardVisited = true;
@@ -49,11 +49,40 @@ namespace TheShinobi.Structures
         }
         public static void AbuHassan(Player player)
         {
-            Console.WriteLine("\n\t Welcome to Abu Hassan's One stop shop for everything a Shinobi could ever need!");
-            Utility.Shop(player, "ABU HASSAN", Utility.GetAbuHassanItems());
-            ColorConsole.WriteLine("\t Thank you for visiting!\n", ConsoleColor.Yellow);
-            Thread.Sleep(1800);
-            Console.SetWindowPosition(0, Console.CursorTop - Utility.V);
+            Console.WriteLine("\n\t Welcome to Abu Hassan's one stop shop for everything\n\t a real Shinobi from the hood could ever want!");
+            int top = Console.CursorTop;
+            while (true)
+            {
+                Console.SetCursorPosition(0, top);
+                Console.WriteLine("\t What do you want to do?");
+                List<string> options = new List<string>()
+                {
+                    "1. Buy some stuff",
+                    "2. Sell some stuff"
+                };
+                Display.WithFrame(options, "[Yellow]SHOP[/Yellow]", ending: "Leave");
+                int bottom = Console.CursorTop;
+                Action<Player>[] methods = new Action<Player>[]
+                {
+                    Utility.BuySomeStuff, Utility.SellItems
+                };
+
+                if (Utility.MakeAChoice(methods.Length, out int choice, ending: true))
+                {
+                    if (choice != 4 || player.Backpack.Count > 0)
+                    {
+                        Utility.Remove(top, bottom);
+                    }
+                    methods[choice - 1].DynamicInvoke(player);
+                }
+                else
+                {
+                    ColorConsole.WriteLine("\t Thank you for visiting Abu Hassan's!\n", ConsoleColor.Yellow);
+                    Thread.Sleep(1800);
+                    Console.SetWindowPosition(0, Console.CursorTop - Utility.V);
+                    break;
+                }
+            }
         }
     }
 }

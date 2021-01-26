@@ -243,7 +243,7 @@ namespace TheShinobi.HelperMethods
                 }
             }
             Thread.Sleep(800);
-            Console.WriteLine("\n");
+            Console.WriteLine();
         }
 
         public static void Title()
