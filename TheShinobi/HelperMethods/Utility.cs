@@ -174,7 +174,6 @@ namespace TheShinobi.HelperMethods
         {
             Armor[] armors = new Armor[]
             {
-                new Shirt(),
                 new FlakJacket(),
                 new SteamArmor(),
                 new ShinobiBattleArmor(),

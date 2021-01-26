@@ -46,6 +46,11 @@ namespace TheShinobi.Structures
                 ColorConsole.TypeOver("\t Somebody has allready taken the treasure...", ConsoleColor.Red);
             }
         }
+        private static void AbuHassan(Player player)
+        {
+
+
+        }
 
     }
 }
