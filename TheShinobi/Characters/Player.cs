@@ -41,7 +41,7 @@ namespace TheShinobi.Characters
         {
             if (Utility.random.Next(100 + AttackBonus) >= defender.Defence)
             {
-                return Utility.RollDice(Damage);
+                return Utility.RollDice(Damage) + AttackBonus;
             }
             else
             {

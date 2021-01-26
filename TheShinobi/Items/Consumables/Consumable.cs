@@ -1,10 +1,11 @@
 ﻿using TheShinobi.HelperMethods;
 using TheShinobi.Characters;
 using System;
+using TheShinobi.Interfaces;
 
 namespace TheShinobi.Items.Consumables
 {
-    class Consumable : Item
+    class Consumable : Item, IConsumable
     {
         public int Health { get; set; }
         public string Text { get; set; }
@@ -38,7 +39,7 @@ namespace TheShinobi.Items.Consumables
             }
         }
 
-        public override string Bonus()
+        public override string BonusText()
         {
             return $"(+{Health} Hp)";
         }

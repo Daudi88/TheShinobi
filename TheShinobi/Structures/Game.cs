@@ -5,6 +5,8 @@ using System.Media;
 using System.Text;
 using TheShinobi.Characters;
 using TheShinobi.HelperMethods;
+using TheShinobi.Interfaces;
+using TheShinobi.Items;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Consumables;
 using TheShinobi.Items.Weapons;
@@ -51,15 +53,15 @@ namespace TheShinobi.Structures
                 name = ColorConsole.ReadLine();
                 if (name.Any(char.IsDigit))
                 {
-                    ColorConsole.TypeOver("The name cannot contain digits. Try again!", ConsoleColor.Red);
+                    ColorConsole.TypeOver("\t The name cannot contain digits. Try again!", ConsoleColor.Red);
                 }
                 else if (name.Length < 3)
                 {
-                    ColorConsole.TypeOver("The name is too short. Try again!", ConsoleColor.Red);
+                    ColorConsole.TypeOver("\t The name is too short. Try again!", ConsoleColor.Red);
                 }
                 else if (name.Length > 12)
                 {
-                    ColorConsole.TypeOver("The name is too long. Try again!", ConsoleColor.Red);
+                    ColorConsole.TypeOver("\t The name is too long. Try again!", ConsoleColor.Red);
                 }
                 else
                 {
@@ -83,7 +85,7 @@ namespace TheShinobi.Structures
             };
             kakashi.Defence = kakashi.Armor.Defence;
             kakashi.Damage = kakashi.Weapon.Damage;
-            Consumable redBull = new EnergyDrink("Red Bull", 50, 20, "You get wings", 10);
+            Item redBull = new EnergyDrink("Red Bull", 50, 10, "You get wings");
             redBull.Quantity = 100;
             kakashi.Backpack.Add(redBull);
             return kakashi;

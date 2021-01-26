@@ -19,7 +19,7 @@ namespace TheShinobi.Items.Armors
             player.Defence = Defence;
         }
 
-        public override string Bonus()
+        public override string BonusText()
         {
             return $"({Defence} Defence)";
         }

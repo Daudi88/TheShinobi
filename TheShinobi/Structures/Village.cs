@@ -69,7 +69,7 @@ namespace TheShinobi.Structures
                 int ctr = 1;
                 foreach (var meal in meals)
                 {
-                    menu.Add($"{ctr++}. {meal.Name} - {meal.Price}g {meal.Bonus()}");
+                    menu.Add($"{ctr++}. {meal.Name} - {meal.Price}g {meal.BonusText()}");
                 }
                 Display.WithFrame(menu, "[Yellow]MENU[/Yellow]", ending: "Leave");
                 while (true)

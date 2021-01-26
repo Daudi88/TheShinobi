@@ -20,7 +20,7 @@ namespace TheShinobi.Items.Weapons
             player.Damage = Damage;
         }
 
-        public override string Bonus()
+        public override string BonusText()
         {
             return $"({Damage} Damage)";
         }

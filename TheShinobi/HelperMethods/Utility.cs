@@ -15,7 +15,8 @@ namespace TheShinobi.HelperMethods
         public const int left = 9;
         public const int V = 15;
         public static readonly Random random = new Random();
-        public static bool isCaffeine = false;
+        public static bool isEnergyDrink = false;
+        public static string energyBonus = "";
 
         public static int RollDice(string dice)
         {
@@ -39,7 +40,7 @@ namespace TheShinobi.HelperMethods
                 int ctr = 1;
                 foreach (var item in items)
                 {
-                    options.Add($"{ctr++}. {item.Name} - {item.Price}g {item.Bonus()}");
+                    options.Add($"{ctr++}. {item.Name} - {item.Price}g {item.BonusText()}");
                 }
                 Display.WithFrame(options, $"[Yellow]{name.ToUpper()}S[/Yellow]", ending: "Go back to shop menu");
                 int bottom = Console.CursorTop;
@@ -123,7 +124,7 @@ namespace TheShinobi.HelperMethods
             if (player.Gold >= item.Price)
             {
                 player.Gold -= item.Price;
-                if (eat && item is Consumable meal)
+                if (eat && item is IConsumable meal)
                 {
                     meal.Consume(player);
                 }
@@ -172,14 +173,9 @@ namespace TheShinobi.HelperMethods
                         {
                             e.Equip(player, e);
                         }
-                        else if (item is Consumable c)
+                        else if (item is IConsumable c)
                         {
-                            c.Consume(player);
-                            if (item is EnergyDrink energy)
-                            {
-                                isCaffeine = true;
-                                player.AttackBonus += energy.Caffeine;
-                            }
+                            c.Consume(player);                            
                         }
                         item.Quantity--;
                         if (item.Quantity < 1)

@@ -28,10 +28,14 @@ namespace TheShinobi.HelperMethods
                 {
                     //Här skrivs en asterisk ut till skärmen och knapptrycket
                     //sparas till password.
-                    if (text.Length < 1 || text[^1] == ' ')
+                    if (int.TryParse(keyInfo.KeyChar.ToString(), out int digit))
+                    {
+                        Console.Write(digit);
+                    }
+                    else if (text.Length < 1 || text[^1] == ' ')
                     {
                         Console.Write(key.ToString().ToUpper());
-                    }
+                    }                    
                     else if (key == ConsoleKey.Spacebar)
                     {
                         Console.Write(" ");
@@ -43,7 +47,7 @@ namespace TheShinobi.HelperMethods
                     text += keyInfo.KeyChar;
                 }
 
-                //loopen körs så länge man inte trycker på Enter.
+            //loopen körs så länge man inte trycker på Enter.
             } while (key != ConsoleKey.Enter);
             Console.WriteLine();
             Console.CursorVisible = false;

@@ -145,7 +145,7 @@ namespace TheShinobi.HelperMethods
             foreach (var item in player.Backpack)
             {
                 string price = sell ? $"- {item.Price}g " : "";
-                content.Add($"{ctr++}. [Yellow]{item.Quantity} {item.Name} {price}{item.Bonus()}[/Yellow]");
+                content.Add($"{ctr++}. [Yellow]{item.Quantity} {item.Name} {price}{item.BonusText()}[/Yellow]");
             }
             WithFrame(content, "[DarkCyan]BACKPACK[/DarkCyan]", ending: "Close backpack");
         }
@@ -154,13 +154,15 @@ namespace TheShinobi.HelperMethods
         {
             Console.WriteLine();
             string title = "[DarkCyan]DETAILS[/DarkCyan]";
+            string color = Utility.isEnergyDrink ? "DarkCyan" : "Yellow";
             string[] content = new string[]
             {
                 $"Name: [Yellow]{player.Name}[/Yellow]",
                 $"Level: [Yellow]{player.Level}[/Yellow]",
-                $"Hp: [Yellow]{player.Hp}/{player.MaxHp}[/Yellow]",
                 $"Exp: [Yellow]{player.Exp}/{player.MaxExp}[/Yellow]",
-                $"Damage: [Yellow]{player.Damage}[/Yellow]",
+                $"Hp: [{color}]{player.Hp}/{player.MaxHp} {Utility.energyBonus}[/{color}]",
+                $"Defence: [{color}]{player.Defence} {Utility.energyBonus}[/{color}]",
+                $"Damage: [{color}]{player.Damage} {Utility.energyBonus}[/{color}]",
                 $"Gold: [Yellow]{player.Gold}[/Yellow]",
             };
             string title2 = "[DarkCyan]EQUIPPED[/DarkCyan]";
@@ -168,8 +170,8 @@ namespace TheShinobi.HelperMethods
             Weapon weapon = player.Weapon;
             string[] content2 = new string[]
             {
-                $"Armor: [Yellow]{armor.Name} {armor.Bonus()}[/Yellow]",
-                $"Weapon: [Yellow]{weapon.Name} {weapon.Bonus()}[/Yellow]"
+                $"Armor: [Yellow]{armor.Name} {armor.BonusText()}[/Yellow]",
+                $"Weapon: [Yellow]{weapon.Name} {weapon.BonusText()}[/Yellow]"
             };
             WithDevidedFrame(title, content, title2, content2);
             Console.WriteLine("\t [Press enter to continue]");
@@ -182,15 +184,15 @@ namespace TheShinobi.HelperMethods
             Console.WriteLine();
             int top = Console.CursorTop;
             ColorConsole.WriteEmbeddedColor("\t┏━[DarkCyan]MAP[/DarkCyan]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AAA AAA AAA AAA  AAA  AAA[/DarkGray]  [Red]X[/Red]   [DarkGray]AAA AAA AAA A A AAA AAA AA AAA AA AAA AAAA A AA[/DarkGray]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AAA AAA AAA AAA  AAA  AAA[/DarkGray]  [DarkRed]X[/DarkRed]   [DarkGray]AAA AAA AAA A A AAA AAA AA AAA AA AAA AAAA A AA[/DarkGray]┃\n");
             ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]A AAA  AAA AAA AAA AAAAA      AA A AA AAA AAA AAA AAA AAA A AAA A AAA AA AAA A[/DarkGray]┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA[/DarkGray] [DarkCyan]S[/DarkCyan]           [DarkGray]AAA A AAA      AAA AAA AAA AAA AAA AAA AAA AAA AAA AA A AAA AAA[/DarkGray]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA[/DarkGray] [Magenta]⌂[/Magenta]           [DarkGray]AAA A AAA      AAA AAA AAA AAA AAA AAA AAA AAA AAA AA A AAA AAA[/DarkGray]┃\n");
             ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA              AA AAA AAAA                                               AAAA[/DarkGray]┃\n");
             ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA AAA A AA     A AAA AA AA                                                 AA[/DarkGray]┃\n");
             ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA A AAA AAA     AA AA AAA AAA AA AAA     A AA AAA AA AAA AA AAA AAAA      AAA[/DarkGray]┃\n");
             ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]A AAA AAA AAA     AA AAAA AA AAA A AA     AA A AA AAA A AAA AA A AAA        AA[/DarkGray]┃\n");
             ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]A AA AAA A AA                            AAA AA AA[/DarkGray] [Blue]≈≈≈≈≈≈≈[/Blue][DarkGray] A AA AAA          A[/DarkGray]┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA AAA A AA A                             AA AAAA[/DarkGray][Blue] ≈≈≈≈≈≈≈≈≈[/Blue] [Magenta]δ[/Magenta]               [DarkGray]AA[/DarkGray]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA AAA A AA A                             AA AAAA[/DarkGray][Blue] ≈≈≈≈≈≈≈≈≈[/Blue] [Magenta]⌂[/Magenta]               [DarkGray]AA[/DarkGray]┃\n");
             ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]A[/DarkGray] [Yellow]Ω[/Yellow]    [DarkGray]AA A AA[/DarkGray]     [Blue]≈≈≈≈≈[/Blue]       [Green]### ##      # ### #[/Green] [Blue]≈≈≈≈≈≈≈≈≈[/Blue]                [Green]##[/Green]┃\n");
             ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA     AA AA A[/DarkGray]    [Blue]≈≈≈≈≈≈≈≈[/Blue]    [Green]# ## ###     ### ## ###[/Green] [Blue]≈≈≈≈≈≈[/Blue] [Green]## ### ##      ##[/Green]┃\n");
             ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA      AA AAA[/DarkGray]     [Blue]≈≈≈≈≈≈[/Blue]      [Green]# ### #     ### ## # #### ## # ### ## ##      #[/Green]┃\n");
