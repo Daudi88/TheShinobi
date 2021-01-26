@@ -179,7 +179,41 @@ namespace TheShinobi.HelperMethods
 
         internal static void Map(Player player)
         {
-            throw new NotImplementedException();
+            Console.WriteLine();
+            int top = Console.CursorTop;
+            ColorConsole.WriteEmbeddedColor("\t┏━[Yellow]MAP[/Yellow]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AAA AAA AAA AAA  AAA  AAA[/DarkGray]  [Red]X[/Red]   [DarkGray]AAA AAA AAA A A AAA AAA AA AAA AA AAA AAAA A AA[/DarkGray]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]A AAA  AAA AAA AAA AAAAA      AA A AA AAA AAA AAA AAA AAA A AAA A AAA AA AAA A[/DarkGray]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA[/DarkGray] [DarkCyan]S[/DarkCyan]           [DarkGray]AAA A AAA      AAA AAA AAA AAA AAA AAA AAA AAA AAA AA A AAA AAA[/DarkGray]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA              AA AAA AAAA                                               AAAA[/DarkGray]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA AAA A AA     A AAA AA AA                                                 AA[/DarkGray]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA A AAA AAA     AA AA AAA AAA AA AAA     A AA AAA AA AAA AA AAA AAAA      AAA[/DarkGray]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]A AAA AAA AAA     AA AAAA AA AAA A AA     AA A AA AAA A AAA AA A AAA        AA[/DarkGray]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]A AA AAA A AA                            AAA AA AA[/DarkGray] [Blue]≈≈≈≈≈≈≈[/Blue][DarkGray] A AA AAA          A[/DarkGray]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA AAA A AA A                             AA AAAA[/DarkGray][Blue] ≈≈≈≈≈≈≈≈≈[/Blue] [Magenta]δ[/Magenta]               [DarkGray]AA[/DarkGray]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]A[/DarkGray] [Yellow]Ω[/Yellow]    [DarkGray]AA A AA[/DarkGray]     [Blue]≈≈≈≈≈[/Blue]       [Green]### ##      # ### #[/Green] [Blue]≈≈≈≈≈≈≈≈≈[/Blue]                [Green]##[/Green]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA     AA AA A[/DarkGray]    [Blue]≈≈≈≈≈≈≈≈[/Blue]    [Green]# ## ###     ### ## ###[/Green] [Blue]≈≈≈≈≈≈[/Blue] [Green]## ### ##      ##[/Green]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA      AA AAA[/DarkGray]     [Blue]≈≈≈≈≈≈[/Blue]      [Green]# ### #     ### ## # #### ## # ### ## ##      #[/Green]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[Green]##[/Green]       [DarkGray]AA A[/DarkGray]       [Blue]≈≈≈≈[/Blue]     [Green]  ## ###       ## ### # #### ## ### # ###      ##[/Green]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[Green]###                                                                         ##[/Green]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[Green]# ##                                                                       ###[/Green]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[Green]# ### # ## # #### # ## ###[/Green]        [Green]# ### # ### ## ## # ###[/Green]       ┼ ┼ ┼ ┼ ┼ ┼ ┼ ┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[Green]# ### ### # ## # # ### # ##[/Green]      [Green]### ## # ### # ### ### ##[/Green]       ┼ ┼ ┼ ┼ ┼ ┼ ┼┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[Green]#### ### ## # #### ###[/Green] ╔──────────────╗ [Green]## ##### ## ### ##[/Green]      ┼ ┼ ┼ ┼ ┼ ┼ ┼ ┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[Green]##### ### ## ### ### #[/Green] │ Leaf Village │ [Green]# ### ## ### ## # #[/Green]      ┼ ┼ ┼ ┼ ┼ ┼ ┼┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[Green]###### ### ## # ## ###[/Green] ╚──────────────╝  [Green]### ## ### ## ### #[/Green]                [Yellow]Ω[/Yellow] ┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[Green]# ##### ## # ### # ##[/Green] [DarkGray]AAA AA A AAAA A AAA[/DarkGray] [Green]## ### # ### #### #[/Green]                 ┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┃[Green]### ## #### ######[/Green] [DarkGray]AAA AA AAAAA AAA AA AAAA[/DarkGray] [Green]# ### ## # ### ## #### ## ### ####[/Green]┃\n");
+            ColorConsole.WriteEmbeddedColor("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
+            PlayerOnMap(top);
+            Console.Write("\t [Press enter to continue]");
+            Console.ReadLine();
+            Console.SetWindowPosition(0, Console.CursorTop - 20);
+        }
+
+        private static void PlayerOnMap(int top)
+        {
+            
         }
 
         private static int ColorLength(string text)
