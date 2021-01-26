@@ -67,7 +67,11 @@ namespace TheShinobi.HelperMethods
 
         internal static Item[] GetAbuHassanItems()
         {
-            throw new NotImplementedException();
+            Item[] items = new Item[]
+            {
+                new BulletproofVest(), new AK47()
+            };
+            return items;
         }
 
         public static bool MakeAChoice(int length, out int choice, Player player = null, bool std = false, bool ending = false)

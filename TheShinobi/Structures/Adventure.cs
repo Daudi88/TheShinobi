@@ -47,7 +47,7 @@ namespace TheShinobi.Structures
                 ColorConsole.TypeOver("\t Somebody has allready taken the treasure...", ConsoleColor.Red);
             }
         }
-        private static void AbuHassan(Player player)
+        public static void AbuHassan(Player player)
         {
             Console.WriteLine("\n\t Welcome to Abu Hassan's One stop shop for everything a Shinobi could ever need!");
             Utility.Shop(player, "ABU HASSAN'S", Utility.GetAbuHassanItems());

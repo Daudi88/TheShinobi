@@ -27,7 +27,7 @@ namespace TheShinobi.Structures
         public void Test()
         {
             Player player = CharacterCreation();
-            Village.Menu(player);
+            Adventure.AbuHassan(player);
         }
 
         public void Start()

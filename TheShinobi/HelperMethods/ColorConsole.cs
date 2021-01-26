@@ -24,7 +24,7 @@ namespace TheShinobi.HelperMethods
                     Console.Write("\b \b");
                     text = text[0..^1];
                 }
-                else if (!char.IsControl(keyInfo.KeyChar))
+                else if (!char.IsControl(keyInfo.KeyChar)) // kolla efter siffror!
                 {
                     //Här skrivs en asterisk ut till skärmen och knapptrycket
                     //sparas till password.
