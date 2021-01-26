@@ -153,7 +153,7 @@ namespace TheShinobi.HelperMethods
         internal static void Details(Player player)
         {
             Console.WriteLine();
-            string title = "[Yellow]DETAILS[/Yellow]";
+            string title = "[DarkCyan]DETAILS[/DarkCyan]";
             string[] content = new string[]
             {
                 $"Name: [Yellow]{player.Name}[/Yellow]",
@@ -163,7 +163,7 @@ namespace TheShinobi.HelperMethods
                 $"Damage: [Yellow]{player.Damage}[/Yellow]",
                 $"Gold: [Yellow]{player.Gold}[/Yellow]",
             };
-            string title2 = "[Yellow]EQUIPPED[/Yellow]";
+            string title2 = "[DarkCyan]EQUIPPED[/DarkCyan]";
             Armor armor = player.Armor;
             Weapon weapon = player.Weapon;
             string[] content2 = new string[]
@@ -172,8 +172,8 @@ namespace TheShinobi.HelperMethods
                 $"Weapon: [Yellow]{weapon.Name} {weapon.Bonus()}[/Yellow]"
             };
             WithDevidedFrame(title, content, title2, content2);
-            Console.Write("\t [Press enter to continue]");
-            Console.ReadLine();
+            Console.WriteLine("\t [Press enter to continue]");
+            Console.ReadKey(true);
             Console.SetWindowPosition(0, Console.CursorTop - 20);
         }
 
@@ -181,7 +181,7 @@ namespace TheShinobi.HelperMethods
         {
             Console.WriteLine();
             int top = Console.CursorTop;
-            ColorConsole.WriteEmbeddedColor("\t┏━[Yellow]MAP[/Yellow]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n");
+            ColorConsole.WriteEmbeddedColor("\t┏━[DarkCyan]MAP[/DarkCyan]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n");
             ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AAA AAA AAA AAA  AAA  AAA[/DarkGray]  [Red]X[/Red]   [DarkGray]AAA AAA AAA A A AAA AAA AA AAA AA AAA AAAA A AA[/DarkGray]┃\n");
             ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]A AAA  AAA AAA AAA AAAAA      AA A AA AAA AAA AAA AAA AAA A AAA A AAA AA AAA A[/DarkGray]┃\n");
             ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA[/DarkGray] [DarkCyan]S[/DarkCyan]           [DarkGray]AAA A AAA      AAA AAA AAA AAA AAA AAA AAA AAA AAA AA A AAA AAA[/DarkGray]┃\n");
@@ -206,8 +206,8 @@ namespace TheShinobi.HelperMethods
             ColorConsole.WriteEmbeddedColor("\t┃[Green]### ## #### ######[/Green] [DarkGray]AAA AA AAAAA AAA AA AAAA[/DarkGray] [Green]# ### ## # ### ## #### ## ### ####[/Green]┃\n");
             ColorConsole.WriteEmbeddedColor("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
             PlayerOnMap(top);
-            Console.Write("\t [Press enter to continue]");
-            Console.ReadLine();
+            Console.WriteLine("\t [Press enter to continue]");
+            Console.ReadKey(true);
             Console.SetWindowPosition(0, Console.CursorTop - 20);
         }
 

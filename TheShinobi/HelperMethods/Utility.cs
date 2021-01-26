@@ -13,6 +13,7 @@ namespace TheShinobi.HelperMethods
     static class Utility
     {
         public const int left = 9;
+        public const int V = 15;
         public static readonly Random random = new Random();
         public static bool isCaffeine = false;
 
@@ -50,14 +51,11 @@ namespace TheShinobi.HelperMethods
                         item.Quantity = HowMany(player, item, out int price);
                         item.Price = price;
                     }
-                    if (item.Quantity < 1)
-                    {
-                        Remove(top, bottom);
-                    }
-                    else
+                    if (item.Quantity > 0)
                     {
                         BuyItem(player, item, eat);
                     }
+                    Remove(top, bottom);
                 }
                 else
                 {
@@ -122,15 +120,29 @@ namespace TheShinobi.HelperMethods
                 }
                 else
                 {
+                    string plural = item.Quantity > 1 ? "s" : "";
+                    ColorConsole.TypeOver($"\t You buy {item.Quantity} {item.Name}{plural} for {item.Price} gold.", ConsoleColor.Yellow);
                     AddToBackpack(player, item);
                 }
             }
         }
 
-        public static void AddToBackpack(Player player, Item item)
+        public static void AddToBackpack(Player player, Item thing)
         {
-
-            throw new NotImplementedException();
+            if (player.Backpack.Contains(thing))
+            {
+                foreach (var item in player.Backpack)
+                {
+                    if (item.Name == thing.Name)
+                    {
+                        item.Quantity += thing.Quantity;
+                    }
+                }
+            }
+            else
+            {
+                player.Backpack.Add(thing);
+            }
         }
 
         public static bool OpenBackpack(Player player)
@@ -172,7 +184,7 @@ namespace TheShinobi.HelperMethods
                         break;
                     }
                 }
-                Console.SetWindowPosition(0, Console.CursorTop - 20);
+                Console.SetWindowPosition(0, Console.CursorTop - V);
                 return true;
             }
             else
@@ -220,7 +232,7 @@ namespace TheShinobi.HelperMethods
         private static int HowMany(Player player, Item item, out int price, bool sell = false)
         {
             price = item.Price;
-            int amount;
+            int quantity;
             Console.Write("                                              ");
             Console.SetCursorPosition(0, Console.CursorTop - 1);
             string text = sell ? "sell" : "buy";
@@ -228,21 +240,21 @@ namespace TheShinobi.HelperMethods
             Console.Write("\t > ");
             while (true)
             {
-                if (int.TryParse(ColorConsole.ReadLine(), out amount))
+                if (int.TryParse(ColorConsole.ReadLine(), out quantity))
                 {
-                    if (sell && amount <= item.Quantity && amount != 69)
+                    if (sell && quantity <= item.Quantity && quantity != 69)
                     {
-                        price *= amount;
-                        string plural = amount > 1 ? "s" : "";
-                        ColorConsole.TypeOver($"\t You sell {amount} {item.Name}{plural} and gain {price} gold.", ConsoleColor.Yellow);
+                        price *= quantity;
+                        string plural = quantity > 1 ? "s" : "";
+                        ColorConsole.TypeOver($"\t You sell {quantity} {item.Name}{plural} and gain {price} gold.", ConsoleColor.Yellow);
                         break;
                     }
-                    else if (!sell && player.Gold >= price * amount)
+                    else if (!sell && player.Gold >= price * quantity)
                     {
-                        price *= amount;
+                        price *= quantity;
                         break;
                     }
-                    else if (amount == 69)
+                    else if (quantity == 69)
                     {
                         ColorConsole.TypeOver("\t You naughty ninja!", ConsoleColor.Red);
                     }
@@ -258,7 +270,7 @@ namespace TheShinobi.HelperMethods
                     break;
                 }
             }
-            return amount;
+            return quantity;
         }
 
         public static void Remove(int top, int bottom)

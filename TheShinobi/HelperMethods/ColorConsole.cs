@@ -4,13 +4,48 @@ using System;
 
 namespace TheShinobi.HelperMethods
 {
-    class ColorConsole
+    static class ColorConsole
     {
         public static string ReadLine()
         {
             Console.CursorVisible = true;
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            string text = Console.ReadLine().Trim();
+            string text = "";
+            ConsoleKey key;
+            do
+            {
+                //Varje knapptryck sparas i keyInfo men syns inte på skärmen.
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                key = keyInfo.Key;
+                if (key == ConsoleKey.Backspace && text.Length > 0)
+                {
+                    //Om man trycker Backspace raderas asterisken från skärmen
+                    //och tecknet som tidigare sparats i password tas bort.
+                    Console.Write("\b \b");
+                    text = text[0..^1];
+                }
+                else if (!char.IsControl(keyInfo.KeyChar))
+                {
+                    //Här skrivs en asterisk ut till skärmen och knapptrycket
+                    //sparas till password.
+                    if (text.Length < 1 || text[^1] == ' ')
+                    {
+                        Console.Write(key.ToString().ToUpper());
+                    }
+                    else if (key == ConsoleKey.Spacebar)
+                    {
+                        Console.Write(" ");
+                    }
+                    else
+                    {
+                        Console.Write(key.ToString().ToLower());
+                    }
+                    text += keyInfo.KeyChar;
+                }
+
+                //loopen körs så länge man inte trycker på Enter.
+            } while (key != ConsoleKey.Enter);
+            Console.WriteLine();
             Console.CursorVisible = false;
             Console.ForegroundColor = ConsoleColor.White;
             return text;

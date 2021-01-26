@@ -37,6 +37,7 @@ namespace TheShinobi.Structures
                     {                        
                         if (choice > 0)
                         {
+                            Console.SetWindowPosition(0, Console.CursorTop - V);
                             methods[choice - 1].DynamicInvoke(player);
                             break;
                         }
@@ -81,7 +82,7 @@ namespace TheShinobi.Structures
                     {
                         ColorConsole.WriteLine("\t Thank you for visiting Lightning Burger!\n", ConsoleColor.Yellow);
                         Thread.Sleep(1800);
-                        Console.SetWindowPosition(0, Console.CursorTop - 20);
+                        Console.SetWindowPosition(0, Console.CursorTop - V);
                         exit = true;
                         break;
                     }
@@ -91,7 +92,7 @@ namespace TheShinobi.Structures
 
         private static void KonohaHospital(Player player)
         {
-            Console.SetWindowPosition(0, Console.CursorTop - 20);
+            Console.SetWindowPosition(0, Console.CursorTop - V);
         }
 
         private static void NinjaToolShop(Player player)
@@ -128,7 +129,7 @@ namespace TheShinobi.Structures
                 {
                     ColorConsole.WriteLine("\t Thank you for visiting!\n", ConsoleColor.Yellow);
                     Thread.Sleep(1800);
-                    Console.SetWindowPosition(0, Console.CursorTop - 20);
+                    Console.SetWindowPosition(0, Console.CursorTop - V);
                     break;
                 }
             }
