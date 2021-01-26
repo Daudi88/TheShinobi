@@ -15,6 +15,14 @@ namespace TheShinobi.Structures
 {
     class Game
     {
+        /* The class Game contains these methods:
+         * Setup()              - Sets the Console up to use UTF8, title and console window size and Starts the music. 
+         * Test()               - Used for testing parts of the game.
+         * Start()              - Starts the games storyline and opens up the menu with player choises.
+         * CaracterCreation()   - Lets the player choose the name and checks for the name Robin.
+         * GodMode()            - If the player is Robin he becomes Kakashi Hatake and have a lot of extras from the start.
+         * ExitGame()           - Exits the game.
+         */
         public void Setup()
         {
             Console.Title = "The Shinobi";

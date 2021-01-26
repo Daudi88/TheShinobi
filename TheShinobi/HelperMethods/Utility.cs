@@ -12,6 +12,24 @@ namespace TheShinobi.HelperMethods
 {
     static class Utility
     {
+        /* The class Utility contains these methods:
+         * RollDice()           - Uses the Random function to to simulate dice's beeing rolled. 
+         * Shop()               - Method for the shops, ask's the player what items to buy wich are different depending on the shop.
+         * GetAbuHassanItems()  - Gets Abu Hassans special items.
+         * MakeAChoice()        - Lets the player make a choice while listening to see if it is E, B, D or M.
+         * BuyItem()            - Lets the player buy an item and checks if the player can afford the item / items.
+         * AddToBackpack()      - If the player buys or picks up drops from enemies this method is used to add the item / items to the backpack.
+         * OpenBackpack()       - Displays the items inside the backpack and gives the player the option to use items if any.
+         * SellItems()          - Lets the user sell items for gold.
+         * HowMany()            - Asks the player how many of an item to buy and checks if the player have enough gold.
+         * Remove()             - Removes texts in order to make the player experience cleaner.
+         * GetEnemies()         - Instantiates the Enemies the hero can encountered in the game.
+         * GetArmors()          - Instantiates the Armors common enemies use in the game.
+         * GetWeapons()         - Instantiates the Weapons common enemies use in the game.
+         * GetSevenSwords()     - Instantiates the seven legendary swords in the game.
+         * Getpotions()         - Instantiates the common potions used in the game.
+         * GetMeals()           - Instantiates the meals in Lightning Burger Shop.
+         */
         public const int left = 9;
         public const int V = 15;
         public static readonly Random random = new Random();
@@ -35,7 +53,7 @@ namespace TheShinobi.HelperMethods
             while (true)
             {
                 int top = Console.CursorTop;
-                Console.WriteLine($"\t What {name.ToLower()} do you want to buy?");
+                Console.WriteLine($"\t What {name.ToLower()} do you want to buy?"); // item do you want to buy?
                 List<string> options = new List<string>();
                 int ctr = 1;
                 foreach (var item in items)
