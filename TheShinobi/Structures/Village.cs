@@ -117,20 +117,60 @@ namespace TheShinobi.Structures
         private static void KonohaHospital(Player player)
         {
             Console.WriteLine("\n\t Welcome to Konoha Hospital");
+            int top = Console.CursorTop;
+            while (true)
+            {
+                Console.SetCursorPosition(0, top);
+                Console.WriteLine("\t What do you want to do?");
+                List<string> options = new List<string>()
+                {
+                    "1. See Tsunade (300g)",
+                    "2. Buy potions"
+                };
+                Display.WithFrame(options, "[Yellow]HOSPITAL[/Yellow]", ending: "Leave");
+                
+                if (MakeAChoice(options.Count, out int choice, ending: true))
+                {
+                    switch (choice)
+                    {
+                        case 1:
+                            SeeTsunade(player);
+                            break;
+                        case 2:
+                            Remove(left, top);
+                            Store.BuyItems(player, "Potion", Get.Potions());
+                            break;
+                        default:
+                            break;
+                    }
+                    
+                }
+                else
+                {
+                    ColorConsole.WriteLine("\t Thank you for visiting Konoha Hospital!\n", ConsoleColor.Yellow);
+                    Thread.Sleep(1800);
+                    Console.SetWindowPosition(0, Console.CursorTop - V);
+                }
+                Console.SetWindowPosition(0, Console.CursorTop - V);
+            }
+        }
+
+        private static void SeeTsunade(Player player)
+        {
             if (player.Hp == player.MaxHp)
             {
-                ColorConsole.WriteLine("\n\t No need to see the Doctor, you have full health!", ConsoleColor.Yellow);
+                ColorConsole.WriteLine("\n\t No need to see Tsunade, you have full health!", ConsoleColor.Yellow);
             }
-            else if (player.Gold >= 0) // om spelaren inte har tillräckligt med guld, men vad ska priset för ett sjukhusbesök vara?
+            else if (player.Gold >= 300) // om spelaren inte har tillräckligt med guld, men vad ska priset för ett sjukhusbesök vara?
             {
-                player.MaxHp = player.MaxHp; // Hp = MaxHp
-                ColorConsole.WriteLine("\n\t The Doctor patches you up and you feel much better!", ConsoleColor.Yellow); // medical-nin
+                player.Hp = player.MaxHp;
+                player.Gold -= 300;
+                ColorConsole.WriteLine("\n\t Tsunade patches you up and you feel much better!", ConsoleColor.Yellow);
             }
             else
             {
-                ColorConsole.WriteLine("\n\t You dont have enough gold to see the Doctor!", ConsoleColor.Red);
-            }            
-            Console.SetWindowPosition(0, Console.CursorTop - V);
+                ColorConsole.TypeOver("\n\t You don't have enough gold to see Tsunade!", ConsoleColor.Red);
+            }
         }
 
         private static void NinjaToolShop(Player player)
