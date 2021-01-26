@@ -5,7 +5,9 @@ using System.Threading;
 using TheShinobi.Characters;
 using TheShinobi.Interfaces;
 using TheShinobi.Items;
+using TheShinobi.Items.Armors;
 using TheShinobi.Items.Consumables;
+using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.HelperMethods
 {
@@ -71,6 +73,71 @@ namespace TheShinobi.HelperMethods
             Console.Write("\t > ");
         }
 
+        private static void WithDevidedFrame(string title, string[] content, string title2, string[] content2)
+        {
+            string[] contents = new string[content.Length + content2.Length];
+            Array.Copy(content, contents, content.Length);
+            Array.Copy(content2, 0, contents, content.Length, content2.Length);
+            List<int> lengths = new List<int>();
+            foreach (var text in contents)
+            {
+                int length = text.Length;
+                if (text.Contains("["))
+                {
+                    length -= ColorLength(text);
+                }
+                lengths.Add(length);
+            }
+            int width = lengths.OrderByDescending(i => i).First();
+            ColorConsole.WriteEmbeddedColor($"\t┏━{title}");
+            int colorLength = 0;
+            if (title.Contains("["))
+            {
+                colorLength = ColorLength(title);
+            }
+
+            for (int i = 0; i < width - title.Length + colorLength + 2; i++)
+            {
+                Console.Write("━");
+            }
+            Console.WriteLine("┓");
+
+            foreach (string text in content)
+            {
+                colorLength = 0;
+                if (text.Contains("["))
+                {
+                    colorLength = ColorLength(text);
+                }
+                ColorConsole.WriteEmbeddedColor($"\t┃ {text.PadRight(width + colorLength)}  ┃\n");
+            }
+            ColorConsole.WriteEmbeddedColor($"\t┣━{title2}");
+            if (title2.Contains("["))
+            {
+                colorLength = ColorLength(title2);
+            }
+            for (int i = 0; i < width - title2.Length + colorLength + 2; i++)
+            {
+                Console.Write("━");
+            }
+            Console.WriteLine("┫");
+            foreach (string text in content2)
+            {
+                colorLength = 0;
+                if (text.Contains("["))
+                {
+                    colorLength = ColorLength(text);
+                }
+                ColorConsole.WriteEmbeddedColor($"\t┃ {text.PadRight(width + colorLength)}  ┃\n");
+            }
+            Console.Write("\t┗");
+            for (int i = 0; i < width + 3; i++)
+            {
+                Console.Write("━");
+            }
+            Console.WriteLine("┛");
+        }
+
         internal static void Backpack(Player player, bool sell = false)
         {
             List<string> content = new List<string>();
@@ -85,22 +152,29 @@ namespace TheShinobi.HelperMethods
 
         internal static void Details(Player player)
         {
+            Console.WriteLine();
+            string title = "[Yellow]DETAILS[/Yellow]";
             string[] content = new string[]
             {
-                $"Name: [yellow]{player.Name}[/yellow]",
-                $"Level: [yellow]{player.Level}[/yellow]",
-                $"Hp: [yellow]{player.Hp}/{player.MaxHp}[/yellow]",
-                $"Exp: [yellow]{player.Exp}/{player.MaxExp}[/yellow]",
-                $"Damage: [yellow]{player.Damage}[/yellow]",
-                $"Gold: [yellow]{player.Gold}[/yellow]",
+                $"Name: [Yellow]{player.Name}[/Yellow]",
+                $"Level: [Yellow]{player.Level}[/Yellow]",
+                $"Hp: [Yellow]{player.Hp}/{player.MaxHp}[/Yellow]",
+                $"Exp: [Yellow]{player.Exp}/{player.MaxExp}[/Yellow]",
+                $"Damage: [Yellow]{player.Damage}[/Yellow]",
+                $"Gold: [Yellow]{player.Gold}[/Yellow]",
             };
-
+            string title2 = "[Yellow]EQUIPPED[/Yellow]";
+            Armor armor = player.Armor;
+            Weapon weapon = player.Weapon;
             string[] content2 = new string[]
             {
-                $"Armor: [yellow]{player.Armor}[/yellow]",
-                $"Weapon: [yellow]{player.Weapon}[/yellow]"
+                $"Armor: [Yellow]{armor.Name} {armor.Bonus()}[/Yellow]",
+                $"Weapon: [Yellow]{weapon.Name} {weapon.Bonus()}[/Yellow]"
             };
-
+            WithDevidedFrame(title, content, title2, content2);
+            Console.Write("\t [Press enter to continue]");
+            Console.ReadLine();
+            Console.SetWindowPosition(0, Console.CursorTop - 20);
         }
 
         internal static void Map(Player player)
