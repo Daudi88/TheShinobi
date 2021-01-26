@@ -102,6 +102,21 @@ namespace TheShinobi.Structures
         // HÅKAN
         private static void KonohaHospital(Player player)
         {
+            Console.WriteLine("\n\t Welcome to the Konoha Hospital");
+            if (player.Hp == player.MaxHp)
+            {
+                ColorConsole.WriteLine("\n\t No need to see the Doctor, you have full health!", ConsoleColor.Yellow);
+            }
+            else if (player.Gold <= )// om spelaren inte har tillräckligt med guld, men vad ska priset för ett sjukhusbesök vara?
+            {
+                ColorConsole.WriteLine("\n\t You dont have enough gold to see the Doctor!", ConsoleColor.Red);
+            }
+            else
+            {
+                player.MaxHp = player.MaxHp;
+                ColorConsole.WriteLine("\n\t The Doctor patches you up and you feel much better!", ConsoleColor.Yellow);
+            }
+                
             Console.SetWindowPosition(0, Console.CursorTop - V);
         }
 
