@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using TheShinobi.Characters;
 using TheShinobi.Characters.Enemies;
 using TheShinobi.Items;
@@ -12,6 +10,16 @@ namespace TheShinobi.HelperMethods
 {
     static class Get
     {
+        /*
+         * GetEnemies()         - Instantiates the Enemies the hero can encountered in the game.
+         * GetArmors()          - Instantiates the Armors common enemies use in the game.
+         * GetWeapons()         - Instantiates the Weapons common enemies use in the game.
+         * GetSevenSwords()     - Instantiates the seven legendary swords in the game.
+         * Getpotions()         - Instantiates the common potions used in the game.
+         * GetMeals()           - Instantiates the meals in Lightning Burger Shop.
+         * GetAbuHassanItems()  - Gets Abu Hassan's special items.
+         */
+
         public static Enemy[] Enemies()
         {
             Enemy[] enemies = new Enemy[]

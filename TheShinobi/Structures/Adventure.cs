@@ -67,7 +67,7 @@ namespace TheShinobi.Structures
                     Utility.BuySomeStuff, Utility.SellItems
                 };
 
-                if (Utility.MakeAChoice(methods.Length, out int choice, ending: true))
+                if (Utility.ChooseANumber(methods.Length, out int choice, ending: true))
                 {
                     if (choice != 4 || player.Backpack.Count > 0)
                     {

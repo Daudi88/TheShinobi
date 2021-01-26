@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using TheShinobi.Characters;
 using TheShinobi.HelperMethods;
+using TheShinobi.Items;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Consumables;
 using TheShinobi.Items.Weapons;
@@ -50,7 +51,7 @@ namespace TheShinobi.Structures
                 };
                 while (true)
                 {
-                    if (MakeAChoice(methods.Length, out int choice, player, true, true))
+                    if (ChooseANumber(methods.Length, out int choice, player, true, true))
                     {
                         if (choice > 0)
                         {
@@ -91,7 +92,7 @@ namespace TheShinobi.Structures
                 Display.WithFrame(menu, "[Yellow]MENU[/Yellow]", ending: "Leave");
                 while (true)
                 {
-                    if (MakeAChoice(meals.Length, out int choice, ending: true))
+                    if (ChooseANumber(meals.Length, out int choice, ending: true))
                     {
                         Consumable meal = meals[choice - 1];
                         BuyItem(player, meal, meal.Price, true);
@@ -148,19 +149,28 @@ namespace TheShinobi.Structures
                     "3. Sell Items"
                 };
                 Display.WithFrame(options, "[Yellow]SHOP[/Yellow]", ending: "Leave");
-                int bottom = Console.CursorTop;
-                Action<Player>[] methods = new Action<Player>[]
+                if (ChooseANumber(options.Count, out int choice, ending: true))
                 {
-                    BuyArmor, BuyWeapons, SellItems
-                };
-
-                if (MakeAChoice(methods.Length, out int choice, ending: true))
-                {
-                    if (choice != 4 || player.Backpack.Count > 0)
+                    switch (choice)
                     {
-                        Remove(top, bottom);
+                        case 1:
+                            Remove(left, top);
+                            Store.BuyItems(player, "armor", Get.Armors());
+                            break;
+                        case 2:
+                            Remove(left, top);
+                            Store.BuyItems(player, "weapon", Get.Weapons());
+                            break;
+                        case 3:
+                            if (player.Backpack.Count > 0)
+                            {
+                                Remove(left, top);
+                            }
+                            Store.SellItems(player);
+                            break;
+                        default:
+                            break;
                     }
-                    methods[choice - 1].DynamicInvoke(player);
                 }
                 else
                 {
@@ -170,24 +180,6 @@ namespace TheShinobi.Structures
                     break;
                 }
             }
-        }
-
-        private static void BuyArmor(Player player)
-        {
-            Armor[] armors = Get.Armors();
-            Shop(player, "armor", armors);
-        }
-
-        private static void BuyWeapons(Player player)
-        {
-            Weapon[] weapons = Get.Weapons();
-            Shop(player, "weapon", weapons);
-        }
-
-        private static void BuyPotions(Player player)
-        {
-            Consumable[] potions = Get.Potions();
-            Shop(player, "potion", potions);
         }
     }
 }
