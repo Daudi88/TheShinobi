@@ -50,7 +50,7 @@ namespace TheShinobi.Structures
         public static void AbuHassan(Player player)
         {
             Console.WriteLine("\n\t Welcome to Abu Hassan's One stop shop for everything a Shinobi could ever need!");
-            Utility.Shop(player, "ABU HASSAN'S", Utility.GetAbuHassanItems());
+            Utility.Shop(player, "ABU HASSAN", Utility.GetAbuHassanItems());
             ColorConsole.WriteLine("\t Thank you for visiting!\n", ConsoleColor.Yellow);
             Thread.Sleep(1800);
             Console.SetWindowPosition(0, Console.CursorTop - Utility.V);

@@ -34,7 +34,7 @@ namespace TheShinobi.HelperMethods
             while (true)
             {
                 int top = Console.CursorTop;
-                Console.WriteLine($"\t What {name.ToLower()} do you want to buy?");
+                Console.WriteLine($"\t What {name.ToLower()} do you want to buy?"); // item do you want to buy?
                 List<string> options = new List<string>();
                 int ctr = 1;
                 foreach (var item in items)
