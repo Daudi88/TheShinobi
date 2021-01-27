@@ -20,8 +20,10 @@ namespace TheShinobi.Structures
          * ...
          */
 
-        private static bool isTreasureTaken = false;
-        private static bool isGraveyardVisited = false;
+        private static bool isTreasureTaken;
+        private static bool isGraveyardVisited;
+        private static bool haveYouMetHim;
+
         public static void Menu(Player player)
         {
             var positions = Get.Positions();
@@ -33,7 +35,7 @@ namespace TheShinobi.Structures
             if (!isGraveyardVisited)
             {
                 Weapon[] swords = Get.SevenSwords(player);
-                Weapon sword = swords[Utility.random.Next(swords.Length)];               
+                Weapon sword = swords[Utility.random.Next(swords.Length)];
                 ColorConsole.WriteLine($"\t You find {sword.Name}, a sword of the Seven Swordsmen!", ConsoleColor.Yellow);
                 Utility.AddToBackpack(player, sword);
                 isGraveyardVisited = true;
@@ -109,34 +111,31 @@ namespace TheShinobi.Structures
                 Weapon weapon = new Kusarigama();
                 Armor armor = new InfiniteArmor();
                 Consumable[] potions = Get.Potions();
-                Consumable potion = (Consumable)potions.Select(p => p.Name.Contains("Superior"));
-                potion.Quantity = 10;
-                Console.WriteLine();
-                string[] content = new string[]
-                {
-                "An old man with white beard appears in front of you.",
-                "The man, dressed in red and white, looks upon you as if",
-                "he was expecting your arrival with a big smile on his face.",
-                $"[Magenta]{player.Name}, he says while smoking on his pipe...[/Magenta]",
-                "You instantly recognice the old man as Hiruzen Sarutobi",
-                "[Magenta]There is little time and you need to go on with[/Magenta]",
-                "[Magenta]your quest to save Hanare![/Magenta]",
-                "[Magenta]Take these items and be on your way![/Magenta]",
-                $"You got a {weapon.Name}, a {armor.Name} and 10 potions."
-                };
-                Display.WithFrame(content.ToList(), "[Magenta]HIRUZEN[/Magenta]");
+                Consumable potion = potions.Where(p => p.Name.Contains("Superior")).First();
+                potion.Quantity = Utility.random.Next(5, 11);
+                string story = "\n\t An old man with white beard appears in front of you." +
+                    "\n\t The man, dressed in red and white, looks upon you as if" +
+                    "\n\t he was expecting your arrival with a big smile on his face." +
+                    "\n\t You instantly recognice the old man as Hiruzen Sarutobi!";        
+                Display.Delayed(story, color: ConsoleColor.Yellow);
+                string story2 = $"\n\t {player.Name}, he says while smoking on his pipe..." +
+                    "\n\t There is little time and you need to go on with your quest" +
+                    "\n\t to save Hanare!Take these items and be on your way!";
+                Display.Delayed(story2, color: ConsoleColor.Yellow);
+                ColorConsole.WriteEmbeddedColor($"\n\t You get a [DarkCyan]{weapon.Name}[/DarkCyan], " +
+                    $"an [DarkCyan]{armor.Name}[/DarkCyan] and [DarkCyan]{potion.Quantity} {potion.Name}s[/DarkCyan].\n");
                 player.Backpack.Add(weapon);
                 player.Backpack.Add(armor);
                 player.Backpack.Add(potion);
                 haveYouMetHim = true;
+                Console.WriteLine("\t [Press enter to continue]");
+                Console.ReadKey(true);
             }
             else
             {
-                Console.WriteLine("\n\t Hiruzen smokes his pipe...");
+                ColorConsole.TypeOver("\t Hiruzen smokes his pipe...", ConsoleColor.Yellow);
             }
-            Console.WriteLine("\t [Press enter to continue]");
-            Console.ReadLine();
-            Console.SetWindowPosition(0, Console.CursorTop - 30);
+            //Console.SetWindowPosition(0, Console.CursorTop - 30);
 
         }
     }

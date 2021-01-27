@@ -42,6 +42,7 @@ namespace TheShinobi.Structures
         {
             Player player = CharacterCreation();
             Adventure.MeetHiruzen(player);
+            Console.ReadLine();
         }
 
         public void Start()
