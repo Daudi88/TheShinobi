@@ -8,6 +8,8 @@ using TheShinobi.Items.Armors;
 using TheShinobi.Items.Consumables;
 using System.Linq;
 using TheShinobi.Characters.Enemies;
+using System.Media;
+using System.IO;
 
 namespace TheShinobi.Structures
 {
@@ -82,6 +84,9 @@ namespace TheShinobi.Structures
             player.Pos += 1.0;
             if (!isGraveyardVisited)
             {
+                string soundLocation = Path.Combine(Environment.CurrentDirectory, @"C:\test\TreasureFinal10db.wav"); // (Environment.CurrentDirectory, @"..\..\..\..\NarutoFinal.Wav");
+                SoundPlayer playerTreasure = new SoundPlayer(soundLocation);
+                playerTreasure.PlayLooping();
                 Weapon[] swords = Get.SevenSwords(player);
                 Weapon sword = swords[Utility.random.Next(swords.Length)];
                 ColorConsole.WriteLine($"\t You find {sword.Name}, a sword of the Seven Swordsmen!", ConsoleColor.Yellow);
@@ -98,6 +103,9 @@ namespace TheShinobi.Structures
         public static bool ToTreasure(Player player)
         {
             player.Pos += 0.1;
+            string soundLocation = Path.Combine(Environment.CurrentDirectory, @"C:\test\TreasureFinal10db.wav"); // (Environment.CurrentDirectory, @"..\..\..\..\NarutoFinal.Wav");
+            SoundPlayer playerTreasure = new SoundPlayer(soundLocation);
+            playerTreasure.PlayLooping();
             if (!isTreasureTaken)
             {
                 int treasure = Utility.random.Next(1000, 10000);
@@ -115,6 +123,9 @@ namespace TheShinobi.Structures
         public static bool ToAbuHassan(Player player)
         {
             player.Pos -= 1.0;
+            string soundLocation = Path.Combine(Environment.CurrentDirectory, @"C:\test\AbuHassanFinal.wav"); // (Environment.CurrentDirectory, @"..\..\..\..\NarutoFinal.Wav");
+            SoundPlayer playerTreasure = new SoundPlayer(soundLocation);
+            playerTreasure.PlayLooping();
             Console.WriteLine("\n\t Welcome to Abu Hassan's one stop shop for everything\n\t a real Shinobi from the hood could ever want!");
             int top = Console.CursorTop;
             int left = 9;
@@ -163,6 +174,11 @@ namespace TheShinobi.Structures
         {
             player.Pos -= 1.0;
             if (!isHiruzenVisited)
+
+            string soundLocation = Path.Combine(Environment.CurrentDirectory, @"C:\test\NarutoGeneralFinal.wav"); // (Environment.CurrentDirectory, @"..\..\..\..\NarutoFinal.Wav");
+            SoundPlayer playerTreasure = new SoundPlayer(soundLocation);
+            playerTreasure.PlayLooping();
+            if (!haveYouMetHim)
             {
                 Weapon weapon = new Kusarigama();
                 Armor armor = new InfiniteArmor();
@@ -274,6 +290,15 @@ namespace TheShinobi.Structures
                 //Battle();
             }
         }
+        public static string[] NoFightStory()
+        {
+            string soundLocation = Path.Combine(Environment.CurrentDirectory, @"C:\test\NarutoGeneralFinal.wav"); // (Environment.CurrentDirectory, @"..\..\..\..\NarutoFinal.Wav");
+            SoundPlayer playerTreasure = new SoundPlayer(soundLocation);
+            playerTreasure.PlayLooping();
+            string[] noFightStory = new string[]
+            {
+                 "\n\t As you walk up the mountain trail you sense a group of ninjas from the Uchicha clan ahead." +
+                $"\n\t You easily sneak past them on your way to rescue Hanare!",
 
 
         private static void BossEncounter(Player player)

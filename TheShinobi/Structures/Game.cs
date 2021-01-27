@@ -33,7 +33,7 @@ namespace TheShinobi.Structures
             Console.SetWindowSize(130, 50);
             Console.OutputEncoding = Encoding.UTF8;
             Console.CursorVisible = false;
-            string soundLocation = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\NarutoFinal.Wav");
+            string soundLocation = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\NarutoFinal.Wav"); // (Environment.CurrentDirectory, @"..\..\..\..\NarutoFinal.Wav");
             SoundPlayer player = new SoundPlayer(soundLocation);
             player.PlayLooping();
         }
