@@ -40,10 +40,8 @@ namespace TheShinobi.Structures
 
         public void Test()
         {
-            var positions = Get.Positions();
-            string options = positions[0.1].Item3;
-            Console.WriteLine(options);
-            Console.ReadLine();
+            Player player = CharacterCreation();
+            Adventure.MeetHiruzen(player);
         }
 
         public void Start()

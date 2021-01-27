@@ -4,6 +4,9 @@ using TheShinobi.Items.Weapons;
 using System;
 using System.Threading;
 using System.Collections.Generic;
+using TheShinobi.Items.Armors;
+using TheShinobi.Items.Consumables;
+using System.Linq;
 
 namespace TheShinobi.Structures
 {
@@ -98,6 +101,43 @@ namespace TheShinobi.Structures
                     break;
                 }
             }
+        }
+        public static void MeetHiruzen(Player player)
+        {
+            if (!haveYouMetHim)
+            {
+                Weapon weapon = new Kusarigama();
+                Armor armor = new InfiniteArmor();
+                Consumable[] potions = Get.Potions();
+                Consumable potion = (Consumable)potions.Select(p => p.Name.Contains("Superior"));
+                potion.Quantity = 10;
+                Console.WriteLine();
+                string[] content = new string[]
+                {
+                "An old man with white beard appears in front of you.",
+                "The man, dressed in red and white, looks upon you as if",
+                "he was expecting your arrival with a big smile on his face.",
+                $"[Magenta]{player.Name}, he says while smoking on his pipe...[/Magenta]",
+                "You instantly recognice the old man as Hiruzen Sarutobi",
+                "[Magenta]There is little time and you need to go on with[/Magenta]",
+                "[Magenta]your quest to save Hanare![/Magenta]",
+                "[Magenta]Take these items and be on your way![/Magenta]",
+                $"You got a {weapon.Name}, a {armor.Name} and 10 potions."
+                };
+                Display.WithFrame(content.ToList(), "[Magenta]HIRUZEN[/Magenta]");
+                player.Backpack.Add(weapon);
+                player.Backpack.Add(armor);
+                player.Backpack.Add(potion);
+                haveYouMetHim = true;
+            }
+            else
+            {
+                Console.WriteLine("\n\t Hiruzen smokes his pipe...");
+            }
+            Console.WriteLine("\t [Press enter to continue]");
+            Console.ReadLine();
+            Console.SetWindowPosition(0, Console.CursorTop - 30);
+
         }
     }
 }
@@ -961,42 +1001,7 @@ namespace TheShinobi.Structures
 
 
 
-//        private static void MeetHiruzen(Player player)
-//        {
-//            if (!haveYouMetHim)
-//            {
-//                Weapon weapon = new ChakraBlade();
-//                Armor armor = new ChakraArmor();
-//                Potion potion = new HealingPotion();
-//                potion.Quantity = 10;
-//                Console.WriteLine();
-//                string[] content = new string[]
-//                {
-//                "An old man with white beard appears in front of you.",
-//                "The man, dressed in red and white, looks upon you as if",
-//                "he was expecting your arrival with a big smile on his face.",
-//                $"[magenta]{player.Name}, he says while smoking on his pipe...[/magenta]",
-//                "You instantly recognice the old man as Hiruzen Sarutobi",
-//                "[magenta]There is little time and you need to go on with[/magenta]",
-//                "[magenta]your quest to save Hanare![/magenta]",
-//                "[magenta]Take these items and be on your way![/magenta]",
-//                $"You got a {weapon.Name}, a {armor.Name} and 10 potions."
-//                };
-//                Display.WithFrame("[magenta]HIRUZEN[/magenta]", content);
-//                player.Backpack.Add(weapon);
-//                player.Backpack.Add(armor);
-//                player.Backpack.Add(potion);
-//                haveYouMetHim = true;
-//            }
-//            else
-//            {
-//                Console.WriteLine("\n\t Hiruzen smokes his pipe...");
-//            }
-//            Console.WriteLine("\t [Press enter to continue]");
-//            Console.ReadLine();
-//            Console.SetWindowPosition(0, Console.CursorTop - 30);
-
-//        }
+//        
 
 //        private static void BossEncounter(Player player)
 //        {
