@@ -233,7 +233,7 @@ namespace TheShinobi.HelperMethods
             return items;
         }
 
-        public static string[] NoFightStory()
+        public static string[] NoFightStories()
         {
             string[] stories = new string[]
             {
@@ -260,7 +260,7 @@ namespace TheShinobi.HelperMethods
             return stories;
         }
 
-        public static string[] FightStory(Enemy enemy)
+        public static string[] FightStories(Enemy enemy)
         {
             string[] stories = new string[]
             {

@@ -1,5 +1,6 @@
 ﻿using System;
 using TheShinobi.Characters;
+using TheShinobi.HelperMethods;
 using TheShinobi.Interfaces;
 
 namespace TheShinobi.Items.Weapons
@@ -16,7 +17,7 @@ namespace TheShinobi.Items.Weapons
                 player.Weapon.Quantity++;
                 player.Backpack.Add(player.Weapon);
             }
-            Console.WriteLine("\t You equipped {Name} with {Damage} damage!");
+            ColorConsole.TypeOver($"\t You equipped {Name} with {Damage} damage!", ConsoleColor.Yellow);
             player.Weapon = (Weapon)item;
             player.Damage = Damage;
         }

@@ -14,21 +14,15 @@ namespace TheShinobi.HelperMethods
             ConsoleKey key;
             do
             {
-                // Varje knapptryck sparas i keyInfo men syns inte på skärmen.
-                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-                
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);              
                 key = keyInfo.Key;
                 if (key == ConsoleKey.Backspace && text.Length > 0)
                 {
-                    // Om man trycker Backspace raderas asterisken från skärmen
-                    // och tecknet som tidigare sparats i password tas bort.
                     Console.Write("\b \b");
                     text = text[0..^1];
                 }
-                else if (!char.IsControl(keyInfo.KeyChar)) // kolla efter siffror!
+                else if (!char.IsControl(keyInfo.KeyChar))
                 {
-                    // Här skrivs en asterisk ut till skärmen och knapptrycket
-                    // sparas till password.
                     if (int.TryParse(keyInfo.KeyChar.ToString(), out int digit))
                     {
                         Console.Write(digit);
@@ -47,8 +41,6 @@ namespace TheShinobi.HelperMethods
                     }
                     text += keyInfo.KeyChar;
                 }
-
-            // Loopen körs så länge man inte trycker på Enter.
             } while (key != ConsoleKey.Enter);
             Console.WriteLine();
             Console.CursorVisible = false;
@@ -70,7 +62,7 @@ namespace TheShinobi.HelperMethods
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-        public static void WriteEmbeddedColor(string text)
+        public static void WriteEmbedded(string text)
         {
             Regex colorRegex = new Regex(@"\[(?<color>.*?)\](?<text>[^[]*)\[/\k<color>\]");
             while (true)
@@ -90,11 +82,32 @@ namespace TheShinobi.HelperMethods
             }
         }
 
+        public static void LineDelayed(string text, ConsoleColor color = ConsoleColor.White, int delay = 40)
+        {
+            bool isKeyPressed = false;
+            Thread.Sleep(delay);
+            foreach (var letter in text)
+            {
+                Write(letter.ToString(), color);
+                if (Console.KeyAvailable)
+                {
+                    isKeyPressed = true;
+                }
+
+                if (!isKeyPressed)
+                {
+                    Thread.Sleep(delay);
+                }
+            }
+            Thread.Sleep(800);
+            Console.WriteLine();
+        }
+
         public static void TypeOver(string message, ConsoleColor color, int time = 2000)
         {
-            int top = Console.CursorTop;
             int left = 9;
-            WriteLine(message, color);
+            int top = Console.CursorTop;
+            LineDelayed(message, color);
             Thread.Sleep(time);
             Console.SetCursorPosition(left, top--);
             for (int j = 0; j < message.Length; j++)

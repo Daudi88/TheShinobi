@@ -45,7 +45,7 @@ namespace TheShinobi.HelperMethods
             }
             int width = lengths.OrderByDescending(i => i).First();
 
-            ColorConsole.WriteEmbeddedColor($"\t┏━{title}");
+            ColorConsole.WriteEmbedded($"\t┏━{title}");
             int colorLength = 0;
             if (title.Contains("["))
             {
@@ -64,7 +64,7 @@ namespace TheShinobi.HelperMethods
                 {
                     colorLength = Get.ColorLength(text);
                 }
-                ColorConsole.WriteEmbeddedColor($"\t┃ {text.PadRight(width + colorLength)}  ┃\n");
+                ColorConsole.WriteEmbedded($"\t┃ {text.PadRight(width + colorLength)}  ┃\n");
             }
             Console.Write("\t┗");
             for (int i = 0; i < width + 3; i++)
@@ -91,7 +91,7 @@ namespace TheShinobi.HelperMethods
                 lengths.Add(length);
             }
             int width = lengths.OrderByDescending(i => i).First();
-            ColorConsole.WriteEmbeddedColor($"\t┏━{title}");
+            ColorConsole.WriteEmbedded($"\t┏━{title}");
             int colorLength = 0;
             if (title.Contains("["))
             {
@@ -111,9 +111,9 @@ namespace TheShinobi.HelperMethods
                 {
                     colorLength = Get.ColorLength(text);
                 }
-                ColorConsole.WriteEmbeddedColor($"\t┃ {text.PadRight(width + colorLength)}  ┃\n");
+                ColorConsole.WriteEmbedded($"\t┃ {text.PadRight(width + colorLength)}  ┃\n");
             }
-            ColorConsole.WriteEmbeddedColor($"\t┣━{title2}");
+            ColorConsole.WriteEmbedded($"\t┣━{title2}");
             if (title2.Contains("["))
             {
                 colorLength = Get.ColorLength(title2);
@@ -130,7 +130,7 @@ namespace TheShinobi.HelperMethods
                 {
                     colorLength = Get.ColorLength(text);
                 }
-                ColorConsole.WriteEmbeddedColor($"\t┃ {text.PadRight(width + colorLength)}  ┃\n");
+                ColorConsole.WriteEmbedded($"\t┃ {text.PadRight(width + colorLength)}  ┃\n");
             }
             Console.Write("\t┗");
             for (int i = 0; i < width + 3; i++)
@@ -185,30 +185,30 @@ namespace TheShinobi.HelperMethods
         {
             Console.WriteLine();
             int top = Console.CursorTop;
-            ColorConsole.WriteEmbeddedColor("\t┏━[DarkCyan]MAP[/DarkCyan]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AAA AAA AAA AAA  AAA  AAA[/DarkGray]  [DarkRed]X[/DarkRed]   [DarkGray]AAA AAA AAA A A AAA AAA AA AAA AA AAA AAAA A AA[/DarkGray]┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]A AAA  AAA AAA AAA AAAAA      AA A AA AAA AAA AAA AAA AAA A AAA A AAA AA AAA A[/DarkGray]┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA[/DarkGray] [Magenta]⌂[/Magenta]           [DarkGray]AAA A AAA      AAA AAA AAA AAA AAA AAA AAA AAA AAA AA A AAA AAA[/DarkGray]┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA              AA AAA AAAA                                               AAAA[/DarkGray]┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA AAA A AA     A AAA AA AA                                                 AA[/DarkGray]┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA A AAA AAA     AA AA AAA AAA AA AAA     A AA AAA AA AAA AA AAA AAAA      AAA[/DarkGray]┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]A AAA AAA AAA     AA AAAA AA AAA A AA     AA A AA AAA A AAA AA A AAA        AA[/DarkGray]┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]A AA AAA A AA                            AAA AA AA[/DarkGray] [Blue]≈≈≈≈≈≈≈[/Blue][DarkGray] A AA AAA          A[/DarkGray]┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA AAA A AA A                             AA AAAA[/DarkGray][Blue] ≈≈≈≈≈≈≈≈≈[/Blue] [Magenta]⌂[/Magenta]               [DarkGray]AA[/DarkGray]┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]A[/DarkGray] [Yellow]Ω[/Yellow]    [DarkGray]AA A AA[/DarkGray]     [Blue]≈≈≈≈≈[/Blue]       [Green]### ##      # ### #[/Green] [Blue]≈≈≈≈≈≈≈≈≈[/Blue]                [Green]##[/Green]┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA     AA AA A[/DarkGray]    [Blue]≈≈≈≈≈≈≈≈[/Blue]    [Green]# ## ###     ### ## ###[/Green] [Blue]≈≈≈≈≈≈[/Blue] [Green]## ### ##      ##[/Green]┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[DarkGray]AA      AA AAA[/DarkGray]     [Blue]≈≈≈≈≈≈[/Blue]      [Green]# ### #     ### ## # #### ## # ### ## ##      #[/Green]┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[Green]##[/Green]       [DarkGray]AA A[/DarkGray]       [Blue]≈≈≈≈[/Blue]     [Green]  ## ###       ## ### # #### ## ### # ###      ##[/Green]┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[Green]###                                                                         ##[/Green]┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[Green]# ##                                                                       ###[/Green]┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[Green]# ### # ## # #### # ## ###[/Green]        [Green]# ### # ### ## ## # ###[/Green]       ┼ ┼ ┼ ┼ ┼ ┼ ┼ ┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[Green]# ### ### # ## # # ### # ##[/Green]      [Green]### ## # ### # ### ### ##[/Green]       ┼ ┼ ┼ ┼ ┼ ┼ ┼┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[Green]#### ### ## # #### ###[/Green] ╔──────────────╗ [Green]## ##### ## ### ##[/Green]      ┼ ┼ ┼ ┼ ┼ ┼ ┼ ┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[Green]##### ### ## ### ### #[/Green] │ [Yellow]Leaf Village[/Yellow] │ [Green]# ### ## ### ## # #[/Green]      ┼ ┼ ┼ ┼ ┼ ┼ ┼┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[Green]###### ### ## # ## ###[/Green] ╚──────────────╝  [Green]### ## ### ## ### #[/Green]                [Yellow]Ω[/Yellow] ┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[Green]# ##### ## # ### # ##[/Green] [DarkGray]AAA AA A AAAA A AAA[/DarkGray] [Green]## ### # ### #### #[/Green]                 ┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┃[Green]### ## #### ######[/Green] [DarkGray]AAA AA AAAAA AAA AA AAAA[/DarkGray] [Green]# ### ## # ### ## #### ## ### ####[/Green]┃\n");
-            ColorConsole.WriteEmbeddedColor("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
+            ColorConsole.WriteEmbedded("\t┏━[DarkCyan]MAP[/DarkCyan]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n");
+            ColorConsole.WriteEmbedded("\t┃[DarkGray]AAA AAA AAA AAA  AAA  AAA[/DarkGray]  [DarkRed]X[/DarkRed]   [DarkGray]AAA AAA AAA A A AAA AAA AA AAA AA AAA AAAA A AA[/DarkGray]┃\n");
+            ColorConsole.WriteEmbedded("\t┃[DarkGray]A AAA  AAA AAA AAA AAAAA      AA A AA AAA AAA AAA AAA AAA A AAA A AAA AA AAA A[/DarkGray]┃\n");
+            ColorConsole.WriteEmbedded("\t┃[DarkGray]AA[/DarkGray] [Magenta]⌂[/Magenta]           [DarkGray]AAA A AAA      AAA AAA AAA AAA AAA AAA AAA AAA AAA AA A AAA AAA[/DarkGray]┃\n");
+            ColorConsole.WriteEmbedded("\t┃[DarkGray]AA              AA AAA AAAA                                               AAAA[/DarkGray]┃\n");
+            ColorConsole.WriteEmbedded("\t┃[DarkGray]AA AAA A AA     A AAA AA AA                                                 AA[/DarkGray]┃\n");
+            ColorConsole.WriteEmbedded("\t┃[DarkGray]AA A AAA AAA     AA AA AAA AAA AA AAA     A AA AAA AA AAA AA AAA AAAA      AAA[/DarkGray]┃\n");
+            ColorConsole.WriteEmbedded("\t┃[DarkGray]A AAA AAA AAA     AA AAAA AA AAA A AA     AA A AA AAA A AAA AA A AAA        AA[/DarkGray]┃\n");
+            ColorConsole.WriteEmbedded("\t┃[DarkGray]A AA AAA A AA                            AAA AA AA[/DarkGray] [Blue]≈≈≈≈≈≈≈[/Blue][DarkGray] A AA AAA          A[/DarkGray]┃\n");
+            ColorConsole.WriteEmbedded("\t┃[DarkGray]AA AAA A AA A                             AA AAAA[/DarkGray][Blue] ≈≈≈≈≈≈≈≈≈[/Blue] [Magenta]⌂[/Magenta]               [DarkGray]AA[/DarkGray]┃\n");
+            ColorConsole.WriteEmbedded("\t┃[DarkGray]A[/DarkGray] [Yellow]Ω[/Yellow]    [DarkGray]AA A AA[/DarkGray]     [Blue]≈≈≈≈≈[/Blue]       [Green]### ##      # ### #[/Green] [Blue]≈≈≈≈≈≈≈≈≈[/Blue]                [Green]##[/Green]┃\n");
+            ColorConsole.WriteEmbedded("\t┃[DarkGray]AA     AA AA A[/DarkGray]    [Blue]≈≈≈≈≈≈≈≈[/Blue]    [Green]# ## ###     ### ## ###[/Green] [Blue]≈≈≈≈≈≈[/Blue] [Green]## ### ##      ##[/Green]┃\n");
+            ColorConsole.WriteEmbedded("\t┃[DarkGray]AA      AA AAA[/DarkGray]     [Blue]≈≈≈≈≈≈[/Blue]      [Green]# ### #     ### ## # #### ## # ### ## ##      #[/Green]┃\n");
+            ColorConsole.WriteEmbedded("\t┃[Green]##[/Green]       [DarkGray]AA A[/DarkGray]       [Blue]≈≈≈≈[/Blue]     [Green]  ## ###       ## ### # #### ## ### # ###      ##[/Green]┃\n");
+            ColorConsole.WriteEmbedded("\t┃[Green]###                                                                         ##[/Green]┃\n");
+            ColorConsole.WriteEmbedded("\t┃[Green]# ##                                                                       ###[/Green]┃\n");
+            ColorConsole.WriteEmbedded("\t┃[Green]# ### # ## # #### # ## ###[/Green]        [Green]# ### # ### ## ## # ###[/Green]       ┼ ┼ ┼ ┼ ┼ ┼ ┼ ┃\n");
+            ColorConsole.WriteEmbedded("\t┃[Green]# ### ### # ## # # ### # ##[/Green]      [Green]### ## # ### # ### ### ##[/Green]       ┼ ┼ ┼ ┼ ┼ ┼ ┼┃\n");
+            ColorConsole.WriteEmbedded("\t┃[Green]#### ### ## # #### ###[/Green] ╔──────────────╗ [Green]## ##### ## ### ##[/Green]      ┼ ┼ ┼ ┼ ┼ ┼ ┼ ┃\n");
+            ColorConsole.WriteEmbedded("\t┃[Green]##### ### ## ### ### #[/Green] │ [Yellow]Leaf Village[/Yellow] │ [Green]# ### ## ### ## # #[/Green]      ┼ ┼ ┼ ┼ ┼ ┼ ┼┃\n");
+            ColorConsole.WriteEmbedded("\t┃[Green]###### ### ## # ## ###[/Green] ╚──────────────╝  [Green]### ## ### ## ### #[/Green]                [Yellow]Ω[/Yellow] ┃\n");
+            ColorConsole.WriteEmbedded("\t┃[Green]# ##### ## # ### # ##[/Green] [DarkGray]AAA AA A AAAA A AAA[/DarkGray] [Green]## ### # ### #### #[/Green]                 ┃\n");
+            ColorConsole.WriteEmbedded("\t┃[Green]### ## #### ######[/Green] [DarkGray]AAA AA AAAAA AAA AA AAAA[/DarkGray] [Green]# ### ## # ### ## #### ## ### ####[/Green]┃\n");
+            ColorConsole.WriteEmbedded("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
             int bottom = Console.CursorTop;
             PlayerOnMap(player, top);
             Console.SetCursorPosition(0, bottom);
@@ -223,28 +223,7 @@ namespace TheShinobi.HelperMethods
             var position = positions[player.Pos];
             Console.SetCursorPosition(position.Item1, top += position.Item2);
             ColorConsole.Write("●", ConsoleColor.Red);
-        }
-
-        public static void Delayed(string text, ConsoleColor color = ConsoleColor.White, int delay = 40)
-        {
-            bool isKeyPressed = false;
-            Thread.Sleep(delay);
-            foreach (var letter in text)
-            {
-                ColorConsole.Write(letter.ToString(), color);
-                if (Console.KeyAvailable)
-                {
-                    isKeyPressed = true;
-                }
-
-                if (!isKeyPressed)
-                {
-                    Thread.Sleep(delay);
-                }
-            }
-            Thread.Sleep(800);
-            Console.WriteLine();
-        }
+        }        
 
         public static void Title()
         {

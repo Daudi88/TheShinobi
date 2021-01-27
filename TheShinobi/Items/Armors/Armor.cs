@@ -1,5 +1,6 @@
 ﻿using System;
 using TheShinobi.Characters;
+using TheShinobi.HelperMethods;
 using TheShinobi.Interfaces;
 
 namespace TheShinobi.Items.Armors
@@ -15,7 +16,7 @@ namespace TheShinobi.Items.Armors
                 player.Armor.Quantity++;
                 player.Backpack.Add(player.Armor);
             }
-            Console.WriteLine($"\t You equipped {item.Name} with {Defence} defence!");
+            ColorConsole.TypeOver($"\t You equipped {Name} with {Defence} defence!", ConsoleColor.Yellow);
             player.Armor = (Armor)item;
             player.Defence = Defence;
         }

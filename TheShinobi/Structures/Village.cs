@@ -30,13 +30,13 @@ namespace TheShinobi.Structures
             {
                 if (isVisitingVillage)
                 {
-                    Console.WriteLine("\n\t Welcome to the Hidden Leaf Village!" +
-                        "\n\t What do you want to do?");
+                    ColorConsole.LineDelayed("\n\n\t Welcome to the Hidden Leaf Village!");
+                    ColorConsole.LineDelayed("\t What do you want to do?");
                     isVisitingVillage = false;
                 }
                 else
                 {
-                    Console.WriteLine("\n\t What do you want to do?");
+                    ColorConsole.LineDelayed("\n\n\t What do you want to do?");
                 }
                 List<string> options = new List<string>()
                 {
@@ -83,15 +83,15 @@ namespace TheShinobi.Structures
             bool exit = false;
             while (!exit)
             {
-                Console.WriteLine("\n\t Welcome to the Lightning Burger!");
-                Console.WriteLine("\t What can we do for you?");
+                ColorConsole.LineDelayed("\n\n\t Welcome to the Lightning Burger!");
+                ColorConsole.LineDelayed("\t What can we do for you?");
                 List<string> menu = new List<string>();
                 int ctr = 1;
                 foreach (var meal in meals)
                 {
                     menu.Add($"{ctr++}. {meal.Name} - {meal.Price}g {meal.BonusText()}");
                 }
-                Display.WithFrame(menu, "[Yellow]MENU[/Yellow]", ending: "Leave");
+                Display.WithFrame(menu, "[Yellow]LIGHTNING BURGER[/Yellow]", ending: "Leave");
                 while (true)
                 {
                     if (ChooseANumber(meals.Length, out int choice, ending: true))
@@ -120,18 +120,18 @@ namespace TheShinobi.Structures
 
         private static void KonohaHospital(Player player)
         {
-            Console.WriteLine("\n\t Welcome to Konoha Hospital!");
+            ColorConsole.LineDelayed("\n\n\t Welcome to Konoha Hospital!");
             int top = Console.CursorTop;
             while (true)
             {
                 Console.SetCursorPosition(0, top);
-                Console.WriteLine("\t What do you want to do?");
+                ColorConsole.LineDelayed("\t What do you want to do?");
                 List<string> options = new List<string>()
                 {
                     "1. See Tsunade the medical-nin (300g)",
                     "2. Buy potions"
                 };
-                Display.WithFrame(options, "[Yellow]HOSPITAL[/Yellow]", ending: "Leave");
+                Display.WithFrame(options, "[Yellow]KONOHA HOSPITAL[/Yellow]", ending: "Leave");
                 int bottom = Console.CursorTop;
                 if (ChooseANumber(2, out int choice, ending: true))
                 {
@@ -178,19 +178,19 @@ namespace TheShinobi.Structures
 
         private static void NinjaToolShop(Player player)
         {
-            Console.WriteLine("\n\t Welcome to the Ninja Tool Shop");
+            ColorConsole.LineDelayed("\n\n\t Welcome to the Ninja Tool Shop");
             int top = Console.CursorTop;
             while (true)
             {
                 Console.SetCursorPosition(0, top);
-                Console.WriteLine("\t What do you want to do?");
+                ColorConsole.LineDelayed("\t What do you want to do?");
                 List<string> options = new List<string>()
                 {
                     "1. Buy Armor",
                     "2. Buy Weapons",
                     "3. Sell Items"
                 };
-                Display.WithFrame(options, "[Yellow]SHOP[/Yellow]", ending: "Leave");
+                Display.WithFrame(options, "[Yellow]NINJA TOOL SHOP[/Yellow]", ending: "Leave");
                 int bottom = Console.CursorTop;
                 if (ChooseANumber(3, out int choice, ending: true))
                 {
@@ -198,11 +198,11 @@ namespace TheShinobi.Structures
                     {
                         case 1:
                             Remove(top, bottom);
-                            Store.BuyItems(player, "armor", Get.Armors());
+                            Store.BuyItems(player, "Armor", Get.Armors());
                             break;
                         case 2:
                             Remove(top, bottom);
-                            Store.BuyItems(player, "weapon", Get.Weapons());
+                            Store.BuyItems(player, "Weapon", Get.Weapons());
                             break;
                         case 3:
                             if (player.Backpack.Count > 0)

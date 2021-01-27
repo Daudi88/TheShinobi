@@ -27,7 +27,7 @@ namespace TheShinobi.Structures
             while (true)
             {
                 int top = Console.CursorTop;
-                Console.WriteLine($"\t What {name.ToLower()} do you want to buy?");
+                ColorConsole.LineDelayed($"\t What {name.ToLower()} do you want to buy?");
                 List<string> options = new List<string>();
                 int ctr = 1;
                 foreach (var item in items)
@@ -44,7 +44,7 @@ namespace TheShinobi.Structures
                         if (item is IConsumable c)
                         {
                             int quantity;
-                            Console.Write("                                              ");
+                            Console.Write("                                                               ");
                             Console.SetCursorPosition(0, Console.CursorTop - 1);
                             Console.WriteLine($"\t How many {item.Name}s do you want to buy?");
                             Console.Write("\t > ");
@@ -115,7 +115,7 @@ namespace TheShinobi.Structures
         {
             if (player.Backpack.Count > 0)
             {
-                Console.WriteLine($"\t What do you want to sell?");
+                ColorConsole.LineDelayed($"\t What do you want to sell?");
                 int top = Console.CursorTop;
                 int bottom;
                 while (true)

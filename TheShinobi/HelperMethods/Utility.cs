@@ -102,6 +102,7 @@ namespace TheShinobi.HelperMethods
             }
             else
             {
+                thing.Quantity++;
                 player.Backpack.Add(thing);
             }
         }
@@ -110,7 +111,7 @@ namespace TheShinobi.HelperMethods
         {
             if (player.Backpack.Count > 0)
             {
-                Console.WriteLine($"\n\t What do you want to use?");
+                Console.WriteLine($"\n\n\t What do you want to use?");
                 int top = Console.CursorTop;
                 while (true)
                 {

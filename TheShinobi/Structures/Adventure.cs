@@ -10,6 +10,7 @@ using static TheShinobi.HelperMethods.Utility;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Consumables;
 using TheShinobi.Items.Weapons;
+using TheShinobi.Characters.Enemies;
 
 namespace TheShinobi.Structures
 {
@@ -27,8 +28,8 @@ namespace TheShinobi.Structures
         static string soundLocation3 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Treasure.wav");
         static string soundLocation4 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\AbuHassan.wav");
         static string soundLocation5 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Hiruzen.wav");
-        static string soundLocation6 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Garveyard.wav");
-        
+        static string soundLocation6 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Graveyard.wav");
+
         public static SoundPlayer villagePlayer = new SoundPlayer(soundLocation1);
         static SoundPlayer adventurePlayer = new SoundPlayer(soundLocation2);
         static SoundPlayer treasurePlayer = new SoundPlayer(soundLocation3);
@@ -44,6 +45,8 @@ namespace TheShinobi.Structures
         {
             player.Pos += 0.1;
             adventurePlayer.PlayLooping();
+            string story = "\n\t "; // Håkan :)
+            ColorConsole.LineDelayed(story, ConsoleColor.Yellow);
             bool exit = false;
             while (!exit)
             {
@@ -76,7 +79,7 @@ namespace TheShinobi.Structures
 
         public static bool West(Player player)
         {
-            player.Pos -= 1.0;
+            player.Pos -= 1.0;            
             CheckForEncounter();
             return false;
         }
@@ -91,6 +94,7 @@ namespace TheShinobi.Structures
         public static bool ToVillage(Player player)
         {
             villagePlayer.PlayLooping();
+            isVisitingVillage = true;
             player.Pos -= 0.1;
             return true;
         }
@@ -104,7 +108,7 @@ namespace TheShinobi.Structures
                 Console.SetWindowPosition(0, Console.CursorTop - V);
                 Weapon[] swords = Get.SevenSwords(player);
                 Weapon sword = swords[random.Next(swords.Length)];
-                ColorConsole.WriteEmbeddedColor($"\t You find [Yellow]{sword.Name}[/Yellow], a sword of the Seven Swordsmen!\n");
+                ColorConsole.WriteEmbedded($"\t You find [Yellow]{sword.Name}[/Yellow], a sword of the Seven Swordsmen!\n");
                 AddToBackpack(player, sword);
                 Thread.Sleep(sleep);
                 Console.WriteLine("\t [Press enter to continue]");
@@ -127,7 +131,7 @@ namespace TheShinobi.Structures
                 Console.SetWindowPosition(0, Console.CursorTop - 30);
                 int treasure = random.Next(1000, 10000);
                 player.Gold += treasure;
-                ColorConsole.WriteEmbeddedColor($"\n\t You found a treasure and gained [Yellow]{treasure}[/Yellow] gold!\n");
+                ColorConsole.WriteEmbedded($"\t You found a treasure and gained [Yellow]{treasure}[/Yellow] gold!\n");
                 Thread.Sleep(sleep);
                 Console.WriteLine("\t [Press enter to continue]");
                 Console.ReadKey(true);
@@ -145,13 +149,13 @@ namespace TheShinobi.Structures
             abuHassanPlayer.PlayLooping();
             player.Pos -= 1.0;
             Console.SetWindowPosition(0, Console.CursorTop - V);
-            Console.WriteLine("\n\t Welcome to Abu Hassan's one stop shop for everything\n\t a real Shinobi from the hood could ever want!");
+            ColorConsole.LineDelayed("\n\n\t Welcome to Abu Hassan's one stop shop for everything\n\t a real Shinobi from the hood could ever want!");
             int top = Console.CursorTop;
             int left = 9;
             while (true)
             {
                 Console.SetCursorPosition(0, top);
-                Console.WriteLine("\t What do you want to do?");
+                ColorConsole.LineDelayed("\t What do you want to do?");
                 List<string> options = new List<string>()
                 {
                     "1. Buy some stuff",
@@ -205,13 +209,13 @@ namespace TheShinobi.Structures
                     "\n\t The man, dressed in red and white, looks upon you as if" +
                     "\n\t he was expecting your arrival with a big smile on his face." +
                     "\n\t You instantly recognice the old man as Hiruzen Sarutobi!";
-                Display.Delayed(story, color: ConsoleColor.Yellow);
+                ColorConsole.LineDelayed(story, color: ConsoleColor.Yellow);
                 string story2 = $"\n\t {player.Name}, he says while smoking on his pipe..." +
                     "\n\t There is little time and you need to go on with your quest" +
                     "\n\t to save Hanare!Take these items and be on your way!";
-                Display.Delayed(story2, color: ConsoleColor.Yellow);
-                ColorConsole.WriteEmbeddedColor($"\n\t You get a [DarkCyan]{weapon.Name}[/DarkCyan], " +
-                    $"an [DarkCyan]{armor.Name}[/DarkCyan] and [DarkCyan]{potion.Quantity} {potion.Name}s[/DarkCyan].\n");
+                ColorConsole.LineDelayed(story2, color: ConsoleColor.Yellow);
+                ColorConsole.WriteEmbedded($"\n\t You get a [Yellow]{weapon.Name}[/Yellow], " +
+                    $"an [Yellow]{armor.Name}[/Yellow] and [Yellow]{potion.Quantity} {potion.Name}s[/Yellow].\n");
                 player.Backpack.Add(weapon);
                 player.Backpack.Add(armor);
                 player.Backpack.Add(potion);
@@ -221,7 +225,7 @@ namespace TheShinobi.Structures
             }
             else
             {
-                ColorConsole.TypeOver("\t Hiruzen smokes his pipe...", ConsoleColor.Yellow);
+                ColorConsole.TypeOver("\t Hiruzen smokes his pipe...", ConsoleColor.Red);
             }
             adventurePlayer.PlayLooping();
             return false;
@@ -229,12 +233,13 @@ namespace TheShinobi.Structures
 
         public static void CheckForEncounter()
         {
+            Console.SetWindowPosition(0, Console.CursorTop - V);
             //int chance = random.Next(0, 10);
             if (true)
             {
-                string[] stories = Get.NoFightStory();
+                string[] stories = Get.NoFightStories();
                 string story = stories[random.Next(stories.Length)];
-                Display.Delayed(story, ConsoleColor.Yellow);
+                ColorConsole.LineDelayed(story, ConsoleColor.Yellow);
                 Console.WriteLine("\t [Press enter to continue]");
                 Console.ReadKey(true);
             }
@@ -260,11 +265,20 @@ namespace TheShinobi.Structures
             }
             else
             {
-                Console.WriteLine("\t You are not strong enough to fight the opponent...");
+                ColorConsole.TypeOver("\t You are not strong enough to fight the opponent...", ConsoleColor.Red);
                 Console.WriteLine("\t [Press enter to continue]");
                 Console.ReadLine();
             }
             return false;
+        }
+
+        private static void Battle(Player player)
+        {
+            Enemy[] enemies = Get.Enemies();
+            Enemy enemy = enemies[random.Next(enemies.Length)];
+            string[] stories = Get.FightStories(enemy);
+            string story = stories[random.Next(stories.Length)];
+            ColorConsole.LineDelayed(story, ConsoleColor.Yellow);
         }
 
         //private static void Battle(Player player)

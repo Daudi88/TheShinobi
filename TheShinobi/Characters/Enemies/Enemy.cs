@@ -54,16 +54,16 @@ namespace TheShinobi.Characters.Enemies
                 {
                     equipable = Armor;
                 }
-                eDropText = $"{equipable.IndefiniteArticle} {equipable.Name}";
+                eDropText = $"{equipable.IndefiniteArticle} [Yellow]{equipable.Name}[/Yellow]";
             }
             Item consumable;
             if (Name == "Hocke" || Name == "Daudi")
             {
                 cDrop = true;
-                consumable = new EnergyDrink("Monster Energy", 100, 15, "You unleash the beast");
+                consumable = new EnergyDrink("Monster Energy", 100, 20, "You unleash the beast");
                 consumable.Quantity = Utility.random.Next(1, 11);
                 player.Backpack.Add(consumable);
-                cDropText = $"{consumable.Quantity} Monster Energy and ";
+                cDropText = $"[Yellow]{consumable.Quantity} Monster Energy[/Yellow] and ";
             }
             else
             {
@@ -73,13 +73,15 @@ namespace TheShinobi.Characters.Enemies
                     consumable = Get.Potions()[Utility.random.Next(Get.Potions().Length)];
                     consumable.Quantity = Utility.random.Next(1, 11);
                     player.Backpack.Add(consumable);
-                    cDropText = $"{consumable.Quantity} {consumable.Name} and ";
+                    cDropText = $"[Yellow]{consumable.Quantity} {consumable.Name}[/Yellow] and ";
 
                 }
             }
             string separator = eDrop ? " and " : eDrop && cDrop ? ", " : "";
-            ColorConsole.Write($"\t {Name} drops {eDropText}{separator}{cDropText}{Gold} gold!", ConsoleColor.Yellow);
+            ColorConsole.WriteEmbedded($"\t {Name} drops {eDropText}{separator}{cDropText}[Yellow]{Gold}[/Yellow] gold!");
             player.Gold += Gold;
+            Console.WriteLine("\t [Press enter to continue]");
+            Console.ReadKey(true);
         }
     }
 }
