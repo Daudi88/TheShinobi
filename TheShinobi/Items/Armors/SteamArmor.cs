@@ -7,6 +7,7 @@
             Name = "Steam Armor";
             Price = 800;
             Defence = 5;
+            IndefiniteArticle = "an";
         }
     }
 }

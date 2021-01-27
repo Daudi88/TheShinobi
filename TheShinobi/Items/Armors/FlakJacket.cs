@@ -7,6 +7,7 @@
             Name = "Flak Jacket";
             Price = 500;
             Defence = 3;
+            IndefiniteArticle = "a";
         }
     }
 }
