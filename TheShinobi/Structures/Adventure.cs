@@ -29,6 +29,32 @@ namespace TheShinobi.Structures
             
         }
 
+        public static void North(Player player)
+        {
+
+        }
+
+
+        public static void East(Player player)
+        {
+
+        }
+
+        public static void West(Player player)
+        {
+
+        }
+
+        public static void South(Player player)
+        {
+
+        }
+
+        public static void ToVillage(Player player)
+        {
+
+        }
+
         public static void ToGraveyard(Player player)
         {
             if (!isGraveyardVisited)
