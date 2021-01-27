@@ -7,6 +7,7 @@
             Name = "Shichiseiken";
             Price = 10000;
             Damage = "1d20";
+            IndefiniteArticle = "the";
         }
     }
 }

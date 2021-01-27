@@ -11,6 +11,7 @@ namespace TheShinobi.Items.Weapons
             Name = "Hiramekarei";
             Price = 4000;
             Damage = "2d12";
+            IndefiniteArticle = ""; // ett av de sju svärden
         }
     }
 }

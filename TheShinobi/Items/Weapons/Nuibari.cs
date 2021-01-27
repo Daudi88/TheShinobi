@@ -11,6 +11,7 @@ namespace TheShinobi.Items.Weapons
             Name = "Nuibari";
             Price = 4000;
             Damage = "3d10";
+            IndefiniteArticle = "the";
         }
     }
 }

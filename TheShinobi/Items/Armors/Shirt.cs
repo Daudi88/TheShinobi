@@ -7,6 +7,7 @@
             Name = "Shirt";
             Price = 1;
             Defence = 0;
+            IndefiniteArticle = "a";
         }
     }
 }

@@ -7,6 +7,7 @@
             Name = "Tekagi-Shuko";
             Price = 3000;
             Damage = "2d6";
+            IndefiniteArticle = "the";
         }
     }
 }

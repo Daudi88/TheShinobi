@@ -7,6 +7,7 @@
             Name = "Gunbai";
             Price = 5000;
             Damage = "2d12";
+            IndefiniteArticle = "a";
         }
     }
 }

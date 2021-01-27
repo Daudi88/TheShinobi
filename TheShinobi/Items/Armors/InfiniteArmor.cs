@@ -7,6 +7,7 @@
             Name = "Infinite Armour";
             Price = 10000;
             Defence = 45;
+            IndefiniteArticle = "an";
         }
     }
 }

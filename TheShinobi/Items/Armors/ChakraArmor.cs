@@ -7,6 +7,7 @@
             Name = "Chakra Armor";
             Price = 1000;
             Defence = 8;
+            IndefiniteArticle = "a";
         }
     }
 }
