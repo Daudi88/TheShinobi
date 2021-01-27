@@ -26,11 +26,10 @@ namespace TheShinobi.Structures
 
         public static void Menu(Player player)
         {
-            var positions = Get.Positions();
-            string options = positions[0.1].Item3;
+            
         }
 
-        private static void Graveyard(Player player)
+        public static void ToGraveyard(Player player)
         {
             if (!isGraveyardVisited)
             {
@@ -46,7 +45,7 @@ namespace TheShinobi.Structures
                 ColorConsole.TypeOver("\t The graveyard is dead silent.", ConsoleColor.Red);
             }
         }
-        private static void Treasure(Player player)
+        public static void ToTreasure(Player player)
         {
             if (!isTreasureTaken)
             {
@@ -61,7 +60,7 @@ namespace TheShinobi.Structures
                 ColorConsole.TypeOver("\t Somebody has allready taken the treasure...", ConsoleColor.Red);
             }
         }
-        public static void AbuHassan(Player player)
+        public static void ToAbuHassan(Player player)
         {
             Console.WriteLine("\n\t Welcome to Abu Hassan's one stop shop for everything\n\t a real Shinobi from the hood could ever want!");
             int top = Console.CursorTop;
@@ -104,7 +103,8 @@ namespace TheShinobi.Structures
                 }
             }
         }
-        public static void MeetHiruzen(Player player)
+
+        public static void ToHiruzen(Player player)
         {
             if (!haveYouMetHim)
             {
@@ -135,7 +135,7 @@ namespace TheShinobi.Structures
             {
                 ColorConsole.TypeOver("\t Hiruzen smokes his pipe...", ConsoleColor.Yellow);
             }
-            //Console.SetWindowPosition(0, Console.CursorTop - 30);
+            Console.SetWindowPosition(0, Console.CursorTop - 30);
 
         }
     }
@@ -988,20 +988,7 @@ namespace TheShinobi.Structures
 //                isRedBull = false;
 //            }
 //        }
-
-//        private static void AbuHassansShop(Player player)
-//        {
-//            Console.WriteLine("\n\t Welcome to Abu hassan's one stop shop for everyting a good adventurer could ever need");
-//            Console.WriteLine("\t Welcome back again soon!");
-//            Console.WriteLine("\t [Press enter to go back the way you came]");
-//            Console.ReadLine();
-//        }
-
-
-
-
-//        
-
+//
 //        private static void BossEncounter(Player player)
 //        {
 //            if (player.Level >= 10)
