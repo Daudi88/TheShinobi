@@ -21,15 +21,16 @@ namespace TheShinobi.Structures
          * ...
          */
 
-        private static bool isTreasureTaken;
-        private static bool isGraveyardVisited;
-        private static bool haveYouMetHim;
+        private static bool isTreasureTaken = false;
+        private static bool isGraveyardVisited = false;
+        private static bool isHiruzenVisited = false;
 
         public static void Menu(Player player)
         {
             bool exit = false;
             while (!exit)
             {
+                player.Pos = Math.Round(player.Pos, 1);
                 Console.WriteLine();
                 var options = Get.Options(player, out List<string> content);
                 Display.WithFrame(content, "[Yellow]Adventure[/Yellow]", true);
@@ -78,6 +79,7 @@ namespace TheShinobi.Structures
 
         public static bool ToGraveyard(Player player)
         {
+            player.Pos += 1.0;
             if (!isGraveyardVisited)
             {
                 Weapon[] swords = Get.SevenSwords(player);
@@ -95,6 +97,7 @@ namespace TheShinobi.Structures
         }
         public static bool ToTreasure(Player player)
         {
+            player.Pos += 0.1;
             if (!isTreasureTaken)
             {
                 int treasure = Utility.random.Next(1000, 10000);
@@ -111,8 +114,10 @@ namespace TheShinobi.Structures
         }
         public static bool ToAbuHassan(Player player)
         {
+            player.Pos -= 1.0;
             Console.WriteLine("\n\t Welcome to Abu Hassan's one stop shop for everything\n\t a real Shinobi from the hood could ever want!");
             int top = Console.CursorTop;
+            int left = 9;
             while (true)
             {
                 Console.SetCursorPosition(0, top);
@@ -129,13 +134,13 @@ namespace TheShinobi.Structures
                     switch (choice)
                     {
                         case 1:
-                            Utility.Remove(Utility.left, top);
+                            Utility.Remove(left, top);
                             Store.BuyItems(player, "item", Get.AbuHassanItems());
                             break;
                         case 2:
                             if (player.Backpack.Count > 0)
                             {
-                                Utility.Remove(Utility.left, top);
+                                Utility.Remove(left, top);
                             }
                             Store.SellItems(player);
                             break;
@@ -156,7 +161,8 @@ namespace TheShinobi.Structures
 
         public static bool ToHiruzen(Player player)
         {
-            if (!haveYouMetHim)
+            player.Pos -= 1.0;
+            if (!isHiruzenVisited)
             {
                 Weapon weapon = new Kusarigama();
                 Armor armor = new InfiniteArmor();
@@ -177,7 +183,7 @@ namespace TheShinobi.Structures
                 player.Backpack.Add(weapon);
                 player.Backpack.Add(armor);
                 player.Backpack.Add(potion);
-                haveYouMetHim = true;
+                isHiruzenVisited = true;
                 Console.WriteLine("\t [Press enter to continue]");
                 Console.ReadKey(true);
             }
@@ -268,54 +274,29 @@ namespace TheShinobi.Structures
                 //Battle();
             }
         }
-        public static string[] NoFightStory()
+
+
+        private static void BossEncounter(Player player)
         {
-            string[] noFightStory = new string[]
+            if (player.Level >= 10)
             {
-                 "\n\t As you walk up the mountain trail you sense a group of ninjas from the Uchicha clan ahead." +
-                $"\n\t You easily sneak past them on your way to rescue Hanare!",
-
-                 "\n\t You hear something in the distance and use Mangekyō to see a group of Ninjas lying in ambush for travelers." +
-                 "\n\t If it wasnt that you are in a rush to rescue Hanare you would have made minced meat of them all!",
-
-                 "\n\t You use your senses and feel that no enemy is near, you set up camp and light a fire" +
-                 "n\t You eat your delicious Green Chilli Burger while watching the Sunset ove The Hidden Leaf Village...",
-
-                 "\n\t As the sun sets over the mountains you see a clan who has setup camp on your land!" +
-                 "\n\t There is no time to engage them now, first you must rescue Hanare!",
-
-                 "n\t As you walk through The Shikkotsu Forest you sense Hanare is further North!" +
-                 "n\t You start running towards the montains!",
-
-                 "\n\t You aproach a empty camp, the fire is still smoking a little and there are signs of someone who has been tied up!" +
-                 "\n\t In the soil you see one of hanares black glove, you follow their trail..."
-            };
-            return noFightStory;
-        }
-        public static string[] FightStory(Enemy enemy)
-        {
-            string[] fightStory = new string[]
+                // FightTheBoss(player);
+                if (player.Hp > 0)
+                {
+                    Display.WinScreen();
+                }
+                else
+                {
+                    Display.LoseScreen();
+                }
+            }
+            else
             {
-                "\n\t You walked down the bushy trail and sence there is troubble ahead!" +
-                $"\n\t You can smell that dirty {enemy.Clan} member miles away and you attack instantly!",
+                Console.WriteLine("\t You are not strong enough to fight the opponent...");
+                Console.WriteLine("\t [Press enter to continue]");
+                Console.ReadLine();
+            }
 
-                "\n\t While climbing up the mountains in search of Hanare you get ambushed by some filthy Team Doso villains!" +
-                "\n\t You attack, maybe they know more about Hanare´s kidnapping!",
-
-                "\n\t While climbing up the mountains in search of Hanare you get ambushed by some filthy Team Doso villains!" +
-                "\n\t  You attack, maybe they know more about Hanare´s kidnapping!",
-
-                "\n\t You have walked for hours when you decide to set up camp at the lake. +" +
-                $"\n\t when some low life from the {enemy.Clan} clan attacks you!" +
-                "\n\t Four of them run away when they see it is you but one stays to fight!",
-
-                "\n\t The sky is full of dark clouds and when lightning strikes hits the ground vibrates..." +
-                "\n\t As you set up camp in the mountains to escape the bad weather for the night some villains from the Uchicha clan attacks!",
-
-                "\n\t The sky is blue and the sun is shining. As you walk past the graveyard you hear them!" +
-                "\n\t Some lowlife from the Aburame clan attacks you!"
-            };
-            return fightStory;
         }
 
         //private static void Battle(Player player)
@@ -397,815 +378,7 @@ namespace TheShinobi.Structures
     }
 }
 
-//        private static bool treasureTaken = false;
-//        private static bool haveYouMetHim = false;
-//        private static bool graveyardVisited = false;
-//        private static bool isRedBull = false;
-//        public static void GoOnAdventure()
-//        {
-//            Player player = Game.player;
-//            Console.WriteLine("\n\t You start your adventure by going north...");
-//            Console.WriteLine("\n\t Be carefull not to loose yourself in the wild!");
-//            player.Pos = 0.1;
-//            while (true)
-//            {
-//                player.Pos = Math.Round(player.pos, 1);
-//                bool outerExit = false;
-//                bool innerExit = true;
-//                if (player.Pos == 0.0)
-//                {
-//                    break;
-//                }
-//                else if (player.Pos == 0.1)
-//                {
-//                    while (!outerExit)
-//                    {
-//                        Console.WriteLine("\n\t What do you want to do?");
-//                        string[] content = new string[]
-//                        {
-//                            "1. Go North",
-//                            "2. Go East",
-//                            "3. Go West",
-//                            "4. Go back home",
-//                            "D. Show Details",
-//                            "B. Open Bacpack",
-//                            "M. Open Map"
-//                        };
-//                        Display.WithFrame("", content);
-//                        Console.Write("\t > ");
-//                        innerExit = true;
-//                        do
-//                        {
-//                            string choice = ColorConsole.ReadInBlue();
-//                            switch (choice.ToUpper())
-//                            {
-//                                case "1":
-//                                    Console.WriteLine("\t You went north...");
-//                                    player.Pos += 0.1;
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "2":
-//                                    Console.WriteLine("\t You went east...");
-//                                    player.Pos += 1.0;
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "3":
-//                                    Console.WriteLine("\t You went west...");
-//                                    player.Pos -= 1.2;
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "4":
-//                                    Console.WriteLine("\t You went back home...");
-//                                    player.Pos -= 0.1;
-//                                    outerExit = true;
-//                                    break;
-//                                case "D":
-//                                    Display.Details();
-//                                    break;
-//                                case "B":
-//                                    if (!Display.Backpack())
-//                                    {
-//                                        innerExit = false;
-//                                    }
-//                                    break;
-//                                case "M":
-//                                    Display.Map();
-//                                    break;
-//                                default:
-//                                    Utility.TypeOverWrongDoings("Invalid choice. Try again!");
-//                                    innerExit = false;
-//                                    break;
-//                            }
-//                        } while (!innerExit);
-//                    }
-//                }
-//                else if (player.Pos == -1.1 || player.Pos == 1.1)
-//                {
-//                    while (!outerExit)
-//                    {
-//                        Console.WriteLine("\n\t What do you want to do?");
-//                        string[] content = new string[]
-//                        {
-//                          "1. Go North",
-//                            "2. Go East",
-//                            "3. Go West",
-//                            "D. Show Details",
-//                            "B. Open Backpack",
-//                            "M. Open Map"
-//                        };
-//                        Display.WithFrame("", content);
-//                        Console.Write("\t > ");
-//                        innerExit = true;
-//                        do
-//                        {
-//                            string choice = ColorConsole.ReadInBlue();
-//                            switch (choice.ToUpper())
-//                            {
-//                                case "1":
-//                                    Console.WriteLine("\t You went north...");
-//                                    if (player.Pos == -1.1)
-//                                    {
-//                                        player.Pos -= 0.1;
-//                                    }
-//                                    else
-//                                    {
-//                                        player.Pos += 0.1;
-//                                    }
-//                                    EnCounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "2":
-//                                    Console.WriteLine("\t You went east...");
-//                                    if (player.Pos == -1.1)
-//                                    {
-//                                        player.Pos += 1.2;
-//                                    }
-//                                    else
-//                                    {
-//                                        player.Pos += 1.0;
-//                                    }
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "3":
-//                                    Console.WriteLine("\t You went west...");
-//                                    player.pos -= 1.0;
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "D":
-//                                    Display.Details();
-//                                    break;
-//                                case "B":
-//                                    if (!Display.Backpack())
-//                                    {
-//                                        innerExit = false;
-//                                    }
-//                                    break;
-//                                case "M":
-//                                    Display.map();
-//                                    break;
-//                                default:
-//                                    Utility.TypeOverWrongDoings("Invald choise. Try again!");
-//                                    innerExit = false;
-//                                    break;
-//                            }
 
-//                        } while (!innerExit);
-//                    }
-//                }
-//                else if (player.Pos == -1.2)
-//                {
-//                    while (!outerExit)
-//                    {
-//                        Console.WriteLine("\n\t What do you want to do?");
-//                        string[] content = new string[]
-//                        {
-//                            "1. Go North",
-//                            "2. Go East",
-//                            "3. Go South",
-//                            "D. Show Details",
-//                            "B. Open Backpack",
-//                            "M. Open Map"
-//                        };
-//                        Display.WithFrame("", content);
-//                        Console.Write("\t > ");
-//                        innerExit = true;
-//                        do
-//                        {
-//                            string choice = ColorConsole.ReadInBlue();
-//                            switch (choice.ToUpper())
-//                            {
-//                                case "1":
-//                                    Console.WriteLine("\t You went north...");
-//                                    player.Pos -= 0.1;
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "2":
-//                                    Console.WriteLine("\t You went east...");
-//                                    player.Pos += 1.0;
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "3":
-//                                    Console.WriteLine("\t You went south...");
-//                                    player.Pos += 0.1;
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "D":
-//                                    Display.Details();
-//                                    break;
-//                                case "B":
-//                                    if (!Display.Backpack())
-//                                    {
-//                                        innerExit = false;
-//                                    }
-//                                    break;
-//                                case "M":
-//                                    Display.Map();
-//                                    break;
-//                                default:
-//                                    Utility.TypeOverWrongDoings("Invalid choice. Try again!");
-//                                    innerExit = false;
-//                                    break;
-//                            }
-//                        } while (!innerExit);
-//                    }
-//                }
-//                else if (player.Pos == 0.2 || player.Pos == 2.1 || player.Pos == 1.3)
-//                {
-//                    while (!outerExit)
-//                    {
-//                        Console.WriteLine("\n\t What do you want to do?");
-//                        string[] content = new string[]
-//                        {
-//                            "1. Go East",
-//                            "2. Go South",
-//                            "3. Go West",
-//                            "D. Show Details",
-//                            "B. Open Backpack",
-//                            "M. Open Map"
-//                        };
-//                        Display.WithFrame("", content);
-//                        Console.Write("\t > ");
-//                        innerExit = true;
-//                        do
-//                        {
-//                            string choice = ColorConsole.ReadInBlue();
-//                            switch (choice.ToUpper())
-//                            {
-//                                case "1":
-//                                    Console.WriteLine("\t You went east...");
-//                                    player.Pos += 1.0;
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "2":
-//                                    Console.WriteLine("\t You went South...");
-//                                    player.Pos -= 0.1;
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "3":
-//                                    Console.WriteLine("\t You went west...");
-//                                    if (player.Pos == 0.2)
-//                                    {
-//                                        player.Pos -= 1.4;
-//                                    }
-//                                    else
-//                                    {
-//                                        player.Pos -= 1.0;
-//                                    }
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "D":
-//                                    Display.Details();
-//                                    break;
-//                                case "B":
-//                                    if (!Display.Backpack())
-//                                    {
-//                                        innerExit = false;
-//                                    }
-//                                    break;
-//                                case "M":
-//                                    Display.Map();
-//                                    break;
-//                                default:
-//                                    Utility.TypeOverWrongDoings("Invalid choice. Try again!");
-//                                    innerExit = false;
-//                                    break;
-//                            }
-//                        } while (!innerExit);
-//                    }
-//                }
-//                else if (player.Pos == 1.2 || player.Pos == 3.2)
-//                {
-//                    while (!outerExit)
-//                    {
-//                        Console.WriteLine("\n\t What do you want to do?");
-//                        string[] content = new string[]
-//                        {
-//                            "1. Go North",
-//                            "2. Go South",
-//                            "3. Go West",
-//                            "D. Show Details",
-//                            "B. Open Backpack",
-//                            "M. Open Map"
-//                        };
-//                        Display.WithFrame("", content);
-//                        Console.Write("\t > ");
-//                        innerExit = true;
-//                        do
-//                        {
-//                            string choice = ColorConsole.ReadInBlue();
-//                            switch (choice.ToUpper())
-//                            {
-//                                case "1":
-//                                    Console.WriteLine("\t You went north...");
-//                                    player.Pos += 0.1;
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "2":
-//                                    Console.WriteLine("\t You went south...");
-//                                    player.Pos -= 0.1;
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "3":
-//                                    Console.WriteLine("\t You went west...");
-//                                    player.Pos -= 1.0;
-//                                    if (player.Pos == 2.2)
-//                                    {
-//                                        MeetHiruzen(player);
-//                                    }
-//                                    else
-//                                    {
-//                                        EncounterCheck();
-//                                    }
-//                                    outerExit = true;
-//                                    break;
-//                                case "D":
-//                                    Display.Details();
-//                                    break;
-//                                case "B":
-//                                    if (!Display.Backpack())
-//                                    {
-//                                        innerExit = false;
-//                                    }
-//                                    break;
-//                                case "M":
-//                                    Display.Map();
-//                                    break;
-//                                default:
-//                                    Utility.TypeOverWrongDoings("Invalid choice. Try again!");
-//                                    innerExit = false;
-//                                    break;
-//                            }
-//                        } while (!innerExit);
-//                    }
-//                }
-//                else if (player.Pos == -1.3 || player.Pos == 3.3)
-//                {
-//                    while (!outerExit)
-//                    {
-//                        Console.WriteLine("\n\t What do you want to do?");
-//                        string[] content = new string[]
-//                        {
-//                            "1. Go South",
-//                            "2. Go West",
-//                            "D. Show Details",
-//                            "B. Open Backpack",
-//                            "M. Open Map"
-//                        };
-//                        Display.WithFrame("", content);
-//                        Console.Write("\t > ");
-//                        innerExit = true;
-//                        do
-//                        {
-//                            string choice = ColorConsole.ReadInBlue();
-//                            switch (choice.ToUpper())
-//                            {
-//                                case "1":
-//                                    Console.WriteLine("\t You went south...");
-//                                    if (player.Pos == -1.3)
-//                                    {
-//                                        player.Pos += 0.1;
-//                                    }
-//                                    else
-//                                    {
-//                                        player.Pos -= 0.1;
-//                                    }
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "2":
-//                                    Console.WriteLine("\t You went west...");
-//                                    player.Pos -= 1.0;
-//                                    if (player.Pos == -2.3)
-//                                    {
-//                                        AbuHassansShop(player);
-//                                    }
-//                                    else
-//                                    {
-//                                        EncounterCheck();
-//                                    }
-//                                    outerExit = true;
-//                                    break;
-//                                case "D":
-//                                    Display.Details();
-//                                    break;
-//                                case "B":
-//                                    if (!Display.Backpack())
-//                                    {
-//                                        innerExit = false;
-//                                    }
-//                                    break;
-//                                case "M":
-//                                    Display.Map();
-//                                    break;
-//                                default:
-//                                    Utility.TypeOverWrongDoings("Invalid choice. Try again!");
-//                                    innerExit = false;
-//                                    break;
-//                            }
-//                        } while (!innerExit);
-//                    }
-//                }
-//                else if (player.Pos == -2.1 || player.Pos == 2.0 || player.Pos == 0.3)
-//                {
-//                    while (!outerExit)
-//                    {
-//                        Console.WriteLine("\n\t What do you want to do?");
-//                        string[] content = new string[]
-//                        {
-//                            "1. Go North",
-//                            "2. Go East",
-//                            "D. Show Details",
-//                            "B. Open Backpack",
-//                            "M. Open Map"
-//                        };
-//                        Display.WithFrame("", content);
-//                        Console.Write("\t > ");
-//                        innerExit = true;
-//                        do
-//                        {
-//                            string choice = ColorConsole.ReadInBlue();
-//                            switch (choice.ToUpper())
-//                            {
-//                                case "1":
-//                                    Console.WriteLine("\t You went north...");
-//                                    if (player.Pos == -2.1)
-//                                    {
-//                                        player.Pos -= 0.1;
-//                                    }
-//                                    else
-//                                    {
-//                                        player.Pos += 0.1;
-//                                    }
-//                                    if (player.Pos == 0.4)
-//                                    {
-//                                        BossEncounter(player);
-//                                    }
-//                                    else if (player.Pos == -2.2)
-//                                    {
-//                                        Treasure(player);
-//                                    }
-//                                    else
-//                                    {
-//                                        EncounterCheck();
-//                                    }
-//                                    outerExit = true;
-//                                    break;
-//                                case "2":
-//                                    Console.WriteLine("\t You went east...");
-//                                    player.Pos += 1.0;
-//                                    if (player.Pos == 3.0)
-//                                    {
-//                                        Graveyard(player);
-//                                    }
-//                                    else
-//                                    {
-//                                        EncounterCheck();
-//                                    }
-//                                    outerExit = true;
-//                                    break;
-//                                case "D":
-//                                    Display.Details();
-//                                    break;
-//                                case "B":
-//                                    if (!Display.Backpack())
-//                                    {
-//                                        innerExit = false;
-//                                    }
-//                                    break;
-//                                case "M":
-//                                    Display.Map();
-//                                    break;
-//                                default:
-//                                    Utility.TypeOverWrongDoings("Invalid choice. Try again!");
-//                                    innerExit = false;
-//                                    break;
-//                            }
-//                        } while (!innerExit);
-//                    }
-//                }
-//                else if (player.Pos == 3.1)
-//                {
-//                    while (!outerExit)
-//                    {
-//                        Console.WriteLine("\n\t What do you want to do?");
-//                        string[] content = new string[]
-//                        {
-//                            "1. Go North",
-//                            "2. Go West",
-//                            "D. Show Details",
-//                            "B. Open Backpack",
-//                            "M. Open Map"
-//                        };
-//                        Display.WithFrame("", content);
-//                        Console.Write("\t > ");
-//                        innerExit = true;
-//                        do
-//                        {
-//                            string choice = ColorConsole.ReadInBlue();
-//                            switch (choice.ToUpper())
-//                            {
-//                                case "1":
-//                                    Console.WriteLine("\t You went north...");
-//                                    player.Pos += 0.1;
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "2":
-//                                    Console.WriteLine("\t You went west...");
-//                                    player.Pos -= 1.0;
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "D":
-//                                    Display.Details();
-//                                    break;
-//                                case "B":
-//                                    if (!Display.Backpack())
-//                                    {
-//                                        innerExit = false;
-//                                    }
-//                                    break;
-//                                case "M":
-//                                    Display.Map();
-//                                    break;
-//                                default:
-//                                    Utility.TypeOverWrongDoings("Invalid choice. Try again!");
-//                                    innerExit = false;
-//                                    break;
-//                            }
-//                        } while (!innerExit);
-//                    }
-//                }
-//                else if (player.Pos == 2.3)
-//                {
-//                    while (!outerExit)
-//                    {
-//                        Console.WriteLine("\n\t What do you want to do?");
-//                        string[] content = new string[]
-//                        {
-//                            "1. Go East",
-//                            "2. Go West",
-//                            "D. Show Details",
-//                            "B. Open Backpack",
-//                            "M. Open Map"
-//                        };
-//                        Display.WithFrame("", content);
-//                        Console.Write("\t > ");
-//                        innerExit = true;
-//                        do
-//                        {
-//                            string choice = ColorConsole.ReadInBlue();
-//                            switch (choice.ToUpper())
-//                            {
-//                                case "1":
-//                                    Console.WriteLine("\t You went east...");
-//                                    player.Pos += 1.0;
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "2":
-//                                    Console.WriteLine("\t You went west...");
-//                                    player.Pos -= 1.0;
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "D":
-//                                    Display.Details();
-//                                    break;
-//                                case "B":
-//                                    if (!Display.Backpack())
-//                                    {
-//                                        innerExit = false;
-//                                    }
-//                                    break;
-//                                case "M":
-//                                    Display.Map();
-//                                    break;
-//                                default:
-//                                    Utility.TypeOverWrongDoings("Invalid choice. Try again!");
-//                                    innerExit = false;
-//                                    break;
-//                            }
-//                        } while (!innerExit);
-//                    }
-//                }
-//                else if (player.Pos == 2.2 || player.Pos == -2.3 || player.Pos == -3.2)
-//                {
-//                    while (!outerExit)
-//                    {
-//                        Console.WriteLine("\n\t What do you want to do?");
-//                        string[] content = new string[]
-//                        {
-//                            "1. Go East",
-//                            "D. Show Details",
-//                            "B. Open Backpack",
-//                            "M. Open Map"
-//                        };
-//                        Display.WithFrame("", content);
-//                        Console.Write("\t > ");
-//                        innerExit = true;
-//                        while (!innerExit)
-//                        {
-//                            string choice = ColorConsole.ReadInBlue();
-//                            switch (choice.ToUpper())
-//                            {
-//                                case "1":
-//                                    Console.WriteLine("\t You went east...");
-//                                    player.Pos += 1.0;
-//                                    EncounterCheck();
-//                                    innerExit = true;
-//                                    outerExit = true;
-//                                    break;
-//                                case "D":
-//                                    Display.Details();
-//                                    innerExit = true;
-//                                    break;
-//                                case "B":
-//                                    if (!Display.Backpack())
-//                                    {
-//                                        innerExit = true;
-//                                    }
-//                                    break;
-//                                case "M":
-//                                    Display.Map();
-//                                    innerExit = true;
-//                                    break;
-//                                default:
-//                                    Utility.TypeOverWrongDoings("Invalid choice. Try again!");
-//                                    break;
-//                            }
-//                        }
-//                    }
-//                }
-//                else if (player.Pos == 3.0)
-//                {
-//                    while (!outerExit)
-//                    {
-//                        Console.WriteLine("\n\t What do you want to do?");
-//                        string[] content = new string[]
-//                        {
-//                            "1. Go West",
-//                            "D. Show Details",
-//                            "B. Open Backpack",
-//                            "M. Open Map"
-//                        };
-//                        Display.WithFrame("", content);
-//                        Console.Write("\t > ");
-//                        innerExit = true;
-//                        do
-//                        {
-//                            string choice = ColorConsole.ReadInBlue();
-//                            switch (choice.ToUpper())
-//                            {
-//                                case "1":
-//                                    Console.WriteLine("\t You went west...");
-//                                    player.Pos -= 1.0;
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "D":
-//                                    Display.Details();
-//                                    break;
-//                                case "B":
-//                                    if (!Display.Backpack())
-//                                    {
-//                                        innerExit = false;
-//                                    }
-//                                    break;
-//                                case "M":
-//                                    Display.Map();
-//                                    break;
-//                                default:
-//                                    Utility.TypeOverWrongDoings("Invalid choice. Try again!");
-//                                    innerExit = false;
-//                                    break;
-//                            }
-//                        } while (!innerExit);
-//                    }
-//                }
-//                else
-//                {
-//                    while (!outerExit)
-//                    {
-//                        Console.WriteLine("\n\t What do you want to do?");
-//                        string[] content = new string[]
-//                        {
-//                            "1. Go South",
-//                            "D. Show Details",
-//                            "B. Open Backpack",
-//                            "M. Open Map"
-//                        };
-//                        Display.WithFrame("", content);
-//                        Console.Write("\t > ");
-//                        innerExit = true;
-//                        do
-//                        {
-//                            string choice = ColorConsole.ReadInBlue();
-//                            switch (choice.ToUpper())
-//                            {
-//                                case "1":
-//                                    Console.WriteLine("\t You went south...");
-//                                    if (player.Pos == -2.2)
-//                                    {
-//                                        player.Pos += 0.1;
-//                                    }
-//                                    else
-//                                    {
-//                                        player.Pos -= 0.1;
-//                                    }
-//                                    EncounterCheck();
-//                                    outerExit = true;
-//                                    break;
-//                                case "D":
-//                                    Display.Details();
-//                                    break;
-//                                case "B":
-//                                    if (!Display.Backpack())
-//                                    {
-//                                        innerExit = false;
-//                                    }
-//                                    break;
-//                                case "M":
-//                                    Display.Map();
-//                                    break;
-//                                default:
-//                                    Utility.TypeOverWrongDoings("Invalid choice. Try again!");
-//                                    innerExit = false;
-//                                    break;
-//                            }
-//                        } while (!innerExit);
-//                    }
-//                }
-//            }
-//        }
-
-
-//                if (player.Hp <= 0)
-//                {
-//                    Display.LoseScreen();
-//                }
-//                else
-//                {
-//                    Console.WriteLine("\t [Press enter to continue]");
-//                    Console.ReadLine();
-//                }
-//                Console.SetWindowPosition(0, Console.CursorTop - 30);
-//            }
-//            if (isRedBull == true)
-//            {
-//                player.Defence -= 2;
-//                isRedBull = false;
-//            }
-//        }
-
-//        private static void AbuHassansShop(Player player)
-//        {
-//            Console.WriteLine("\n\t Welcome to Abu hassan's one stop shop for everyting a good adventurer could ever need");
-//            Console.WriteLine("\t Welcome back again soon!");
-//            Console.WriteLine("\t [Press enter to go back the way you came]");
-//            Console.ReadLine();
-//        }
-
-
-
-
-//        
-
-//        private static void BossEncounter(Player player)
-//        {
-//            if (player.Level >= 10)
-//            {
-//                FightTheBoss(player);
-//                if (player.Hp > 0)
-//                {
-//                    Display.WinScreen();
-//                }
-//                else
-//                {
-//                    Display.LoseScreen();
-//                }
-//            }
-//            else
-//            {
-//                Console.WriteLine("\t You are not strong enough to fight the opponent...");
-//                Console.WriteLine("\t [Press enter to continue]");
-//                Console.ReadLine();
-//            }
-
-//        }
 
 //        private static void BossFight(Player player)
 //        {

@@ -82,6 +82,10 @@ namespace TheShinobi.HelperMethods
                         content.Add($"{ctr++}. Go West");
                         options.Add(Adventure.ToAbuHassan);
                         break;
+                    case 'B':
+                        content.Add($"{ctr++}. Go North");
+                        options.Add(Adventure.BossEncounter);
+                        break;
                     default:
                         break;
                 }
@@ -93,11 +97,13 @@ namespace TheShinobi.HelperMethods
         {
             var positions = new Dictionary<double, Tuple<int, int, string>>();
             positions.Add(0.2, new Tuple<int, int, string>(15, 15, "TE"));
+            positions.Add(0.3, new Tuple<int, int, string>(13, 10, "S"));
+            positions.Add(0.4, new Tuple<int, int, string>(12, 4, "E"));
             positions.Add(1.2, new Tuple<int, int, string>(25, 15, "NEW"));
             positions.Add(1.3, new Tuple<int, int, string>(25, 9, "NES"));
             positions.Add(1.4, new Tuple<int, int, string>(21, 4, "AS"));
             positions.Add(2.0, new Tuple<int, int, string>(38, 19, ""));
-            positions.Add(2.1, new Tuple<int, int, string>(38, 18, "NV"));
+            positions.Add(2.1, new Tuple<int, int, string>(38, 17, "NV"));
             positions.Add(2.2, new Tuple<int, int, string>(38, 15, "NEWS"));
             positions.Add(2.3, new Tuple<int, int, string>(36, 9, "EWS"));
             positions.Add(2.4, new Tuple<int, int, string>(38, 5, "BE"));
@@ -106,7 +112,9 @@ namespace TheShinobi.HelperMethods
             positions.Add(3.4, new Tuple<int, int, string>(48, 5, "EW"));
             positions.Add(4.1, new Tuple<int, int, string>(72, 21, "NG"));
             positions.Add(4.2, new Tuple<int, int, string>(69, 15, "EWS"));
+            positions.Add(4.3, new Tuple<int, int, string>(70, 10, "E"));
             positions.Add(4.4, new Tuple<int, int, string>(65, 5, "EW"));
+            positions.Add(5.1, new Tuple<int, int, string>(85, 21, "W"));
             positions.Add(5.2, new Tuple<int, int, string>(82, 15, "NW"));
             positions.Add(5.3, new Tuple<int, int, string>(82, 10, "NHS"));
             positions.Add(5.4, new Tuple<int, int, string>(80, 5, "WS"));
@@ -223,6 +231,57 @@ namespace TheShinobi.HelperMethods
                 new EnergyDrink("Red Bull", 50, 10, "You get wings")
             };
             return items;
+        }
+
+        public static string[] NoFightStory()
+        {
+            string[] noFightStory = new string[]
+            {
+                 "\n\t As you walk up the mountain trail you sense a group of ninjas from the Uchicha clan ahead." +
+                $"\n\t You easily sneak past them on your way to rescue Hanare!",
+
+                 "\n\t You hear something in the distance and use Mangekyō to see a group of Ninjas lying in ambush for travelers." +
+                 "\n\t If it wasnt that you are in a rush to rescue Hanare you would have made minced meat of them all!",
+
+                 "\n\t You use your senses and feel that no enemy is near, you set up camp and light a fire" +
+                 "n\t You eat your delicious Green Chilli Burger while watching the Sunset ove The Hidden Leaf Village...",
+
+                 "\n\t As the sun sets over the mountains you see a clan who has setup camp on your land!" +
+                 "\n\t There is no time to engage them now, first you must rescue Hanare!",
+
+                 "n\t As you walk through The Shikkotsu Forest you sense Hanare is further North!" +
+                 "n\t You start running towards the montains!",
+
+                 "\n\t You aproach a empty camp, the fire is still smoking a little and there are signs of someone who has been tied up!" +
+                 "\n\t In the soil you see one of hanares black glove, you follow their trail..."
+            };
+            return noFightStory;
+        }
+
+        public static string[] FightStory(Enemy enemy)
+        {
+            string[] fightStory = new string[]
+            {
+                "\n\t You walked down the bushy trail and sence there is troubble ahead!" +
+                $"\n\t You can smell that dirty {enemy.Clan} member miles away and you attack instantly!",
+
+                "\n\t While climbing up the mountains in search of Hanare you get ambushed by some filthy Team Doso villains!" +
+                "\n\t You attack, maybe they know more about Hanare´s kidnapping!",
+
+                "\n\t While climbing up the mountains in search of Hanare you get ambushed by some filthy Team Doso villains!" +
+                "\n\t  You attack, maybe they know more about Hanare´s kidnapping!",
+
+                "\n\t You have walked for hours when you decide to set up camp at the lake. +" +
+                $"\n\t when some low life from the {enemy.Clan} clan attacks you!" +
+                "\n\t Four of them run away when they see it is you but one stays to fight!",
+
+                "\n\t The sky is full of dark clouds and when lightning strikes hits the ground vibrates..." +
+                "\n\t As you set up camp in the mountains to escape the bad weather for the night some villains from the Uchicha clan attacks!",
+
+                "\n\t The sky is blue and the sun is shining. As you walk past the graveyard you hear them!" +
+                "\n\t Some lowlife from the Aburame clan attacks you!"
+            };
+            return fightStory;
         }
     }
 }

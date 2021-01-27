@@ -25,7 +25,6 @@ namespace TheShinobi.HelperMethods
          * Remove()             - Removes texts in order to give a cleaner experience.         
          */
 
-        public const int left = 9;
         public const int V = 15;
         public static readonly Random random = new Random();
         public static bool isEnergyDrink = false;

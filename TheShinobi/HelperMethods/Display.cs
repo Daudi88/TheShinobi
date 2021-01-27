@@ -209,15 +209,20 @@ namespace TheShinobi.HelperMethods
             ColorConsole.WriteEmbeddedColor("\t┃[Green]# ##### ## # ### # ##[/Green] [DarkGray]AAA AA A AAAA A AAA[/DarkGray] [Green]## ### # ### #### #[/Green]                 ┃\n");
             ColorConsole.WriteEmbeddedColor("\t┃[Green]### ## #### ######[/Green] [DarkGray]AAA AA AAAAA AAA AA AAAA[/DarkGray] [Green]# ### ## # ### ## #### ## ### ####[/Green]┃\n");
             ColorConsole.WriteEmbeddedColor("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
-            PlayerOnMap(top);
+            int bottom = Console.CursorTop;
+            PlayerOnMap(player, top);
+            Console.SetCursorPosition(0, bottom);
             Console.WriteLine("\t [Press enter to continue]");
             Console.ReadKey(true);
             Console.SetWindowPosition(0, Console.CursorTop - 20);
         }
 
-        private static void PlayerOnMap(int top)
+        private static void PlayerOnMap(Player player, int top)
         {
-
+            var positions = Get.Positions();
+            var position = positions[player.Pos];
+            Console.SetCursorPosition(position.Item1, top += position.Item2);
+            ColorConsole.Write("●", ConsoleColor.Red);
         }
 
         public static void Delayed(string text, int delay = 40, ConsoleColor color = ConsoleColor.White)

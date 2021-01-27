@@ -93,19 +93,20 @@ namespace TheShinobi.HelperMethods
         public static void TypeOver(string message, ConsoleColor color, int time = 2000)
         {
             int top = Console.CursorTop;
+            int left = 9;
             WriteLine(message, color);
             Thread.Sleep(time);
-            Console.SetCursorPosition(Utility.left, top--);
+            Console.SetCursorPosition(left, top--);
             for (int j = 0; j < message.Length; j++)
             {
                 Console.Write(" ");
             }
-            Console.SetCursorPosition(Utility.left, top);
+            Console.SetCursorPosition(left, top);
             for (int i = 0; i < 100; i++)
             {
                 Console.Write(" ");
             }
-            Console.SetCursorPosition(Utility.left, top);
+            Console.SetCursorPosition(left, top);
             Console.Write("> ");
         }
     }
