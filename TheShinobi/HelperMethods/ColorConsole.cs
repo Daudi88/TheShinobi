@@ -138,11 +138,11 @@ namespace TheShinobi.HelperMethods
                     Thread.Sleep(delay);
                 }
             }
-            Thread.Sleep(800);
+            Thread.Sleep(600);
             Console.WriteLine();
         }
 
-        public static void WriteOver(string message, ConsoleColor color, int time = 800)
+        public static void WriteOver(string message, ConsoleColor color, int time = 400)
         {
             int left = 9;
             int top = Console.CursorTop;

@@ -47,11 +47,11 @@ namespace TheShinobi.Structures
             adventurePlayer.PlayLooping();
             string story = "\n\t You wake up from a womans scream's and it sound's as if she is beeing taken away!!!" +
             "\n\t You hear the villagers scream that somebody kidnapped Hanare!" +
-            "\t You quickly gear up for battle and it is still dark outside when you" +
+            "\n\t You quickly gear up for battle and it is still dark outside when you" +
             "\n\t leave The Hidden Leaf Village in search of Hanare and her soon to be dead kidnappers..." +
-            "\t Hint: You will probobly need a better Weapon and Armor, you have heard about treasures containing some usefull loot." +
-            "\t Hint: Make sure you are strong and equipped enough for when you meet Hanare's Kidnapper."; // Håkan :)
-            ColorConsole.LineDelayed(story, ConsoleColor.Yellow);
+            "\n\t Hint: You will probobly need a better Weapon and Armor, you have heard about treasures containing some usefull loot." +
+            "\n\t Hint: Make sure you are strong and equipped enough for when you meet Hanare's Kidnapper.";
+            ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
             bool exit = false;
             while (!exit)
             {
@@ -113,7 +113,7 @@ namespace TheShinobi.Structures
                 Console.SetWindowPosition(0, Console.CursorTop - V);
                 Weapon[] swords = Get.SevenSwords(player);
                 Weapon sword = swords[random.Next(swords.Length)];
-                ColorConsole.WriteEmbeddedDelayed($"\t You find [Yellow]{sword.Name}[/Yellow], a sword of the Seven Swordsmen!\n");
+                ColorConsole.WriteEmbeddedDelayed($"\t You find the [Yellow]{sword.Name}[/Yellow], a sword of the Seven Swordsmen!\n");
                 AddToBackpack(player, sword);
                 Console.WriteLine("\t [Press enter to continue]");
                 Console.ReadKey(true);
