@@ -225,7 +225,7 @@ namespace TheShinobi.HelperMethods
             ColorConsole.Write("●", ConsoleColor.Red);
         }
 
-        public static void Delayed(string text, int delay = 40, ConsoleColor color = ConsoleColor.White)
+        public static void Delayed(string text, ConsoleColor color = ConsoleColor.White, int delay = 40)
         {
             bool isKeyPressed = false;
             Thread.Sleep(delay);

@@ -12,6 +12,7 @@ namespace TheShinobi.Items.Armors
         {
             if (player.Armor != null)
             {
+                player.Armor.Quantity++;
                 player.Backpack.Add(player.Armor);
             }
             Console.WriteLine($"\t You equipped {item.Name} with {Defence} defence!");

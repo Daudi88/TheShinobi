@@ -1,14 +1,10 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
-using System.Media;
 using System.Text;
 using TheShinobi.Characters;
 using TheShinobi.HelperMethods;
-using TheShinobi.Interfaces;
 using TheShinobi.Items;
 using TheShinobi.Items.Armors;
-using TheShinobi.Items.Consumables;
 using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Structures
@@ -32,10 +28,7 @@ namespace TheShinobi.Structures
             Console.Title = "The Shinobi";
             Console.SetWindowSize(130, 50);
             Console.OutputEncoding = Encoding.UTF8;
-            Console.CursorVisible = false;
-            string soundLocation = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\NarutoFinal.Wav"); // (Environment.CurrentDirectory, @"..\..\..\..\NarutoFinal.Wav");
-            SoundPlayer player = new SoundPlayer(soundLocation);
-            player.PlayLooping();
+            Console.CursorVisible = false;            
         }
 
         public void Test()
@@ -48,12 +41,15 @@ namespace TheShinobi.Structures
 
         public void Start()
         {
+            Adventure.villagePlayer.PlayLooping();
             Display.Title();
             Player player = CharacterCreation();
             string intro = $"\n\t You, {player.Name} wake up in the Hidden Leaf Village and sense that something is wrong!" +
                 "\n\t Kaguya Otsutsuki have kidnapped Hanare and taken her to his cave in the mountains." +
                 "\n\t It is your duty to find and rescue her!";
             Display.Delayed(intro, color: ConsoleColor.Yellow);
+            Console.WriteLine("\t [Press enter to continue]");
+            Console.ReadKey(true);
             Village.Menu(player);
         }
 
@@ -108,7 +104,7 @@ namespace TheShinobi.Structures
         public static void ExitGame()
         {
             ColorConsole.Write("\t Exiting game", ConsoleColor.Red);
-            Display.Delayed("...", 800, ConsoleColor.Red);
+            Display.Delayed("...", ConsoleColor.Red, 800);
             Environment.Exit(0);
         }
     }

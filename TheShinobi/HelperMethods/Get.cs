@@ -235,53 +235,52 @@ namespace TheShinobi.HelperMethods
 
         public static string[] NoFightStory()
         {
-            string[] noFightStory = new string[]
+            string[] stories = new string[]
             {
-                 "\n\t As you walk up the mountain trail you sense a group of ninjas from the Uchicha clan ahead." +
-                $"\n\t You easily sneak past them on your way to rescue Hanare!",
+                 "\n\t As you walk up the mountain trail you sense a group of ninjas from the Uchicha Clan ahead." +
+                 "\n\t You easily sneak past them on your way to rescue Hanare!",
 
-                 "\n\t You hear something in the distance and use Mangekyō to see a group of Ninjas lying in ambush for travelers." +
-                 "\n\t If it wasnt that you are in a rush to rescue Hanare you would have made minced meat of them all!",
+                 "\n\t You hear something in the distance and use your Sharingan to see a group of" +
+                 "\n\t Ninjas lying in ambush for travelers. If it wasn't for that you are in a rush" +
+                 "\n\t to rescue Hanare you would have made minced meat of them all!",
 
                  "\n\t You use your senses and feel that no enemy is near, you set up camp and light a fire" +
-                 "n\t You eat your delicious Green Chilli Burger while watching the Sunset ove The Hidden Leaf Village...",
+                 "\n\t You eat a delicious Green Chilli Burger while watching the Sunset over The Hidden Leaf Village.",
 
                  "\n\t As the sun sets over the mountains you see a clan who has setup camp on your land!" +
                  "\n\t There is no time to engage them now, first you must rescue Hanare!",
 
-                 "n\t As you walk through The Shikkotsu Forest you sense Hanare is further North!" +
-                 "n\t You start running towards the montains!",
+                 "\n\t As you walk through The Shikkotsu Forest you sense Hanare is further North!" +
+                 "\n\t You start running towards the montains!",
 
-                 "\n\t You aproach a empty camp, the fire is still smoking a little and there are signs of someone who has been tied up!" +
-                 "\n\t In the soil you see one of hanares black glove, you follow their trail..."
+                 "\n\t You aproach a empty camp, the fireplace is still smoldering a little." +
+                 "\n\t There are signs of someone who has been tied up! In the soil you see" +
+                 "\n\t one of Hanare's black gloves! You follow their trail..."
             };
-            return noFightStory;
+            return stories;
         }
 
         public static string[] FightStory(Enemy enemy)
         {
-            string[] fightStory = new string[]
+            string[] stories = new string[]
             {
-                "\n\t You walked down the bushy trail and sence there is troubble ahead!" +
+                "\n\t You walk down the bushy trail and sence there is trouble ahead!" +
                 $"\n\t You can smell that dirty {enemy.Clan} member miles away and you attack instantly!",
 
-                "\n\t While climbing up the mountains in search of Hanare you get ambushed by some filthy Team Doso villains!" +
-                "\n\t You attack, maybe they know more about Hanare´s kidnapping!",
+                $"\n\t While climbing up the mountains in search of Hanare you get ambushed by some filthy {enemy.Clan} villains!" +
+                "\n\t You attack, maybe they know more about Hanare's kidnapping!",
 
-                "\n\t While climbing up the mountains in search of Hanare you get ambushed by some filthy Team Doso villains!" +
-                "\n\t  You attack, maybe they know more about Hanare´s kidnapping!",
+                "\n\t You have walked for hours when you decide to set up camp at a lake. +" +
+                $"\n\t Suddenly some low life from the {enemy.Clan} Clan attacks you!" +
+                "\n\t Four of them run away when they see that it is you but one stays behind to fight!",
 
-                "\n\t You have walked for hours when you decide to set up camp at the lake. +" +
-                $"\n\t when some low life from the {enemy.Clan} clan attacks you!" +
-                "\n\t Four of them run away when they see it is you but one stays to fight!",
+                "\n\t The sky is full of dark clouds and when lightning strikes the ground vibrates!" +
+                $"\n\t As you set up camp in the mountains to escape the bad weather some villains from the {enemy.Clan} Clan attacks!",
 
-                "\n\t The sky is full of dark clouds and when lightning strikes hits the ground vibrates..." +
-                "\n\t As you set up camp in the mountains to escape the bad weather for the night some villains from the Uchicha clan attacks!",
-
-                "\n\t The sky is blue and the sun is shining. As you walk past the graveyard you hear them!" +
-                "\n\t Some lowlife from the Aburame clan attacks you!"
+                "\n\t The sky is blue and the sun is shining. As you walk past the graveyard you hear a noice!" +
+                "\n\t A lowlife from the {enemy.Clan} Clan attacks you!"
             };
-            return fightStory;
+            return stories;
         }
     }
 }

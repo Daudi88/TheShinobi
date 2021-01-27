@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Media;
 using System.Threading;
 using TheShinobi.Characters;
 using TheShinobi.HelperMethods;
@@ -18,6 +20,8 @@ namespace TheShinobi.Structures
          *                        buy potions.
          * NinjaToolShop()      - Lets the player buy and sell items.
          */
+
+
 
         public static void Menu(Player player)
         {
@@ -41,7 +45,7 @@ namespace TheShinobi.Structures
                     "3. Heal yourself at Konoha Hospital",
                     "4. Go to the Ninja Tool Shop",
                 };
-                Display.WithFrame(options, "[Yellow]VILLAGE[/Yellow]", true, "Exit Game");
+                Display.WithFrame(options, "[Yellow]HIDDEN LEAF VILLAGE[/Yellow]", true, "Exit Game");
 
                 Action<Player>[] methods = new Action<Player>[]
                 {
@@ -93,7 +97,14 @@ namespace TheShinobi.Structures
                     if (ChooseANumber(meals.Length, out int choice, ending: true))
                     {
                         Consumable meal = meals[choice - 1];
-                        Store.MakePurchase(player, meal, meal.Price, true);
+                        if (player.Gold >= meal.Price)
+                        {
+                            Store.MakePurchase(player, meal, meal.Price, true);
+                        }
+                        else
+                        {
+                            ColorConsole.TypeOver($"\t You don't have enough gold to buy a {meal.Name}", ConsoleColor.Red);
+                        }
                     }
                     else
                     {

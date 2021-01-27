@@ -57,21 +57,13 @@ namespace TheShinobi.Characters.Enemies
                 eDropText = $"{equipable.IndefiniteArticle} {equipable.Name}";
             }
             Item consumable;
-            if (Name == "Hocke")
+            if (Name == "Hocke" || Name == "Daudi")
             {
                 cDrop = true;
                 consumable = new EnergyDrink("Monster Energy", 100, 15, "You unleash the beast");
                 consumable.Quantity = Utility.random.Next(1, 11);
                 player.Backpack.Add(consumable);
                 cDropText = $"{consumable.Quantity} Monster Energy and ";
-            }
-            else if (Name == "Daudi")
-            {
-                cDrop = true;
-                consumable = new EnergyDrink("NOCCO", 100, 12, "You are NOCCO enough");
-                consumable.Quantity = Utility.random.Next(1, 11);
-                player.Backpack.Add(consumable);
-                cDropText = $"{consumable.Quantity} NOCCO and ";
             }
             else
             {

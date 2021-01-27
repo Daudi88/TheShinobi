@@ -13,6 +13,7 @@ namespace TheShinobi.Items.Weapons
         {
             if (!(player.Weapon is Fists))
             {
+                player.Weapon.Quantity++;
                 player.Backpack.Add(player.Weapon);
             }
             Console.WriteLine("\t You equipped {Name} with {Damage} damage!");
