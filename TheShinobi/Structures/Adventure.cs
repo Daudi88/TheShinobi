@@ -9,11 +9,20 @@ namespace TheShinobi.Structures
 {
     class Adventure
     {
+        /* This class contains the following methods:
+         * Menu()               - 
+         * Graveyard()          -
+         * Treasure()           -
+         * AbuHassan()          -
+         * ...
+         */
+
         private static bool isTreasureTaken = false;
         private static bool isGraveyardVisited = false;
-        public static void GoOnAdventure(Player player)
+        public static void Menu(Player player)
         {
-
+            var positions = Get.Positions();
+            string options = positions[0.1].Item3;
         }
 
         private static void Graveyard(Player player)

@@ -40,8 +40,10 @@ namespace TheShinobi.Structures
 
         public void Test()
         {
-            Player player = CharacterCreation();
-            Adventure.AbuHassan(player);
+            var positions = Get.Positions();
+            string options = positions[0.1].Item3;
+            Console.WriteLine(options);
+            Console.ReadLine();
         }
 
         public void Start()
