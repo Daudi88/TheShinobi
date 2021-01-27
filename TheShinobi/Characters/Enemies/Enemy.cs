@@ -8,9 +8,11 @@ namespace TheShinobi.Characters.Enemies
 {
     class Enemy : Character
     {
-        public Enemy(string name, int level, int hp, Armor armor, Weapon weapon)
+        public string Clan { get; set; }
+        public Enemy(string name, string clan, int level, int hp, Armor armor, Weapon weapon)
         {
             Name = name;
+            Clan = clan;
             Level = level;
             Hp = hp;
             Armor = armor;

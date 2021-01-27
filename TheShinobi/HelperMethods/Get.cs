@@ -109,7 +109,7 @@ namespace TheShinobi.HelperMethods
         {
             Enemy[] enemies = new Enemy[]
             {
-                new Enemy("Sakon", 1, 30, new FlakJacket(), new Kiba()),
+                new Enemy("Sakon", "clan", 1, 30, new FlakJacket(), new Kiba()),
                 new Enemy("Tayuya", 1, 30, new Shirt(), new Fists()),
                 new Enemy("Ukon", 2, 32, new Shirt(), new Kusarigama()),
                 new Enemy("Sasori", 2, 32, new Shirt(), new TekagiShuko()),

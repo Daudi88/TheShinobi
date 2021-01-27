@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Consumables;
 using System.Linq;
+using TheShinobi.Characters.Enemies;
 
 namespace TheShinobi.Structures
 {
@@ -26,7 +27,7 @@ namespace TheShinobi.Structures
 
         public static void Menu(Player player)
         {
-            
+
         }
 
         public static void North(Player player)
@@ -142,7 +143,7 @@ namespace TheShinobi.Structures
                 string story = "\n\t An old man with white beard appears in front of you." +
                     "\n\t The man, dressed in red and white, looks upon you as if" +
                     "\n\t he was expecting your arrival with a big smile on his face." +
-                    "\n\t You instantly recognice the old man as Hiruzen Sarutobi!";        
+                    "\n\t You instantly recognice the old man as Hiruzen Sarutobi!";
                 Display.Delayed(story, color: ConsoleColor.Yellow);
                 string story2 = $"\n\t {player.Name}, he says while smoking on his pipe..." +
                     "\n\t There is little time and you need to go on with your quest" +
@@ -213,7 +214,7 @@ namespace TheShinobi.Structures
                 if (fight == 1)
                 {
                     Console.WriteLine("\t You walked down the bushy trail and sence there is troubble ahead!");
-                    Console.WriteLine($"\t You can smell that dirty Ōtsutsuki member miles away and you attack instantly!");
+                    Console.WriteLine("\t You can smell that dirty Ōtsutsuki member miles away and you attack instantly!");
                     Console.WriteLine("\t [Press enter to continue]");
                 }
                 else if (fight == 2)
@@ -244,6 +245,21 @@ namespace TheShinobi.Structures
                 //Battle();
             }
         }
+        public static string[] FightStory(Enemy enemy)
+        {
+            string[] fightStory = new string[]
+            {
+                "\n\t You walked down the bushy trail and sence there is troubble ahead!" +
+                $"\n\t You can smell that dirty {enemy.Clan} member miles away and you attack instantly!",
+
+                "\n\t While climbing up the mountains in search of Hanare you get ambushed by some filthy Team Doso villains!" +
+                "\n\t You attack, maybe they know more about Hanare´s kidnapping!",
+
+
+            };
+            return fightStory;
+        }
+
 
         //private static void Battle(Player player)
         //{
