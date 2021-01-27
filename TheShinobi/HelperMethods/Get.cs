@@ -67,8 +67,20 @@ namespace TheShinobi.HelperMethods
                         options.Add(Adventure.ToVillage);
                         break;
                     case 'H':
-                        content.Add($"{ctr++}. Meet Hiruzen");
+                        content.Add($"{ctr++}. Go West");
                         options.Add(Adventure.ToHiruzen);
+                        break;
+                    case 'T':
+                        content.Add($"{ctr++}. Go North");
+                        options.Add(Adventure.ToTreasure);
+                        break;
+                    case 'G':
+                        content.Add($"{ctr++}. Go East");
+                        options.Add(Adventure.ToGraveyard);
+                        break;
+                    case 'A':
+                        content.Add($"{ctr++}. Go West");
+                        options.Add(Adventure.ToAbuHassan);
                         break;
                     default:
                         break;
@@ -80,30 +92,26 @@ namespace TheShinobi.HelperMethods
         public static Dictionary<double, Tuple<int, int, string>> Positions()
         {
             var positions = new Dictionary<double, Tuple<int, int, string>>();
-            positions.Add(0.1, new Tuple<int, int, string>(15, 15, "NE"));
-            positions.Add(0.2, new Tuple<int, int, string>(13, 10, "TS"));
-            positions.Add(0.3, new Tuple<int, int, string>(12, 4, "AE"));
-            positions.Add(1.1, new Tuple<int, int, string>(25, 15, "NEW"));
-            positions.Add(1.2, new Tuple<int, int, string>(25, 9, "NES"));
-            positions.Add(1.3, new Tuple<int, int, string>(21, 4, "WS"));
-            positions.Add(2.0, new Tuple<int, int, string>(38, 19, "N"));
-            positions.Add(2.1, new Tuple<int, int, string>(38, 15, "NEWV"));
-            positions.Add(2.2, new Tuple<int, int, string>(36, 9, "EWS"));
-            positions.Add(2.3, new Tuple<int, int, string>(38, 5, "NE"));
-            positions.Add(2.4, new Tuple<int, int, string>(36, 2, "BS"));
-            positions.Add(3.1, new Tuple<int, int, string>(49, 15, "NEW"));
-            positions.Add(3.2, new Tuple<int, int, string>(48, 9, "NWS"));
-            positions.Add(3.3, new Tuple<int, int, string>(48, 5, "EW"));
-            positions.Add(4.0, new Tuple<int, int, string>(72, 21, "NE"));
-            positions.Add(4.1, new Tuple<int, int, string>(69, 15, "EWS"));
-            positions.Add(4.2, new Tuple<int, int, string>(70, 10, "HE"));
-            positions.Add(4.3, new Tuple<int, int, string>(65, 5, "EW"));
-            positions.Add(5.0, new Tuple<int, int, string>(85, 21, "GW"));
-            positions.Add(5.1, new Tuple<int, int, string>(82, 15, "NW"));
-            positions.Add(5.2, new Tuple<int, int, string>(82, 10, "NWS"));
-            positions.Add(5.3, new Tuple<int, int, string>(80, 5, "WS"));
+            positions.Add(0.2, new Tuple<int, int, string>(15, 15, "TE"));
+            positions.Add(1.2, new Tuple<int, int, string>(25, 15, "NEW"));
+            positions.Add(1.3, new Tuple<int, int, string>(25, 9, "NES"));
+            positions.Add(1.4, new Tuple<int, int, string>(21, 4, "AS"));
+            positions.Add(2.0, new Tuple<int, int, string>(38, 19, ""));
+            positions.Add(2.1, new Tuple<int, int, string>(38, 18, "NV"));
+            positions.Add(2.2, new Tuple<int, int, string>(38, 15, "NEWS"));
+            positions.Add(2.3, new Tuple<int, int, string>(36, 9, "EWS"));
+            positions.Add(2.4, new Tuple<int, int, string>(38, 5, "BE"));
+            positions.Add(3.2, new Tuple<int, int, string>(49, 15, "NEW"));
+            positions.Add(3.3, new Tuple<int, int, string>(48, 9, "NWS"));
+            positions.Add(3.4, new Tuple<int, int, string>(48, 5, "EW"));
+            positions.Add(4.1, new Tuple<int, int, string>(72, 21, "NG"));
+            positions.Add(4.2, new Tuple<int, int, string>(69, 15, "EWS"));
+            positions.Add(4.4, new Tuple<int, int, string>(65, 5, "EW"));
+            positions.Add(5.2, new Tuple<int, int, string>(82, 15, "NW"));
+            positions.Add(5.3, new Tuple<int, int, string>(82, 10, "NHS"));
+            positions.Add(5.4, new Tuple<int, int, string>(80, 5, "WS"));
             return positions;
-    }
+        }
 
         public static Enemy[] Enemies()
         {
