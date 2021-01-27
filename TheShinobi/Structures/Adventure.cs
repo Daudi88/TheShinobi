@@ -85,8 +85,8 @@ namespace TheShinobi.Structures
             if (!isGraveyardVisited)
             {
                 string soundLocation = Path.Combine(Environment.CurrentDirectory, @"C:\test\TreasureFinal10db.wav"); // (Environment.CurrentDirectory, @"..\..\..\..\NarutoFinal.Wav");
-                SoundPlayer playerTreasure = new SoundPlayer(soundLocation);
-                playerTreasure.PlayLooping();
+                SoundPlayer playerGrave = new SoundPlayer(soundLocation);
+                playerGrave.PlayLooping();
                 Weapon[] swords = Get.SevenSwords(player);
                 Weapon sword = swords[Utility.random.Next(swords.Length)];
                 ColorConsole.WriteLine($"\t You find {sword.Name}, a sword of the Seven Swordsmen!", ConsoleColor.Yellow);
@@ -124,8 +124,8 @@ namespace TheShinobi.Structures
         {
             player.Pos -= 1.0;
             string soundLocation = Path.Combine(Environment.CurrentDirectory, @"C:\test\AbuHassanFinal.wav"); // (Environment.CurrentDirectory, @"..\..\..\..\NarutoFinal.Wav");
-            SoundPlayer playerTreasure = new SoundPlayer(soundLocation);
-            playerTreasure.PlayLooping();
+            SoundPlayer playerHassan = new SoundPlayer(soundLocation);
+            playerHassan.PlayLooping();
             Console.WriteLine("\n\t Welcome to Abu Hassan's one stop shop for everything\n\t a real Shinobi from the hood could ever want!");
             int top = Console.CursorTop;
             int left = 9;
@@ -175,9 +175,9 @@ namespace TheShinobi.Structures
             player.Pos -= 1.0;
             if (!isHiruzenVisited)
 
-            string soundLocation = Path.Combine(Environment.CurrentDirectory, @"C:\test\NarutoGeneralFinal.wav"); // (Environment.CurrentDirectory, @"..\..\..\..\NarutoFinal.Wav");
-            SoundPlayer playerTreasure = new SoundPlayer(soundLocation);
-            playerTreasure.PlayLooping();
+            string soundLocation = Path.Combine(Environment.CurrentDirectory, @"C:\test\TreasureFinal10db.wav"); // (Environment.CurrentDirectory, @"..\..\..\..\NarutoFinal.Wav");
+            SoundPlayer playerHiruzen = new SoundPlayer(soundLocation);
+            playerHiruzen.PlayLooping();
             if (!haveYouMetHim)
             {
                 Weapon weapon = new Kusarigama();
