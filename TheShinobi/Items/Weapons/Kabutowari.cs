@@ -11,6 +11,7 @@ namespace TheShinobi.Items.Weapons
             Name = "Kabutowari";
             Price = 4000;
             Damage = "2d10";
+            IndefiniteArticle = "the";
         }
     }
 }

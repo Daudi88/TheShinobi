@@ -7,6 +7,7 @@
             Name = "Kusarigama";
             Price = 8000;
             Damage = "3d8";
+            IndefiniteArticle = "a";
         }
     }
 }

@@ -7,6 +7,7 @@
             Name = "Shuriken";
             Price = 2000;
             Damage = "1d8";
+            IndefiniteArticle = "a";
         }
     }
 }

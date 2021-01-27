@@ -7,6 +7,7 @@
             Name = "Kubikiribōchō";
             Price = 5000;
             Damage = "3d8";
+            IndefiniteArticle = "the";
         }
     }
 }

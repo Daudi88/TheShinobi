@@ -11,6 +11,7 @@ namespace TheShinobi.Items.Weapons
             Name = "Shuriken";
             Price = 4000;
             Damage = "2d16";
+            IndefiniteArticle = "the";
         }
     }
 }

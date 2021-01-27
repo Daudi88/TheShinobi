@@ -7,6 +7,7 @@
             Name = "Chakra Blade";
             Price = 4000;
             Damage = "2d8";
+            IndefiniteArticle = "a";
         }
     }
 }
