@@ -41,7 +41,7 @@ namespace TheShinobi.Structures
         public void Test()
         {
             Player player = CharacterCreation();
-            Adventure.AbuHassan(player);
+            Adventure.MeetHiruzen(player);
         }
 
         public void Start()
