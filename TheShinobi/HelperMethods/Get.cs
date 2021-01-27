@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TheShinobi.Characters;
 using TheShinobi.Characters.Enemies;
 using TheShinobi.Items;
@@ -32,6 +33,39 @@ namespace TheShinobi.HelperMethods
             int at2 = text.IndexOf("]");
             return text.Substring(at, at2 - at + 1).Length * 2 + 1;
         }
+
+        public static Dictionary<double, Tuple<int, int, string>> Positions()
+        {
+            var positions = new Dictionary<double, Tuple<int, int, string>>();
+            positions.Add(0.1, new Tuple<int, int, string>(15, 15, "NE"));
+            positions.Add(0.2, new Tuple<int, int, string>(13, 10, "TS"));
+            positions.Add(0.3, new Tuple<int, int, string>(12, 4, "AE"));
+            positions.Add(1.1, new Tuple<int, int, string>(25, 15, "NEW"));
+            positions.Add(1.2, new Tuple<int, int, string>(25, 9, "NES"));
+            positions.Add(1.3, new Tuple<int, int, string>(21, 4, "WS"));
+            positions.Add(2.0, new Tuple<int, int, string>(38, 19, "N"));
+
+            positions.Add(2.1, new Tuple<int, int, string>(13, 10, "WS"));
+            positions.Add(2.2, new Tuple<int, int, string>(13, 10, "WS"));
+            positions.Add(2.3, new Tuple<int, int, string>(13, 10, "WS"));
+            positions.Add(2.4, new Tuple<int, int, string>(13, 10, "WS"));
+            positions.Add(3.1, new Tuple<int, int, string>(13, 10, "WS"));
+            positions.Add(3.2, new Tuple<int, int, string>(13, 10, "WS"));
+            positions.Add(3.3, new Tuple<int, int, string>(13, 10, "WS"));
+            positions.Add(4.0, new Tuple<int, int, string>(13, 10, "WS"));
+            positions.Add(4.1, new Tuple<int, int, string>(13, 10, "WS"));
+            positions.Add(4.2, new Tuple<int, int, string>(13, 10, "WS"));
+            positions.Add(4.3, new Tuple<int, int, string>(13, 10, "WS"));
+            positions.Add(5.0, new Tuple<int, int, string>(13, 10, "WS"));
+            positions.Add(5.1, new Tuple<int, int, string>(13, 10, "WS"));
+            positions.Add(5.2, new Tuple<int, int, string>(13, 10, "WS"));
+            positions.Add(5.3, new Tuple<int, int, string>(13, 10, "WS"));
+
+
+
+
+            return positions;
+    }
 
         public static Enemy[] Enemies()
         {

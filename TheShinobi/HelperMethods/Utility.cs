@@ -31,6 +31,7 @@ namespace TheShinobi.HelperMethods
         public static bool isEnergyDrink = false;
         public static string energyBonus = "";
         public static bool isVisitingVillage = true;
+        
 
         public static int RollDice(string dice)
         {

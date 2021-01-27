@@ -45,7 +45,7 @@ namespace TheShinobi.Structures
 
                 Action<Player>[] methods = new Action<Player>[]
                 {
-                    Adventure.GoOnAdventure, LightningBurger, KonohaHospital, NinjaToolShop
+                    Adventure.Menu, LightningBurger, KonohaHospital, NinjaToolShop
                 };
                 while (true)
                 {
