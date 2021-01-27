@@ -245,6 +245,30 @@ namespace TheShinobi.Structures
                 //Battle();
             }
         }
+        public static string[] NoFightStory()
+        {
+            string[] noFightStory = new string[]
+            {
+                 "\n\t As you walk up the mountain trail you sense a group of ninjas from the Uchicha clan ahead." +
+                $"\n\t You easily sneak past them on your way to rescue Hanare!",
+
+                 "\n\t You hear something in the distance and use Mangekyō to see a group of Ninjas lying in ambush for travelers." +
+                 "\n\t If it wasnt that you are in a rush to rescue Hanare you would have made minced meat of them all!",
+
+                 "\n\t You use your senses and feel that no enemy is near, you set up camp and light a fire" +
+                 "n\t You eat your delicious Green Chilli Burger while watching the Sunset ove The Hidden Leaf Village...",
+
+                 "\n\t As the sun sets over the mountains you see a clan who has setup camp on your land!" +
+                 "\n\t There is no time to engage them now, first you must rescue Hanare!",
+
+                 "n\t As you walk through The Shikkotsu Forest you sense Hanare is further North!" +
+                 "n\t You start running towards the montains!",
+
+                 "\n\t You aproach a empty camp, the fire is still smoking a little and there are signs of someone who has been tied up!" +
+                 "\n\t In the soil you see one of hanares black glove, you follow their trail..."
+            };
+            return noFightStory;
+        }
         public static string[] FightStory(Enemy enemy)
         {
             string[] fightStory = new string[]
@@ -255,11 +279,21 @@ namespace TheShinobi.Structures
                 "\n\t While climbing up the mountains in search of Hanare you get ambushed by some filthy Team Doso villains!" +
                 "\n\t You attack, maybe they know more about Hanare´s kidnapping!",
 
+                "\n\t While climbing up the mountains in search of Hanare you get ambushed by some filthy Team Doso villains!" +
+                "\n\t  You attack, maybe they know more about Hanare´s kidnapping!",
 
+                "\n\t You have walked for hours when you decide to set up camp at the lake. +" +
+                $"\n\t when some low life from the {enemy.Clan} clan attacks you!" +
+                "\n\t Four of them run away when they see it is you but one stays to fight!",
+
+                "\n\t The sky is full of dark clouds and when lightning strikes hits the ground vibrates..." +
+                "\n\t As you set up camp in the mountains to escape the bad weather for the night some villains from the Uchicha clan attacks!",
+
+                "\n\t The sky is blue and the sun is shining. As you walk past the graveyard you hear them!" +
+                "\n\t Some lowlife from the Aburame clan attacks you!"
             };
             return fightStory;
         }
-
 
         //private static void Battle(Player player)
         //{
