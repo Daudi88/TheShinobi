@@ -41,7 +41,7 @@ namespace TheShinobi.Structures
         public void Test()
         {
             Player player = CharacterCreation();
-            Adventure.MeetHiruzen(player);
+            Adventure.EncounterCheck();
             Console.ReadLine();
         }
 
