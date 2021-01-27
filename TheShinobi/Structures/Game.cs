@@ -47,10 +47,10 @@ namespace TheShinobi.Structures
             string intro = $"\n\t You, {player.Name}, wake up in the Hidden Leaf Village and sense that something is wrong!" +
                 "\n\t Kaguya Otsutsuki have kidnapped Hanare and taken her to his cave in the mountains." +
                 "\n\t It is your duty to find and rescue her!";
-            ColorConsole.LineDelayed(intro, color: ConsoleColor.Yellow);
+            ColorConsole.WriteDelayedLine(intro, ConsoleColor.Yellow, 40);
             Console.WriteLine("\t [Press enter to continue]");
             Console.ReadKey(true);
-            Village.Menu(player);
+            HiddenLeafVillage.Menu(player);
         }
 
         private static Player CharacterCreation()
@@ -63,15 +63,15 @@ namespace TheShinobi.Structures
                 name = ColorConsole.ReadLine();
                 if (name.Any(char.IsDigit))
                 {
-                    ColorConsole.TypeOver("\t The name cannot contain digits. Try again!", ConsoleColor.Red);
+                    ColorConsole.WriteOver("\t The name cannot contain digits. Try again!", ConsoleColor.Red);
                 }
                 else if (name.Length < 3)
                 {
-                    ColorConsole.TypeOver("\t The name is too short. Try again!", ConsoleColor.Red);
+                    ColorConsole.WriteOver("\t The name is too short. Try again!", ConsoleColor.Red);
                 }
                 else if (name.Length > 12)
                 {
-                    ColorConsole.TypeOver("\t The name is too long. Try again!", ConsoleColor.Red);
+                    ColorConsole.WriteOver("\t The name is too long. Try again!", ConsoleColor.Red);
                 }
                 else
                 {
@@ -103,8 +103,8 @@ namespace TheShinobi.Structures
 
         public static void ExitGame()
         {
-            ColorConsole.Write("\t Exiting game", ConsoleColor.Red);
-            ColorConsole.LineDelayed("...", ConsoleColor.Red, 800);
+            ColorConsole.WriteDelayed("\t Exiting game", ConsoleColor.Red);
+            ColorConsole.WriteDelayedLine("...", ConsoleColor.Red, 800);
             Environment.Exit(0);
         }
     }

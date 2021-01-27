@@ -17,7 +17,7 @@ namespace TheShinobi.Items.Weapons
                 player.Weapon.Quantity++;
                 player.Backpack.Add(player.Weapon);
             }
-            ColorConsole.TypeOver($"\t You equipped {Name} with {Damage} damage!", ConsoleColor.Yellow);
+            ColorConsole.WriteOver($"\t You equipped {Name} with {Damage} damage!", ConsoleColor.Yellow);
             player.Weapon = (Weapon)item;
             player.Damage = Damage;
         }

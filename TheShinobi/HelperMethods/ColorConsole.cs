@@ -82,7 +82,46 @@ namespace TheShinobi.HelperMethods
             }
         }
 
-        public static void LineDelayed(string text, ConsoleColor color = ConsoleColor.White, int delay = 40)
+        public static void WriteEmbeddedDelayed(string text)
+        {
+            Regex colorRegex = new Regex(@"\[(?<color>.*?)\](?<text>[^[]*)\[/\k<color>\]");
+            while (true)
+            {
+                var match = colorRegex.Match(text);
+                if (match.Length < 1)
+                {
+                    WriteDelayed(text);
+                    break;
+                }
+                WriteDelayed(text.Substring(0, match.Index));
+                string hightlight = match.Groups["text"].Value;
+                string color = match.Groups["color"].Value;
+                Enum.TryParse(color, out ConsoleColor col);
+                WriteDelayed(hightlight, col);
+                text = text.Substring(match.Index + match.Value.Length);
+            }
+        }
+
+        public static void WriteDelayed(string text, ConsoleColor color = ConsoleColor.White, int delay = 20)
+        {
+            bool isKeyPressed = false;
+            Thread.Sleep(delay);
+            foreach (var letter in text)
+            {
+                Write(letter.ToString(), color);
+                if (Console.KeyAvailable)
+                {
+                    isKeyPressed = true;
+                }
+
+                if (!isKeyPressed)
+                {
+                    Thread.Sleep(delay);
+                }
+            }
+        }
+
+        public static void WriteDelayedLine(string text, ConsoleColor color = ConsoleColor.White, int delay = 30)
         {
             bool isKeyPressed = false;
             Thread.Sleep(delay);
@@ -103,11 +142,11 @@ namespace TheShinobi.HelperMethods
             Console.WriteLine();
         }
 
-        public static void TypeOver(string message, ConsoleColor color, int time = 2000)
+        public static void WriteOver(string message, ConsoleColor color, int time = 800)
         {
             int left = 9;
             int top = Console.CursorTop;
-            LineDelayed(message, color);
+            WriteDelayedLine(message, color);
             Thread.Sleep(time);
             Console.SetCursorPosition(left, top--);
             for (int j = 0; j < message.Length; j++)

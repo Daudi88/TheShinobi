@@ -10,7 +10,7 @@ using static TheShinobi.HelperMethods.Utility;
 
 namespace TheShinobi.Structures
 {
-    class Village
+    class HiddenLeafVillage
     {
         /* This class contains the foloowing methods:
          * Menu()               - Menu of the Hidden Leaf Village. 
@@ -21,8 +21,6 @@ namespace TheShinobi.Structures
          * NinjaToolShop()      - Lets the player buy and sell items.
          */
 
-
-
         public static void Menu(Player player)
         {
             bool exit = false;
@@ -30,13 +28,13 @@ namespace TheShinobi.Structures
             {
                 if (isVisitingVillage)
                 {
-                    ColorConsole.LineDelayed("\n\n\t Welcome to the Hidden Leaf Village!");
-                    ColorConsole.LineDelayed("\t What do you want to do?");
+                    ColorConsole.WriteDelayedLine("\n\n\t Welcome to the Hidden Leaf Village!");
+                    ColorConsole.WriteDelayedLine("\t What do you want to do?");
                     isVisitingVillage = false;
                 }
                 else
                 {
-                    ColorConsole.LineDelayed("\n\n\t What do you want to do?");
+                    ColorConsole.WriteDelayedLine("\n\n\t What do you want to do?");
                 }
                 List<string> options = new List<string>()
                 {
@@ -83,8 +81,8 @@ namespace TheShinobi.Structures
             bool exit = false;
             while (!exit)
             {
-                ColorConsole.LineDelayed("\n\n\t Welcome to the Lightning Burger!");
-                ColorConsole.LineDelayed("\t What can we do for you?");
+                ColorConsole.WriteDelayedLine("\n\n\t Welcome to the Lightning Burger!");
+                ColorConsole.WriteDelayedLine("\t What can we do for you?");
                 List<string> menu = new List<string>();
                 int ctr = 1;
                 foreach (var meal in meals)
@@ -103,13 +101,12 @@ namespace TheShinobi.Structures
                         }
                         else
                         {
-                            ColorConsole.TypeOver($"\t You don't have enough gold to buy a {meal.Name}", ConsoleColor.Red);
+                            ColorConsole.WriteOver($"\t You don't have enough gold to buy a {meal.Name}", ConsoleColor.Red);
                         }
                     }
                     else
                     {
-                        ColorConsole.WriteLine("\t Thank you for visiting Lightning Burger!\n", ConsoleColor.Yellow);
-                        Thread.Sleep(1800);
+                        ColorConsole.WriteDelayedLine("\t Thank you for visiting Lightning Burger!", ConsoleColor.Yellow);
                         Console.SetWindowPosition(0, Console.CursorTop - V);
                         exit = true;
                         break;
@@ -120,12 +117,12 @@ namespace TheShinobi.Structures
 
         private static void KonohaHospital(Player player)
         {
-            ColorConsole.LineDelayed("\n\n\t Welcome to Konoha Hospital!");
+            ColorConsole.WriteDelayedLine("\n\n\t Welcome to Konoha Hospital!");
             int top = Console.CursorTop;
             while (true)
             {
                 Console.SetCursorPosition(0, top);
-                ColorConsole.LineDelayed("\t What do you want to do?");
+                ColorConsole.WriteDelayedLine("\t What do you want to do?");
                 List<string> options = new List<string>()
                 {
                     "1. See Tsunade the medical-nin (300g)",
@@ -150,8 +147,7 @@ namespace TheShinobi.Structures
                 }
                 else
                 {
-                    ColorConsole.WriteLine("\t Thank you for visiting Konoha Hospital!", ConsoleColor.Yellow);
-                    Thread.Sleep(1800);
+                    ColorConsole.WriteDelayedLine("\t Thank you for visiting Konoha Hospital!", ConsoleColor.Yellow);
                     Console.SetWindowPosition(0, Console.CursorTop - V);
                     break;
                 }
@@ -162,28 +158,28 @@ namespace TheShinobi.Structures
         {
             if (player.Hp == player.MaxHp)
             {
-                ColorConsole.TypeOver("\t No need to see Tsunade, you have full health!", ConsoleColor.Yellow);
+                ColorConsole.WriteOver("\t No need to see Tsunade, you have full health!", ConsoleColor.Yellow);
             }
             else if (player.Gold >= 300)
             {
                 player.Hp = player.MaxHp;
                 player.Gold -= 300;
-                ColorConsole.TypeOver("\t Tsunade patch you up and you gain full health!", ConsoleColor.Yellow);
+                ColorConsole.WriteOver("\t Tsunade patch you up and you gain full health!", ConsoleColor.Yellow);
             }
             else
             {
-                ColorConsole.TypeOver("\t You don't have enough gold to see Tsunade!", ConsoleColor.Red);
+                ColorConsole.WriteOver("\t You don't have enough gold to see Tsunade!", ConsoleColor.Red);
             }
         }
 
         private static void NinjaToolShop(Player player)
         {
-            ColorConsole.LineDelayed("\n\n\t Welcome to the Ninja Tool Shop");
+            ColorConsole.WriteDelayedLine("\n\n\t Welcome to the Ninja Tool Shop");
             int top = Console.CursorTop;
             while (true)
             {
                 Console.SetCursorPosition(0, top);
-                ColorConsole.LineDelayed("\t What do you want to do?");
+                ColorConsole.WriteDelayedLine("\t What do you want to do?");
                 List<string> options = new List<string>()
                 {
                     "1. Buy Armor",
@@ -217,8 +213,7 @@ namespace TheShinobi.Structures
                 }
                 else
                 {
-                    ColorConsole.WriteLine("\t Thank you for visiting the Ninja Tool Shop!", ConsoleColor.Yellow);
-                    Thread.Sleep(1800);
+                    ColorConsole.WriteDelayedLine("\t Thank you for visiting the Ninja Tool Shop!", ConsoleColor.Yellow);
                     Console.SetWindowPosition(0, Console.CursorTop - V);
                     break;
                 }

@@ -26,7 +26,7 @@ namespace TheShinobi.Items
 
         public void Consume(Player player)
         {
-            ColorConsole.TypeOver($"\t {Text} and are energized with {Energy} energy!", ConsoleColor.Yellow);
+            ColorConsole.WriteOver($"\t {Text} and are energized with {Energy} energy!", ConsoleColor.Yellow);
             EnergyCtr++;
             Utility.isEnergyDrink = true;
             Utility.energyBonus = BonusText();
@@ -39,7 +39,7 @@ namespace TheShinobi.Items
         public void EnergyDip(Player player)
         {
             string ending = EnergyCtr > 1 ? "s are" : " is";
-            ColorConsole.TypeOver($"\t The effect of the {Name}{ending} wearing of!", ConsoleColor.Yellow);
+            ColorConsole.WriteOver($"\t The effect of the {Name}{ending} wearing of!", ConsoleColor.Red);
             player.MaxHp -= Energy * EnergyCtr;
             player.Hp -= Energy * EnergyCtr;
             player.Defence -= Energy * EnergyCtr;

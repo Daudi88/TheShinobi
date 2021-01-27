@@ -26,16 +26,16 @@ namespace TheShinobi.Items.Consumables
                 if (player.Hp >= player.MaxHp)
                 {
                     player.Hp = player.MaxHp;
-                    ColorConsole.TypeOver($"\t {Text} and gain full health!", ConsoleColor.Yellow);
+                    ColorConsole.WriteOver($"\t {Text} and gain full health!", ConsoleColor.Yellow);
                 }
                 else
                 {
-                    ColorConsole.TypeOver($"\t {Text} and gain {Health} health!", ConsoleColor.Yellow);
+                    ColorConsole.WriteOver($"\t {Text} and gain {Health} health!", ConsoleColor.Yellow);
                 }
             }
             else
             {
-                ColorConsole.TypeOver($"\t {Text}!", ConsoleColor.Yellow);
+                ColorConsole.WriteOver($"\t {Text} but already have full health!", ConsoleColor.Yellow);
             }
         }
 

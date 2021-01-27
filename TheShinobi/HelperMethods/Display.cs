@@ -154,7 +154,7 @@ namespace TheShinobi.HelperMethods
 
         internal static void Details(Player player)
         {
-            Console.WriteLine();
+            Console.WriteLine("\n");
             string title = "[DarkCyan]DETAILS[/DarkCyan]";
             string color = Utility.isEnergyDrink ? "DarkCyan" : "Yellow";
             string[] content = new string[]
@@ -183,7 +183,7 @@ namespace TheShinobi.HelperMethods
 
         internal static void Map(Player player)
         {
-            Console.WriteLine();
+            Console.WriteLine("\n");
             int top = Console.CursorTop;
             ColorConsole.WriteEmbedded("\t┏━[DarkCyan]MAP[/DarkCyan]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n");
             ColorConsole.WriteEmbedded("\t┃[DarkGray]AAA AAA AAA AAA  AAA  AAA[/DarkGray]  [DarkRed]X[/DarkRed]   [DarkGray]AAA AAA AAA A A AAA AAA AA AAA AA AAA AAAA A AA[/DarkGray]┃\n");

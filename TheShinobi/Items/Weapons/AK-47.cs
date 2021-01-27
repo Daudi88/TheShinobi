@@ -7,6 +7,7 @@
             Name = "AK-47";
             Price = 50000;
             Damage = "30d2";
+            IndefiniteArticle = "an";
         }
     }
 }

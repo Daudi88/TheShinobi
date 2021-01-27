@@ -30,7 +30,7 @@ namespace TheShinobi.HelperMethods
         public static bool isEnergyDrink = false;
         public static string energyBonus = "";
         public static bool isVisitingVillage = true;
-        public static int sleep = 1800;
+        //public static int sleep = 1800;
 
         public static int RollDice(string dice)
         {
@@ -82,7 +82,7 @@ namespace TheShinobi.HelperMethods
                 }
                 else
                 {
-                    ColorConsole.TypeOver("\t Invalid choice. Try again!", ConsoleColor.Red);
+                    ColorConsole.WriteOver("\t Invalid choice. Try again!", ConsoleColor.Red);
                 }
             }
             return result;
@@ -111,7 +111,7 @@ namespace TheShinobi.HelperMethods
         {
             if (player.Backpack.Count > 0)
             {
-                Console.WriteLine($"\n\n\t What do you want to use?");
+                ColorConsole.WriteDelayedLine($"\n\n\t What do you want to use?");
                 int top = Console.CursorTop;
                 while (true)
                 {
@@ -146,7 +146,7 @@ namespace TheShinobi.HelperMethods
             }
             else
             {
-                ColorConsole.TypeOver("\t Your backpack is empty...", ConsoleColor.Red);
+                ColorConsole.WriteOver("\t Your backpack is empty...", ConsoleColor.Red);
                 return false;
             }
         }
