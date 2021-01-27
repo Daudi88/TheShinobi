@@ -33,9 +33,8 @@ namespace TheShinobi.Structures
 
         public void Test()
         {
-            Player player = CharacterCreation();
-            player.Pos = 2.1;
-            Adventure.Menu(player);
+            Display.Blinking("\t [Press enter to continue]");
+            Console.WriteLine("\t Det gick");
             Console.ReadLine();
         }
 
@@ -48,8 +47,9 @@ namespace TheShinobi.Structures
                 "\n\t Kaguya Otsutsuki have kidnapped Hanare and taken her to his cave in the mountains." +
                 "\n\t It is your duty to find and rescue her!";
             ColorConsole.WriteDelayedLine(intro, ConsoleColor.Yellow, 40);
-            Console.WriteLine("\t [Press enter to continue]");
-            Console.ReadKey(true);
+            Display.Blinking("\t [Press enter to continue]");
+            //Console.WriteLine("\t [Press enter to continue]");
+            //Console.ReadKey(true);
             HiddenLeafVillage.Menu(player);
         }
 

@@ -80,8 +80,7 @@ namespace TheShinobi.Characters.Enemies
             string separator = eDrop ? " and " : eDrop && cDrop ? ", " : "";
             ColorConsole.WriteEmbedded($"\t {Name} drops {eDropText}{separator}{cDropText}[Yellow]{Gold}[/Yellow] gold!");
             player.Gold += Gold;
-            Console.WriteLine("\t [Press enter to continue]");
-            Console.ReadKey(true);
+            Display.Blinking("\t [Press enter to continue]");
         }
     }
 }

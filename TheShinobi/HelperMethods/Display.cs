@@ -176,8 +176,7 @@ namespace TheShinobi.HelperMethods
                 $"Weapon: [Yellow]{weapon.Name} {weapon.BonusText()}[/Yellow]"
             };
             WithDevidedFrame(title, content, title2, content2);
-            Console.WriteLine("\t [Press enter to continue]");
-            Console.ReadKey(true);
+            Blinking("\t [Press enter to continue]");
             Console.SetWindowPosition(0, Console.CursorTop - 20);
         }
 
@@ -212,8 +211,7 @@ namespace TheShinobi.HelperMethods
             int bottom = Console.CursorTop;
             PlayerOnMap(player, top);
             Console.SetCursorPosition(0, bottom);
-            Console.WriteLine("\t [Press enter to continue]");
-            Console.ReadKey(true);
+            Blinking("\t [Press enter to continue]");
             Console.SetWindowPosition(0, Console.CursorTop - 20);
         }
 
@@ -223,7 +221,26 @@ namespace TheShinobi.HelperMethods
             var position = positions[player.Pos];
             Console.SetCursorPosition(position.Item1, top += position.Item2);
             ColorConsole.Write("●", ConsoleColor.Red);
-        }        
+        }
+        
+        public static void Blinking(string text)
+        {
+            while (true)
+            {                
+                Console.WriteLine(text);
+                Thread.Sleep(600);
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                Console.WriteLine("\t                           ");
+                Thread.Sleep(300);
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                if (Console.KeyAvailable)
+                {
+                    Console.WriteLine(text);
+                    Console.ReadKey(true);
+                    break;
+                }
+            }
+        }
 
         public static void Title()
         {

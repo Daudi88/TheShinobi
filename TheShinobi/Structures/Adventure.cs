@@ -115,8 +115,7 @@ namespace TheShinobi.Structures
                 Weapon sword = swords[random.Next(swords.Length)];
                 ColorConsole.WriteEmbeddedDelayed($"\t You find the [Yellow]{sword.Name}[/Yellow], a sword of the Seven Swordsmen!\n");
                 AddToBackpack(player, sword);
-                Console.WriteLine("\t [Press enter to continue]");
-                Console.ReadKey(true);
+                Display.Blinking("\t [Press enter to continue]");
                 isGraveyardVisited = true;
             }
             else
@@ -136,8 +135,7 @@ namespace TheShinobi.Structures
                 int treasure = random.Next(1000, 10000);
                 player.Gold += treasure;
                 ColorConsole.WriteEmbeddedDelayed($"\t You found a treasure and gained [Yellow]{treasure}[/Yellow] gold!\n");
-                Console.WriteLine("\t [Press enter to continue]");
-                Console.ReadKey(true);
+                Display.Blinking("\t [Press enter to continue]");
                 isTreasureTaken = true;
             }
             else
@@ -222,9 +220,8 @@ namespace TheShinobi.Structures
                 player.Backpack.Add(weapon);
                 player.Backpack.Add(armor);
                 player.Backpack.Add(potion);
+                Display.Blinking("\t [Press enter to continue]");
                 isHiruzenVisited = true;
-                Console.WriteLine("\t [Press enter to continue]");
-                Console.ReadKey(true);
             }
             else
             {
@@ -243,8 +240,7 @@ namespace TheShinobi.Structures
                 string[] stories = Get.NoFightStories();
                 string story = stories[random.Next(stories.Length)];
                 ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
-                Console.WriteLine("\t [Press enter to continue]");
-                Console.ReadKey(true);
+                Display.Blinking("\t [Press enter to continue]");
             }
             else
             {
@@ -269,8 +265,7 @@ namespace TheShinobi.Structures
             else
             {
                 ColorConsole.WriteDelayedLine("\t You are not strong enough to fight this opponent...", ConsoleColor.Red);
-                Console.WriteLine("\t [Press enter to continue]");
-                Console.ReadLine();
+                Display.Blinking("\t [Press enter to continue]");
             }
             return false;
         }
@@ -282,6 +277,7 @@ namespace TheShinobi.Structures
             string[] stories = Get.FightStories(enemy);
             string story = stories[random.Next(stories.Length)];
             ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
+            Display.Blinking("\t [Press enter to continue]");
         }
 
         //private static void Battle(Player player)
@@ -362,8 +358,6 @@ namespace TheShinobi.Structures
         //}
     }
 }
-
-
 
 //        private static void BossFight(Player player)
 //        {
