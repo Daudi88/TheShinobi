@@ -132,6 +132,163 @@ namespace TheShinobi.Structures
             Console.SetWindowPosition(0, Console.CursorTop - 30);
 
         }
+        public static void EncounterCheck()
+        {
+            int chance = Utility.random.Next(1, 10);
+            if (chance <= 5)
+            {
+                int noFight = Utility.random.Next(1, 6);
+                if (noFight == 1)
+                {
+                    Console.WriteLine("\t As you walk up the mountain trail you sense a group of ninjas from the Uchicha clan ahead.");
+                    Console.WriteLine("\t You easily sneak past them on your way to rescue Hanare!");
+                    Console.WriteLine("\t [Press enter to continue]");
+                }
+                else if (noFight == 2)
+                {
+                    Console.WriteLine("\t You hear something in the distance and use Mangekyō to see a group of Ninjas lying in ambush for travelers.");
+                    Console.WriteLine("\t If it wasnt that you are in a rush to rescue Hanare you would have made minced meat of them all!");
+                    Console.WriteLine("\t [Press enter to continue]");
+                }
+                else if (noFight == 3)
+                {
+                    Console.WriteLine("\t You use your senses and feel that no enemy is near, you set up camp and light a fire");
+                    Console.WriteLine("\t You eat your delicious Green Chilli Burger while watching the Sunset ove The Hidden Leaf Village...");
+                    Console.WriteLine("\t [Press enter to continue]");
+                }
+                else if (noFight == 4)
+                {
+                    Console.WriteLine("\t As the sun sets over the mountains you see a clan who has setup camp on your land!");
+                    Console.WriteLine("\t There is no time to engage them now, first you must rescue Hanare!");
+                    Console.WriteLine("\t [Press enter to continue]");
+                }
+                else if (noFight == 5)
+                {
+                    Console.WriteLine("\t As you walk through The Shikkotsu Forest you sense Hanare is further North!");
+                    Console.WriteLine("\t You start running towards the montains!");
+                    Console.WriteLine("\t [Press enter to continue]");
+                }
+                else if (noFight == 6)
+                {
+                    Console.WriteLine("\t You aproach a empty camp, the fire is still smoking a little and there are signs of someone who has been tied up!");
+                    Console.WriteLine("\t In the soil you see one of hanares black glove, you follow their trail...");
+                    Console.WriteLine("\t [Press enter to continue]");
+                }
+            }
+            else
+            {
+                int fight = Utility.random.Next(1, 5);
+                if (fight == 1)
+                {
+                    Console.WriteLine("\t You walked down the bushy trail and sence there is troubble ahead!");
+                    Console.WriteLine($"\t You can smell that dirty Ōtsutsuki member miles away and you attack instantly!");
+                    Console.WriteLine("\t [Press enter to continue]");
+                }
+                else if (fight == 2)
+                {
+                    Console.WriteLine("\t While climbing up the mountains in search of Hanare you get ambushed by some filthy Team Doso villains!");
+                    Console.WriteLine("\t You attack, maybe they know more about Hanare´s kidnapping!");
+                    Console.WriteLine("\t [Press enter to continue]");
+                }
+                else if (fight == 3)
+                {
+                    Console.WriteLine("\t You have walked for hours when you decide to set up camp at the lake.\n\t when some low life from the Akatsuki clan attacks you!");
+                    Console.WriteLine("\t Four of them run away when they see it is you but one stays to fight!");
+                    Console.WriteLine("\t [Press enter to continue]");
+                }
+                else if (fight == 4)
+                {
+                    Console.WriteLine("\t The sky is full of dark clouds and when lightning strikes hits the ground vibrates...");
+                    Console.WriteLine("\t As you set up camp in the mountains to escape the bad weather for the night some villains from the Uchicha clan attacks!");
+                    Console.WriteLine("\t [Press enter to continue]");
+                }
+                else if (fight == 5)
+                {
+                    Console.WriteLine("\t The sky is blue and the sun is shining. As you walk past the graveyard you hear them!");
+                    Console.WriteLine("\t Some lowlife from the Aburame clan attacks you!");
+                    Console.WriteLine("\t [Press enter to continue]");
+                }
+                Console.WriteLine();
+                //Battle();
+            }
+        }
+
+        //private static void Battle(Player player)
+        //{
+        //    if (isRedBull)
+        //    {
+        //        player.Defence += 2;
+        //    }
+        //    Character[] enemies = Utility.GetEnemies().Where(e => e.Level <= player.Level).ToArray();
+        //    Character enemy = enemies[Utility.RollDice(enemies.Length)];
+        //    int battleCtr = 0;
+        //    List<string> content = new List<string>();
+        //    while (enemy.Hp > 0)
+        //    {
+        //        content.Clear();
+        //        if (battleCtr == 0)
+        //        {
+        //            content.Add($"You have encountered {enemy.Name}!");
+        //            battleCtr++;
+        //        }
+        //        int damage = player.Attack(enemy);
+        //        enemy.Hp -= damage;
+        //        content.Add($"You hit {enemy.Name} with your {player.Weapon.Name} dealing {damage} damage!");
+        //        if (enemy.Hp <= 0)
+        //        {
+        //            content.Add($"You defeated {enemy.Name}!");
+        //            content.Add($"You gained {enemy.Exp} Exp and {enemy.Gold} gold!");
+        //            player.Exp += enemy.Exp;
+        //            player.Gold += enemy.Gold;
+
+        //            if (player.Exp >= player.MaxExp)
+        //            {
+        //                content.Add("Well Done! You leveled up!");
+        //                player.LevelUp();
+        //            }
+        //        }
+        //        else
+        //        {
+        //            damage = enemy.Attack(player);
+        //            player.Hp -= damage;
+        //            content.Add($"{enemy.Name} hits you dealing {damage} damage!");
+        //            if (player.Hp <= 0)
+        //            {
+        //                content.Add($"You were defeated by { enemy.Name}!");
+        //                content.Add("You lose...");
+        //            }
+        //            else
+        //            {
+        //                if (player.Hp < player.MaxHp)
+        //                {
+        //                    content.Add($"{player.Name} Hp: [red]{player.Hp}[/red]");
+        //                }
+        //                else
+        //                {
+        //                    content.Add($"{player.Name} Hp: {player.Hp}");
+        //                }
+        //                content.Add($"{enemy.Name} Hp: {enemy.Hp}");
+        //            }
+        //        }
+        //        Display.WithFrame("[red]BATTLE[/red]", content.ToArray());
+
+        //        if (player.Hp <= 0)
+        //        {
+        //            Display.LoseScreen();
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine("\t [Press enter to continue]");
+        //            Console.ReadLine();
+        //        }
+        //        Console.SetWindowPosition(0, Console.CursorTop - 30);
+        //    }
+        //    if (isRedBull == true)
+        //    {
+        //        player.Defence -= 2;
+        //        isRedBull = false;
+        //    }
+        //}
     }
 }
 
@@ -890,98 +1047,7 @@ namespace TheShinobi.Structures
 //            }
 //        }
 
-//        private static void EncounterCheck()
-//        {
-//            int chance = Utility.RollDice(10);
-//            if (chance == 0)
-//            {
-//                Console.WriteLine("\t This is a very peacefull place and you don't sense any trouble near you.");
-//                Console.WriteLine("\t [Press enter to continue]");
-//            }
-//            else
-//            {
-//                Console.WriteLine();
-//                Battle();
-//            }
-//        }
 
-//        private static void Battle()
-//        {
-//            Player player = Game.player;
-//            if (isRedBull)
-//            {
-//                player.Defence += 2;
-//            }
-//            Character[] enemies = Utility.GetEnemies().Where(e => e.Level <= player.Level).ToArray();
-//            Character enemy = enemies[Utility.RollDice(enemies.Length)];
-//            int battleCtr = 0;
-//            List<string> content = new List<string>();
-//            while (enemy.Hp > 0)
-//            {
-//                content.Clear();
-//                if (battleCtr == 0)
-//                {
-//                    content.Add($"You have encountered {enemy.Name}!");
-//                    battleCtr++;
-//                }
-//                int damage = player.Attack(enemy);
-//                enemy.Hp -= damage;
-//                content.Add($"You hit {enemy.Name} with your {player.Weapon.Name} dealing {damage} damage!");
-//                if (enemy.Hp <= 0)
-//                {
-//                    content.Add($"You defeated {enemy.Name}!");
-//                    content.Add($"You gained {enemy.Exp} Exp and {enemy.Gold} gold!");
-//                    player.Exp += enemy.Exp;
-//                    player.Gold += enemy.Gold;
-
-//                    if (player.Exp >= player.MaxExp)
-//                    {
-//                        content.Add("Well Done! You leveled up!");
-//                        player.LevelUp();
-//                    }
-//                }
-//                else
-//                {
-//                    damage = enemy.Attack(player);
-//                    player.Hp -= damage;
-//                    content.Add($"{enemy.Name} hits you dealing {damage} damage!");
-//                    if (player.Hp <= 0)
-//                    {
-//                        content.Add($"You were defeated by { enemy.Name}!");
-//                        content.Add("You lose...");
-//                    }
-//                    else
-//                    {
-//                        if (player.Hp < player.MaxHp)
-//                        {
-//                            content.Add($"{player.Name} Hp: [red]{player.Hp}[/red]");
-//                        }
-//                        else
-//                        {
-//                            content.Add($"{player.Name} Hp: {player.Hp}");
-//                        }
-//                        content.Add($"{enemy.Name} Hp: {enemy.Hp}");
-//                    }
-//                }
-//                Display.WithFrame("[red]BATTLE[/red]", content.ToArray());
-
-//                if (player.Hp <= 0)
-//                {
-//                    Display.LoseScreen();
-//                }
-//                else
-//                {
-//                    Console.WriteLine("\t [Press enter to continue]");
-//                    Console.ReadLine();
-//                }
-//                Console.SetWindowPosition(0, Console.CursorTop - 30);
-//            }
-//            if (isRedBull == true)
-//            {
-//                player.Defence -= 2;
-//                isRedBull = false;
-//            }
-//        }
 
 //        private static void AbuHassansShop(Player player)
 //        {
