@@ -8,7 +8,7 @@ namespace TheShinobi.Characters
 {
     class Player : Character
     {
-        public double Pos { get; set; }
+        public double Pos { get; set; } = 2.0;
         public int AttackBonus { get; set; }
         public int MaxHp { get; set; }
         public int MaxExp { get; set; }

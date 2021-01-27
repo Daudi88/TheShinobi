@@ -35,13 +35,13 @@ namespace TheShinobi.HelperMethods
             return text.Substring(at, at2 - at + 1).Length * 2 + 1;
         }
 
-        public static List<Action<Player>> Options(Player player, out List<string> content)
+        public static List<Func<Player, bool>> Options(Player player, out List<string> content)
         {
             var positions = Positions();
             string choices = positions[player.Pos].Item3;
             int ctr = 1;
             content = new List<string>();
-            var options = new List<Action<Player>>();
+            var options = new List<Func<Player, bool>>();
             foreach (var letter in choices)
             {
                 switch (letter)

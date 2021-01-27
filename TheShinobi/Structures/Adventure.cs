@@ -27,36 +27,56 @@ namespace TheShinobi.Structures
 
         public static void Menu(Player player)
         {
-
+            bool exit = false;
+            while (!exit)
+            {
+                Console.WriteLine();
+                var options = Get.Options(player, out List<string> content);
+                Display.WithFrame(content, "[Yellow]Adventure[/Yellow]", true);
+                Utility.ChooseANumber(content.Count, out int choice, player, true);
+                if (choice > 0)
+                {
+                    exit = options[choice - 1].Invoke(player);
+                }
+            }
         }
 
-        public static void North(Player player)
+        public static bool North(Player player)
         {
-
+            player.Pos += 0.1;
+            CheckForEncounter();
+            return false;
         }
 
 
-        public static void East(Player player)
+        public static bool East(Player player)
         {
-
+            player.Pos += 1.0;
+            CheckForEncounter();
+            return false;
         }
 
-        public static void West(Player player)
+        public static bool West(Player player)
         {
-
+            player.Pos -= 1.0;
+            CheckForEncounter();
+            return false;
         }
 
-        public static void South(Player player)
+        public static bool South(Player player)
         {
-
+            player.Pos -= 0.1;
+            CheckForEncounter();
+            return false;
         }
 
-        public static void ToVillage(Player player)
+        public static bool ToVillage(Player player)
         {
-
+            player.Pos -= 0.1;
+            return true;
         }
 
-        public static void ToGraveyard(Player player)
+        public static bool ToGraveyard(Player player)
         {
             if (!isGraveyardVisited)
             {
@@ -71,8 +91,9 @@ namespace TheShinobi.Structures
             {
                 ColorConsole.TypeOver("\t The graveyard is dead silent.", ConsoleColor.Red);
             }
+            return false;
         }
-        public static void ToTreasure(Player player)
+        public static bool ToTreasure(Player player)
         {
             if (!isTreasureTaken)
             {
@@ -86,8 +107,9 @@ namespace TheShinobi.Structures
             {
                 ColorConsole.TypeOver("\t Somebody has allready taken the treasure...", ConsoleColor.Red);
             }
+            return false;
         }
-        public static void ToAbuHassan(Player player)
+        public static bool ToAbuHassan(Player player)
         {
             Console.WriteLine("\n\t Welcome to Abu Hassan's one stop shop for everything\n\t a real Shinobi from the hood could ever want!");
             int top = Console.CursorTop;
@@ -129,9 +151,10 @@ namespace TheShinobi.Structures
                     break;
                 }
             }
+            return false;
         }
 
-        public static void ToHiruzen(Player player)
+        public static bool ToHiruzen(Player player)
         {
             if (!haveYouMetHim)
             {
@@ -163,9 +186,9 @@ namespace TheShinobi.Structures
                 ColorConsole.TypeOver("\t Hiruzen smokes his pipe...", ConsoleColor.Yellow);
             }
             Console.SetWindowPosition(0, Console.CursorTop - 30);
-
+            return false;
         }
-        public static void EncounterCheck()
+        public static void CheckForEncounter()
         {
             int chance = Utility.random.Next(1, 10);
             if (chance <= 5)

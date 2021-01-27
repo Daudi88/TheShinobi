@@ -41,7 +41,8 @@ namespace TheShinobi.Structures
         public void Test()
         {
             Player player = CharacterCreation();
-            Adventure.EncounterCheck();
+            player.Pos = 2.1;
+            Adventure.Menu(player);
             Console.ReadLine();
         }
 
@@ -89,6 +90,7 @@ namespace TheShinobi.Structures
         {
             Player kakashi = new Player("Kakashi Hatake")
             {
+                Pos = 2.0,
                 Hp = 500,
                 MaxHp = 1000,
                 Gold = 200,
