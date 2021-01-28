@@ -54,10 +54,7 @@ namespace TheShinobi.Structures
             "\n\t It is still dark outside as you prepare to leave The Hidden Leaf Village" +
             "\n\t in search of Hanare and her soon to be dead kidnappers...\n" +
             "\n\t * You should probobly buy better equipment from the stores before you leave! ";
-            ColorConsole.WriteDelayedLine(intro, ConsoleColor.Yellow, 40);
-            Display.Blinking("\t [Press enter to continue]");
-            //Console.WriteLine("\t [Press enter to continue]");
-            //Console.ReadKey(true);
+            ColorConsole.WriteDelayedLine(intro, ConsoleColor.Yellow, 40, blink: true);
             HiddenLeafVillage.Menu(player);
         }
 
