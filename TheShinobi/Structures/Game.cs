@@ -48,8 +48,9 @@ namespace TheShinobi.Structures
             string intro = $"\n\t You {player.Name} wake up from a woman screaming! \n" +
             "\t It sound's as if she is beeing killed!!! \n" +
             "\n\t Frightened villagers scream for help “somebody is kidnapping Hanare!“" +
-            "\n\t After some intense fighting the attackers manages to vanish north towards the mountains!" +
-            "\n\t You couldnt reach them in time... \n" +
+            "\n\t After some intense fighting with the guards \n" +
+            "\t the attackers manages to vanish north towards the mountains! \n" +
+            "\n\t You couldn't reach them in time... \n" +
             "\n\t It is still dark outside when you prepare to leave The Hidden Leaf Village" +
             "\n\t in search of Hanare and her soon to be dead kidnappers...\n" +
             "\n\t You will probobly need better Weapon's and Armor's! " +
