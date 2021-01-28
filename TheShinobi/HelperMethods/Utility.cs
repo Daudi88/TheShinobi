@@ -1,12 +1,7 @@
-﻿using TheShinobi.Characters.Enemies;
+﻿using System;
 using TheShinobi.Characters;
-using TheShinobi.Items.Armors;
-using TheShinobi.Items.Weapons;
-using TheShinobi.Items.Consumables;
-using TheShinobi.Items;
-using System.Collections.Generic;
-using System;
 using TheShinobi.Interfaces;
+using TheShinobi.Items;
 
 namespace TheShinobi.HelperMethods
 {
@@ -49,7 +44,14 @@ namespace TheShinobi.HelperMethods
             ColorConsole.WriteOver($"\t The effect of the {energyDrink.Name}{ending} wearing of!", ConsoleColor.Red);
             int energy = energyDrink.Energy;
             player.Stamina.Max -= energy;
-            player.Stamina.Current -= player.Stamina.Current - energy > 0 ? energy : energy + 1;
+            if (player.Stamina.Current - energy > 0)
+            {
+                player.Stamina.Current -= energy;
+            }
+            else
+            {
+                player.Stamina.Current = 1;
+            }
             player.Defence -= energy;
             player.AttackBonus -= energy;
             energyDrink.EnergyCtr = 0;
@@ -153,7 +155,7 @@ namespace TheShinobi.HelperMethods
                     {
                         break;
                     }
-                }                
+                }
                 return true;
             }
             else
@@ -177,6 +179,6 @@ namespace TheShinobi.HelperMethods
             Console.SetCursorPosition(0, top);
         }
 
-        
+
     }
 }

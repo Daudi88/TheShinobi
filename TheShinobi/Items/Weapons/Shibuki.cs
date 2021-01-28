@@ -8,9 +8,9 @@ namespace TheShinobi.Items.Weapons
     {
         public Shibuki()
         {
-            Name = "Shuriken";
+            Name = "Shibuki";
             Price = 4000;
-            Damage = "2d16";
+            Damage = "2d12";
             IndefiniteArticle = "the";
         }
     }

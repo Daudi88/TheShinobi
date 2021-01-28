@@ -16,7 +16,7 @@
         // Lightning Release: Lightning Beast Tracking Fang =>  The user forms lightning in their hand and launches it at the opponent in the form a hound to attack them.
         // Water Release: Gunshot   =>  The user creates water in their body using chakra. The user then spits the water from their mouth as orb-shaped projectiles
         // Water Release: Wild Water Wave   =>  The user spews water from their mouth in a waterfall-like fashion to wash away the target
-        //
+        // 
 
 
         public string Name { get; set; }

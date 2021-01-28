@@ -6,7 +6,7 @@
         {
             Name = "Kusarigama";
             Price = 8000;
-            Damage = "3d8";
+            Damage = "2d8";
             IndefiniteArticle = "a";
         }
     }

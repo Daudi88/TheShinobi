@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Media;
-using System.Threading;
 using TheShinobi.Characters;
 using TheShinobi.HelperMethods;
 using TheShinobi.Items.Consumables;

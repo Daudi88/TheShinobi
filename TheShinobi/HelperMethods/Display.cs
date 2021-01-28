@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Media;
+using System.Net.Http.Headers;
 using System.Threading;
 using TheShinobi.Abilities;
 using TheShinobi.Characters;
@@ -84,12 +85,12 @@ namespace TheShinobi.HelperMethods
 
         private static void WithDevidedFrame(
             string title, List<string> content, 
-            string title2, string content2, 
+            string title2, List<string> content2, 
             string title3, List<string> content3)
         {
             List<string> contents = new List<string>();
             contents.AddRange(content);
-            contents.Add(content2);
+            contents.AddRange(content2);
             contents.AddRange(content3);
             List<int> lengths = new List<int>();
             foreach (var text in contents)
@@ -134,12 +135,15 @@ namespace TheShinobi.HelperMethods
                 Console.Write("━");
             }
             Console.WriteLine("┫");
-            colorLength = 0;
-            if (content2.Contains("["))
+            foreach (string text in content2)
             {
-                colorLength = Get.ColorLength(content2);
+                colorLength = 0;
+                if (text.Contains("["))
+                {
+                    colorLength = Get.ColorLength(text);
+                }
+                ColorConsole.WriteEmbedded($"\t┃ {text.PadRight(width + colorLength)}  ┃\n");
             }
-            ColorConsole.WriteEmbedded($"\t┃ {content2.PadRight(width + colorLength)}  ┃\n");
             ColorConsole.WriteEmbedded($"\t┣━{title3}");
             if (title3.Contains("["))
             {
@@ -196,17 +200,28 @@ namespace TheShinobi.HelperMethods
                 $"Damage: [{color}]{player.Damage} {Utility.energyDrink.BonusText()}[/{color}]",
                 $"Ryō: [Yellow]{player.Ryō}[/Yellow]",
             };
-            string title2 = "[DarkCyan]ARMOR[/DarkCyan]";
+            string title2 = "[DarkCyan]EQUIPPED[/DarkCyan]";
             Armor armor = player.Armor;
-            string content2 = $"Armor: [Yellow]{armor.Name} {armor.BonusText()}[/Yellow]";
-            string title3 = "[DarkCyan]ACTIONS[/DarkCyan]";
             Weapon weapon = player.Weapon;
-            Ninjutsu ninjutsu = player.Ninjutsu;
-            List<string> content3 = new List<string>()
+            List<string> content2 = new List<string>()
             {
-                $"Weapon: [Yellow]{weapon.Name} {weapon.BonusText()}[/Yellow]",
-                $"Ninjutsu: [Yellow]{ninjutsu}[/Yellow]"
+                $"Armor: [Yellow]{armor.Name} {armor.BonusText()}[/Yellow]",
+                $"Weapon: [Yellow]{weapon.Name} {weapon.BonusText()}[/Yellow]"
             };
+            string title3 = "[DarkCyan]NINJUTSU[/DarkCyan]";
+            List<Ninjutsu> ninjutsus = player.Ninjutsus;            
+            List<string> content3 = new List<string>();
+            if (ninjutsus.Count > 0)
+            {
+                foreach (var jutsu in ninjutsus)
+                {
+                    content3.Add($"[Yellow]{jutsu}[/Yellow]");
+                }
+            }
+            else
+            {
+                content3.Add("[Red]You don't know any techniques yet.[/Red]");
+            }
             WithDevidedFrame(title, content, title2, content2, title3, content3);
             Blinking("\t [Press enter to continue]");
         }

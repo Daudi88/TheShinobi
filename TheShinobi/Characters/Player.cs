@@ -18,23 +18,27 @@ namespace TheShinobi.Characters
         {
             Name = name;
             Level = 1;
+            Rank = "Genin";
             Exp = new Ability(0, 200);
             Stamina = new Ability(30, 30);
-            Chakra = new Ability(50, 50);
+            Chakra = new Ability(10, 10);
             Armor = new Shirt();
             Defence = Armor.Defence;
             Weapon = new Fists();
             Damage = Weapon.Damage;
+            Ninjutsus.Add(Get.Ninjutsu(Rank));
         }
 
         public void LevelUp()
         {
-            Level++;
-            Ninjutsu.Damage = Get.DamageDice(Level);
-            Ninjutsu.Cost += 10;
+            if (Get.NewRank(Level, out string rank))
+            {
+                Ninjutsus.Add(Get.Ninjutsu(rank));
+            }
+            Rank = rank;            
             Chakra.Max += 10;
             Chakra.Current = Chakra.Max;
-            Exp.Max += 500 * Level;
+            Exp.Max = 250 * Level;
             if (Stamina.Max + Level <= 100)
             {
                 Stamina.Max += Level;

@@ -10,7 +10,7 @@ namespace TheShinobi.Items.Weapons
         {
             Name = "Samehada";
             Price = 4000;
-            Damage = "3d8";
+            Damage = "3d12";
             IndefiniteArticle = "the";
         }
     }
