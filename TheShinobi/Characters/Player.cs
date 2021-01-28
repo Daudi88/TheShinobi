@@ -1,8 +1,9 @@
-﻿using TheShinobi.HelperMethods;
+﻿using System.Collections.Generic;
+using TheShinobi.Abilities;
+using TheShinobi.HelperMethods;
+using TheShinobi.Items;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
-using TheShinobi.Items;
-using System.Collections.Generic;
 
 namespace TheShinobi.Characters
 {
@@ -10,16 +11,17 @@ namespace TheShinobi.Characters
     {
         public double Pos { get; set; } = 2.0;
         public int AttackBonus { get; set; }
-        public int MaxHp { get; set; }
-        public int MaxExp { get; set; }
+        public Ability Chakra { get; set; }
+        public Ninjutsu Ninjutsu { get; set; }        
         public List<Item> Backpack { get; set; } = new List<Item>();
         public Player(string name)
         {
             Name = name;
             Level = 1;
-            Hp = 30;
-            MaxHp = 30;
-            MaxExp = 200;
+            Hp = new Ability(30, 30);
+            Exp = new Ability(0, 200);
+            Chakra = new Ability(50, 50);
+            Ninjutsu = new Ninjutsu("Rasengan", "1d4", 10);
             Armor = new Shirt();
             Defence = Armor.Defence;
             Weapon = new Fists();
@@ -29,12 +31,16 @@ namespace TheShinobi.Characters
         public void LevelUp()
         {
             Level++;
-            MaxExp += 500 * Level;            
-            if (MaxHp + Level <= 100)
+            Ninjutsu.Damage = Get.DamageDice(Level);
+            Ninjutsu.Cost += 10;
+            Chakra.Max += 10;
+            Chakra.Current = Chakra.Max;
+            Exp.Max += 500 * Level;
+            if (Hp.Max + Level <= 100)
             {
-                MaxHp += Level;
+                Hp.Max += Level;
             }
-            Hp = MaxHp;
+            Hp.Current = Hp.Max;
         }
 
         public override int Attack(Character defender)

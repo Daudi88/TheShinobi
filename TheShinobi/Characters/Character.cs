@@ -1,4 +1,5 @@
-﻿using TheShinobi.Items.Armors;
+﻿using TheShinobi.Abilities;
+using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Characters
@@ -7,8 +8,8 @@ namespace TheShinobi.Characters
     {
         public string Name { get; set; }
         public int Level { get; set; }
-        public int Hp { get; set; }
-        public int Exp { get; set; }
+        public Ability Hp { get; set; } = new Ability();
+        public Ability Exp { get; set; }
         public Armor Armor { get; set; }
         public Weapon Weapon { get; set; }
         public int Defence { get; set; }

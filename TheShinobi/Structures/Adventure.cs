@@ -237,7 +237,7 @@ namespace TheShinobi.Structures
         public static void CheckForEncounter()
         {
             Console.SetWindowPosition(0, Console.CursorTop - V);
-            //int chance = random.Next(0, 10);
+            int chance = random.Next(0, 10);
             if (true)
             {
                 string[] stories = Get.NoFightStories();

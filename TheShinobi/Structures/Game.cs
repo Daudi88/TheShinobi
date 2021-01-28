@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using TheShinobi.Abilities;
 using TheShinobi.Characters;
 using TheShinobi.HelperMethods;
 using TheShinobi.Items;
@@ -86,12 +87,15 @@ namespace TheShinobi.Structures
         {
             Player kakashi = new Player("Kakashi Hatake")
             {
+                Level = 10,
                 Pos = 2.0,
-                Hp = 500,
-                MaxHp = 1000,
-                Gold = 200,
+                Gold = 100000,
+                Hp = new Ability(1000, 1000),
+                Chakra = new Ability(1000, 1000),
+                Exp = new Ability(0, 200),
                 Armor = new FlakJacket(),
-                Weapon = new Kubikiribōchō()
+                Weapon = new Kubikiribōchō(),
+                Ninjutsu = new Ninjutsu("Chidori", "3d12", 100)
             };
             kakashi.Defence = kakashi.Armor.Defence;
             kakashi.Damage = kakashi.Weapon.Damage;

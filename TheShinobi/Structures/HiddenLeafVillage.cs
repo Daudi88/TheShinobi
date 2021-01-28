@@ -156,13 +156,13 @@ namespace TheShinobi.Structures
 
         private static void SeeTsunade(Player player)
         {
-            if (player.Hp == player.MaxHp)
+            if (player.Hp.Current == player.Hp.Max)
             {
                 ColorConsole.WriteOver("\t No need to see Tsunade, you have full health!", ConsoleColor.Yellow);
             }
             else if (player.Gold >= 300)
             {
-                player.Hp = player.MaxHp;
+                player.Hp.Current = player.Hp.Max;
                 player.Gold -= 300;
                 ColorConsole.WriteOver("\t Tsunade patch you up and you gain full health!", ConsoleColor.Yellow);
             }

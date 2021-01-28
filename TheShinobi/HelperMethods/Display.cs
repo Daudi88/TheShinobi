@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Media;
 using System.Threading;
+using TheShinobi.Abilities;
 using TheShinobi.Characters;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
@@ -18,7 +19,7 @@ namespace TheShinobi.HelperMethods
          * 
          */
 
-        static string soundLocation = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\KakashiFightSong.Wav");
+        static string soundLocation = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Credits.Wav");
         static SoundPlayer creditsPlayer = new SoundPlayer(soundLocation);
 
         public static void WithFrame(List<string> content, string title = "", bool std = false, string ending = null)
@@ -81,11 +82,15 @@ namespace TheShinobi.HelperMethods
             Console.Write("\t > ");
         }
 
-        private static void WithDevidedFrame(string title, string[] content, string title2, string[] content2)
+        private static void WithDevidedFrame(
+            string title, List<string> content, 
+            string title2, string content2, 
+            string title3, List<string> content3)
         {
-            string[] contents = new string[content.Length + content2.Length];
-            Array.Copy(content, contents, content.Length);
-            Array.Copy(content2, 0, contents, content.Length, content2.Length);
+            List<string> contents = new List<string>();
+            contents.AddRange(content);
+            contents.Add(content2);
+            contents.AddRange(content3);
             List<int> lengths = new List<int>();
             foreach (var text in contents)
             {
@@ -129,7 +134,23 @@ namespace TheShinobi.HelperMethods
                 Console.Write("━");
             }
             Console.WriteLine("┫");
-            foreach (string text in content2)
+            colorLength = 0;
+            if (content2.Contains("["))
+            {
+                colorLength = Get.ColorLength(content2);
+            }
+            ColorConsole.WriteEmbedded($"\t┃ {content2.PadRight(width + colorLength)}  ┃\n");
+            ColorConsole.WriteEmbedded($"\t┣━{title3}");
+            if (title3.Contains("["))
+            {
+                colorLength = Get.ColorLength(title3);
+            }
+            for (int i = 0; i < width - title3.Length + colorLength + 2; i++)
+            {
+                Console.Write("━");
+            }
+            Console.WriteLine("┫");
+            foreach (string text in content3)
             {
                 colorLength = 0;
                 if (text.Contains("["))
@@ -163,25 +184,29 @@ namespace TheShinobi.HelperMethods
             Console.WriteLine("\n");
             string title = "[DarkCyan]DETAILS[/DarkCyan]";
             string color = Utility.isEnergyDrink ? "DarkCyan" : "Yellow";
-            string[] content = new string[]
+            List<string> content = new List<string>()
             {
                 $"Name: [Yellow]{player.Name}[/Yellow]",
                 $"Level: [Yellow]{player.Level}[/Yellow]",
-                $"Exp: [Yellow]{player.Exp}/{player.MaxExp}[/Yellow]",
-                $"Hp: [{color}]{player.Hp}/{player.MaxHp} {Utility.energyBonus}[/{color}]",
+                $"Exp: [Yellow]{player.Exp}[/Yellow]",
+                $"Hp: [{color}]{player.Hp} {Utility.energyBonus}[/{color}]",
+                $"Chakra: [{color}]{player.Chakra} {Utility.energyBonus}[/{color}]",
                 $"Defence: [{color}]{player.Defence} {Utility.energyBonus}[/{color}]",
                 $"Damage: [{color}]{player.Damage} {Utility.energyBonus}[/{color}]",
                 $"Gold: [Yellow]{player.Gold}[/Yellow]",
             };
-            string title2 = "[DarkCyan]EQUIPPED[/DarkCyan]";
+            string title2 = "[DarkCyan]ARMOR[/DarkCyan]";
             Armor armor = player.Armor;
+            string content2 = $"Armor: [Yellow]{armor.Name} {armor.BonusText()}[/Yellow]";
+            string title3 = "[DarkCyan]ACTIONS[/DarkCyan]";
             Weapon weapon = player.Weapon;
-            string[] content2 = new string[]
+            Ninjutsu ninjutsu = player.Ninjutsu;
+            List<string> content3 = new List<string>()
             {
-                $"Armor: [Yellow]{armor.Name} {armor.BonusText()}[/Yellow]",
-                $"Weapon: [Yellow]{weapon.Name} {weapon.BonusText()}[/Yellow]"
+                $"Weapon: [Yellow]{weapon.Name} {weapon.BonusText()}[/Yellow]",
+                $"Ninjutsu: [Yellow]{ninjutsu}[/Yellow]"
             };
-            WithDevidedFrame(title, content, title2, content2);
+            WithDevidedFrame(title, content, title2, content2, title3, content3);
             Blinking("\t [Press enter to continue]");
             Console.SetWindowPosition(0, Console.CursorTop - 20);
         }
@@ -299,7 +324,7 @@ namespace TheShinobi.HelperMethods
         public static void Credits(Player player)
         {
             creditsPlayer.PlayLooping();
-            if (player.Hp > 0)
+            if (player.Hp.Current > 0)
             {
                 // Håkan win story
             }

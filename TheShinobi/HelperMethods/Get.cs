@@ -35,6 +35,24 @@ namespace TheShinobi.HelperMethods
             return text.Substring(at, at2 - at + 1).Length * 2 + 1;
         }
 
+        public static string DamageDice(int level)
+        {
+            return level switch
+            {
+                1 => "1d8",
+                2 => "1d10",
+                3 => "1d12",
+                4 => "2d8",
+                5 => "2d10",
+                6 => "2d12",
+                7 => "3d10",
+                8 => "3d12",
+                9 => "4d10",
+                10 => "4d12",
+                _ => ""
+            };
+        }
+
         public static List<Func<Player, bool>> Options(Player player, out List<string> content)
         {
             var positions = Positions();
