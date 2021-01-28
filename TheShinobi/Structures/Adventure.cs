@@ -63,7 +63,7 @@ namespace TheShinobi.Structures
 
             player.Pos += 0.1;
             adventurePlayer.PlayLooping();
-            string story = $"\n\t You geared up quickly and are on your way to leave the Hidden leaf Village \n" +
+            string story = $"\n\t You geared up quickly and are now on your way to leave the Hidden leaf Village! \n" +
                 "\n\t Orochimaru have kidnapped Hanare and taken her to his cave way up in the north.\n" +
                 "\n\t It is your duty to find and rescue her!\n" +
                 "\n\t You will probobly need a better Weapon and Armor \n" +
