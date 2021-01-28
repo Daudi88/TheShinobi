@@ -55,9 +55,13 @@ namespace TheShinobi.Structures
             Adventure.villagePlayer.PlayLooping();
             Display.Title();
             Player player = CharacterCreation();
-            string intro = $"\n\t You, {player.Name}, wake up in the Hidden Leaf Village and sense that something is wrong!" +
-                "\n\t Kaguya Otsutsuki have kidnapped Hanare and taken her to his cave in the mountains." +
-                "\n\t It is your duty to find and rescue her!";
+            string intro = $"\n\t You {player.Name} wake up from a womans scream's and it sound's as if she is beeing taken away!!!" +
+            "\n\t You hear the villagers scream that somebody kidnapped Hanare! \n" +
+            "\n\t You quickly gear up for battle and it is still dark outside when you \n" +
+            "\n\t leave The Hidden Leaf Village in search of Hanare and her soon to be dead kidnappers...\n\n" +
+            "\n\t You will probobly need a better Weapon and Armor, you have heard about treasures containing some usefull loot." +
+            "\n\t Make sure you are strong and equipped enough for when you meet Hanare's Kidnapper." +
+            "\n\t Take care and dont loose yourself in the wild...";
             ColorConsole.WriteDelayedLine(intro, ConsoleColor.Yellow, 40);
             Display.Blinking("\t [Press enter to continue]");
             //Console.WriteLine("\t [Press enter to continue]");
