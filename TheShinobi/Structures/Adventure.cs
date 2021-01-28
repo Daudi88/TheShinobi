@@ -69,8 +69,7 @@ namespace TheShinobi.Structures
             "\n\t leave The Hidden Leaf Village in search of Hanare and her soon to be dead kidnappers..." +
             "\n\t Hint: You will probobly need a better Weapon and Armor, you have heard about treasures containing some usefull loot." +
             "\n\t Hint: Make sure you are strong and equipped enough for when you meet Hanare's Kidnapper.";
-            ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
-            Display.Blinking("\t [Press enter to continue]");
+            ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
             bool exit = false;
             while (!exit)
             {
@@ -134,14 +133,7 @@ namespace TheShinobi.Structures
                 Weapon[] swords = Get.SevenSwords(player);
                 Weapon sword = swords[random.Next(swords.Length)];
                 AddToBackpack(player, sword);
-                if (ColorConsole.WriteEmbeddedDelayed($"\t You find the [Yellow]{sword.Name}[/Yellow], a sword of the Seven Swordsmen!\n"))
-                {
-                    Console.ReadKey(true);
-                }
-                else
-                {
-                    Display.Blinking("\t [Press enter to continue]");
-                }
+                ColorConsole.WriteEmbeddedDelayed($"\t You find the [Yellow]{sword.Name}[/Yellow], a sword of the Seven Swordsmen!\n");
                 isGraveyardVisited = true;
             }
             else
@@ -160,14 +152,7 @@ namespace TheShinobi.Structures
                 Console.SetWindowPosition(0, Console.CursorTop - 30);
                 int treasure = random.Next(1000, 10000);
                 player.Ryō += treasure;
-                if (ColorConsole.WriteEmbeddedDelayed($"\t You found a treasure and gained [Yellow]{treasure}[/Yellow] gold!\n"))
-                {
-                    Console.ReadKey(true);
-                }
-                else
-                {
-                    Display.Blinking("\t [Press enter to continue]");
-                }
+                ColorConsole.WriteEmbeddedDelayed($"\t You found a treasure and gained [Yellow]{treasure}[/Yellow] gold!\n");                
                 isTreasureTaken = true;
             }
             else
@@ -241,21 +226,14 @@ namespace TheShinobi.Structures
                 string story = "\n\t An old man with white beard appears in front of you." +
                     "\n\t The man, dressed in red and white, looks upon you as if" +
                     "\n\t he was expecting your arrival with a big smile on his face." +
-                    "\n\t You instantly recognice the old man as Hiruzen Sarutobi!";
-                ColorConsole.WriteDelayedLine(story, color: ConsoleColor.Yellow);
+                    "\n\t You instantly recognice the old man as Hiruzen Sarutobi!\n";
+                ColorConsole.WriteDelayed(story, color: ConsoleColor.Yellow);
                 string story2 = $"\n\t {player.Name}, he says while smoking on his pipe..." +
                     "\n\t There is little time and you need to go on with your quest" +
-                    "\n\t to save Hanare!Take these items and be on your way!";
-                ColorConsole.WriteDelayedLine(story2, color: ConsoleColor.Yellow);
-                if (ColorConsole.WriteEmbeddedDelayed($"\n\t You get a [Yellow]{weapon.Name}[/Yellow], " +
-                    $"an [Yellow]{armor.Name}[/Yellow] and [Yellow]{potion.Quantity} {potion.Name}s[/Yellow].\n"))
-                {
-                    Console.ReadKey(true);
-                }
-                else
-                {
-                    Display.Blinking("\t [Press enter to continue]");
-                }
+                    "\n\t to save Hanare!Take these items and be on your way!\n";
+                ColorConsole.WriteDelayed(story2, color: ConsoleColor.Yellow);
+                ColorConsole.WriteEmbeddedDelayed($"\n\t You get a [Yellow]{weapon.Name}[/Yellow], " +
+                    $"an [Yellow]{armor.Name}[/Yellow] and [Yellow]{potion.Quantity} {potion.Name}s[/Yellow].\n");
                 player.Backpack.Add(weapon);
                 player.Backpack.Add(armor);
                 player.Backpack.Add(potion);
@@ -277,14 +255,7 @@ namespace TheShinobi.Structures
             {
                 string[] stories = Get.NoFightStories();
                 string story = stories[random.Next(stories.Length)];
-                if (ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow))
-                {
-                    Console.ReadKey(true);
-                }
-                else
-                {
-                    Display.Blinking("\t [Press enter to continue]");
-                }
+                ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);                
             }
             else
             {
@@ -301,14 +272,7 @@ namespace TheShinobi.Structures
             }
             else
             {
-                if (ColorConsole.WriteDelayedLine("\t You are not strong enough to fight this opponent...", ConsoleColor.Red))
-                {
-                    Console.ReadKey(true);
-                }
-                else
-                {
-                    Display.Blinking("\t [Press enter to continue]");
-                }
+                ColorConsole.WriteDelayedLine("\t You are not strong enough to fight this opponent...", ConsoleColor.Red, blink: true);                
             }
             return false;
         }
@@ -319,8 +283,7 @@ namespace TheShinobi.Structures
             Enemy enemy = enemies[random.Next(enemies.Length)];
             string[] stories = Get.FightStories(enemy);
             string story = stories[random.Next(stories.Length)];
-            ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
-            Display.Blinking("\t [Press enter to continue]");
+            ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
             bool exit = false;
             while (!exit)
             {

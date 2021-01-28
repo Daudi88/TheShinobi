@@ -223,7 +223,15 @@ namespace TheShinobi.HelperMethods
                 content3.Add("[Red]You don't know any techniques yet.[/Red]");
             }
             WithDevidedFrame(title, content, title2, content2, title3, content3);
-            Blinking("\t [Press enter to continue]");
+            if (!Console.KeyAvailable) // nåt är fel här
+            {
+                Thread.Sleep(5000);
+                Blinking("\t [Press enter to continue]");
+            }
+            else
+            {
+                Console.ReadKey(true);
+            }
         }
 
         internal static void Map(Player player)
@@ -258,6 +266,7 @@ namespace TheShinobi.HelperMethods
             int bottom = Console.CursorTop;
             PlayerOnMap(player, top);
             Console.SetCursorPosition(0, bottom);
+            Thread.Sleep(2000);
             Blinking("\t [Press enter to continue]");
         }
 

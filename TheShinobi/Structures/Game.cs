@@ -47,14 +47,7 @@ namespace TheShinobi.Structures
             string intro = $"\n\t You, {player.Name}, wake up in the Hidden Leaf Village and sense that something is wrong!" +
                 "\n\t Kaguya Otsutsuki have kidnapped Hanare and taken her to his cave in the mountains." +
                 "\n\t It is your duty to find and rescue her!";
-            if (ColorConsole.WriteDelayedLine(intro, ConsoleColor.Yellow, 40))
-            {
-                Console.ReadKey(true);
-            }
-            else
-            {
-                Display.Blinking("\t [Press enter to continue]");
-            }
+            ColorConsole.WriteDelayedLine(intro, ConsoleColor.Yellow, 40, blink: true);
             HiddenLeafVillage.Menu(player);
         }
 
@@ -113,7 +106,7 @@ namespace TheShinobi.Structures
 
         public static void PlayAgain()
         {
-            ColorConsole.WriteDelayed("\t Do you want to play again? (y/n)");
+            ColorConsole.WriteDelayedLine("\t Do you want to play again? (y/n)");
             Console.Write("\t > ");
             string choice = ColorConsole.ReadLine();
             if (choice.ToLower() == "y")

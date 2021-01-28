@@ -82,7 +82,7 @@ namespace TheShinobi.HelperMethods
             }
         }
 
-        public static bool WriteEmbeddedDelayed(string text)
+        public static void WriteEmbeddedDelayed(string text)
         {
             bool result;
             while (true)
@@ -100,7 +100,14 @@ namespace TheShinobi.HelperMethods
                 WriteDelayed(hightlight, col);
                 text = text.Substring(match.Index + match.Value.Length);
             }
-            return result;
+            if (result)
+            {
+                Console.ReadKey(true);
+            }
+            else
+            {
+                Display.Blinking("\t [Press enter to continue]");
+            }
         }
 
         public static bool WriteDelayed(string text, ConsoleColor color = ConsoleColor.White, int delay = 20)
@@ -123,7 +130,7 @@ namespace TheShinobi.HelperMethods
             return isKeyPressed;
         }
 
-        public static bool WriteDelayedLine(string text, ConsoleColor color = ConsoleColor.White, int delay = 30)
+        public static void WriteDelayedLine(string text, ConsoleColor color = ConsoleColor.White, int delay = 30, bool blink = false)
         {
             bool isKeyPressed = false;
             Thread.Sleep(delay);
@@ -142,14 +149,22 @@ namespace TheShinobi.HelperMethods
             }
             Thread.Sleep(600);
             Console.WriteLine();
-            return isKeyPressed;
+            if (isKeyPressed)
+            {
+                Console.ReadKey(true);
+            }
+            
+            if (!isKeyPressed && blink)
+            {
+                Display.Blinking("\t [Press enter to continue]");
+            }
         }
 
         public static void WriteOver(string message, ConsoleColor color, int time = 400)
         {
             int left = 9;
             int top = Console.CursorTop;
-            bool result = WriteDelayedLine(message, color);
+            bool result = WriteDelayed($"{message}\n", color);
             Thread.Sleep(time);
             Console.SetCursorPosition(left, top--);
             for (int j = 0; j < message.Length; j++)

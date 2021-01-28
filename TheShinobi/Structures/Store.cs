@@ -26,10 +26,7 @@ namespace TheShinobi.Structures
                 int top = Console.CursorTop;
                 if (isFirstTime)
                 {
-                    if (ColorConsole.WriteDelayedLine($"\t What {name.ToLower()} do you want to buy?"))
-                    {
-                        Console.ReadKey(true);
-                    }
+                    ColorConsole.WriteDelayedLine($"\t What {name.ToLower()} do you want to buy?");                    
                     isFirstTime = false;
                 }
                 else
@@ -54,10 +51,7 @@ namespace TheShinobi.Structures
                             int quantity;
                             Console.Write("                                                               ");
                             Console.SetCursorPosition(0, Console.CursorTop - 1);
-                            if (ColorConsole.WriteDelayed($"\t How many {item.Name}s do you want to buy?"))
-                            {
-                                Console.ReadKey(true);
-                            }
+                            ColorConsole.WriteDelayedLine($"\t How many {item.Name}s do you want to buy?");                            
                             Console.Write("\t > ");
                             while (true)
                             {
@@ -132,10 +126,7 @@ namespace TheShinobi.Structures
                     int top = Console.CursorTop;
                     if (isFirstTime)
                     {
-                        if (ColorConsole.WriteDelayedLine("\t What do you want to sell?"))
-                        {
-                            Console.ReadKey(true);
-                        }
+                        ColorConsole.WriteDelayedLine("\t What do you want to sell?");
                         isFirstTime = false;
                     }
                     else
@@ -151,10 +142,7 @@ namespace TheShinobi.Structures
                         int quantity;
                         Console.Write("                                              ");
                         Console.SetCursorPosition(0, Console.CursorTop - 1);
-                        if (ColorConsole.WriteDelayed($"\t How many {item.Name}s do you want to sell?"))
-                        {
-                            Console.ReadKey(true);
-                        }
+                        ColorConsole.WriteDelayedLine($"\t How many {item.Name}s do you want to sell?");
                         Console.Write("\t > ");
                         while (true)
                         {
