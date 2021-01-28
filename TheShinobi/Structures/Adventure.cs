@@ -71,7 +71,10 @@ namespace TheShinobi.Structures
                 "\n\t You will probobly need a better Weapon and Armor \n" +
                 "\t There are rumors about treasures containing some usefull loot outside the village. \n" +
                 "\n\t Make sure you are strong and equipped enough for when you meet Hanare's Kidnapper.\n" +
-                "\n\t Also take care and dont loose yourself in the wild...";
+                "\n\t Also take care and dont loose yourself in the wild..." +
+                "\n\t * There are rumors about treasures containing some usefull loot." +
+                "\n\t * Make sure you are strong and equipped enough for when you meet Hanare's Kidnapper." +
+                "\n\t * Take care and make sure you don't loose yourself in the wild...";
 
             ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
             bool exit = false;
