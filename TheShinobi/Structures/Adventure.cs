@@ -47,22 +47,6 @@ namespace TheShinobi.Structures
 
         public static void Menu(Player player)
         {
-            //Adventure.villagePlayer.PlayLooping();
-            //Display.Title();
-            //Player player = CharacterCreation();
-            //string intro = $"\n\t You, {player.Name}, wake up in the Hidden Leaf Village and sense that something is wrong!" +
-            //    "\n\t Kaguya Otsutsuki have kidnapped Hanare and taken her to his cave in the mountains." +
-            //    "\n\t It is your duty to find and rescue her!";
-            //ColorConsole.WriteDelayedLine(intro, ConsoleColor.Yellow, 40);
-            //Console.WriteLine("\t [Press enter to continue]");
-            //Console.ReadKey(true);
-            //HiddenLeafVillage.Menu(player);
-
-            //string intro = $"\n\t You, {player.Name}, wake up from a womans scream's and it sound's as if she is beeing taken away!!!" +
-            //"\n\t You hear the villagers scream that somebody kidnapped Hanare!" +
-            //    "\n\t It is your duty to find and rescue her!";
-
-
             player.Pos += 0.1;
             adventurePlayer.PlayLooping();
             string story = $"\n\t All of your clan members are away to practice at Daisan Enshūjō. \n" +
