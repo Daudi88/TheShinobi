@@ -55,7 +55,7 @@ namespace TheShinobi.Structures
                 "\n\t You will have to rescue Hanare on your own! \n" +
                 "\n\t You took the little gear you had and are now on your way to leave \n" + 
                 "\t the Hidden Leaf Village. \n" +
-                "\n\t Hanare's kidnappers brought her towards the mountains up in the north.\n" +
+                "\n\t Hanare's kidnappers brought her towards the mountains up in the north." +
                 "\n\t It is now your duty to quickly kill all the enemies intruding your territory \n " + 
                 "\t and search for better gear so you can go and rescue her! \n" +
                 "\n\t * There are rumors about treasures containing some usefull loot outside the village." +
