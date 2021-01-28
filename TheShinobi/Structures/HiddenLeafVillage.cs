@@ -27,13 +27,17 @@ namespace TheShinobi.Structures
                 if (isVisitingVillage)
                 {
                     ColorConsole.WriteDelayedLine("\n\n\t Welcome to the Hidden Leaf Village!");
-                    ColorConsole.WriteDelayedLine("\t What do you want to do?");
-                    isVisitingVillage = false;
                 }
                 else
                 {
-                    ColorConsole.WriteDelayedLine("\n\t What do you want to do?");
+                    Console.WriteLine();
                 }
+
+                if (ColorConsole.WriteDelayedLine("\t What do you want to do?"))
+                {
+                    Console.ReadKey(true);
+                }
+                isVisitingVillage = false;
                 List<string> options = new List<string>()
                 {
                     "1. Go on an Adventure",
@@ -80,7 +84,10 @@ namespace TheShinobi.Structures
             while (!exit)
             {
                 ColorConsole.WriteDelayedLine("\n\n\t Welcome to the Lightning Burger!");
-                ColorConsole.WriteDelayedLine("\t What can we do for you?");
+                if (ColorConsole.WriteDelayedLine("\t What can we do for you?"))
+                {
+                    Console.ReadKey(true);
+                }
                 List<string> menu = new List<string>();
                 int ctr = 1;
                 foreach (var meal in meals)
@@ -119,7 +126,10 @@ namespace TheShinobi.Structures
             while (true)
             {
                 Console.SetCursorPosition(0, top);
-                ColorConsole.WriteDelayedLine("\t What do you want to do?");
+                if (ColorConsole.WriteDelayedLine("\t What do you want to do?"))
+                {
+                    Console.ReadKey(true);
+                }
                 List<string> options = new List<string>()
                 {
                     "1. See Tsunade the medical-nin (300 Ryō)",
@@ -175,7 +185,10 @@ namespace TheShinobi.Structures
             while (true)
             {
                 Console.SetCursorPosition(0, top);
-                ColorConsole.WriteDelayedLine("\t What do you want to do?");
+                if (ColorConsole.WriteDelayedLine("\t What do you want to do?"))
+                {
+                    Console.ReadKey(true);
+                }
                 List<string> options = new List<string>()
                 {
                     "1. Buy Armor",

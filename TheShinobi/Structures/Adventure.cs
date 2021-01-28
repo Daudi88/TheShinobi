@@ -29,7 +29,7 @@ namespace TheShinobi.Structures
         static string soundLocation4 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\AbuHassan.wav");
         static string soundLocation5 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Hiruzen.wav");
         static string soundLocation6 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Graveyard.wav");
-        
+
 
         public static SoundPlayer villagePlayer = new SoundPlayer(soundLocation1);
         static SoundPlayer adventurePlayer = new SoundPlayer(soundLocation2);
@@ -37,7 +37,7 @@ namespace TheShinobi.Structures
         static SoundPlayer abuHassanPlayer = new SoundPlayer(soundLocation4);
         static SoundPlayer hiruzenPlayer = new SoundPlayer(soundLocation5);
         static SoundPlayer graveyardPlayer = new SoundPlayer(soundLocation6);
-        
+
 
         private static bool isTreasureTaken = false;
         private static bool isGraveyardVisited = false;
@@ -77,7 +77,7 @@ namespace TheShinobi.Structures
                 player.Pos = Math.Round(player.Pos, 1);
                 Console.WriteLine("\n");
                 var options = Get.Options(player, out List<string> content);
-                Display.WithFrame(content, "[Yellow]Adventure[/Yellow]", true);
+                Display.WithFrame(content, "[Yellow]ADVENTURE[/Yellow]", true);
                 ChooseANumber(content.Count, out int choice, player, true);
                 if (choice > 0)
                 {
@@ -133,9 +133,15 @@ namespace TheShinobi.Structures
                 Console.SetWindowPosition(0, Console.CursorTop - V);
                 Weapon[] swords = Get.SevenSwords(player);
                 Weapon sword = swords[random.Next(swords.Length)];
-                ColorConsole.WriteEmbeddedDelayed($"\t You find the [Yellow]{sword.Name}[/Yellow], a sword of the Seven Swordsmen!\n");
                 AddToBackpack(player, sword);
-                Display.Blinking("\t [Press enter to continue]");
+                if (ColorConsole.WriteEmbeddedDelayed($"\t You find the [Yellow]{sword.Name}[/Yellow], a sword of the Seven Swordsmen!\n"))
+                {
+                    Console.ReadKey(true);
+                }
+                else
+                {
+                    Display.Blinking("\t [Press enter to continue]");
+                }
                 isGraveyardVisited = true;
             }
             else
@@ -154,8 +160,14 @@ namespace TheShinobi.Structures
                 Console.SetWindowPosition(0, Console.CursorTop - 30);
                 int treasure = random.Next(1000, 10000);
                 player.Ryō += treasure;
-                ColorConsole.WriteEmbeddedDelayed($"\t You found a treasure and gained [Yellow]{treasure}[/Yellow] gold!\n");
-                Display.Blinking("\t [Press enter to continue]");
+                if (ColorConsole.WriteEmbeddedDelayed($"\t You found a treasure and gained [Yellow]{treasure}[/Yellow] gold!\n"))
+                {
+                    Console.ReadKey(true);
+                }
+                else
+                {
+                    Display.Blinking("\t [Press enter to continue]");
+                }
                 isTreasureTaken = true;
             }
             else
@@ -235,12 +247,18 @@ namespace TheShinobi.Structures
                     "\n\t There is little time and you need to go on with your quest" +
                     "\n\t to save Hanare!Take these items and be on your way!";
                 ColorConsole.WriteDelayedLine(story2, color: ConsoleColor.Yellow);
-                ColorConsole.WriteEmbeddedDelayed($"\n\t You get a [Yellow]{weapon.Name}[/Yellow], " +
-                    $"an [Yellow]{armor.Name}[/Yellow] and [Yellow]{potion.Quantity} {potion.Name}s[/Yellow].\n");
+                if (ColorConsole.WriteEmbeddedDelayed($"\n\t You get a [Yellow]{weapon.Name}[/Yellow], " +
+                    $"an [Yellow]{armor.Name}[/Yellow] and [Yellow]{potion.Quantity} {potion.Name}s[/Yellow].\n"))
+                {
+                    Console.ReadKey(true);
+                }
+                else
+                {
+                    Display.Blinking("\t [Press enter to continue]");
+                }
                 player.Backpack.Add(weapon);
                 player.Backpack.Add(armor);
                 player.Backpack.Add(potion);
-                Display.Blinking("\t [Press enter to continue]");
                 isHiruzenVisited = true;
             }
             else
@@ -259,8 +277,14 @@ namespace TheShinobi.Structures
             {
                 string[] stories = Get.NoFightStories();
                 string story = stories[random.Next(stories.Length)];
-                ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
-                Display.Blinking("\t [Press enter to continue]");
+                if (ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow))
+                {
+                    Console.ReadKey(true);
+                }
+                else
+                {
+                    Display.Blinking("\t [Press enter to continue]");
+                }
             }
             else
             {
@@ -273,12 +297,18 @@ namespace TheShinobi.Structures
             if (player.Level >= 10)
             {
                 // FightTheBoss(player);
-                Display.Credits(player);                
+                Display.Credits(player);
             }
             else
             {
-                ColorConsole.WriteDelayedLine("\t You are not strong enough to fight this opponent...", ConsoleColor.Red);
-                Display.Blinking("\t [Press enter to continue]");
+                if (ColorConsole.WriteDelayedLine("\t You are not strong enough to fight this opponent...", ConsoleColor.Red))
+                {
+                    Console.ReadKey(true);
+                }
+                else
+                {
+                    Display.Blinking("\t [Press enter to continue]");
+                }
             }
             return false;
         }

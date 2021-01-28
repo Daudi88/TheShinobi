@@ -29,7 +29,7 @@ namespace TheShinobi.Structures
             Console.Title = "The Shinobi";
             Console.SetWindowSize(130, 50);
             Console.OutputEncoding = Encoding.UTF8;
-            Console.CursorVisible = false;            
+            Console.CursorVisible = false;
         }
 
         public void Test()
@@ -41,27 +41,20 @@ namespace TheShinobi.Structures
 
         public void Start()
         {
-            //Adventure.villagePlayer.PlayLooping();
-            //Display.Title();
-            //Player player = CharacterCreation();
-            //string intro = $"\n\t You, {player.Name}, wake up in the Hidden Leaf Village and sense that something is wrong!" +
-            //    "\n\t Kaguya Otsutsuki have kidnapped Hanare and taken her to his cave in the mountains." +
-            //    "\n\t It is your duty to find and rescue her!";
-            //ColorConsole.WriteDelayedLine(intro, ConsoleColor.Yellow, 40);
-            //Console.WriteLine("\t [Press enter to continue]");
-            //Console.ReadKey(true);
-            //HiddenLeafVillage.Menu(player);
-
             Adventure.villagePlayer.PlayLooping();
             Display.Title();
             Player player = CharacterCreation();
             string intro = $"\n\t You, {player.Name}, wake up in the Hidden Leaf Village and sense that something is wrong!" +
                 "\n\t Kaguya Otsutsuki have kidnapped Hanare and taken her to his cave in the mountains." +
                 "\n\t It is your duty to find and rescue her!";
-            ColorConsole.WriteDelayedLine(intro, ConsoleColor.Yellow, 40);
-            Display.Blinking("\t [Press enter to continue]");
-            //Console.WriteLine("\t [Press enter to continue]");
-            //Console.ReadKey(true);
+            if (ColorConsole.WriteDelayedLine(intro, ConsoleColor.Yellow, 40))
+            {
+                Console.ReadKey(true);
+            }
+            else
+            {
+                Display.Blinking("\t [Press enter to continue]");
+            }
             HiddenLeafVillage.Menu(player);
         }
 
@@ -105,7 +98,7 @@ namespace TheShinobi.Structures
                 Chakra = new Ability(1000, 1000),
                 Exp = new Ability(0, 200),
                 Armor = new FlakJacket(),
-                Weapon = new Kubikiribōchō(),                
+                Weapon = new Kubikiribōchō(),
             };
             kakashi.Ninjutsus.Add(new Ninjutsu("Chidori", "4d16", 100));
             kakashi.Defence = kakashi.Armor.Defence;

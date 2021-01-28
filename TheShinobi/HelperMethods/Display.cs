@@ -273,15 +273,16 @@ namespace TheShinobi.HelperMethods
         {
             while (true)
             {
+                if (Console.KeyAvailable)
+                {
+                    Console.WriteLine("                                        ");
+                    Console.ReadKey(true);
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    break;
+                }
                 Console.WriteLine(text);
                 Thread.Sleep(600);
                 Console.SetCursorPosition(0, Console.CursorTop - 1);
-                if (Console.KeyAvailable)
-                {
-                    Console.WriteLine(text);
-                    Console.ReadKey(true);
-                    break;
-                }
                 Console.WriteLine("                                        ");
                 Thread.Sleep(300);
                 Console.SetCursorPosition(0, Console.CursorTop - 1);
@@ -334,6 +335,10 @@ namespace TheShinobi.HelperMethods
             }
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
+            if (isKeyPressed)
+            {
+                Console.ReadKey(true);
+            }
         }
 
         public static void Credits(Player player)

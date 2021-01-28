@@ -82,14 +82,15 @@ namespace TheShinobi.HelperMethods
             }
         }
 
-        public static void WriteEmbeddedDelayed(string text)
+        public static bool WriteEmbeddedDelayed(string text)
         {
+            bool result;
             while (true)
             {
                 var match = colorRegex.Match(text);
                 if (match.Length < 1)
                 {
-                    WriteDelayed(text);
+                    result = WriteDelayed(text);
                     break;
                 }
                 WriteDelayed(text.Substring(0, match.Index));
@@ -99,9 +100,10 @@ namespace TheShinobi.HelperMethods
                 WriteDelayed(hightlight, col);
                 text = text.Substring(match.Index + match.Value.Length);
             }
+            return result;
         }
 
-        public static void WriteDelayed(string text, ConsoleColor color = ConsoleColor.White, int delay = 20)
+        public static bool WriteDelayed(string text, ConsoleColor color = ConsoleColor.White, int delay = 20)
         {
             bool isKeyPressed = false;
             Thread.Sleep(delay);
@@ -118,9 +120,10 @@ namespace TheShinobi.HelperMethods
                     Thread.Sleep(delay);
                 }
             }
+            return isKeyPressed;
         }
 
-        public static void WriteDelayedLine(string text, ConsoleColor color = ConsoleColor.White, int delay = 30)
+        public static bool WriteDelayedLine(string text, ConsoleColor color = ConsoleColor.White, int delay = 30)
         {
             bool isKeyPressed = false;
             Thread.Sleep(delay);
@@ -139,13 +142,14 @@ namespace TheShinobi.HelperMethods
             }
             Thread.Sleep(600);
             Console.WriteLine();
+            return isKeyPressed;
         }
 
         public static void WriteOver(string message, ConsoleColor color, int time = 400)
         {
             int left = 9;
             int top = Console.CursorTop;
-            WriteDelayedLine(message, color);
+            bool result = WriteDelayedLine(message, color);
             Thread.Sleep(time);
             Console.SetCursorPosition(left, top--);
             for (int j = 0; j < message.Length; j++)
@@ -159,6 +163,10 @@ namespace TheShinobi.HelperMethods
             }
             Console.SetCursorPosition(left, top);
             Console.Write("> ");
+            if (result)
+            {
+                Console.ReadKey(true);
+            }
         }
     }
 }
