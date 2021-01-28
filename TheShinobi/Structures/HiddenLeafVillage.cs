@@ -95,7 +95,7 @@ namespace TheShinobi.Structures
                     if (ChooseANumber(meals.Length, out int choice, ending: true))
                     {
                         Consumable meal = meals[choice - 1];
-                        if (player.Gold >= meal.Price)
+                        if (player.Ryō >= meal.Price)
                         {
                             Store.MakePurchase(player, meal, meal.Price, true);
                         }
@@ -125,7 +125,7 @@ namespace TheShinobi.Structures
                 ColorConsole.WriteDelayedLine("\t What do you want to do?");
                 List<string> options = new List<string>()
                 {
-                    "1. See Tsunade the medical-nin (300g)",
+                    "1. See Tsunade the medical-nin (300 Ryō)",
                     "2. Buy potions"
                 };
                 Display.WithFrame(options, "[Yellow]KONOHA HOSPITAL[/Yellow]", ending: "Leave");
@@ -156,19 +156,19 @@ namespace TheShinobi.Structures
 
         private static void SeeTsunade(Player player)
         {
-            if (player.Hp.Current == player.Hp.Max)
+            if (player.Stamina.Current == player.Stamina.Max)
             {
                 ColorConsole.WriteOver("\t No need to see Tsunade, you have full health!", ConsoleColor.Yellow);
             }
-            else if (player.Gold >= 300)
+            else if (player.Ryō >= 300)
             {
-                player.Hp.Current = player.Hp.Max;
-                player.Gold -= 300;
+                player.Stamina.Current = player.Stamina.Max;
+                player.Ryō -= 300;
                 ColorConsole.WriteOver("\t Tsunade patch you up and you gain full health!", ConsoleColor.Yellow);
             }
             else
             {
-                ColorConsole.WriteOver("\t You don't have enough gold to see Tsunade!", ConsoleColor.Red);
+                ColorConsole.WriteOver("\t You don't have enough Ryō to see Tsunade!", ConsoleColor.Red);
             }
         }
 

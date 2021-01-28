@@ -37,14 +37,14 @@ namespace TheShinobi.Structures
                 int ctr = 1;
                 foreach (var item in items)
                 {
-                    options.Add($"{ctr++}. {item.Name} - {item.Price}g {item.BonusText()}");
+                    options.Add($"{ctr++}. {item.Name} - {item.Price} ryō {item.BonusText()}");
                 }
                 Display.WithFrame(options, $"[Yellow]{name.ToUpper()}S[/Yellow]", ending: ending);
                 int bottom = Console.CursorTop;
                 if (Utility.ChooseANumber(items.Length, out int choice, ending: true))
                 {
                     Item item = items[choice - 1];
-                    if (player.Gold >= item.Price)
+                    if (player.Ryō >= item.Price)
                     {
                         if (item is IConsumable c)
                         {
@@ -64,16 +64,16 @@ namespace TheShinobi.Structures
                                     {
                                         ColorConsole.WriteOver("\t You naughty ninja!", ConsoleColor.Red);
                                     }
-                                    else if (player.Gold >= price * quantity)
+                                    else if (player.Ryō >= price * quantity)
                                     {
                                         price *= quantity;
-                                        ColorConsole.WriteOver($"\t You buy {amount} {item.Name}{plural} for {price} gold.", ConsoleColor.Yellow);
+                                        ColorConsole.WriteOver($"\t You buy {amount} {item.Name}{plural} for {price} ryō.", ConsoleColor.Yellow);
                                         MakePurchase(player, item, price);
                                         break;
                                     }
                                     else
                                     {
-                                        ColorConsole.WriteOver($"\t You don't have enough gold to buy {amount} {item.Name}{plural}!", ConsoleColor.Red);
+                                        ColorConsole.WriteOver($"\t You don't have enough ryō to buy {amount} {item.Name}{plural}!", ConsoleColor.Red);
                                     }
                                 }
                                 else
@@ -85,13 +85,13 @@ namespace TheShinobi.Structures
                         }
                         else
                         {
-                            ColorConsole.WriteOver($"\t You buy {item.IndefiniteArticle} {item.Name} for {item.Price} gold!", ConsoleColor.Yellow);
+                            ColorConsole.WriteOver($"\t You buy {item.IndefiniteArticle} {item.Name} for {item.Price} ryō!", ConsoleColor.Yellow);
                             MakePurchase(player, item, item.Price);
                         }
                     }
                     else
                     {
-                        ColorConsole.WriteOver($"\t You don't have enough gold to buy {item.IndefiniteArticle} {item.Name}!", ConsoleColor.Red);
+                        ColorConsole.WriteOver($"\t You don't have enough ryō to buy {item.IndefiniteArticle} {item.Name}!", ConsoleColor.Red);
                     }
                     Utility.Remove(top, bottom);
                 }
@@ -105,7 +105,7 @@ namespace TheShinobi.Structures
 
         public static void MakePurchase(Player player, Item item, int price, bool eat = false)
         {
-            player.Gold -= price;
+            player.Ryō -= price;
             if (eat && item is IConsumable meal)
             {
                 meal.Consume(player);
@@ -152,7 +152,7 @@ namespace TheShinobi.Structures
                                 {
                                     price *= quantity;
                                     string plural = quantity > 1 ? "s" : "";
-                                    ColorConsole.WriteOver($"\t You sell {quantity} {item.Name}{plural} and gain {price} gold.", ConsoleColor.Yellow);
+                                    ColorConsole.WriteOver($"\t You sell {quantity} {item.Name}{plural} and gain {price} ryō.", ConsoleColor.Yellow);
                                     break;
                                 }
                                 else if (quantity == 69)
@@ -171,7 +171,7 @@ namespace TheShinobi.Structures
                             }
                         }
                         item.Quantity -= quantity;
-                        player.Gold += price;
+                        player.Ryō += price;
                         if (item.Quantity < 1)
                         {
                             player.Backpack.Remove(item);

@@ -189,11 +189,11 @@ namespace TheShinobi.HelperMethods
                 $"Name: [Yellow]{player.Name}[/Yellow]",
                 $"Level: [Yellow]{player.Level}[/Yellow]",
                 $"Exp: [Yellow]{player.Exp}[/Yellow]",
-                $"Hp: [{color}]{player.Hp} {Utility.energyBonus}[/{color}]",
+                $"Stamina: [{color}]{player.Stamina} {Utility.energyBonus}[/{color}]",
                 $"Chakra: [{color}]{player.Chakra} {Utility.energyBonus}[/{color}]",
                 $"Defence: [{color}]{player.Defence} {Utility.energyBonus}[/{color}]",
                 $"Damage: [{color}]{player.Damage} {Utility.energyBonus}[/{color}]",
-                $"Gold: [Yellow]{player.Gold}[/Yellow]",
+                $"Ryō: [Yellow]{player.Ryō}[/Yellow]",
             };
             string title2 = "[DarkCyan]ARMOR[/DarkCyan]";
             Armor armor = player.Armor;
@@ -256,10 +256,14 @@ namespace TheShinobi.HelperMethods
         
         public static void Blinking(string text)
         {
+            Console.WriteLine(text);
+            Thread.Sleep(1000);
+            Console.SetCursorPosition(0, Console.CursorTop - 1);
             while (true)
-            {                
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine(text);
-                Thread.Sleep(600);
+                Thread.Sleep(300);
                 Console.SetCursorPosition(0, Console.CursorTop - 1);
                 if (Console.KeyAvailable)
                 {
@@ -267,8 +271,9 @@ namespace TheShinobi.HelperMethods
                     Console.ReadKey(true);
                     break;
                 }
-                Console.WriteLine("\t                           ");
-                Thread.Sleep(300);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine(text);
+                Thread.Sleep(600);
                 Console.SetCursorPosition(0, Console.CursorTop - 1);
             }
         }
@@ -324,7 +329,7 @@ namespace TheShinobi.HelperMethods
         public static void Credits(Player player)
         {
             creditsPlayer.PlayLooping();
-            if (player.Hp.Current > 0)
+            if (player.Stamina.Current > 0)
             {
                 // Håkan win story
             }

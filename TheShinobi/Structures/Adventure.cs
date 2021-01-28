@@ -136,7 +136,7 @@ namespace TheShinobi.Structures
             {
                 Console.SetWindowPosition(0, Console.CursorTop - 30);
                 int treasure = random.Next(1000, 10000);
-                player.Gold += treasure;
+                player.Ryō += treasure;
                 ColorConsole.WriteEmbeddedDelayed($"\t You found a treasure and gained [Yellow]{treasure}[/Yellow] gold!\n");
                 Display.Blinking("\t [Press enter to continue]");
                 isTreasureTaken = true;

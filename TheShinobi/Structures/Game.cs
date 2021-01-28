@@ -89,8 +89,8 @@ namespace TheShinobi.Structures
             {
                 Level = 10,
                 Pos = 2.0,
-                Gold = 100000,
-                Hp = new Ability(1000, 1000),
+                Ryō = 100000,
+                Stamina = new Ability(1000, 1000),
                 Chakra = new Ability(1000, 1000),
                 Exp = new Ability(0, 200),
                 Armor = new FlakJacket(),

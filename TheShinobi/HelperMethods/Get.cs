@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TheShinobi.Abilities;
 using TheShinobi.Characters;
 using TheShinobi.Characters.Enemies;
 using TheShinobi.Items;

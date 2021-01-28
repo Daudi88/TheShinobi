@@ -20,12 +20,12 @@ namespace TheShinobi.Items.Consumables
 
         public void Consume(Player player)
         {
-            if (player.Hp.Current < player.Hp.Max)
+            if (player.Stamina.Current < player.Stamina.Max)
             {
-                player.Hp.Current += Health;
-                if (player.Hp.Current >= player.Hp.Max)
+                player.Stamina.Current += Health;
+                if (player.Stamina.Current >= player.Stamina.Max)
                 {
-                    player.Hp.Current = player.Hp.Max;
+                    player.Stamina.Current = player.Stamina.Max;
                     ColorConsole.WriteOver($"\t {Text} and gain full health!", ConsoleColor.Yellow);
                 }
                 else

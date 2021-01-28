@@ -14,12 +14,12 @@ namespace TheShinobi.Characters.Enemies
             Name = name;
             Clan = clan;
             Level = level;
-            Hp.Current = hp;
+            Stamina.Current = hp;
             Armor = armor;
             Weapon = weapon;
             Defence = Armor.Defence;
             Damage = Weapon.Damage;
-            Gold = Utility.random.Next(1, 100 * Level + 1);
+            Ryō = Utility.random.Next(1, 100 * Level + 1);
             Exp.Current = Utility.random.Next(10 * Level, 40 * Level + 1);
         }
 
@@ -78,8 +78,8 @@ namespace TheShinobi.Characters.Enemies
                 }
             }
             string separator = eDrop ? " and " : eDrop && cDrop ? ", " : "";
-            ColorConsole.WriteEmbedded($"\t {Name} drops {eDropText}{separator}{cDropText}[Yellow]{Gold}[/Yellow] gold!");
-            player.Gold += Gold;
+            ColorConsole.WriteEmbedded($"\t {Name} drops {eDropText}{separator}{cDropText}[Yellow]{Ryō}[/Yellow] ryō!");
+            player.Ryō += Ryō;
             Display.Blinking("\t [Press enter to continue]");
         }
     }

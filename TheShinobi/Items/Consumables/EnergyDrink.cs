@@ -30,8 +30,8 @@ namespace TheShinobi.Items
             EnergyCtr++;
             Utility.isEnergyDrink = true;
             Utility.energyBonus = BonusText();
-            player.Hp.Max += Energy;
-            player.Hp.Current += Energy;
+            player.Stamina.Max += Energy;
+            player.Stamina.Current += Energy;
             player.Defence += Energy;
             player.AttackBonus += Energy;
         }
@@ -40,8 +40,8 @@ namespace TheShinobi.Items
         {
             string ending = EnergyCtr > 1 ? "s are" : " is";
             ColorConsole.WriteOver($"\t The effect of the {Name}{ending} wearing of!", ConsoleColor.Red);
-            player.Hp.Max -= Energy * EnergyCtr;
-            player.Hp.Current -= Energy * EnergyCtr;
+            player.Stamina.Max -= Energy * EnergyCtr;
+            player.Stamina.Current -= Energy * EnergyCtr;
             player.Defence -= Energy * EnergyCtr;
             player.AttackBonus -= Energy * EnergyCtr;
             EnergyCtr = 0;

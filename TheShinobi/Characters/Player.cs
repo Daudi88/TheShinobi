@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using TheShinobi.Abilities;
 using TheShinobi.HelperMethods;
 using TheShinobi.Items;
@@ -11,17 +12,16 @@ namespace TheShinobi.Characters
     {
         public double Pos { get; set; } = 2.0;
         public int AttackBonus { get; set; }
-        public Ability Chakra { get; set; }
-        public Ninjutsu Ninjutsu { get; set; }        
+        public Ability Chakra { get; set; }       
         public List<Item> Backpack { get; set; } = new List<Item>();
         public Player(string name)
         {
             Name = name;
             Level = 1;
-            Hp = new Ability(30, 30);
             Exp = new Ability(0, 200);
+            Stamina = new Ability(30, 30);
             Chakra = new Ability(50, 50);
-            Ninjutsu = new Ninjutsu("Rasengan", "1d4", 10);
+            Ninjutsu = new Ninjutsu("Rasengan", "1d6", 40);
             Armor = new Shirt();
             Defence = Armor.Defence;
             Weapon = new Fists();
@@ -36,11 +36,11 @@ namespace TheShinobi.Characters
             Chakra.Max += 10;
             Chakra.Current = Chakra.Max;
             Exp.Max += 500 * Level;
-            if (Hp.Max + Level <= 100)
+            if (Stamina.Max + Level <= 100)
             {
-                Hp.Max += Level;
+                Stamina.Max += Level;
             }
-            Hp.Current = Hp.Max;
+            Stamina.Current = Stamina.Max;
         }
 
         public override int Attack(Character defender)
