@@ -34,8 +34,7 @@ namespace TheShinobi.Structures
 
         public void Test()
         {
-            Display.Blinking("\t [Press enter to continue]");
-            Console.WriteLine("\t Det gick");
+            ColorConsole.WriteDelayed(Get.EndStory(), ConsoleColor.Yellow, exitable: false);
             Console.ReadLine();
         }
 
