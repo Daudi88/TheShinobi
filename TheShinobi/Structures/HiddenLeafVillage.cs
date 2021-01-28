@@ -37,7 +37,7 @@ namespace TheShinobi.Structures
                 List<string> options = new List<string>()
                 {
                     "1. Go on an Adventure",
-                    "2. Eat at Lightning Burger",
+                    "2. Eat at Ramen Ichiraku",
                     "3. Heal yourself at Konoha Hospital",
                     "4. Go to the Ninja Tool Shop",
                 };
@@ -45,7 +45,7 @@ namespace TheShinobi.Structures
 
                 Action<Player>[] methods = new Action<Player>[]
                 {
-                    Adventure.Menu, LightningBurger, KonohaHospital, NinjaToolShop
+                    Adventure.Menu, RamenIchiraku, KonohaHospital, NinjaToolShop
                 };
                 while (true)
                 {
@@ -73,21 +73,21 @@ namespace TheShinobi.Structures
             }
         }
 
-        private static void LightningBurger(Player player)
+        private static void RamenIchiraku(Player player)
         {
             Consumable[] meals = Get.Meals();
             bool exit = false;
             while (!exit)
             {
-                ColorConsole.WriteDelayed(content: "\n\n\t Welcome to the Lightning Burger!\n");
+                ColorConsole.WriteDelayed(content: "\n\n\t Welcome to Ramen Ichiraku!\n");
                 ColorConsole.WriteDelayedLine("\t What can we do for you?");                
                 List<string> menu = new List<string>();
                 int ctr = 1;
                 foreach (var meal in meals)
                 {
-                    menu.Add($"{ctr++}. {meal.Name} - {meal.Price}g {meal.BonusText()}");
+                    menu.Add($"{ctr++}. {meal.Name} - {meal.Price} ryō {meal.BonusText()}");
                 }
-                Display.WithFrame(menu, "[Yellow]LIGHTNING BURGER[/Yellow]", ending: "Leave");
+                Display.WithFrame(menu, "[Yellow]RAMEN ICHIRAKU[/Yellow]", ending: "Leave");
                 while (true)
                 {
                     if (ChooseANumber(meals.Length, out int choice, ending: true))

@@ -73,8 +73,7 @@ namespace TheShinobi.Structures
                 "\n\t Make sure you are strong and equipped enough for when you meet Hanare's Kidnapper.\n" +
                 "\n\t Also take care and dont loose yourself in the wild...";
 
-            ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
-            Display.Blinking("\t [Press enter to continue]");
+            ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
             bool exit = false;
             while (!exit)
             {
@@ -97,7 +96,6 @@ namespace TheShinobi.Structures
             CheckForEncounter(player);
             return false;
         }
-
 
         public static bool East(Player player)
         {
