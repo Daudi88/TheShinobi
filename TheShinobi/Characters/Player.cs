@@ -21,7 +21,6 @@ namespace TheShinobi.Characters
             Exp = new Ability(0, 200);
             Stamina = new Ability(30, 30);
             Chakra = new Ability(50, 50);
-            Ninjutsu = new Ninjutsu("Rasengan", "1d6", 40);
             Armor = new Shirt();
             Defence = Armor.Defence;
             Weapon = new Fists();

@@ -26,6 +26,7 @@ namespace TheShinobi.Structures
             bool exit = false;
             while (!exit)
             {
+                Console.SetWindowPosition(0, Console.CursorTop - V);
                 if (isVisitingVillage)
                 {
                     ColorConsole.WriteDelayedLine("\n\n\t Welcome to the Hidden Leaf Village!");
@@ -34,7 +35,7 @@ namespace TheShinobi.Structures
                 }
                 else
                 {
-                    ColorConsole.WriteDelayedLine("\n\n\t What do you want to do?");
+                    ColorConsole.WriteDelayedLine("\n\t What do you want to do?");
                 }
                 List<string> options = new List<string>()
                 {
@@ -106,8 +107,7 @@ namespace TheShinobi.Structures
                     }
                     else
                     {
-                        ColorConsole.WriteDelayedLine("\t Thank you for visiting Lightning Burger!", ConsoleColor.Yellow);
-                        Console.SetWindowPosition(0, Console.CursorTop - V);
+                        ColorConsole.WriteDelayedLine("\t Thank you for visiting Lightning Burger!\n", ConsoleColor.Yellow);
                         exit = true;
                         break;
                     }
@@ -147,8 +147,7 @@ namespace TheShinobi.Structures
                 }
                 else
                 {
-                    ColorConsole.WriteDelayedLine("\t Thank you for visiting Konoha Hospital!", ConsoleColor.Yellow);
-                    Console.SetWindowPosition(0, Console.CursorTop - V);
+                    ColorConsole.WriteDelayedLine("\t Thank you for visiting Konoha Hospital\n!", ConsoleColor.Yellow);
                     break;
                 }
             }
@@ -213,8 +212,7 @@ namespace TheShinobi.Structures
                 }
                 else
                 {
-                    ColorConsole.WriteDelayedLine("\t Thank you for visiting the Ninja Tool Shop!", ConsoleColor.Yellow);
-                    Console.SetWindowPosition(0, Console.CursorTop - V);
+                    ColorConsole.WriteDelayedLine("\t Thank you for visiting the Ninja Tool Shop\n!", ConsoleColor.Yellow);
                     break;
                 }
             }

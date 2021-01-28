@@ -9,8 +9,10 @@ namespace TheShinobi.Items
     {
         public int Energy { get; set; }
         public string Text { get; set; }
-        public int EnergyCtr { get; set; } = 0;
+        public int EnergyCtr { get; set; }
+        public bool IsEnergized { get; set; }
 
+        public EnergyDrink() { }
         public EnergyDrink(string name, int price, int energy, string text)
         {
             Name = name;
@@ -21,32 +23,22 @@ namespace TheShinobi.Items
 
         public override string BonusText()
         {
-            return $"(+{Energy * EnergyCtr} Energy)";
+            return IsEnergized ? $"(+{Energy * EnergyCtr} Energy)" : "";
         }
 
         public void Consume(Player player)
         {
             ColorConsole.WriteOver($"\t {Text} and are energized with {Energy} energy!", ConsoleColor.Yellow);
-            EnergyCtr++;
-            Utility.isEnergyDrink = true;
-            Utility.energyBonus = BonusText();
             player.Stamina.Max += Energy;
             player.Stamina.Current += Energy;
             player.Defence += Energy;
             player.AttackBonus += Energy;
+            Utility.energyDrink.EnergyCtr++;
+            Utility.energyDrink.Name = Name;
+            Utility.energyDrink.Energy += Energy;
+            Utility.energyDrink.IsEnergized = true;
         }
 
-        public void EnergyDip(Player player)
-        {
-            string ending = EnergyCtr > 1 ? "s are" : " is";
-            ColorConsole.WriteOver($"\t The effect of the {Name}{ending} wearing of!", ConsoleColor.Red);
-            player.Stamina.Max -= Energy * EnergyCtr;
-            player.Stamina.Current -= Energy * EnergyCtr;
-            player.Defence -= Energy * EnergyCtr;
-            player.AttackBonus -= Energy * EnergyCtr;
-            EnergyCtr = 0;
-            Utility.isEnergyDrink = false;
-            Utility.energyBonus = "";
-        }
+        
     }
 }

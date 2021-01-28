@@ -65,6 +65,7 @@ namespace TheShinobi.Structures
                 ChooseANumber(content.Count, out int choice, player, true);
                 if (choice > 0)
                 {
+                    Console.SetWindowPosition(0, Console.CursorTop - V);
                     exit = options[choice - 1].Invoke(player);
                 }
             }
@@ -73,7 +74,7 @@ namespace TheShinobi.Structures
         public static bool North(Player player)
         {
             player.Pos += 0.1;
-            CheckForEncounter();
+            CheckForEncounter(player);
             return false;
         }
 
@@ -81,21 +82,21 @@ namespace TheShinobi.Structures
         public static bool East(Player player)
         {
             player.Pos += 1.0;
-            CheckForEncounter();
+            CheckForEncounter(player);
             return false;
         }
 
         public static bool West(Player player)
         {
             player.Pos -= 1.0;
-            CheckForEncounter();
+            CheckForEncounter(player);
             return false;
         }
 
         public static bool South(Player player)
         {
             player.Pos -= 0.1;
-            CheckForEncounter();
+            CheckForEncounter(player);
             return false;
         }
 
@@ -234,11 +235,11 @@ namespace TheShinobi.Structures
             return false;
         }
 
-        public static void CheckForEncounter()
+        public static void CheckForEncounter(Player player)
         {
             Console.SetWindowPosition(0, Console.CursorTop - V);
             int chance = random.Next(0, 10);
-            if (true)
+            if (chance < 2)
             {
                 string[] stories = Get.NoFightStories();
                 string story = stories[random.Next(stories.Length)];
@@ -247,7 +248,7 @@ namespace TheShinobi.Structures
             }
             else
             {
-                //Battle();
+                Battle(player);
             }
         }
 
@@ -274,6 +275,21 @@ namespace TheShinobi.Structures
             string story = stories[random.Next(stories.Length)];
             ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
             Display.Blinking("\t [Press enter to continue]");
+            bool exit = false;
+            while (!exit)
+            {
+
+
+
+
+
+
+                if (energyDrink.IsEnergized)
+                {
+                    Utility.EnergyDip(player);
+                }
+                break;
+            }
         }
 
         //private static void Battle(Player player)

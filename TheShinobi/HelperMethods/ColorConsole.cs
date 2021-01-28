@@ -6,6 +6,7 @@ namespace TheShinobi.HelperMethods
 {
     static class ColorConsole
     {
+        static Regex colorRegex = new Regex(@"\[(?<color>.*?)\](?<text>[^[]*)\[/\k<color>\]");
         public static string ReadLine()
         {
             Console.CursorVisible = true;
@@ -61,10 +62,9 @@ namespace TheShinobi.HelperMethods
             Console.WriteLine(text);
             Console.ForegroundColor = ConsoleColor.White;
         }
-
+        
         public static void WriteEmbedded(string text)
         {
-            Regex colorRegex = new Regex(@"\[(?<color>.*?)\](?<text>[^[]*)\[/\k<color>\]");
             while (true)
             {
                 var match = colorRegex.Match(text);
@@ -84,7 +84,6 @@ namespace TheShinobi.HelperMethods
 
         public static void WriteEmbeddedDelayed(string text)
         {
-            Regex colorRegex = new Regex(@"\[(?<color>.*?)\](?<text>[^[]*)\[/\k<color>\]");
             while (true)
             {
                 var match = colorRegex.Match(text);

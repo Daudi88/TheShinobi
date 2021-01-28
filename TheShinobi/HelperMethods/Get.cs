@@ -294,8 +294,8 @@ namespace TheShinobi.HelperMethods
                 "\n\t The sky is full of dark clouds and when lightning strikes the ground vibrates!" +
                 $"\n\t As you set up camp in the mountains to escape the bad weather some villains from the {enemy.Clan} Clan attacks!",
 
-                "\n\t The sky is blue and the sun is shining. As you walk past the graveyard you hear a noice!" +
-                "\n\t A lowlife from the {enemy.Clan} Clan attacks you!"
+                "\n\t The sky is blue and the sun is shining. As you walk past a shrubbery you hear a noice!" +
+                $"\n\t A lowlife from the {enemy.Clan} Clan attacks you!"
             };
             return stories;
         }

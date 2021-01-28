@@ -181,18 +181,19 @@ namespace TheShinobi.HelperMethods
 
         internal static void Details(Player player)
         {
+            Console.SetWindowPosition(0, Console.CursorTop - Utility.V);
             Console.WriteLine("\n");
             string title = "[DarkCyan]DETAILS[/DarkCyan]";
-            string color = Utility.isEnergyDrink ? "DarkCyan" : "Yellow";
+            string color = Utility.energyDrink.IsEnergized ? "DarkCyan" : "Yellow";
             List<string> content = new List<string>()
             {
                 $"Name: [Yellow]{player.Name}[/Yellow]",
                 $"Level: [Yellow]{player.Level}[/Yellow]",
                 $"Exp: [Yellow]{player.Exp}[/Yellow]",
-                $"Stamina: [{color}]{player.Stamina} {Utility.energyBonus}[/{color}]",
-                $"Chakra: [{color}]{player.Chakra} {Utility.energyBonus}[/{color}]",
-                $"Defence: [{color}]{player.Defence} {Utility.energyBonus}[/{color}]",
-                $"Damage: [{color}]{player.Damage} {Utility.energyBonus}[/{color}]",
+                $"Stamina: [{color}]{player.Stamina} {Utility.energyDrink.BonusText()}[/{color}]",
+                $"Chakra: [{color}]{player.Chakra} {Utility.energyDrink.BonusText()}[/{color}]",
+                $"Defence: [{color}]{player.Defence} {Utility.energyDrink.BonusText()}[/{color}]",
+                $"Damage: [{color}]{player.Damage} {Utility.energyDrink.BonusText()}[/{color}]",
                 $"Ryō: [Yellow]{player.Ryō}[/Yellow]",
             };
             string title2 = "[DarkCyan]ARMOR[/DarkCyan]";
@@ -208,11 +209,11 @@ namespace TheShinobi.HelperMethods
             };
             WithDevidedFrame(title, content, title2, content2, title3, content3);
             Blinking("\t [Press enter to continue]");
-            Console.SetWindowPosition(0, Console.CursorTop - 20);
         }
 
         internal static void Map(Player player)
         {
+            Console.SetWindowPosition(0, Console.CursorTop - Utility.V);
             Console.WriteLine("\n");
             int top = Console.CursorTop;
             ColorConsole.WriteEmbedded("\t┏━[DarkCyan]MAP[/DarkCyan]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n");
@@ -243,7 +244,6 @@ namespace TheShinobi.HelperMethods
             PlayerOnMap(player, top);
             Console.SetCursorPosition(0, bottom);
             Blinking("\t [Press enter to continue]");
-            Console.SetWindowPosition(0, Console.CursorTop - 20);
         }
 
         private static void PlayerOnMap(Player player, int top)
@@ -256,14 +256,10 @@ namespace TheShinobi.HelperMethods
         
         public static void Blinking(string text)
         {
-            Console.WriteLine(text);
-            Thread.Sleep(1000);
-            Console.SetCursorPosition(0, Console.CursorTop - 1);
             while (true)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine(text);
-                Thread.Sleep(300);
+                Thread.Sleep(600);
                 Console.SetCursorPosition(0, Console.CursorTop - 1);
                 if (Console.KeyAvailable)
                 {
@@ -271,9 +267,8 @@ namespace TheShinobi.HelperMethods
                     Console.ReadKey(true);
                     break;
                 }
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine(text);
-                Thread.Sleep(600);
+                Console.WriteLine("                                        ");
+                Thread.Sleep(300);
                 Console.SetCursorPosition(0, Console.CursorTop - 1);
             }
         }
