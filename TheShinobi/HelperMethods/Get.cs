@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Media;
 using System.Runtime.InteropServices.WindowsRuntime;
 using TheShinobi.Abilities;
 using TheShinobi.Characters;
@@ -370,7 +371,10 @@ namespace TheShinobi.HelperMethods
         }
         public static string[] EndStory(Player player)
         {
-            string[] endStory = new string[];
+            var soundLocation = Environment.CurrentDirectory + @"..\..\..\..\WavKakashiFightSongUP3.wav";
+            SoundPlayer endPlayer = new SoundPlayer(@"..\..\..\..\KakashiFightSongUP3.wav");
+            endPlayer.PlayLooping();
+            string[] stories = new string[]
             {
                 "\t After fighting Orochimaru for hours you finally wear him down and kill him. \n" +
                 $"\t As you dry the Orochimaru's blood of your {player.Weapon} on his now torn up Flack jacket" +
@@ -456,7 +460,7 @@ namespace TheShinobi.HelperMethods
                 "\t Hocke - Håkan Eriksson",
 
 
-                return endStory;
+                return stories;
             }
         }
     }
