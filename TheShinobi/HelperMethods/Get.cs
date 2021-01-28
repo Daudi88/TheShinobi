@@ -292,7 +292,10 @@ namespace TheShinobi.HelperMethods
                  "\n\t You start running towards the montains!",
 
                  "\n\t You aproach a empty camp, the fireplace is still smoldering a little and are signs of someone who has been tied up!" +
-                 "\n\t In the soil you see one of Hanare's black gloves! You follow their trail..."
+                 "\n\t In the soil you see one of Hanare's black gloves! You follow their trail...",
+
+                 "\n\t You sense that you are all alone at this place, the sun is shining and everything is calm" +
+                 "\n\t You set up camp for the night and eat some Ramen from Ichiraku..."
             };
             return stories;
         }
