@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Media;
 using System.Runtime.InteropServices.WindowsRuntime;
 using TheShinobi.Abilities;
@@ -31,6 +32,21 @@ namespace TheShinobi.HelperMethods
          * GetMeals()           - Returns an array of meals for Lightning Burger Shop.
          * GetAbuHassanItems()  - Returns an array of Abu Hassan's special items.
          */
+
+        public static int ContentLength(List<string> content)
+        {
+            List<int> lengths = new List<int>();
+            foreach (var text in content)
+            {
+                int length = text.Length;
+                if (text.Contains("["))
+                {
+                    length -= ColorLength(text);
+                }
+                lengths.Add(length);
+            }
+            return lengths.OrderByDescending(i => i).First();
+        }
 
         public static int ColorLength(string text)
         {

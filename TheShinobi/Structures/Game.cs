@@ -45,7 +45,7 @@ namespace TheShinobi.Structures
             Adventure.villagePlayer.PlayLooping();
             Display.Title();
             Player player = CharacterCreation();
-            string intro = $"\n\t You {player.Name} wake up from a woman screaming! \n" +
+            string intro = $"\n\t You, {player.Name}, wake up from a woman screaming! \n" +
             "\t It sound's as if she is beeing killed!!! \n" +
             "\n\t Frightened villagers scream for help “somebody is kidnapping Hanare!“" +
             "\n\t After some intense fighting with the guards \n" +

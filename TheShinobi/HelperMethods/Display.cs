@@ -41,68 +41,15 @@ namespace TheShinobi.HelperMethods
                 content.Add($"E. {ending}");
             }
 
-            List<int> lengths = new List<int>();
-            foreach (var text in content)
-            {
-                int length = text.Length;
-                if (text.Contains("["))
-                {
-                    length -= Get.ColorLength(text);
-                }
-                lengths.Add(length);
-            }
-            int width = lengths.OrderByDescending(i => i).First();
-
-            ColorConsole.WriteEmbedded($"\t┏━{title}");
-            int colorLength = 0;
-            if (title.Contains("["))
-            {
-                colorLength = Get.ColorLength(title);
-            }
-
-            for (int i = 0; i < width - title.Length + colorLength + 2; i++)
-            {
-                Console.Write("━");
-            }
-            Console.WriteLine("┓");
-            foreach (string text in content)
-            {
-                colorLength = 0;
-                if (text.Contains("["))
-                {
-                    colorLength = Get.ColorLength(text);
-                }
-                ColorConsole.WriteEmbedded($"\t┃ {text.PadRight(width + colorLength)}  ┃\n");
-            }
-            Console.Write("\t┗");
-            for (int i = 0; i < width + 3; i++)
-            {
-                Console.Write("━");
-            }
-            Console.WriteLine("┛");
+            int length = Get.ContentLength(content);
+            TopOfFrame(title, length);
+            SidesOfFrame(content, length);
+            BottomOfFrame(length);
             Console.Write("\t > ");
         }
 
-        private static void WithDevidedFrame(
-            string title, List<string> content, 
-            string title2, List<string> content2, 
-            string title3, List<string> content3)
+        private static void TopOfFrame(string title, int length)
         {
-            List<string> contents = new List<string>();
-            contents.AddRange(content);
-            contents.AddRange(content2);
-            contents.AddRange(content3);
-            List<int> lengths = new List<int>();
-            foreach (var text in contents)
-            {
-                int length = text.Length;
-                if (text.Contains("["))
-                {
-                    length -= Get.ColorLength(text);
-                }
-                lengths.Add(length);
-            }
-            int width = lengths.OrderByDescending(i => i).First();
             ColorConsole.WriteEmbedded($"\t┏━{title}");
             int colorLength = 0;
             if (title.Contains("["))
@@ -110,61 +57,46 @@ namespace TheShinobi.HelperMethods
                 colorLength = Get.ColorLength(title);
             }
 
-            for (int i = 0; i < width - title.Length + colorLength + 2; i++)
+            for (int i = 0; i < length - title.Length + colorLength + 2; i++)
             {
                 Console.Write("━");
             }
             Console.WriteLine("┓");
+        }
 
+        private static void SidesOfFrame(List<string> content, int length)
+        {
             foreach (string text in content)
             {
-                colorLength = 0;
+                int colorLength = 0;
                 if (text.Contains("["))
                 {
                     colorLength = Get.ColorLength(text);
                 }
-                ColorConsole.WriteEmbedded($"\t┃ {text.PadRight(width + colorLength)}  ┃\n");
+                ColorConsole.WriteEmbedded($"\t┃ {text.PadRight(length + colorLength)}  ┃\n");
             }
-            ColorConsole.WriteEmbedded($"\t┣━{title2}");
-            if (title2.Contains("["))
+        }
+
+        private static void DividingLine(string title, int length)
+        {
+            ColorConsole.WriteEmbedded($"\t┣━{title}");
+            int colorLength = 0;
+            if (title.Contains("["))
             {
-                colorLength = Get.ColorLength(title2);
+                colorLength = Get.ColorLength(title);
             }
-            for (int i = 0; i < width - title2.Length + colorLength + 2; i++)
+
+            for (int i = 0; i < length - title.Length + colorLength + 2; i++)
             {
                 Console.Write("━");
             }
             Console.WriteLine("┫");
-            foreach (string text in content2)
-            {
-                colorLength = 0;
-                if (text.Contains("["))
-                {
-                    colorLength = Get.ColorLength(text);
-                }
-                ColorConsole.WriteEmbedded($"\t┃ {text.PadRight(width + colorLength)}  ┃\n");
-            }
-            ColorConsole.WriteEmbedded($"\t┣━{title3}");
-            if (title3.Contains("["))
-            {
-                colorLength = Get.ColorLength(title3);
-            }
-            for (int i = 0; i < width - title3.Length + colorLength + 2; i++)
-            {
-                Console.Write("━");
-            }
-            Console.WriteLine("┫");
-            foreach (string text in content3)
-            {
-                colorLength = 0;
-                if (text.Contains("["))
-                {
-                    colorLength = Get.ColorLength(text);
-                }
-                ColorConsole.WriteEmbedded($"\t┃ {text.PadRight(width + colorLength)}  ┃\n");
-            }
+        }
+
+        private static void BottomOfFrame(int length)
+        {
             Console.Write("\t┗");
-            for (int i = 0; i < width + 3; i++)
+            for (int i = 0; i < length + 3; i++)
             {
                 Console.Write("━");
             }
@@ -189,7 +121,7 @@ namespace TheShinobi.HelperMethods
             Console.WriteLine("\n");
             string title = "[DarkCyan]DETAILS[/DarkCyan]";
             string color = Utility.energyDrink.IsEnergized ? "DarkCyan" : "Yellow";
-            List<string> content = new List<string>()
+            List<string> content1 = new List<string>()
             {
                 $"Name: [Yellow]{player.Name}[/Yellow]",
                 $"Level: [Yellow]{player.Level}[/Yellow]",
@@ -222,7 +154,18 @@ namespace TheShinobi.HelperMethods
             {
                 content3.Add("[Red]You don't know any techniques yet.[/Red]");
             }
-            WithDevidedFrame(title, content, title2, content2, title3, content3);
+            List<string> contents = new List<string>();
+            contents.AddRange(content1);
+            contents.AddRange(content2);
+            contents.AddRange(content3);
+            int length = Get.ContentLength(contents);
+            TopOfFrame(title, length);
+            SidesOfFrame(content1, length);
+            DividingLine(title2, length);
+            SidesOfFrame(content2, length);
+            DividingLine(title3, length);
+            SidesOfFrame(content3, length);
+            BottomOfFrame(length);
             Utility.WaitForUser();
         }
 

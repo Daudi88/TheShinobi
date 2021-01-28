@@ -282,7 +282,7 @@ namespace TheShinobi.Structures
 
         private static void Battle(Player player)
         {
-            Enemy[] enemies = Get.Enemies();
+            Enemy[] enemies = Get.Enemies().Where(e => e.Level <= player.Level).ToArray();
             Enemy enemy = enemies[random.Next(enemies.Length)];
             string[] stories = Get.FightStories(enemy);
             string story = stories[random.Next(stories.Length)];
@@ -290,7 +290,9 @@ namespace TheShinobi.Structures
             bool exit = false;
             while (!exit)
             {
-
+                int top = Console.CursorTop;
+                Console.SetCursorPosition(0, top);
+                
 
 
 
