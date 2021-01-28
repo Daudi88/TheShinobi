@@ -1,12 +1,7 @@
-﻿using TheShinobi.Characters.Enemies;
+﻿using System;
 using TheShinobi.Characters;
-using TheShinobi.Items.Armors;
-using TheShinobi.Items.Weapons;
-using TheShinobi.Items.Consumables;
-using TheShinobi.Items;
-using System.Collections.Generic;
-using System;
 using TheShinobi.Interfaces;
+using TheShinobi.Items;
 
 namespace TheShinobi.HelperMethods
 {
@@ -153,7 +148,7 @@ namespace TheShinobi.HelperMethods
                     {
                         break;
                     }
-                }                
+                }
                 return true;
             }
             else
@@ -177,6 +172,6 @@ namespace TheShinobi.HelperMethods
             Console.SetCursorPosition(0, top);
         }
 
-        
+
     }
 }
