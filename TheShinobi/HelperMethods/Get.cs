@@ -307,7 +307,7 @@ namespace TheShinobi.HelperMethods
                 $"\n\t While climbing up the mountains in search of Hanare you get ambushed by some filthy {enemy.Clan} villains!" +
                 "\n\t You attack, maybe they know more about Hanare's kidnapping!",
 
-                "\n\t You have walked for hours when you decide to set up camp at a lake. +" +
+                "\n\t You have walked for hours when you decide to set up camp at a lake." +
                 $"\n\t Suddenly some low life from the {enemy.Clan} Clan attacks you!" +
                 "\n\t Four of them run away when they see that it is you but one stays behind to fight!",
 
