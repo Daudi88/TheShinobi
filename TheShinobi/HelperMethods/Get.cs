@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TheShinobi.Abilities;
 using TheShinobi.Characters;
 using TheShinobi.Characters.Enemies;
 using TheShinobi.Items;
@@ -33,6 +34,24 @@ namespace TheShinobi.HelperMethods
             int at = text.IndexOf("[");
             int at2 = text.IndexOf("]");
             return text.Substring(at, at2 - at + 1).Length * 2 + 1;
+        }
+
+        public static string DamageDice(int level)
+        {
+            return level switch
+            {
+                1 => "1d8",
+                2 => "1d10",
+                3 => "1d12",
+                4 => "2d8",
+                5 => "2d10",
+                6 => "2d12",
+                7 => "3d10",
+                8 => "3d12",
+                9 => "4d10",
+                10 => "4d12",
+                _ => ""
+            };
         }
 
         public static List<Func<Player, bool>> Options(Player player, out List<string> content)
@@ -240,9 +259,8 @@ namespace TheShinobi.HelperMethods
                  "\n\t As you walk up the mountain trail you sense a group of ninjas from the Uchicha Clan ahead." +
                  "\n\t You easily sneak past them on your way to rescue Hanare!",
 
-                 "\n\t You hear something in the distance and use your Sharingan to see a group of" +
-                 "\n\t Ninjas lying in ambush for travelers. If it wasn't for that you are in a rush" +
-                 "\n\t to rescue Hanare you would have made minced meat of them all!",
+                 "\n\t You hear something in the distance and use your Sharingan to see a group of Ninjas lying in ambush for travelers." +
+                 "\n\t If it wasn't for that you are in a rush to rescue Hanare you would have made minced meat of them all!",
 
                  "\n\t You use your senses and feel that no enemy is near, you set up camp and light a fire" +
                  "\n\t You eat a delicious Green Chilli Burger while watching the Sunset over The Hidden Leaf Village.",
@@ -253,9 +271,8 @@ namespace TheShinobi.HelperMethods
                  "\n\t As you walk through The Shikkotsu Forest you sense Hanare is further North!" +
                  "\n\t You start running towards the montains!",
 
-                 "\n\t You aproach a empty camp, the fireplace is still smoldering a little." +
-                 "\n\t There are signs of someone who has been tied up! In the soil you see" +
-                 "\n\t one of Hanare's black gloves! You follow their trail..."
+                 "\n\t You aproach a empty camp, the fireplace is still smoldering a little and are signs of someone who has been tied up!" +
+                 "\n\t In the soil you see one of Hanare's black gloves! You follow their trail..."
             };
             return stories;
         }
@@ -277,8 +294,8 @@ namespace TheShinobi.HelperMethods
                 "\n\t The sky is full of dark clouds and when lightning strikes the ground vibrates!" +
                 $"\n\t As you set up camp in the mountains to escape the bad weather some villains from the {enemy.Clan} Clan attacks!",
 
-                "\n\t The sky is blue and the sun is shining. As you walk past the graveyard you hear a noice!" +
-                "\n\t A lowlife from the {enemy.Clan} Clan attacks you!"
+                "\n\t The sky is blue and the sun is shining. As you walk past a shrubbery you hear a noice!" +
+                $"\n\t A lowlife from the {enemy.Clan} Clan attacks you!"
             };
             return stories;
         }

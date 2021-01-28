@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using TheShinobi.Abilities;
 using TheShinobi.Characters;
 using TheShinobi.HelperMethods;
 using TheShinobi.Items;
@@ -33,9 +34,8 @@ namespace TheShinobi.Structures
 
         public void Test()
         {
-            Player player = CharacterCreation();
-            player.Pos = 2.1;
-            Adventure.Menu(player);
+            Display.Blinking("\t [Press enter to continue]");
+            Console.WriteLine("\t Det gick");
             Console.ReadLine();
         }
 
@@ -59,8 +59,9 @@ namespace TheShinobi.Structures
                 "\n\t Kaguya Otsutsuki have kidnapped Hanare and taken her to his cave in the mountains." +
                 "\n\t It is your duty to find and rescue her!";
             ColorConsole.WriteDelayedLine(intro, ConsoleColor.Yellow, 40);
-            Console.WriteLine("\t [Press enter to continue]");
-            Console.ReadKey(true);
+            Display.Blinking("\t [Press enter to continue]");
+            //Console.WriteLine("\t [Press enter to continue]");
+            //Console.ReadKey(true);
             HiddenLeafVillage.Menu(player);
         }
 
@@ -97,12 +98,15 @@ namespace TheShinobi.Structures
         {
             Player kakashi = new Player("Kakashi Hatake")
             {
+                Level = 10,
                 Pos = 2.0,
-                Hp = 500,
-                MaxHp = 1000,
-                Gold = 200,
+                Ryō = 100000,
+                Stamina = new Ability(1000, 1000),
+                Chakra = new Ability(1000, 1000),
+                Exp = new Ability(0, 200),
                 Armor = new FlakJacket(),
-                Weapon = new Kubikiribōchō()
+                Weapon = new Kubikiribōchō(),
+                Ninjutsu = new Ninjutsu("Chidori", "3d12", 100)
             };
             kakashi.Defence = kakashi.Armor.Defence;
             kakashi.Damage = kakashi.Weapon.Damage;
@@ -110,6 +114,22 @@ namespace TheShinobi.Structures
             redBull.Quantity = 100;
             kakashi.Backpack.Add(redBull);
             return kakashi;
+        }
+
+        public static void PlayAgain()
+        {
+            ColorConsole.WriteDelayed("\t Do you want to play again? (y/n)");
+            Console.Write("\t > ");
+            string choice = ColorConsole.ReadLine();
+            if (choice.ToLower() == "y")
+            {
+                Game game = new Game();
+                game.Start();
+            }
+            else
+            {
+                ExitGame();
+            }
         }
 
         public static void ExitGame()

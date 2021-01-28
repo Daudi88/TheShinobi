@@ -25,12 +25,11 @@ namespace TheShinobi.HelperMethods
          * Remove()             - Removes texts in order to give a cleaner experience.         
          */
 
-        public const int V = 15;
+        public const int V = 18;
         public static readonly Random random = new Random();
-        public static bool isEnergyDrink = false;
-        public static string energyBonus = "";
+        public static EnergyDrink energyDrink = new EnergyDrink();
         public static bool isVisitingVillage = true;
-        //public static int sleep = 1800;
+
 
         public static int RollDice(string dice)
         {
@@ -42,6 +41,19 @@ namespace TheShinobi.HelperMethods
                 result += random.Next(1, sides + 1);
             }
             return result;
+        }
+
+        public static void EnergyDip(Player player)
+        {
+            string ending = energyDrink.EnergyCtr > 1 ? "s are" : " is";
+            ColorConsole.WriteOver($"\t The effect of the {energyDrink.Name}{ending} wearing of!", ConsoleColor.Red);
+            int energy = energyDrink.Energy;
+            player.Stamina.Max -= energy;
+            player.Stamina.Current -= player.Stamina.Current - energy > 0 ? energy : energy + 1;
+            player.Defence -= energy;
+            player.AttackBonus -= energy;
+            energyDrink.EnergyCtr = 0;
+            energyDrink.IsEnergized = false;
         }
 
         public static bool ChooseANumber(int length, out int choice, Player player = null, bool std = false, bool ending = false)
@@ -111,6 +123,7 @@ namespace TheShinobi.HelperMethods
         {
             if (player.Backpack.Count > 0)
             {
+                Console.SetWindowPosition(0, Console.CursorTop - V);
                 ColorConsole.WriteDelayedLine($"\n\n\t What do you want to use?");
                 int top = Console.CursorTop;
                 while (true)
@@ -140,8 +153,7 @@ namespace TheShinobi.HelperMethods
                     {
                         break;
                     }
-                }
-                Console.SetWindowPosition(0, Console.CursorTop - V);
+                }                
                 return true;
             }
             else
