@@ -314,6 +314,9 @@ namespace TheShinobi.HelperMethods
                 $"\n\t Suddenly some low life from the {enemy.Clan} Clan attacks you!" +
                 "\n\t Four of them run away when they see that it is you but one stays behind to fight!",
 
+                $"\n\t Ahead you hear fighting going on! It is some low life {enemy.Clan} robbing a villager!" +
+                $"\n\t You draw your weapon and attack!",
+
                 "\n\t The sky is full of dark clouds and when lightning strikes the ground vibrates!" +
                 $"\n\t As you set up camp in the mountains to escape the bad weather some villains from the {enemy.Clan} Clan attacks!",
 
