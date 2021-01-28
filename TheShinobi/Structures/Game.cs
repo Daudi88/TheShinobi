@@ -53,10 +53,7 @@ namespace TheShinobi.Structures
             "\n\t You will probobly need a better Weapon and Armor, you have heard about treasures containing some usefull loot." +
             "\n\t Make sure you are strong and equipped enough for when you meet Hanare's Kidnapper." +
             "\n\t Take care and dont loose yourself in the wild...";
-            ColorConsole.WriteDelayedLine(intro, ConsoleColor.Yellow, 40);
-            Display.Blinking("\t [Press enter to continue]");
-            //Console.WriteLine("\t [Press enter to continue]");
-            //Console.ReadKey(true);
+            ColorConsole.WriteDelayedLine(intro, ConsoleColor.Yellow, 40, blink: true);
             HiddenLeafVillage.Menu(player);
         }
 
