@@ -53,7 +53,7 @@ namespace TheShinobi.Structures
             "\n\t You couldn't reach them in time “Kono-kuso onna!!!“ \n" +
             "\n\t It is still dark outside as you prepare to leave The Hidden Leaf Village" +
             "\n\t in search of Hanare and her soon to be dead kidnappers...\n" +
-            "\n\t * You will probobly need better equipment! ";
+            "\n\t * You should probobly buy better equipment from the stores before you leave! ";
             ColorConsole.WriteDelayedLine(intro, ConsoleColor.Yellow, 40);
             Display.Blinking("\t [Press enter to continue]");
             //Console.WriteLine("\t [Press enter to continue]");
