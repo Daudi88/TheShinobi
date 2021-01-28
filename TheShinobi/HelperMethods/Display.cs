@@ -226,8 +226,6 @@ namespace TheShinobi.HelperMethods
             Utility.WaitForUser();
         }
 
-        
-
         internal static void Map(Player player)
         {
             Console.SetWindowPosition(0, Console.CursorTop - Utility.V);

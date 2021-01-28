@@ -110,14 +110,14 @@ namespace TheShinobi.HelperMethods
             }
         }
 
-        public static bool WriteDelayed(string text, ConsoleColor color = ConsoleColor.White, int delay = 20)
+        public static bool WriteDelayed(string text, ConsoleColor color = ConsoleColor.White, int delay = 20, bool exitable = true)
         {
             bool isKeyPressed = false;
             Thread.Sleep(delay);
             foreach (var letter in text)
             {
                 Write(letter.ToString(), color);
-                if (Console.KeyAvailable)
+                if (Console.KeyAvailable && exitable)
                 {
                     isKeyPressed = true;
                 }
