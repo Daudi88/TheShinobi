@@ -352,7 +352,7 @@ namespace TheShinobi.HelperMethods
             {
                 // Håkan loose story
             }
-            Game.PlayAgain();
+            Game.PlayAgain(player);
         }
     }
 }

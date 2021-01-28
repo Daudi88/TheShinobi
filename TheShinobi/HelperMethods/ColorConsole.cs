@@ -128,7 +128,11 @@ namespace TheShinobi.HelperMethods
                     {
                         Thread.Sleep(delay);
                     }
-                } 
+                }
+                if (!exitable)
+                {
+                    Console.SetWindowPosition(0, Console.CursorTop - Utility.V);
+                }
             }
             return isKeyPressed;
         }

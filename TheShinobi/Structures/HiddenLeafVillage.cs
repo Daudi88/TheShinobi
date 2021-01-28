@@ -65,7 +65,7 @@ namespace TheShinobi.Structures
                     }
                     else
                     {
-                        Game.ExitGame();
+                        Game.ExitGame(player);
                         exit = true;
                         break;
                     }

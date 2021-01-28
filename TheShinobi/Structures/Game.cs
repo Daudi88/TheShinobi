@@ -36,7 +36,7 @@ namespace TheShinobi.Structures
         {
             Player player = CharacterCreation();
             Adventure.endPlayer.PlayLooping();
-            ColorConsole.WriteDelayed(ConsoleColor.Yellow, exitable: false, content: Get.EndStory(player));
+            ColorConsole.WriteDelayed(ConsoleColor.Yellow, delay: 80, exitable: false, content: Get.EndStory(player));
             Console.ReadLine();
         }
 
@@ -113,7 +113,7 @@ namespace TheShinobi.Structures
             return kakashi;
         }
 
-        public static void PlayAgain()
+        public static void PlayAgain(Player player)
         {
             ColorConsole.WriteDelayedLine("\t Do you want to play again? (y/n)");
             Console.Write("\t > ");
@@ -125,14 +125,17 @@ namespace TheShinobi.Structures
             }
             else
             {
-                ExitGame();
+                ExitGame(player);
             }
         }
 
-        public static void ExitGame()
+        public static void ExitGame(Player player)
         {
             ColorConsole.WriteDelayed(ConsoleColor.Red, content: "\t Exiting game");
             ColorConsole.WriteDelayedLine("...", ConsoleColor.Red, 800);
+            Adventure.endPlayer.PlayLooping();
+            ColorConsole.WriteDelayed(ConsoleColor.Yellow, delay: 80, exitable: false, content: Get.EndStory(player));
+            Console.ReadLine();
             Environment.Exit(0);
         }
     }
