@@ -230,11 +230,11 @@ namespace TheShinobi.Structures
                     "\n\t The man, dressed in red and white, looks upon you as if" +
                     "\n\t he was expecting your arrival with a big smile on his face." +
                     "\n\t You instantly recognice the old man as Hiruzen Sarutobi!\n";
-                ColorConsole.WriteDelayed(story, color: ConsoleColor.Yellow);
+                ColorConsole.WriteDelayed(ConsoleColor.Yellow, content: story);
                 string story2 = $"\n\t {player.Name}, he says while smoking on his pipe..." +
                     "\n\t There is little time and you need to go on with your quest" +
                     "\n\t to save Hanare!Take these items and be on your way!\n";
-                ColorConsole.WriteDelayed(story2, color: ConsoleColor.Yellow);
+                ColorConsole.WriteDelayed(ConsoleColor.Yellow, content: story2);
                 ColorConsole.WriteEmbeddedDelayed($"\n\t You get a [Yellow]{weapon.Name}[/Yellow], " +
                     $"an [Yellow]{armor.Name}[/Yellow] and [Yellow]{potion.Quantity} {potion.Name}s[/Yellow].\n");
                 player.Backpack.Add(weapon);

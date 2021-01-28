@@ -34,7 +34,8 @@ namespace TheShinobi.Structures
 
         public void Test()
         {
-            ColorConsole.WriteDelayed(Get.EndStory(), ConsoleColor.Yellow, exitable: false);
+            Player player = CharacterCreation();
+            ColorConsole.WriteDelayed(ConsoleColor.Yellow, exitable: false, content: Get.EndStory(player));
             Console.ReadLine();
         }
 
@@ -129,7 +130,7 @@ namespace TheShinobi.Structures
 
         public static void ExitGame()
         {
-            ColorConsole.WriteDelayed("\t Exiting game", ConsoleColor.Red);
+            ColorConsole.WriteDelayed(ConsoleColor.Red, content: "\t Exiting game");
             ColorConsole.WriteDelayedLine("...", ConsoleColor.Red, 800);
             Environment.Exit(0);
         }

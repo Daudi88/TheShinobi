@@ -90,14 +90,14 @@ namespace TheShinobi.HelperMethods
                 var match = colorRegex.Match(text);
                 if (match.Length < 1)
                 {
-                    result = WriteDelayed(text);
+                    result = WriteDelayed(content: text);
                     break;
                 }
-                WriteDelayed(text.Substring(0, match.Index));
+                WriteDelayed(content: text.Substring(0, match.Index));
                 string hightlight = match.Groups["text"].Value;
                 string color = match.Groups["color"].Value;
                 Enum.TryParse(color, out ConsoleColor col);
-                WriteDelayed(hightlight, col);
+                WriteDelayed(col, content: hightlight);
                 text = text.Substring(match.Index + match.Value.Length);
             }
             if (result)
@@ -110,11 +110,11 @@ namespace TheShinobi.HelperMethods
             }
         }
 
-        public static bool WriteDelayed(ConsoleColor color = ConsoleColor.White, int delay = 20, bool exitable = true, params string[] texts)
+        public static bool WriteDelayed(ConsoleColor color = ConsoleColor.White, int delay = 20, bool exitable = true, params string[] content)
         {
             bool isKeyPressed = false;
             Thread.Sleep(delay);
-            foreach (var text in texts)
+            foreach (var text in content)
             {
                 foreach (var letter in text)
                 {
@@ -167,7 +167,7 @@ namespace TheShinobi.HelperMethods
         {
             int left = 9;
             int top = Console.CursorTop;
-            bool result = WriteDelayed($"{message}\n", color);
+            bool result = WriteDelayed(color, content: $"{message}\n");
             Thread.Sleep(time);
             Console.SetCursorPosition(left, top--);
             for (int j = 0; j < message.Length; j++)

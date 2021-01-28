@@ -26,7 +26,7 @@ namespace TheShinobi.Structures
                 Console.SetWindowPosition(0, Console.CursorTop - V);
                 if (isVisitingVillage)
                 {
-                    ColorConsole.WriteDelayed("\n\n\t Welcome to the Hidden Leaf Village!\n");
+                    ColorConsole.WriteDelayed(content: "\n\n\t Welcome to the Hidden Leaf Village!\n");
                 }
                 else
                 {
@@ -79,7 +79,7 @@ namespace TheShinobi.Structures
             bool exit = false;
             while (!exit)
             {
-                ColorConsole.WriteDelayed("\n\n\t Welcome to the Lightning Burger!\n");
+                ColorConsole.WriteDelayed(content: "\n\n\t Welcome to the Lightning Burger!\n");
                 ColorConsole.WriteDelayedLine("\t What can we do for you?");                
                 List<string> menu = new List<string>();
                 int ctr = 1;
@@ -114,7 +114,7 @@ namespace TheShinobi.Structures
 
         private static void KonohaHospital(Player player)
         {
-            ColorConsole.WriteDelayed("\n\n\t Welcome to Konoha Hospital!\n");
+            ColorConsole.WriteDelayed(content: "\n\n\t Welcome to Konoha Hospital!\n");
             int top = Console.CursorTop;
             while (true)
             {
@@ -170,7 +170,7 @@ namespace TheShinobi.Structures
 
         private static void NinjaToolShop(Player player)
         {
-            ColorConsole.WriteDelayed("\n\n\t Welcome to the Ninja Tool Shop\n");
+            ColorConsole.WriteDelayed(content: "\n\n\t Welcome to the Ninja Tool Shop\n");
             int top = Console.CursorTop;
             while (true)
             {
