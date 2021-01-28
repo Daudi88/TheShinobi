@@ -26,14 +26,14 @@ namespace TheShinobi.Structures
                 Console.SetWindowPosition(0, Console.CursorTop - V);
                 if (isVisitingVillage)
                 {
-                    ColorConsole.WriteDelayedLine("\n\n\t Welcome to the Hidden Leaf Village!");
-                    ColorConsole.WriteDelayedLine("\t What do you want to do?");
-                    isVisitingVillage = false;
+                    ColorConsole.WriteDelayed("\n\n\t Welcome to the Hidden Leaf Village!\n");
                 }
                 else
                 {
-                    ColorConsole.WriteDelayedLine("\n\t What do you want to do?");
+                    Console.WriteLine();
                 }
+                ColorConsole.WriteDelayedLine("\t What do you want to do?");
+                isVisitingVillage = false;
                 List<string> options = new List<string>()
                 {
                     "1. Go on an Adventure",
@@ -79,8 +79,8 @@ namespace TheShinobi.Structures
             bool exit = false;
             while (!exit)
             {
-                ColorConsole.WriteDelayedLine("\n\n\t Welcome to the Lightning Burger!");
-                ColorConsole.WriteDelayedLine("\t What can we do for you?");
+                ColorConsole.WriteDelayed("\n\n\t Welcome to the Lightning Burger!\n");
+                ColorConsole.WriteDelayedLine("\t What can we do for you?");                
                 List<string> menu = new List<string>();
                 int ctr = 1;
                 foreach (var meal in meals)
@@ -114,12 +114,12 @@ namespace TheShinobi.Structures
 
         private static void KonohaHospital(Player player)
         {
-            ColorConsole.WriteDelayedLine("\n\n\t Welcome to Konoha Hospital!");
+            ColorConsole.WriteDelayed("\n\n\t Welcome to Konoha Hospital!\n");
             int top = Console.CursorTop;
             while (true)
             {
                 Console.SetCursorPosition(0, top);
-                ColorConsole.WriteDelayedLine("\t What do you want to do?");
+                ColorConsole.WriteDelayedLine("\t What do you want to do?");                
                 List<string> options = new List<string>()
                 {
                     "1. See Tsunade the medical-nin (300 Ryō)",
@@ -170,12 +170,12 @@ namespace TheShinobi.Structures
 
         private static void NinjaToolShop(Player player)
         {
-            ColorConsole.WriteDelayedLine("\n\n\t Welcome to the Ninja Tool Shop");
+            ColorConsole.WriteDelayed("\n\n\t Welcome to the Ninja Tool Shop\n");
             int top = Console.CursorTop;
             while (true)
             {
                 Console.SetCursorPosition(0, top);
-                ColorConsole.WriteDelayedLine("\t What do you want to do?");
+                ColorConsole.WriteDelayedLine("\t What do you want to do?");                
                 List<string> options = new List<string>()
                 {
                     "1. Buy Armor",

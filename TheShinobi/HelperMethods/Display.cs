@@ -223,7 +223,15 @@ namespace TheShinobi.HelperMethods
                 content3.Add("[Red]You don't know any techniques yet.[/Red]");
             }
             WithDevidedFrame(title, content, title2, content2, title3, content3);
-            Blinking("\t [Press enter to continue]");
+            if (!Console.KeyAvailable) // nåt är fel här
+            {
+                Thread.Sleep(5000);
+                Blinking("\t [Press enter to continue]");
+            }
+            else
+            {
+                Console.ReadKey(true);
+            }
         }
 
         internal static void Map(Player player)
@@ -258,6 +266,7 @@ namespace TheShinobi.HelperMethods
             int bottom = Console.CursorTop;
             PlayerOnMap(player, top);
             Console.SetCursorPosition(0, bottom);
+            Thread.Sleep(2000);
             Blinking("\t [Press enter to continue]");
         }
 
@@ -273,15 +282,16 @@ namespace TheShinobi.HelperMethods
         {
             while (true)
             {
+                if (Console.KeyAvailable)
+                {
+                    Console.WriteLine("                                        ");
+                    Console.ReadKey(true);
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    break;
+                }
                 Console.WriteLine(text);
                 Thread.Sleep(600);
                 Console.SetCursorPosition(0, Console.CursorTop - 1);
-                if (Console.KeyAvailable)
-                {
-                    Console.WriteLine(text);
-                    Console.ReadKey(true);
-                    break;
-                }
                 Console.WriteLine("                                        ");
                 Thread.Sleep(300);
                 Console.SetCursorPosition(0, Console.CursorTop - 1);
@@ -334,6 +344,10 @@ namespace TheShinobi.HelperMethods
             }
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
+            if (isKeyPressed)
+            {
+                Console.ReadKey(true);
+            }
         }
 
         public static void Credits(Player player)

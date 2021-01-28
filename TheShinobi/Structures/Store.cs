@@ -26,7 +26,7 @@ namespace TheShinobi.Structures
                 int top = Console.CursorTop;
                 if (isFirstTime)
                 {
-                    ColorConsole.WriteDelayedLine($"\t What {name.ToLower()} do you want to buy?");
+                    ColorConsole.WriteDelayedLine($"\t What {name.ToLower()} do you want to buy?");                    
                     isFirstTime = false;
                 }
                 else
@@ -51,7 +51,7 @@ namespace TheShinobi.Structures
                             int quantity;
                             Console.Write("                                                               ");
                             Console.SetCursorPosition(0, Console.CursorTop - 1);
-                            Console.WriteLine($"\t How many {item.Name}s do you want to buy?");
+                            ColorConsole.WriteDelayedLine($"\t How many {item.Name}s do you want to buy?");                            
                             Console.Write("\t > ");
                             while (true)
                             {
@@ -131,7 +131,7 @@ namespace TheShinobi.Structures
                     }
                     else
                     {
-                        Console.WriteLine("\t What do you want to sell ?");
+                        Console.WriteLine($"\t What do you want to sell?");
                     }
                     Display.Backpack(player, true);
                     int bottom = Console.CursorTop;
@@ -142,7 +142,7 @@ namespace TheShinobi.Structures
                         int quantity;
                         Console.Write("                                              ");
                         Console.SetCursorPosition(0, Console.CursorTop - 1);
-                        Console.WriteLine($"\t How many {item.Name}s do you want to sell?");
+                        ColorConsole.WriteDelayedLine($"\t How many {item.Name}s do you want to sell?");
                         Console.Write("\t > ");
                         while (true)
                         {

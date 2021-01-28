@@ -1,6 +1,6 @@
-﻿using TheShinobi.HelperMethods;
+﻿using System;
+using TheShinobi.HelperMethods;
 using TheShinobi.Characters;
-using System;
 using TheShinobi.Interfaces;
 
 namespace TheShinobi.Items.Consumables

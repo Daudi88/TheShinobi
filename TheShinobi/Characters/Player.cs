@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using TheShinobi.Abilities;
 using TheShinobi.HelperMethods;
 using TheShinobi.Items;
@@ -12,7 +11,7 @@ namespace TheShinobi.Characters
     {
         public double Pos { get; set; } = 2.0;
         public int AttackBonus { get; set; }
-        public Ability Chakra { get; set; }       
+        public Ability Chakra { get; set; }
         public List<Item> Backpack { get; set; } = new List<Item>();
         public Player(string name)
         {
@@ -35,7 +34,7 @@ namespace TheShinobi.Characters
             {
                 Ninjutsus.Add(Get.Ninjutsu(rank));
             }
-            Rank = rank;            
+            Rank = rank;
             Chakra.Max += 10;
             Chakra.Current = Chakra.Max;
             Exp.Max = 250 * Level;

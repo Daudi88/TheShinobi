@@ -84,12 +84,13 @@ namespace TheShinobi.HelperMethods
 
         public static void WriteEmbeddedDelayed(string text)
         {
+            bool result;
             while (true)
             {
                 var match = colorRegex.Match(text);
                 if (match.Length < 1)
                 {
-                    WriteDelayed(text);
+                    result = WriteDelayed(text);
                     break;
                 }
                 WriteDelayed(text.Substring(0, match.Index));
@@ -99,9 +100,17 @@ namespace TheShinobi.HelperMethods
                 WriteDelayed(hightlight, col);
                 text = text.Substring(match.Index + match.Value.Length);
             }
+            if (result)
+            {
+                Console.ReadKey(true);
+            }
+            else
+            {
+                Display.Blinking("\t [Press enter to continue]");
+            }
         }
 
-        public static void WriteDelayed(string text, ConsoleColor color = ConsoleColor.White, int delay = 20)
+        public static bool WriteDelayed(string text, ConsoleColor color = ConsoleColor.White, int delay = 20)
         {
             bool isKeyPressed = false;
             Thread.Sleep(delay);
@@ -118,9 +127,10 @@ namespace TheShinobi.HelperMethods
                     Thread.Sleep(delay);
                 }
             }
+            return isKeyPressed;
         }
 
-        public static void WriteDelayedLine(string text, ConsoleColor color = ConsoleColor.White, int delay = 30)
+        public static void WriteDelayedLine(string text, ConsoleColor color = ConsoleColor.White, int delay = 30, bool blink = false)
         {
             bool isKeyPressed = false;
             Thread.Sleep(delay);
@@ -139,13 +149,22 @@ namespace TheShinobi.HelperMethods
             }
             Thread.Sleep(600);
             Console.WriteLine();
+            if (isKeyPressed)
+            {
+                Console.ReadKey(true);
+            }
+            
+            if (!isKeyPressed && blink)
+            {
+                Display.Blinking("\t [Press enter to continue]");
+            }
         }
 
         public static void WriteOver(string message, ConsoleColor color, int time = 400)
         {
             int left = 9;
             int top = Console.CursorTop;
-            WriteDelayedLine(message, color);
+            bool result = WriteDelayed($"{message}\n", color);
             Thread.Sleep(time);
             Console.SetCursorPosition(left, top--);
             for (int j = 0; j < message.Length; j++)
@@ -159,6 +178,10 @@ namespace TheShinobi.HelperMethods
             }
             Console.SetCursorPosition(left, top);
             Console.Write("> ");
+            if (result)
+            {
+                Console.ReadKey(true);
+            }
         }
     }
 }

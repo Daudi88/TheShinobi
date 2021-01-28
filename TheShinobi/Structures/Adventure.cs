@@ -29,7 +29,7 @@ namespace TheShinobi.Structures
         static string soundLocation4 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\AbuHassan.wav");
         static string soundLocation5 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Hiruzen.wav");
         static string soundLocation6 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Graveyard.wav");
-        
+
 
         public static SoundPlayer villagePlayer = new SoundPlayer(soundLocation1);
         static SoundPlayer adventurePlayer = new SoundPlayer(soundLocation2);
@@ -37,7 +37,7 @@ namespace TheShinobi.Structures
         static SoundPlayer abuHassanPlayer = new SoundPlayer(soundLocation4);
         static SoundPlayer hiruzenPlayer = new SoundPlayer(soundLocation5);
         static SoundPlayer graveyardPlayer = new SoundPlayer(soundLocation6);
-        
+
 
         private static bool isTreasureTaken = false;
         private static bool isGraveyardVisited = false;
@@ -79,7 +79,7 @@ namespace TheShinobi.Structures
                 player.Pos = Math.Round(player.Pos, 1);
                 Console.WriteLine("\n");
                 var options = Get.Options(player, out List<string> content);
-                Display.WithFrame(content, "[Yellow]Adventure[/Yellow]", true);
+                Display.WithFrame(content, "[Yellow]ADVENTURE[/Yellow]", true);
                 ChooseANumber(content.Count, out int choice, player, true);
                 if (choice > 0)
                 {
@@ -135,9 +135,8 @@ namespace TheShinobi.Structures
                 Console.SetWindowPosition(0, Console.CursorTop - V);
                 Weapon[] swords = Get.SevenSwords(player);
                 Weapon sword = swords[random.Next(swords.Length)];
-                ColorConsole.WriteEmbeddedDelayed($"\t You find the [Yellow]{sword.Name}[/Yellow], a sword of the Seven Swordsmen!\n");
                 AddToBackpack(player, sword);
-                Display.Blinking("\t [Press enter to continue]");
+                ColorConsole.WriteEmbeddedDelayed($"\t You find the [Yellow]{sword.Name}[/Yellow], a sword of the Seven Swordsmen!\n");
                 isGraveyardVisited = true;
             }
             else
@@ -156,8 +155,7 @@ namespace TheShinobi.Structures
                 Console.SetWindowPosition(0, Console.CursorTop - 30);
                 int treasure = random.Next(1000, 10000);
                 player.Ryō += treasure;
-                ColorConsole.WriteEmbeddedDelayed($"\t You found a treasure and gained [Yellow]{treasure}[/Yellow] gold!\n");
-                Display.Blinking("\t [Press enter to continue]");
+                ColorConsole.WriteEmbeddedDelayed($"\t You found a treasure and gained [Yellow]{treasure}[/Yellow] gold!\n");                
                 isTreasureTaken = true;
             }
             else
@@ -231,18 +229,17 @@ namespace TheShinobi.Structures
                 string story = "\n\t An old man with white beard appears in front of you." +
                     "\n\t The man, dressed in red and white, looks upon you as if" +
                     "\n\t he was expecting your arrival with a big smile on his face." +
-                    "\n\t You instantly recognice the old man as Hiruzen Sarutobi!";
-                ColorConsole.WriteDelayedLine(story, color: ConsoleColor.Yellow);
+                    "\n\t You instantly recognice the old man as Hiruzen Sarutobi!\n";
+                ColorConsole.WriteDelayed(story, color: ConsoleColor.Yellow);
                 string story2 = $"\n\t {player.Name}, he says while smoking on his pipe..." +
                     "\n\t There is little time and you need to go on with your quest" +
-                    "\n\t to save Hanare!Take these items and be on your way!";
-                ColorConsole.WriteDelayedLine(story2, color: ConsoleColor.Yellow);
+                    "\n\t to save Hanare!Take these items and be on your way!\n";
+                ColorConsole.WriteDelayed(story2, color: ConsoleColor.Yellow);
                 ColorConsole.WriteEmbeddedDelayed($"\n\t You get a [Yellow]{weapon.Name}[/Yellow], " +
                     $"an [Yellow]{armor.Name}[/Yellow] and [Yellow]{potion.Quantity} {potion.Name}s[/Yellow].\n");
                 player.Backpack.Add(weapon);
                 player.Backpack.Add(armor);
                 player.Backpack.Add(potion);
-                Display.Blinking("\t [Press enter to continue]");
                 isHiruzenVisited = true;
             }
             else
@@ -261,8 +258,7 @@ namespace TheShinobi.Structures
             {
                 string[] stories = Get.NoFightStories();
                 string story = stories[random.Next(stories.Length)];
-                ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
-                Display.Blinking("\t [Press enter to continue]");
+                ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);                
             }
             else
             {
@@ -275,12 +271,11 @@ namespace TheShinobi.Structures
             if (player.Level >= 10)
             {
                 // FightTheBoss(player);
-                Display.Credits(player);                
+                Display.Credits(player);
             }
             else
             {
-                ColorConsole.WriteDelayedLine("\t You are not strong enough to fight this opponent...", ConsoleColor.Red);
-                Display.Blinking("\t [Press enter to continue]");
+                ColorConsole.WriteDelayedLine("\t You are not strong enough to fight this opponent...", ConsoleColor.Red, blink: true);                
             }
             return false;
         }
@@ -291,8 +286,7 @@ namespace TheShinobi.Structures
             Enemy enemy = enemies[random.Next(enemies.Length)];
             string[] stories = Get.FightStories(enemy);
             string story = stories[random.Next(stories.Length)];
-            ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
-            Display.Blinking("\t [Press enter to continue]");
+            ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
             bool exit = false;
             while (!exit)
             {
