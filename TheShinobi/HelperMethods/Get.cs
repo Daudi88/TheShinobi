@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Media;
 using System.Runtime.InteropServices.WindowsRuntime;
 using TheShinobi.Abilities;
@@ -370,10 +371,7 @@ namespace TheShinobi.HelperMethods
             };
         }
         public static string[] EndStory(Player player)
-        {
-            var soundLocation = Environment.CurrentDirectory + @"..\..\..\..\WavKakashiFightSongUP3.wav";
-            SoundPlayer endPlayer = new SoundPlayer(@"..\..\..\..\KakashiFightSongUP3.wav");
-            endPlayer.PlayLooping();
+        {                        
             string[] stories = new string[]
             {
                 "\t After fighting Orochimaru for hours you finally wear him down and kill him. \n" +

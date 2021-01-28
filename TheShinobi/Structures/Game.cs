@@ -35,6 +35,7 @@ namespace TheShinobi.Structures
         public void Test()
         {
             Player player = CharacterCreation();
+            Adventure.endPlayer.PlayLooping();
             ColorConsole.WriteDelayed(ConsoleColor.Yellow, exitable: false, content: Get.EndStory(player));
             Console.ReadLine();
         }

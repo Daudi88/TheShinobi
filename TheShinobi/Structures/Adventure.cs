@@ -29,6 +29,7 @@ namespace TheShinobi.Structures
         static string soundLocation4 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\AbuHassan.wav");
         static string soundLocation5 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Hiruzen.wav");
         static string soundLocation6 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Graveyard.wav");
+        static string soundLocation7 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\KakashiFightSongUP3.wav");
 
 
         public static SoundPlayer villagePlayer = new SoundPlayer(soundLocation1);
@@ -37,6 +38,7 @@ namespace TheShinobi.Structures
         static SoundPlayer abuHassanPlayer = new SoundPlayer(soundLocation4);
         static SoundPlayer hiruzenPlayer = new SoundPlayer(soundLocation5);
         static SoundPlayer graveyardPlayer = new SoundPlayer(soundLocation6);
+        public static SoundPlayer endPlayer = new SoundPlayer(soundLocation7);
 
 
         private static bool isTreasureTaken = false;
