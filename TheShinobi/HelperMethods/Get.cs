@@ -402,7 +402,7 @@ namespace TheShinobi.HelperMethods
                 "\t Someone with the ability to hide his true powers are also present.\n\n",
 
                 "\t Who is this, and how can he block your senses? \n",
-                
+
                 "\t You feel that the enemy and Hanare is just around the next corner. \n" +
                 "\t As you draw your {player.weapon} and walk around the corner you se Hanare and him, HIM...\n\n",
 
@@ -427,7 +427,7 @@ namespace TheShinobi.HelperMethods
                 "\t -“You shall meet your own powers you fool!“ \n\n" +
                 "\t You remove your forhead protector and use your sharingan! \n" +
                 "\n\t Your insight in Kakuzu's powers makes you block his senses \n" +
-                "\t and he has no idea that you are approaching him. \n\n " + 
+                "\t and he has no idea that you are approaching him. \n\n " +
                 "\t Until its to late... \n\n",
 
                 "\t “The rage {players.name} unleashed upon Kakuzu has never been seen from any Shinobi \n" +
@@ -457,11 +457,9 @@ namespace TheShinobi.HelperMethods
                 "\t Youtube 8 Bit Music Worl - Naruto - The Raising Fighting Spirit (8 bit)\n\n" +
                 "\t CREATORS\n" +
                 "\t Daudi - David Ström \n" +
-                "\t Hocke - Håkan Eriksson",
-
-
-                return stories;
-            }
+                "\t Hocke - Håkan Eriksson"
+            };
+            return stories;
         }
     }
 }
