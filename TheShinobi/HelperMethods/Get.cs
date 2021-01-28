@@ -299,5 +299,16 @@ namespace TheShinobi.HelperMethods
             };
             return stories;
         }
+        public static string[] EndStory()
+        {
+            string[] endStory = new string;
+            {
+                "\t After fighting BossensNamn for hours you finally wear him down and kill him. \n" +
+                "\t As you dry the {BossensNamn} blood of your {player.weapon.namn} on his now torn up Flack jacket" +
+                "\n\t" +
+                "\n\t You hear faint sounds further into the cave and you sense it must be Hanare!\n " +
+                "\n\t As you walked further into the huge cave system Hanares sounds get louder."
+            }
+        }
     }
 }
