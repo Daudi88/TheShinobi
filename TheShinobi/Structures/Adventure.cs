@@ -29,6 +29,7 @@ namespace TheShinobi.Structures
         static string soundLocation4 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\AbuHassan.wav");
         static string soundLocation5 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Hiruzen.wav");
         static string soundLocation6 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Graveyard.wav");
+        
 
         public static SoundPlayer villagePlayer = new SoundPlayer(soundLocation1);
         static SoundPlayer adventurePlayer = new SoundPlayer(soundLocation2);
@@ -36,6 +37,7 @@ namespace TheShinobi.Structures
         static SoundPlayer abuHassanPlayer = new SoundPlayer(soundLocation4);
         static SoundPlayer hiruzenPlayer = new SoundPlayer(soundLocation5);
         static SoundPlayer graveyardPlayer = new SoundPlayer(soundLocation6);
+        
 
         private static bool isTreasureTaken = false;
         private static bool isGraveyardVisited = false;
@@ -52,6 +54,7 @@ namespace TheShinobi.Structures
             "\n\t Hint: You will probobly need a better Weapon and Armor, you have heard about treasures containing some usefull loot." +
             "\n\t Hint: Make sure you are strong and equipped enough for when you meet Hanare's Kidnapper.";
             ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
+            Display.Blinking("\t [Press enter to continue]");
             bool exit = false;
             while (!exit)
             {
@@ -84,7 +87,7 @@ namespace TheShinobi.Structures
 
         public static bool West(Player player)
         {
-            player.Pos -= 1.0;            
+            player.Pos -= 1.0;
             CheckForEncounter();
             return false;
         }
@@ -253,14 +256,7 @@ namespace TheShinobi.Structures
             if (player.Level >= 10)
             {
                 // FightTheBoss(player);
-                if (player.Hp > 0)
-                {
-                    //Display.WinScreen();
-                }
-                else
-                {
-                    //Display.LoseScreen();
-                }
+                Display.Credits(player);                
             }
             else
             {

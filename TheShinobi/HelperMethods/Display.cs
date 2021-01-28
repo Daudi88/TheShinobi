@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Media;
 using System.Threading;
 using TheShinobi.Characters;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
+using TheShinobi.Structures;
 
 namespace TheShinobi.HelperMethods
 {
@@ -14,6 +17,9 @@ namespace TheShinobi.HelperMethods
          * 
          * 
          */
+
+        static string soundLocation = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\KakashiFightSong.Wav");
+        static SoundPlayer creditsPlayer = new SoundPlayer(soundLocation);
 
         public static void WithFrame(List<string> content, string title = "", bool std = false, string ending = null)
         {
@@ -230,15 +236,15 @@ namespace TheShinobi.HelperMethods
                 Console.WriteLine(text);
                 Thread.Sleep(600);
                 Console.SetCursorPosition(0, Console.CursorTop - 1);
-                Console.WriteLine("\t                           ");
-                Thread.Sleep(300);
-                Console.SetCursorPosition(0, Console.CursorTop - 1);
                 if (Console.KeyAvailable)
                 {
                     Console.WriteLine(text);
                     Console.ReadKey(true);
                     break;
                 }
+                Console.WriteLine("\t                           ");
+                Thread.Sleep(300);
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
             }
         }
 
@@ -288,6 +294,20 @@ namespace TheShinobi.HelperMethods
             }
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
+        }
+
+        public static void Credits(Player player)
+        {
+            creditsPlayer.PlayLooping();
+            if (player.Hp > 0)
+            {
+                // Håkan win story
+            }
+            else
+            {
+                // Håkan loose story
+            }
+            Game.PlayAgain();
         }
     }
 }

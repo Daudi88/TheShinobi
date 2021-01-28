@@ -101,6 +101,22 @@ namespace TheShinobi.Structures
             return kakashi;
         }
 
+        public static void PlayAgain()
+        {
+            ColorConsole.WriteDelayed("\t Do you want to play again? (y/n)");
+            Console.Write("\t > ");
+            string choice = ColorConsole.ReadLine();
+            if (choice.ToLower() == "y")
+            {
+                Game game = new Game();
+                game.Start();
+            }
+            else
+            {
+                ExitGame();
+            }
+        }
+
         public static void ExitGame()
         {
             ColorConsole.WriteDelayed("\t Exiting game", ConsoleColor.Red);
