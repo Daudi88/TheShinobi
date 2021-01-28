@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using TheShinobi.Abilities;
 using TheShinobi.Characters;
 using TheShinobi.Characters.Enemies;
@@ -298,6 +299,74 @@ namespace TheShinobi.HelperMethods
                 $"\n\t A lowlife from the {enemy.Clan} Clan attacks you!"
             };
             return stories;
+        }
+
+        public static Ninjutsu Ninjutsu(string rank)
+        {
+            switch (rank)
+            {
+                case "Genin":
+                    return new Ninjutsu("Paper Shuriken", "1d6", 5);
+                case "Chūnin":
+                    return new Ninjutsu("Flame Bullet", "3d8", 20);
+                case "Jōnin":
+                    return new Ninjutsu("Rasengan", "4d12", 50);
+                case "Hokage":
+                    return new Ninjutsu("Tailed Beast Ball", "5d20", 150);
+                default:
+                    return new Ninjutsu("", "", 0);
+            }
+        }
+
+        public static bool NewRank(int level, out string rank)
+        {           
+            switch (level)
+            {
+                case 1:
+                    rank = "Genin";
+                    return true;
+                case 2:
+                case 3:
+                    rank = "Genin";
+                    return false;
+                case 4:
+                    rank = "Chūnin";
+                    return true;
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                    rank = "Chūnin";
+                    return false;
+                case 9:
+                    rank = "Jōnin";
+                    return true;
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                    rank = "Jōnin";
+                    return false;
+                case 16:
+                    rank = "Hokage";
+                    return true;
+                default:
+                    rank = "Hokage";
+                    return false;
+            }
+        }
+
+        internal static int ExpLimit(string rank)
+        {
+            return rank switch
+            {
+                "Genin" => 1500,
+                "Chūnin" => 9000,
+                "Jōnin" => 30000,
+                _ => 0
+            };
         }
     }
 }

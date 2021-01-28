@@ -302,7 +302,7 @@ namespace TheShinobi.Structures
 
                 if (energyDrink.IsEnergized)
                 {
-                    Utility.EnergyDip(player);
+                    EnergyDip(player);
                 }
                 break;
             }

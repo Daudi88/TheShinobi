@@ -105,13 +105,15 @@ namespace TheShinobi.Structures
                 Chakra = new Ability(1000, 1000),
                 Exp = new Ability(0, 200),
                 Armor = new FlakJacket(),
-                Weapon = new Kubikiribōchō(),
-                Ninjutsu = new Ninjutsu("Chidori", "3d12", 100)
+                Weapon = new Kubikiribōchō(),                
             };
+            kakashi.Ninjutsus.Add(new Ninjutsu("Chidori", "4d16", 100));
             kakashi.Defence = kakashi.Armor.Defence;
             kakashi.Damage = kakashi.Weapon.Damage;
-            Item redBull = new EnergyDrink("Red Bull", 50, 10, "You get wings");
-            redBull.Quantity = 100;
+            Item redBull = new EnergyDrink("Red Bull", 50, 10, "You get wings")
+            {
+                Quantity = 100
+            };
             kakashi.Backpack.Add(redBull);
             return kakashi;
         }

@@ -44,7 +44,14 @@ namespace TheShinobi.HelperMethods
             ColorConsole.WriteOver($"\t The effect of the {energyDrink.Name}{ending} wearing of!", ConsoleColor.Red);
             int energy = energyDrink.Energy;
             player.Stamina.Max -= energy;
-            player.Stamina.Current -= player.Stamina.Current - energy > 0 ? energy : energy + 1;
+            if (player.Stamina.Current - energy > 0)
+            {
+                player.Stamina.Current -= energy;
+            }
+            else
+            {
+                player.Stamina.Current = 1;
+            }
             player.Defence -= energy;
             player.AttackBonus -= energy;
             energyDrink.EnergyCtr = 0;
