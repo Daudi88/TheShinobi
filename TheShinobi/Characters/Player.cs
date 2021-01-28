@@ -19,7 +19,7 @@ namespace TheShinobi.Characters
             Level = 1;
             Rank = "Genin";
             Exp = new Ability(0, 200);
-            Stamina = new Ability(30, 30);
+            Stamina = new Ability(60, 60);
             Chakra = new Ability(10, 10);
             Armor = new Shirt();
             Defence = Armor.Defence;

@@ -10,7 +10,7 @@ namespace TheShinobi.Items.Consumables
         public int Health { get; set; }
         public string Text { get; set; }
 
-        public Consumable(string name, int price, int health, string text = "You drink a potion")
+        public Consumable(string name, int price, int health, string text = "You drink a")
         {
             Name = name;
             Price = price;
@@ -26,16 +26,16 @@ namespace TheShinobi.Items.Consumables
                 if (player.Stamina.Current >= player.Stamina.Max)
                 {
                     player.Stamina.Current = player.Stamina.Max;
-                    ColorConsole.WriteOver($"\t {Text} and gain full health!", ConsoleColor.Yellow);
+                    ColorConsole.WriteOver($"\t {Text} {Name} and gain full health!", ConsoleColor.Yellow);
                 }
                 else
                 {
-                    ColorConsole.WriteOver($"\t {Text} and gain {Health} health!", ConsoleColor.Yellow);
+                    ColorConsole.WriteOver($"\t {Text} {Name} and gain {Health} health!", ConsoleColor.Yellow);
                 }
             }
             else
             {
-                ColorConsole.WriteOver($"\t {Text} but already have full health!", ConsoleColor.Yellow);
+                ColorConsole.WriteOver($"\t {Text} {Name} but already have full health!", ConsoleColor.Yellow);
             }
         }
 

@@ -233,14 +233,15 @@ namespace TheShinobi.HelperMethods
 
         public static Consumable[] Meals()
         {
+            string text = "You eat a bowl of";
             Consumable[] meals = new Consumable[]
             {
-                new Consumable("Chips", 10, 5, "You eat some Chips"),
-                new Consumable("Chūnin Exams Burger Combo", 80, 50, "You eat the Chūnin Exams Burger Combo"),
-                new Consumable("Green Chilli Hamburger", 50, 30, "You eat a Green Chilli Hamburger"),
-                new Consumable("Habanero Burger", 35, 20, "You eat a Habanero Burger"),
-                new Consumable("Jolokia Burger", 25, 15, "You eat a Jolokia Burger"),
-                new Consumable("Super sour Lemon Burger", 45, 25, "You eat a Super sour Lemon Burger")
+                new Consumable("Fried Chicken Ramen", 45, 25, text),
+                new Consumable("Shabu Beef Ramen", 45, 25, text),
+                new Consumable("Naruto Chashu Ramen", 60, 30, text),
+                new Consumable("Stew Pork Ramen", 45, 25, text),
+                new Consumable("Seafood Ramen", 85, 40, text),
+                new Consumable("Vegetable Ramen", 45, 25, text)
             };
             return meals;
         }
@@ -321,7 +322,7 @@ namespace TheShinobi.HelperMethods
         }
 
         public static bool NewRank(int level, out string rank)
-        {           
+        {
             switch (level)
             {
                 case 1:
@@ -371,7 +372,7 @@ namespace TheShinobi.HelperMethods
             };
         }
         public static string[] EndStory(Player player)
-        {                        
+        {
             string[] stories = new string[]
             {
                 "\t After fighting Orochimaru for hours you finally wear him down and kill him. \n" +
