@@ -65,15 +65,16 @@ namespace TheShinobi.Structures
 
             player.Pos += 0.1;
             adventurePlayer.PlayLooping();
-            string story = $"\n\t All of your clan members are away to practice at Daisan Enshūjō." +
-                "\t They are five days away in the south and have taken most \n" + 
-                "\t of the village's equipment with them.  \n " +
-                "\n\t You took the little gear you had and are now on your way to \n" + 
-                "\t leave the Hidden leaf Village. \n" +
-                "\n\t Hanare's kidnappers brought her towards the mountains up in the north." +
-                "\n\t It is now your duty to find gear up and go rescue her! \n" +
+            string story = $"\n\t All of your clan members are away to practice at Daisan Enshūjō. \n" +
+                "\t They are five days away in the south and have taken most of the \n" + 
+                "\t village's equipment with them. \n" +
+                "\n\t You will have to rescue Hanare on your own! \n" +
+                "\n\t You took the little gear you had and are now on your way to leave \n" + 
+                "\t the Hidden Leaf Village. \n" +
+                "\n\t Hanare's kidnappers brought her towards the mountains up in the north.\n" +
+                "\n\t It is now your duty to quickly kill all the enemies intruding your territory \n " + 
+                "\t and search for better gear so you can go and rescue her! \n" +
                 "\n\t * There are rumors about treasures containing some usefull loot outside the village." +
-                "\n\t * Make sure you are strong and equipped enough for when you meet Hanare's Kidnapper." +
                 "\n\t * Also take care and dont loose yourself in the wild...";
 
             ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
