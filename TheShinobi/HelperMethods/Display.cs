@@ -209,7 +209,7 @@ namespace TheShinobi.HelperMethods
                 $"Weapon: [Yellow]{weapon.Name} {weapon.BonusText()}[/Yellow]"
             };
             string title3 = "[DarkCyan]NINJUTSU[/DarkCyan]";
-            List<Ninjutsu> ninjutsus = player.Ninjutsus;            
+            List<Ninjutsu> ninjutsus = player.Ninjutsus;
             List<string> content3 = new List<string>();
             if (ninjutsus.Count > 0)
             {
@@ -223,16 +223,10 @@ namespace TheShinobi.HelperMethods
                 content3.Add("[Red]You don't know any techniques yet.[/Red]");
             }
             WithDevidedFrame(title, content, title2, content2, title3, content3);
-            if (!Console.KeyAvailable) // nåt är fel här
-            {
-                Thread.Sleep(5000);
-                Blinking("\t [Press enter to continue]");
-            }
-            else
-            {
-                Console.ReadKey(true);
-            }
+            Utility.WaitForUser();
         }
+
+        
 
         internal static void Map(Player player)
         {
@@ -266,8 +260,7 @@ namespace TheShinobi.HelperMethods
             int bottom = Console.CursorTop;
             PlayerOnMap(player, top);
             Console.SetCursorPosition(0, bottom);
-            Thread.Sleep(2000);
-            Blinking("\t [Press enter to continue]");
+            Utility.WaitForUser();
         }
 
         private static void PlayerOnMap(Player player, int top)

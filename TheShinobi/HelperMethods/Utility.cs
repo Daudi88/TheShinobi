@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using TheShinobi.Characters;
 using TheShinobi.Interfaces;
 using TheShinobi.Items;
@@ -179,6 +180,26 @@ namespace TheShinobi.HelperMethods
             Console.SetCursorPosition(0, top);
         }
 
-
+        public static void WaitForUser()
+        {
+            bool isKeyPressed = false;
+            for (int i = 0; i < 100; i++)
+            {
+                Thread.Sleep(50);
+                if (Console.KeyAvailable)
+                {
+                    isKeyPressed = true;
+                    break;
+                }
+            }
+            if (!isKeyPressed)
+            {
+                Display.Blinking("\t[Press enter to continue]");
+            }
+            else
+            {
+                Console.ReadKey(true);
+            }
+        }
     }
 }

@@ -106,7 +106,7 @@ namespace TheShinobi.HelperMethods
             }
             else
             {
-                Display.Blinking("\t [Press enter to continue]");
+                Utility.WaitForUser();
             }
         }
 
@@ -156,7 +156,7 @@ namespace TheShinobi.HelperMethods
             
             if (!isKeyPressed && blink)
             {
-                Display.Blinking("\t [Press enter to continue]");
+                Utility.WaitForUser();
             }
         }
 
