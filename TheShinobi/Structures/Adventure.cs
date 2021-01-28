@@ -158,7 +158,7 @@ namespace TheShinobi.Structures
                 Console.SetWindowPosition(0, Console.CursorTop - 30);
                 int treasure = random.Next(1000, 10000);
                 player.Ryō += treasure;
-                ColorConsole.WriteEmbeddedDelayed($"\t You found a treasure and gained [Yellow]{treasure}[/Yellow] gold!\n");                
+                ColorConsole.WriteEmbeddedDelayed($"\t You found a treasure and gained [Yellow]{treasure}[/Yellow] gold!\n");
                 isTreasureTaken = true;
             }
             else
@@ -261,7 +261,7 @@ namespace TheShinobi.Structures
             {
                 string[] stories = Get.NoFightStories();
                 string story = stories[random.Next(stories.Length)];
-                ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);                
+                ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
             }
             else
             {
@@ -278,7 +278,7 @@ namespace TheShinobi.Structures
             }
             else
             {
-                ColorConsole.WriteDelayedLine("\t You are not strong enough to fight this opponent...", ConsoleColor.Red, blink: true);                
+                ColorConsole.WriteDelayedLine("\t You are not strong enough to fight this opponent...", ConsoleColor.Red, blink: true);
             }
             return false;
         }
@@ -295,7 +295,14 @@ namespace TheShinobi.Structures
             {
                 int top = Console.CursorTop;
                 Console.SetCursorPosition(0, top);
-                
+                List<string> fighterStats = new List<string>()
+                {
+                    $"{player.Name}: {player.Stamina} Stamina  {player.Chakra} Chakra",
+                    $"{enemy.Name}: {enemy.Stamina} Stamina"
+                };
+                Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats);
+                Console.ReadKey(true);
+
 
 
 

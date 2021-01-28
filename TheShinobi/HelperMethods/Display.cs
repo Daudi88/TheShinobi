@@ -211,6 +211,28 @@ namespace TheShinobi.HelperMethods
             Console.SetCursorPosition(position.Item1, top += position.Item2);
             ColorConsole.Write("●", ConsoleColor.Red);
         }
+
+        public static void BattleFrame(string title, List<string> fighterStats)
+        {
+            int length = Get.ContentLength(fighterStats);
+            ColorConsole.WriteEmbedded($"\t┏━{title}");
+            int colorLength = 0;
+            if (title.Contains("["))
+            {
+                colorLength = Get.ColorLength(title);
+            }
+            for (int i = 0; i < length / 2 - title.Length + colorLength + 2; i++)
+            {
+                Console.Write("━");
+            }
+            Console.Write("┳");
+            for (int i = 0; i < length / 2 + 2; i++)
+            {
+                Console.Write("━");
+            }
+            Console.WriteLine("┓");
+
+        }
         
         public static void Blinking(string text)
         {
