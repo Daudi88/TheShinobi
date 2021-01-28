@@ -65,16 +65,16 @@ namespace TheShinobi.Structures
 
             player.Pos += 0.1;
             adventurePlayer.PlayLooping();
-            string story = $"\n\t You geared up quickly and are now on your way to leave the Hidden leaf Village! \n" +
-                "\n\t Orochimaru have kidnapped Hanare and taken her to his cave way up in the north.\n" +
-                "\n\t It is your duty to find and rescue her!\n" +
-                "\n\t You will probobly need a better Weapon and Armor \n" +
-                "\t There are rumors about treasures containing some usefull loot outside the village. \n" +
-                "\n\t Make sure you are strong and equipped enough for when you meet Hanare's Kidnapper.\n" +
-                "\n\t Also take care and dont loose yourself in the wild..." +
-                "\n\t * There are rumors about treasures containing some usefull loot." +
+            string story = $"\n\t All of your clan members are away to practice at Daisan Enshūjō." +
+                "\t They are five days away in the south and have taken most \n" + 
+                "\t of the village's equipment with them.  \n " +
+                "\n\t You took the little gear you had and are now on your way to \n" + 
+                "\t leave the Hidden leaf Village. \n" +
+                "\n\t Hanare's kidnappers brought her towards the mountains up in the north." +
+                "\n\t It is now your duty to find gear up and go rescue her! \n" +
+                "\n\t * There are rumors about treasures containing some usefull loot outside the village." +
                 "\n\t * Make sure you are strong and equipped enough for when you meet Hanare's Kidnapper." +
-                "\n\t * Take care and make sure you don't loose yourself in the wild...";
+                "\n\t * Also take care and dont loose yourself in the wild...";
 
             ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
             bool exit = false;
