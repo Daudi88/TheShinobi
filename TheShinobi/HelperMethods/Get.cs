@@ -298,7 +298,7 @@ namespace TheShinobi.HelperMethods
             return items;
         }
 
-        internal static string OrochimaruStory()
+        public static string OrochimaruStory()
         {
             return "\t  Håkan";
         }
