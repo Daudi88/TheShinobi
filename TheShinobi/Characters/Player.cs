@@ -109,7 +109,7 @@ namespace TheShinobi.Characters
                     }
                     else
                     {
-                        text = "You miss!";
+                        text = $"You miss {defender.Name} with your attack!";
                         break;
                     }
                 }
