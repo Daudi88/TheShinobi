@@ -216,7 +216,7 @@ namespace TheShinobi.HelperMethods
             }
             if (!isKeyPressed)
             {
-                Display.SetBlinking("\t[Press enter to continue]", bottom);
+                Display.SetBlinking("\t [Press enter to continue]", bottom);
             }
             else
             {
