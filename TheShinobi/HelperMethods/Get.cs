@@ -490,19 +490,19 @@ namespace TheShinobi.HelperMethods
                 "\n\t As you dry Orochimaru's blood from your weapon on his Flack jacket. \n" +
                 "\t You hear faint sounds deeper into the cave and you sense it is Hanare!\n " +
                 "\n\t This fight is far from over, Orochimura did not do this on his own..." +
-                "\n\t You both sense and hear more enemies deeper inside tha cave system. ",
+                "\n\t You both sense and hear more enemies deeper inside tha cave system. \n",
 
 
-                "\n\t As you walked further into the huge cave system Hanares cry for help \n" +
+                "\n\t As you walk further into the huge cave system Hanares cry for help \n" +
                 "\t get's clearer. You are closing in on her! \n",
 
-                "\t Suddenly you sense danger from behinde and instinctivly make a Shinobi backflip! \n" +
+                "\n\t Suddenly you sense danger from behinde and instinctivly make a Shinobi backflip! \n" +
                 "\n\t You dodge the sword that was beeing aimed at your back with full force!" +
                 "\n\t You knew it! It is the filty backstabbing Akatsuku Clan! \n" +
                 "\n\t Nobody else would ever try to kill a Shinobi from behinde." +
                 "\n\t Three Akatsuku are attacking and they have you cornered. \n",
 
-                "\t Beeing a true ninjutsu hero you are draw your Weapon and counter attack. \n" +
+                "\n\t Beeing a true ninjutsu hero you are draw your Weapon and counter attack. \n" +
                 "\t The closest attacker throws a Kunai aimed at your heart! \n" +
                 "\n\t You use your chakra and redirect the knife into on of the other dirty" +
                 "\n\t Akatsu scumbag's! \n",
@@ -519,7 +519,7 @@ namespace TheShinobi.HelperMethods
                 "\t You know that the enemy and Hanare is just around the next corner. \n" +
                 "\t As you draw your weapon and sneak around the corner you se Hanare and him, HIM...\n\n",
 
-                "\t This is impossible... He is dead!?! \n" +
+                "\n\t This is impossible, it cant be... He is dead!?! \n" +
                 "\t you know you killed him and every last member of their Clan. \n" +
                 "\t this cant be!?! Kakuzu's alive? \n",
 
