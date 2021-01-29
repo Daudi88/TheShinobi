@@ -325,6 +325,10 @@ namespace TheShinobi.HelperMethods
             ColorConsole.Write("●", ConsoleColor.Red);
         }
 
+        /// <summary>
+        /// Prints out a blinking text to promt the player to move on.
+        /// </summary>
+        /// <param name="text"></param>
         public static void Blinking(string text)
         {
             while (true)
@@ -345,6 +349,11 @@ namespace TheShinobi.HelperMethods
             }
         }
 
+        /// <summary>
+        /// As <see cref="Blinking(string)"/> but with a set position.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="bottom"></param>
         public static void SetBlinking(string text, int bottom)
         {
             while (true)
@@ -366,6 +375,9 @@ namespace TheShinobi.HelperMethods
             }
         }
 
+        /// <summary>
+        /// Prints out the game title to the screen. 
+        /// </summary>
         public static void Title()
         {
             int top = 2;
@@ -418,19 +430,17 @@ namespace TheShinobi.HelperMethods
             }
         }
 
+        /// <summary>
+        /// Asks the player to play the game again. If player defeats the game, credits are printed to the sceen. 
+        /// </summary>
+        /// <param name="player"></param>
         public static void Credits(Player player)
         {
             creditsPlayer.PlayLooping();
-            string[] story;
             if (player.Stamina.Current > 0)
             {
-                story = Get.EndStory(player);
+                ColorConsole.WriteDelayed(ConsoleColor.Yellow, 80, false, Get.EndStory(player));
             }
-            else
-            {
-                story = Get.EndStory(player);
-            }
-            ColorConsole.WriteDelayed(ConsoleColor.Yellow, 80, false, story);
             Game.PlayAgain(player);
         }
     }

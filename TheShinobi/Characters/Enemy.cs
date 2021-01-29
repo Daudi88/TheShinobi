@@ -32,6 +32,12 @@ namespace TheShinobi.Characters
             Exp.Current = Utility.random.Next(10 * Level, 40 * Level + 1);
         }
 
+        /// <summary>
+        /// <see cref="Enemy"/> performes attempt on attacking 
+        /// <see cref="Player"/> character. Choice of weapon is randomized.
+        /// </summary>
+        /// <param name="defender"></param>
+        /// <returns></returns>
         public override string Attack(Character defender)
         {
             string text = "";            
@@ -60,11 +66,17 @@ namespace TheShinobi.Characters
             }
             else
             {
-                text = $"{Name} miss!";
+                text = $"{Name} misses you with {Pronoun} attack!";
             }
             return text;
         }
 
+        /// <summary>
+        /// When defeated the <see cref="Enemy"/> drops ryō and give 
+        /// experience point to <see cref="Player"/>. May also drop equipment.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="top"></param>
         public void DropItems(Player player, int top)
         {
             int rnd = Utility.random.Next(100);
@@ -110,7 +122,10 @@ namespace TheShinobi.Characters
             string separator = eDrop ? " and " : eDrop && cDrop ? ", " : "";
             string text = $"{Name} drops {eDropText}{separator}{cDropText}[Yellow]{Ryō}[/Yellow] ryō!";
             ColorConsole.WriteEmbeddedSetDelayed(text, top);
+            top++;
+            ColorConsole.WriteEmbeddedSetDelayed($"You gain [Yellow]{Exp.Current}[/Yellow] exp from defeating {Name}!", top);
             player.Ryō += Ryō;
+            player.Exp.Current += Exp.Current;
         }
     }
 }

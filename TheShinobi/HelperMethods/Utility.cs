@@ -26,7 +26,7 @@ namespace TheShinobi.HelperMethods
         public static EnergyDrink energyDrink = new EnergyDrink();
         public static bool isVisitingVillage = true;
         public static bool isBattleBeginning = true;
-
+        public static int energyCtr = 0;
 
         public static int RollDice(string dice)
         {
@@ -41,10 +41,10 @@ namespace TheShinobi.HelperMethods
             return result;
         }
 
-        public static void EnergyDip(Player player)
+        public static void EnergyDip(Player player, int top)
         {
-            string ending = energyDrink.EnergyCtr > 1 ? "s are" : " is";
-            ColorConsole.WriteOver($"\t The effect of the {energyDrink.Name}{ending} wearing of!", ConsoleColor.Red);
+            string ending = energyCtr > 1 ? "s are" : " is";
+            ColorConsole.WriteSetDelayed($"The effect of the energy drink{ending} wearing off!", top, color: ConsoleColor.Red);
             int energy = energyDrink.Energy;
             player.Stamina.Max -= energy;
             if (player.Stamina.Current - energy > 0)
