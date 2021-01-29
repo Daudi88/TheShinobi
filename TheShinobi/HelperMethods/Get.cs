@@ -427,18 +427,18 @@ namespace TheShinobi.HelperMethods
         {
             string[] stories = new string[]
                 {
-                "\t After fighting Orochimaru for hours you finally wear him down and kill him. \n" +
-                $"\t As you dry Orochimaru's blood from your weapon on his Flack jacket.",
+                "\t After fighting Orochimaru for hours you finally wear him down and kill him.",
 
+                "\n\t As you dry Orochimaru's blood from your weapon on his Flack jacket. \n" +
+                "\t You hear faint sounds deeper into the cave and you sense it is Hanare!\n " +
                 "\n\t This fight is far from over, Orochimura did not do this on his own..." +
-                "\n\t And you both sense and hear more enemies deeper inside tha cave system.",
+                "\n\t You both sense and hear more enemies deeper inside tha cave system. ",
 
-                "\n\t You hear faint sounds deeper into the cave and you sense it is Hanare!\n " +
+
                 "\n\t As you walked further into the huge cave system Hanares cry for help \n" +
-                "\t get's clearer. You are closing in on her!",
+                "\t get's clearer. You are closing in on her! \n",
 
-                "\t Suddenly you sense danger from behinde \n" +
-                "\t you instinctivly make a Shinobi backflip! \n" +
+                "\t Suddenly you sense danger from behinde and instinctivly make a Shinobi backflip! \n" +
                 "\n\t You dodge the sword that was beeing aimed at your back with full force!" +
                 "\n\t You knew it! It is the filty backstabbing Akatsuku Clan! \n" +
                 "\n\t Nobody else would ever try to kill a Shinobi from behinde." +
@@ -454,12 +454,12 @@ namespace TheShinobi.HelperMethods
                 "\t Now they are all very very dead...\n",
 
                 "\t You sense Hanare is close and you walk into one of the dark side tunnels...\n" +
-                "\t Your senses tells you that Hanare is not alone! \n" +
-                "\t Someone with the ability to hide his true powers are also present.\n",
+                "\t Your senses also tells you that Hanare is not alone! \n" +
+                "\t Someone with the ability to hide his true powers is also present.\n",
 
                 "\t Who is this, and how can he block your senses? \n" +
-                "\t You feel that the enemy and Hanare is just around the next corner. \n" +
-                "\t As you draw your weapon and walk around the corner you se Hanare and him, HIM...\n\n",
+                "\t You know that the enemy and Hanare is just around the next corner. \n" +
+                "\t As you draw your weapon and sneak around the corner you se Hanare and him, HIM...\n\n",
 
                 "\t This is impossible... He is dead!?! \n" +
                 "\t you know you killed him and every last member of their Clan. \n" +
@@ -487,14 +487,16 @@ namespace TheShinobi.HelperMethods
                 "\t Until its to late... \n",
 
                 "\t “The rage {players.name} unleashed upon Kakuzu \n" +
-                "\t has never been seen from any Shinobi ever before.\n" +
-                "\t A true Shinobi are known to keep their cool even when angry! \n" +
-                "\t The tale of this fight will live on as a tale forever...“\n",
+                "\t has never been seen from any Shinobi ever before.\n",
+
+                "\n\t A true Shinobi are known to keep their cool even when angry! \n" +
+                "\t The story of this fight will live on as a tale forever...“\n",
 
                 "\t As you come back to your senses you rush to Hanare \n" +
                 "\t and untie the ropes around her hands and neck \n" +
-                "\t she is still unconscious and very very weak. \n " +
-                "\t without a second of rest you pick Hanare up and \n" +
+                "\t she is still unconscious and very very weak. \n ",
+
+                "\n\t Without a second of rest you pick Hanare up and \n" +
                 "\t carry her all the way back to The Hidden Leaf Village.\n",
 
                 "\n\t As you approach the village, you call for help.\n" +
@@ -504,7 +506,7 @@ namespace TheShinobi.HelperMethods
                 "\t Suddenly you hear Hanares voice...\n\n",
 
                 "\t “Thank you {player.name}! You rescued me“ \n" +
-                "\t “I knew you would find me, THANK YOU HERO!” \n\n",
+                "\t “I knew you would find me, THANK YOU MY HERO!” \n\n",
 
                 "\t You rescued Hanare and the peace is restored in The Hidden Leaf Village \n " +
                 "\n\t THE END... \n\n",
