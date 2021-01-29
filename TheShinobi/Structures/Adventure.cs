@@ -14,14 +14,7 @@ using TheShinobi.Items.Weapons;
 namespace TheShinobi.Structures
 {
     class Adventure
-    {
-        /* This class contains the following methods:
-         * Menu()               - 
-         * Graveyard()          -
-         * Treasure()           -
-         * AbuHassan()          -
-         * ...
-         */
+    {        
         static string soundLocation1 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\HiddenLeafVillage.Wav");
         static string soundLocation2 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Adventure.wav");
         static string soundLocation3 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Treasure.wav");
@@ -46,6 +39,10 @@ namespace TheShinobi.Structures
         private static bool isGraveyardVisited = false;
         private static bool isHiruzenVisited = false;
 
+        /// <summary>
+        /// Method that recieves options based on player position. Then lets player move around in the world.
+        /// </summary>
+        /// <param name="player"></param>
         public static void Menu(Player player)
         {
             player.Pos += 0.1;
@@ -80,6 +77,11 @@ namespace TheShinobi.Structures
             }
         }
 
+        /// <summary>
+        /// Moves the player north.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public static bool North(Player player)
         {
             player.Pos += 0.1;
@@ -87,6 +89,11 @@ namespace TheShinobi.Structures
             return false;
         }
 
+        /// <summary>
+        /// Moves the player east.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public static bool East(Player player)
         {
             player.Pos += 1.0;
@@ -94,6 +101,11 @@ namespace TheShinobi.Structures
             return false;
         }
 
+        /// <summary>
+        /// Moves the player west.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public static bool West(Player player)
         {
             player.Pos -= 1.0;
@@ -101,6 +113,11 @@ namespace TheShinobi.Structures
             return false;
         }
 
+        /// <summary>
+        /// Moves the player south.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public static bool South(Player player)
         {
             player.Pos -= 0.1;
@@ -108,6 +125,11 @@ namespace TheShinobi.Structures
             return false;
         }
 
+        /// <summary>
+        /// Returns the player to the Hidden Leaf Village.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public static bool ToVillage(Player player)
         {
             villagePlayer.PlayLooping();
@@ -116,6 +138,11 @@ namespace TheShinobi.Structures
             return true;
         }
 
+        /// <summary>
+        /// Lets the player visit the Graveyard to recieve a legendary sword, but only once.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public static bool ToGraveyard(Player player)
         {
             graveyardPlayer.PlayLooping();
@@ -136,6 +163,12 @@ namespace TheShinobi.Structures
             adventurePlayer.PlayLooping();
             return false;
         }
+
+        /// <summary>
+        /// Lets the player pick up a substantial treasure once.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public static bool ToTreasure(Player player)
         {
             treasurePlayer.PlayLooping();
@@ -155,6 +188,12 @@ namespace TheShinobi.Structures
             adventurePlayer.PlayLooping();
             return false;
         }
+
+        /// <summary>
+        /// Lets player visit the dealer Abu Hassan with his unique items.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public static bool ToAbuHassan(Player player)
         {
             abuHassanPlayer.PlayLooping();
@@ -204,6 +243,11 @@ namespace TheShinobi.Structures
             return false;
         }
 
+        /// <summary>
+        /// Lets the player visit Hiruzen Sarutobi to recieve some special items.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public static bool ToHiruzen(Player player)
         {
             hiruzenPlayer.PlayLooping();
@@ -240,6 +284,10 @@ namespace TheShinobi.Structures
             return false;
         }
 
+        /// <summary>
+        /// Method that checks if the player will encounter an enemy while adventuring.
+        /// </summary>
+        /// <param name="player"></param>
         public static void CheckForEncounter(Player player)
         {
             Console.SetWindowPosition(0, Console.CursorTop - V);
@@ -257,6 +305,11 @@ namespace TheShinobi.Structures
             }
         }
 
+        /// <summary>
+        /// Checks if the player is strong enough to fight Orochimaru.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public static bool BossEncounter(Player player)
         {
             if (player.Level >= 10)
@@ -271,6 +324,11 @@ namespace TheShinobi.Structures
             return false;
         }
 
+        /// <summary>
+        /// Method that handles the battle mechanics in the game.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="isBoss"></param>
         public static void Battle(Player player, bool isBoss = false)
         {
             Enemy[] enemies = Get.Enemies().Where(e => e.Level <= player.Level).ToArray();

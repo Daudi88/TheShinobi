@@ -9,15 +9,10 @@ namespace TheShinobi.Structures
 {
     class HiddenLeafVillage
     {
-        /* This class contains the foloowing methods:
-         * Menu()               - Menu of the Hidden Leaf Village. 
-         * LightningBurger()    - Lets the player eat at Lightning Burger to 
-         *                        restore health.
-         * KonohaHospital()     - Lets the player heal by visiting Tsunade or
-         *                        buy potions.
-         * NinjaToolShop()      - Lets the player buy and sell items.
-         */
-
+        /// <summary>
+        /// Menu of the Hidden Leaf Village.
+        /// </summary>
+        /// <param name="player"></param>
         public static void Menu(Player player)
         {
             bool exit = false;
@@ -73,6 +68,10 @@ namespace TheShinobi.Structures
             }
         }
 
+        /// <summary>
+        /// Lets the player eat at Ramen Ichiraku to restore health.
+        /// </summary>
+        /// <param name="player"></param>
         private static void RamenIchiraku(Player player)
         {
             Consumable[] meals = Get.Meals();
@@ -112,6 +111,10 @@ namespace TheShinobi.Structures
             }
         }
 
+        /// <summary>
+        /// Lets the player visit the medical-nin Tsunade or buy potions.
+        /// </summary>
+        /// <param name="player"></param>
         private static void KonohaHospital(Player player)
         {
             ColorConsole.WriteDelayed(content: "\n\n\n\t Welcome to Konoha Hospital!\n");
@@ -150,6 +153,10 @@ namespace TheShinobi.Structures
             }
         }
 
+        /// <summary>
+        /// Lets the player be healed if need be and the player has enough ryō.
+        /// </summary>
+        /// <param name="player"></param>
         private static void SeeTsunade(Player player)
         {
             if (player.Stamina.Current == player.Stamina.Max)
@@ -164,10 +171,14 @@ namespace TheShinobi.Structures
             }
             else
             {
-                ColorConsole.WriteOver("\t You don't have enough Ryō to see Tsunade!", ConsoleColor.Red);
+                ColorConsole.WriteOver("\t You don't have enough ryō to see Tsunade!", ConsoleColor.Red);
             }
         }
 
+        /// <summary>
+        /// Lets the player buy or sell items.
+        /// </summary>
+        /// <param name="player"></param>
         private static void NinjaToolShop(Player player)
         {
             ColorConsole.WriteDelayed(content: "\n\n\n\t Welcome to the Ninja Tool Shop!\n");

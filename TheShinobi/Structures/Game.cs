@@ -13,18 +13,10 @@ namespace TheShinobi.Structures
 {
     class Game
     {
-        /* This class contains the following methods:
-         * Setup()              - Sets the Console up to use UTF8, title and 
-         *                        console window size and Starts the music. 
-         * Test()               - Used for testing parts of the game.
-         * Start()              - Starts the game storyline and opens up the 
-         *                        Hidden Leaf Village menu with player choises.
-         * CaracterCreation()   - Lets the player choose name and checks for GodMode.
-         * GodMode()            - If the player name equals Robin he becomes Kakashi
-         *                        Hatake and have a lot of extras from the start.
-         * ExitGame()           - Exits the game.
-         */
-
+        /// <summary>
+        /// Sets the Console up to use UTF8, title and 
+        /// console window size and Starts the music.
+        /// </summary>
         public void Setup()
         {
             Console.Title = "The Shinobi";
@@ -33,6 +25,9 @@ namespace TheShinobi.Structures
             Console.CursorVisible = false;
         }
 
+        /// <summary>
+        /// Used for testing parts of the game.
+        /// </summary>
         public void Test()
         {
             Adventure.adventurePlayer.Play();
@@ -40,6 +35,10 @@ namespace TheShinobi.Structures
             Adventure.Battle(player);
         }
 
+        /// <summary>
+        /// Starts the game storyline and opens up the
+        /// Hidden Leaf Village menu with player choises.
+        /// </summary>
         public void Start()
         {
             Adventure.villagePlayer.PlayLooping();
@@ -58,6 +57,10 @@ namespace TheShinobi.Structures
             HiddenLeafVillage.Menu(player);
         }
 
+        /// <summary>
+        /// Lets the player choose name and checks for HokageMode.
+        /// </summary>
+        /// <returns><see cref="Player"/> character</returns>
         private static Player CharacterCreation()
         {
             Console.WriteLine("\n\t What is your name?");
@@ -84,10 +87,15 @@ namespace TheShinobi.Structures
                     break;
                 }
             }
-            return name.ToLower() == "robin" ? GodMode() : new Player(name);
+            return name.ToLower() == "robin" ? HokageMode() : new Player(name);
         }
 
-        private static Player GodMode()
+        /// <summary>
+        /// If the player enter Robin as name he becomes Kakashi
+        /// Hatake and have a lot of extras from the start.
+        /// </summary>
+        /// <returns>Strong <see cref="Player"/> character</returns>
+        private static Player HokageMode()
         {
             Player kakashi = new Player("Kakashi Hatake")
             {
@@ -111,6 +119,10 @@ namespace TheShinobi.Structures
             return kakashi;
         }
 
+        /// <summary>
+        /// Asks if the player wants to restart the game.
+        /// </summary>
+        /// <param name="player"></param>
         public static void PlayAgain(Player player)
         {
             ColorConsole.WriteDelayedLine("\t Do you want to play again? (y/n)");
@@ -127,6 +139,10 @@ namespace TheShinobi.Structures
             }
         }
 
+        /// <summary>
+        /// Exits the game.
+        /// </summary>
+        /// <param name="player"></param>
         public static void ExitGame(Player player)
         {
             ColorConsole.WriteDelayed(ConsoleColor.Red, content: "\t Exiting game");

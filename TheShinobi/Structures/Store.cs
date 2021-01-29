@@ -9,15 +9,16 @@ namespace TheShinobi.Structures
 {
     static class Store
     {
-        /* This class contains the following methods:
-        * BuyItems()           - Method for the shops, ask's the player what 
-        *                        items to buy that are different depending on 
-        *                        the shop. Lets the player buy items and checks 
-        *                        if the player can afford them.
-        * MakePurchase()       - ...
-        * SellItems()          - Lets the user sell items for gold.
-        */
-
+        /// <summary>
+        /// Method for the shops, ask's the player what 
+        /// items to buy that are different depending on 
+        /// the shop.Lets the player buy items and checks 
+        /// the player can afford them.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="name"></param>
+        /// <param name="items"></param>
+        /// <param name="ending"></param>
         public static void BuyItems(Player player, string name, Item[] items, string ending = "Go back to shop menu")
         {
             bool isFirstTime = true;
@@ -103,6 +104,13 @@ namespace TheShinobi.Structures
             }
         }
 
+        /// <summary>
+        /// Method that makes the transaction and adds item(s) to the backpack.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="item"></param>
+        /// <param name="price"></param>
+        /// <param name="eat"></param>
         public static void MakePurchase(Player player, Item item, int price, bool eat = false)
         {
             player.Ryō -= price;
@@ -116,6 +124,10 @@ namespace TheShinobi.Structures
             }
         }
 
+        /// <summary>
+        /// Lets the player sell items for gold.
+        /// </summary>
+        /// <param name="player"></param>
         public static void SellItems(Player player)
         {
             if (player.Backpack.Count > 0)
