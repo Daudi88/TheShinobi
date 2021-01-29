@@ -276,7 +276,7 @@ namespace TheShinobi.Structures
             
             if (isBoss)
             {
-                enemy = new Enemy("Orochimaru", "", 10, new ShinobiBattleArmor(), new ChakraBlade());
+                //enemy = new Enemy("Orochimaru", "", 10, new ShinobiBattleArmor(), new ChakraBlade()); Lägg till en jutsu här1 :D
                 story = Get.OrochimaruStory();
             }
 
@@ -288,7 +288,6 @@ namespace TheShinobi.Structures
             battlePlayer.PlayLooping();
             bool exit = false;
             string battleText = "";
-            player.Stamina.Current = 1;
             while (!exit)
             {
                 textTop = top + 4;
@@ -327,6 +326,7 @@ namespace TheShinobi.Structures
                         ColorConsole.WriteSetDelayed(battleText, textTop);
                         WaitSetForUser(bottom - 4);
                         exit = true;
+                        Console.SetCursorPosition(0, bottom - 2);
                         Display.Credits(player);
                     }
                 }
@@ -335,10 +335,11 @@ namespace TheShinobi.Structures
                     textTop++;
                     battleText = $"You defeated {enemy.Name}!";
                     ColorConsole.WriteSetDelayed(battleText, textTop);
-                    WaitSetForUser(bottom - 6);
+                    WaitSetForUser(bottom - 5);
                     exit = true;
                     if (isBoss)
                     {
+                        Console.SetCursorPosition(0, bottom - 2);
                         Display.Credits(player);
                     }
                 }

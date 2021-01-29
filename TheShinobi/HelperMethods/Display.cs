@@ -367,14 +367,16 @@ namespace TheShinobi.HelperMethods
         public static void Credits(Player player)
         {
             creditsPlayer.PlayLooping();
+            string[] story;
             if (player.Stamina.Current > 0)
             {
-                // Håkan win story
+                story = Get.EndStory(player);
             }
             else
             {
-                // Håkan loose story
+                story = Get.EndStory(player);
             }
+            ColorConsole.WriteDelayed(ConsoleColor.Yellow, exitable: false, content: story);
             Game.PlayAgain(player);
         }
     }

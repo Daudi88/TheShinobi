@@ -187,12 +187,11 @@ namespace TheShinobi.HelperMethods
                 new Enemy("Hanzō", "Amegakure", 6, new InfiniteArmor(), new Kusarigama(), new PaperShuriken()),
                 new Enemy("Deidara", "Akatsuki", 7, new SteamArmor(), new Shuriken(), new Rasengan()),
                 new Enemy("Kimimaro", "Kaguya", 7, new ChakraArmor(), new FistsOfBones(), new FlameBullet()),
-                new Enemy("Kabuto", "Konohagakure", 7, new SteamArmor(), new Shichiseiken(), new ChidoriSenbon),
+                new Enemy("Kabuto", "Konohagakure", 7, new SteamArmor(), new Shichiseiken(), new ChidoriSenbon()),
                 new Enemy("Kisame", "Hoshigaki", 8, new FlakJacket(), new Kunai(), new AshPileBurning()),
                 new Enemy("Kakuzu", "Akatsuki", 8, new InfiniteArmor(), new Kusarigama(), new TailedBeastBall()),
                 new Enemy("Hocke", "1337", 8, new BulletproofVest(), new AK47(), new DeadSoul()),
-                new Enemy("Daudi", "1337", 9, new BulletproofVest(), new AK47(), new DeadSoul()),
-
+                new Enemy("Daudi", "1337", 9, new BulletproofVest(), new AK47(), new DeadSoul())
             };
             return enemies;
         }
