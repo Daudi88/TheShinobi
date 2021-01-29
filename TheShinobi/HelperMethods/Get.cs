@@ -312,24 +312,24 @@ namespace TheShinobi.HelperMethods
         {
             string[] stories = new string[]
             {
-                "\n\t You walk down the bushy trail and sence there is trouble ahead!" +
-                $"\n\t You can smell that dirty {enemy.Clan} member miles away and you attack instantly!",
+                "\t  You walk down the bushy trail and sence there is trouble ahead!" +
+                $"\n\t  You can smell that dirty {enemy.Clan} member miles away and you attack instantly!",
 
-                $"\n\t While climbing up the mountains in search of Hanare you get ambushed by some filthy {enemy.Clan} villains!" +
-                "\n\t You attack, maybe they know more about Hanare's kidnapping!",
+                $"\t  While climbing up the mountains in search of Hanare you get ambushed by some filthy {enemy.Clan} villains!" +
+                "\n\t  You attack, maybe they know more about Hanare's kidnapping!",
 
-                "\n\t You have walked for hours when you decide to set up camp at a lake." +
-                $"\n\t Suddenly some low life from the {enemy.Clan} Clan attacks you!" +
-                "\n\t Four of them run away when they see that it is you but one stays behind to fight!",
+                "\t  You have walked for hours when you decide to set up camp at a lake." +
+                $"\n\t  Suddenly some low life from the {enemy.Clan} Clan attacks you!" +
+                "\n\t  Four of them run away when they see that it is you but one stays behind to fight!",
 
-                $"\n\t Ahead you hear fighting going on! It is some bastards from the {enemy.Clan} robbing a villager!" +
-                $"\n\t You draw your weapon and attack!",
+                $"\t  Ahead you hear fighting going on! It is some bastards from the {enemy.Clan} robbing a villager!" +
+                $"\n\t  You draw your weapon and attack!",
 
-                "\n\t The sky is full of dark clouds and when lightning strikes the ground vibrates!" +
-                $"\n\t As you set up camp in the mountains to escape the bad weather some villains from the {enemy.Clan} Clan attacks!",
+                "\t  The sky is full of dark clouds and when lightning strikes the ground vibrates!" +
+                $"\n\t  As you set up camp in the mountains to escape the bad weather some villains from the {enemy.Clan} Clan attacks!",
 
-                "\n\t The sky is blue and the sun is shining. As you walk past a shrubbery you hear a noice!" +
-                $"\n\t A lowlife from the {enemy.Clan} Clan attacks you!"
+                "\t  The sky is blue and the sun is shining. As you walk past a shrubbery you hear a noice!" +
+                $"\n\t  A lowlife from the {enemy.Clan} Clan attacks you!"
             };
             return stories;
         }

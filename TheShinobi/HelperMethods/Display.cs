@@ -196,12 +196,11 @@ namespace TheShinobi.HelperMethods
             length = length * 2 + 4;
             for (int i = 0; i < height; i++)
             {
-                Console.Write("\t┃ ");
-                for (int j = 0; j < length; j++)
-                {
-                    Console.Write(" ");
-                }
-                Console.WriteLine("  ┃");
+                Console.SetCursorPosition(0, Console.CursorTop);
+                Console.Write("\t┃");
+                Console.SetCursorPosition(10 + length + 2, Console.CursorTop);
+                Console.WriteLine("┃");
+
             }
             BottomOfFrame(length);
         }

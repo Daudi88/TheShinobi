@@ -273,11 +273,11 @@ namespace TheShinobi.Structures
             Enemy enemy = enemies[random.Next(enemies.Length)];
             string[] stories = Get.FightStories(enemy);
             string story = stories[random.Next(stories.Length)];
-            ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
-            bool exit = false;
             int top = Console.CursorTop;
             int textTop = top + 4;
-            int left = 10;
+            Console.SetCursorPosition(0, textTop);
+            ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
+            bool exit = false;
             while (!exit)
             {
                 Console.SetCursorPosition(0, top);
