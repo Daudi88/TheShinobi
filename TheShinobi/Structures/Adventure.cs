@@ -46,34 +46,19 @@ namespace TheShinobi.Structures
 
         public static void Menu(Player player)
         {
-            //Adventure.villagePlayer.PlayLooping();
-            //Display.Title();
-            //Player player = CharacterCreation();
-            //string intro = $"\n\t You, {player.Name}, wake up in the Hidden Leaf Village and sense that something is wrong!" +
-            //    "\n\t Kaguya Otsutsuki have kidnapped Hanare and taken her to his cave in the mountains." +
-            //    "\n\t It is your duty to find and rescue her!";
-            //ColorConsole.WriteDelayedLine(intro, ConsoleColor.Yellow, 40);
-            //Console.WriteLine("\t [Press enter to continue]");
-            //Console.ReadKey(true);
-            //HiddenLeafVillage.Menu(player);
-
-            //string intro = $"\n\t You, {player.Name}, wake up from a womans scream's and it sound's as if she is beeing taken away!!!" +
-            //"\n\t You hear the villagers scream that somebody kidnapped Hanare!" +
-            //    "\n\t It is your duty to find and rescue her!";
-
-
             player.Pos += 0.1;
             adventurePlayer.PlayLooping();
-            string story = $"\n\t You geared up quickly and are now on your way to leave the Hidden leaf Village! \n" +
-                "\n\t Orochimaru have kidnapped Hanare and taken her to his cave way up in the north.\n" +
-                "\n\t It is your duty to find and rescue her!\n" +
-                "\n\t You will probobly need a better Weapon and Armor \n" +
-                "\t There are rumors about treasures containing some usefull loot outside the village. \n" +
-                "\n\t Make sure you are strong and equipped enough for when you meet Hanare's Kidnapper.\n" +
-                "\n\t Also take care and dont loose yourself in the wild..." +
-                "\n\t * There are rumors about treasures containing some usefull loot." +
-                "\n\t * Make sure you are strong and equipped enough for when you meet Hanare's Kidnapper." +
-                "\n\t * Take care and make sure you don't loose yourself in the wild...";
+            string story = $"\n\t All of your clan members are away to practice at Daisan Enshūjō. \n" +
+                "\t They are five days away in the south and have taken most of the \n" + 
+                "\t village's equipment with them. \n" +
+                "\n\t You will have to rescue Hanare on your own! \n" +
+                "\n\t You took the little gear you had and are now on your way to leave \n" + 
+                "\t the Hidden Leaf Village. \n" +
+                "\n\t Hanare's kidnappers brought her towards the mountains up in the north." +
+                "\n\t It is now your duty to quickly kill all the enemies intruding your territory \n " + 
+                "\t and search for better gear so you can go and rescue her! \n" +
+                "\n\t * There are rumors about treasures containing some usefull loot outside the village." +
+                "\n\t * Also take care and dont loose yourself in the wild...";
 
             ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
             bool exit = false;

@@ -288,7 +288,10 @@ namespace TheShinobi.HelperMethods
                  "\n\t You start running towards the montains!",
 
                  "\n\t You aproach a empty camp, the fireplace is still smoldering a little and are signs of someone who has been tied up!" +
-                 "\n\t In the soil you see one of Hanare's black gloves! You follow their trail..."
+                 "\n\t In the soil you see one of Hanare's black gloves! You follow their trail...",
+
+                 "\n\t You sense that you are all alone at this place, the sun is shining and everything is calm" +
+                 "\n\t You set up camp for the night and eat some Ramen from Ichiraku..."
             };
             return stories;
         }
@@ -303,9 +306,12 @@ namespace TheShinobi.HelperMethods
                 $"\n\t While climbing up the mountains in search of Hanare you get ambushed by some filthy {enemy.Clan} villains!" +
                 "\n\t You attack, maybe they know more about Hanare's kidnapping!",
 
-                "\n\t You have walked for hours when you decide to set up camp at a lake. +" +
+                "\n\t You have walked for hours when you decide to set up camp at a lake." +
                 $"\n\t Suddenly some low life from the {enemy.Clan} Clan attacks you!" +
                 "\n\t Four of them run away when they see that it is you but one stays behind to fight!",
+
+                $"\n\t Ahead you hear fighting going on! It is some bastards from the {enemy.Clan} robbing a villager!" +
+                $"\n\t You draw your weapon and attack!",
 
                 "\n\t The sky is full of dark clouds and when lightning strikes the ground vibrates!" +
                 $"\n\t As you set up camp in the mountains to escape the bad weather some villains from the {enemy.Clan} Clan attacks!",
