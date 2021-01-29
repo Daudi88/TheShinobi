@@ -426,11 +426,13 @@ namespace TheShinobi.HelperMethods
                 $"\t  Some enemies from {enemy.Clan} clan are blocking your path" +
                 $"\n\t  There is no time to loose Hanare must be found quickly, you attack! {enemy.Name}",
 
-                $"\t  You sence there is trouble ahead! The {enemy.Clan} clan is trying to hide around the corner" +
+                $"\t  You sence there is trouble ahead! " +
+                $"nt  The {enemy.Clan} clan is trying to hide around the corner" +
                 $"\n\t  You can both smell and sense them miles away... You attack {enemy.Name}!",
 
                 "\t  You have followed Hanares kidnappers trail for hours when you hear enemies further ahead." +
-                $"\n\t  It is {enemy.Name} from the {enemy.Clan} You draw your weapon and attack! the enemies",
+                $"\n\t  It is {enemy.Name} from the {enemy.Clan} " +
+                $"\n\t  You draw your weapon and attack! the enemies",
 
                 $"\t  As you reach the lake you see {enemy.Name} from the {enemy.Clan} Clan!" +
                 $"\n\t  {enemy.Name} attacks you!"
