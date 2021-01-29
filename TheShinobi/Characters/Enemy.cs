@@ -6,6 +6,9 @@ using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Characters
 {
+    /// <summary>
+    /// Class for all enemies in the game. A lot of base stats are randomized.
+    /// </summary>
     class Enemy : Character
     {
         public string Pronoun { get; set; }

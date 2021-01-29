@@ -5,6 +5,9 @@ using TheShinobi.Interfaces;
 
 namespace TheShinobi.Items.Armors
 {
+    /// <summary>
+    /// <see langword="abstract"/> class for all armors.
+    /// </summary>
     abstract class Armor : Item, IEquipable
     {
         public int Defence { get; set; }

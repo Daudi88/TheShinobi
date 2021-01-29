@@ -9,6 +9,9 @@ using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Characters
 {
+    /// <summary>
+    /// Class for player characters. Some base abilities are randomized.
+    /// </summary>
     class Player : Character
     {
         public double Pos { get; set; } = 2.0;
@@ -29,6 +32,7 @@ namespace TheShinobi.Characters
             Weapon = new Fists();
             Damage = Weapon.Damage;
             Ninjutsus.Add(Get.Ninjutsu(Rank));
+            Ryō = Utility.random.Next(50, 200);
         }
 
         public void LevelUp()

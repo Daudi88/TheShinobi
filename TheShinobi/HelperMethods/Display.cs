@@ -22,6 +22,13 @@ namespace TheShinobi.HelperMethods
         static string soundLocation = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Credits.Wav");
         static SoundPlayer creditsPlayer = new SoundPlayer(soundLocation);
 
+        /// <summary>
+        /// Surrounds <paramref name="content"/> with a frame. 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="title"></param>
+        /// <param name="std"></param>
+        /// <param name="ending"></param>
         public static void WithFrame(List<string> content, string title = "", bool std = false, string ending = null)
         {
             if (std)
@@ -47,6 +54,11 @@ namespace TheShinobi.HelperMethods
             Console.Write("\t > ");
         }
 
+        /// <summary>
+        /// Prints out top of a fram with a <paramref name="title"/> embedded.
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="length"></param>
         private static void TopOfFrame(string title, int length)
         {
             ColorConsole.WriteEmbedded($"\t┏━{title}");
@@ -57,6 +69,11 @@ namespace TheShinobi.HelperMethods
             Console.WriteLine("┓");
         }
 
+        /// <summary>
+        /// Prints out the sides of the frame with its <paramref name="content"/> inbetween.
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="length"></param>
         private static void SidesOfFrame(List<string> content, int length)
         {
             foreach (string text in content)
@@ -65,6 +82,11 @@ namespace TheShinobi.HelperMethods
             }
         }
 
+        /// <summary>
+        /// Prints out a dividing line that separates parts of the content from eachother.
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="length"></param>
         private static void DividingLine(string title, int length)
         {
             ColorConsole.WriteEmbedded($"\t┣━{title}");
@@ -75,6 +97,10 @@ namespace TheShinobi.HelperMethods
             Console.WriteLine("┫");
         }
 
+        /// <summary>
+        /// Prints out bottom of the frame.
+        /// </summary>
+        /// <param name="length"></param>
         private static void BottomOfFrame(int length)
         {
             Console.Write("\t┗");
@@ -85,6 +111,11 @@ namespace TheShinobi.HelperMethods
             Console.WriteLine("┛");
         }
 
+        /// <summary>
+        /// Prints out the content of the backpack surrounded by a frame.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="sell"></param>
         internal static void Backpack(Player player, bool sell = false)
         {
             List<string> content = new List<string>();
@@ -97,6 +128,10 @@ namespace TheShinobi.HelperMethods
             WithFrame(content, "[DarkCyan]BACKPACK[/DarkCyan]", ending: "Close backpack");
         }
 
+        /// <summary>
+        /// Prints out the details of the player surrounded by a divided frame.
+        /// </summary>
+        /// <param name="player"></param>
         internal static void Details(Player player)
         {
             Console.SetWindowPosition(0, Console.CursorTop - Utility.V);
@@ -151,6 +186,15 @@ namespace TheShinobi.HelperMethods
             Utility.WaitForUser();
         }
 
+        /// <summary>
+        /// Prints out a frame that displays <see cref="Player"/> and <see cref="Enemy"/> stats.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="enemy"></param>
+        /// <param name="title"></param>
+        /// <param name="height"></param>
+        /// <param name="top"></param>
+        /// <param name="reset"></param>
         public static void BattleFrame(Player player, Enemy enemy, string title, int height, int top, bool reset = false)
         {
             string[] stats = new string[]
@@ -229,6 +273,10 @@ namespace TheShinobi.HelperMethods
             }
         }
 
+        /// <summary>
+        /// Prints out the map to the screen.
+        /// </summary>
+        /// <param name="player"></param>
         internal static void Map(Player player)
         {
             Console.SetWindowPosition(0, Console.CursorTop - Utility.V);
@@ -264,6 +312,11 @@ namespace TheShinobi.HelperMethods
             Utility.WaitForUser();
         }
 
+        /// <summary>
+        /// Prints out the <see cref="Player"/> position on the map.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="top"></param>
         private static void PlayerOnMap(Player player, int top)
         {
             var positions = Get.Positions();

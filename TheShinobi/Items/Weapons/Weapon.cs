@@ -5,6 +5,9 @@ using TheShinobi.Interfaces;
 
 namespace TheShinobi.Items.Weapons
 {
+    /// <summary>
+    /// <see langword="abstract"/> class for all weapons.
+    /// </summary>
     class Weapon : Item, IEquipable
     {
         public string Damage { get; set; }

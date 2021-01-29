@@ -5,6 +5,9 @@ using TheShinobi.Interfaces;
 
 namespace TheShinobi.Items
 {
+    /// <summary>
+    /// Class for energy drinks that boost the player with energy over a period.
+    /// </summary>
     class EnergyDrink : Item, IConsumable
     {
         public int Energy { get; set; }

@@ -5,6 +5,9 @@ using TheShinobi.Interfaces;
 
 namespace TheShinobi.Items.Consumables
 {
+    /// <summary>
+    /// Class for Consumable items that heals the player.
+    /// </summary>
     class Consumable : Item, IConsumable
     {
         public int Health { get; set; }

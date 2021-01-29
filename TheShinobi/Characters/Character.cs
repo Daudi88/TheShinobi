@@ -6,12 +6,19 @@ using TheShinobi.Items.Weapons;
 
 namespace TheShinobi.Characters
 {
+    /// <summary>
+    /// <see langword="abstract"/> class for <seealso cref="Player"/> and <see cref="Enemy"/> classes.
+    /// </summary>
     abstract class Character
     {
         public string Name { get; set; }
         public string Rank { get; set; }
         public int Level { get; set; }
         public Ability Stamina { get; set; } = new Ability();
+
+        /// <summary>
+        /// Affects hit rate and the current chakra is considered as base Defence.
+        /// </summary>
         public Ability Chakra { get; set; } = new Ability();
         public Ability Exp { get; set; } = new Ability();
         public Armor Armor { get; set; }
