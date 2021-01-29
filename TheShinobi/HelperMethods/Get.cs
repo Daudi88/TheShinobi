@@ -172,6 +172,15 @@ namespace TheShinobi.HelperMethods
         {
             Enemy[] enemies = new Enemy[]
             {
+                new Enemy("Zetsu Putih", "Akatsuki", 1, new Shirt(), new Fists(), new DecapitatingAirwaves()),
+                new Enemy("Zetsu Hitam", "Akatsuki", 1, new FlakJacket(), new Kunai(), new Chidori()),
+                new Enemy("Zabuza", "Akatsuki", 1, new ChakraArmor(), new ChakraBlade(), new ChidoriSenbon()),
+                new Enemy("Kabuto", "Akatsuki", 1, new FlakJacket(), new FistsOfBones(), new Rasengan()),
+                new Enemy("Jugo", "villan", 1, new Shirt(), new Kunai(), new DragonFire()),
+                new Enemy("Hidan", "Akatsuki", 1, new FlakJacket(), new Fists(), new FlameBullet()),
+                new Enemy("Karin", "Uzumaki", 1, new FlakJacket(), new FistsOfBones(), new AshPileBurning(), "her"),
+                new Enemy("Mizuki", "Otogakure", 1, new Shirt(), new Kunai(), new Chidori()),
+                new Enemy("Suien", "Takigakure", 1, new FlakJacket(), new Fists(), new EarthSpear()),
                 new Enemy("Sakon", "Sound Five", 1, new FlakJacket(), new Kunai(), new FlameBullet()),
                 new Enemy("Tayuya","Sound Four", 1, new Shirt(), new Fists(), new Chidori(), "her"),
                 new Enemy("Ukon", "Sound Five", 2, new Shirt(), new Kusarigama(), new ChidoriSenbon()),
