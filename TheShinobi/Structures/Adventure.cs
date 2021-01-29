@@ -10,6 +10,7 @@ using static TheShinobi.HelperMethods.Utility;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Consumables;
 using TheShinobi.Items.Weapons;
+using TheShinobi.Abilities.Ninjutsus;
 
 namespace TheShinobi.Structures
 {
@@ -339,7 +340,7 @@ namespace TheShinobi.Structures
 
             if (isBoss)
             {
-                //enemy = new Enemy("Orochimaru", "", 10, new ShinobiBattleArmor(), new ChakraBlade(), );
+                enemy = new Enemy("Orochimaru", "Konohagakure", 10, new ShinobiBattleArmor(), new Kusanagi(), new DragonFire());
                 bossPlayer.PlayLooping();
                 string[] story = Get.OrochimaruStory(player);
                 int ctr = 0;
