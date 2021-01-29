@@ -502,9 +502,9 @@ namespace TheShinobi.HelperMethods
                 "\n\t Nobody else would ever try to kill a Shinobi from behinde." +
                 "\n\t Three Akatsuku are attacking and they have you cornered. \n",
 
-                "\n\t Beeing a true ninjutsu hero you are draw your Weapon and counter attack. \n" +
+                "\n\t Beeing the true ninjutsu hero you are, you draw your Weapon and attack. \n" +
                 "\t The closest attacker throws a Kunai aimed at your heart! \n" +
-                "\n\t You use your chakra and redirect the knife into on of the other dirty" +
+                "\n\t You use your chakra and redirect the knife into one of the other dirty" +
                 "\n\t Akatsu scumbag's! \n",
 
                 "\t This fight did not last longer then a few minutes. \n" +
@@ -526,16 +526,16 @@ namespace TheShinobi.HelperMethods
                 "\n\t Kakuzu laughs like a mad man when he sees your confusion “HA HA HA HA“ \n" +
                 "\n\t “Did you not know that I teamed up with Orihime Inoue years ago? YOU FOOL!“ \n" +
                 "\t “Orihime brought me back from the dead not more then 30 minutes after you left! \n" +
-                "\t “She truly is special my dear Orihime...“",
+                "\n\t “She truly is special my dear Orihime...“",
 
                 "\n\t “You should have killed her when you had the chance!“ \n" +
                 "\n\t “Instead I will now kill someone near and dear to you! \n" +
                 "\t “I want you to watch me kill Hanare before I come back and kill you to!” \n" +
-                "\t “GRAB HIM!!!“\n",
+                "\n\t “GRAB HIM!!!“\n",
 
                 "\t You are suddenly overwhelmed by enemies pulling you down towards the ground, \n" +
                 "\t where did they come from!? \n" +
-                "\t Kakuzu must have used his {ability} to block your senses! \n",
+                "\n\t Kakuzu must have used his {ability} to block your senses! \n",
 
                 "\t Well, if this how he wants to play, fine by me! \n" +
                 "\t “You shall meet your own powers you fool!“ \n\n" +
@@ -550,7 +550,7 @@ namespace TheShinobi.HelperMethods
                 "\n\t A true Shinobi are known to keep their cool even when angry! \n" +
                 "\t The story of this fight will live on as a tale forever...“\n",
 
-                "\t As you come back to your senses you rush to Hanare \n" +
+                "\n\t As you come back to your senses you rush to Hanare \n" +
                 "\t and untie the ropes around her hands and neck \n" +
                 "\t she is still unconscious and very very weak. \n ",
 
