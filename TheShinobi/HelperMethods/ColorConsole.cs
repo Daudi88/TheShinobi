@@ -113,6 +113,7 @@ namespace TheShinobi.HelperMethods
         public static void WriteEmbeddedSetDelayed(string text, int top, int bottom)
         {
             bool result;
+            bool firstPart = true;
             while (true)
             {
                 var match = colorRegex.Match(text);
@@ -121,7 +122,15 @@ namespace TheShinobi.HelperMethods
                     result = WriteDelayed(content: text);
                     break;
                 }
-                WriteDelayed(content: text.Substring(0, match.Index));
+                if (firstPart)
+                {
+                    WriteSetDelayed(text.Substring(0, match.Index), top);
+                    firstPart = false;
+                }
+                else
+                {
+                    WriteDelayed(content: text.Substring(0, match.Index));
+                }
                 string hightlight = match.Groups["text"].Value;
                 string color = match.Groups["color"].Value;
                 Enum.TryParse(color, out ConsoleColor col);
@@ -134,7 +143,7 @@ namespace TheShinobi.HelperMethods
             }
             else
             {
-                Utility.WaitForUser();
+                Utility.WaitSetForUser(bottom);
             }
         }
 

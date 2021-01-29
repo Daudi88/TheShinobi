@@ -201,5 +201,27 @@ namespace TheShinobi.HelperMethods
                 Console.ReadKey(true);
             }
         }
+
+        public static void WaitSetForUser(int bottom)
+        {
+            bool isKeyPressed = false;
+            for (int i = 0; i < 100; i++)
+            {
+                Thread.Sleep(50);
+                if (Console.KeyAvailable)
+                {
+                    isKeyPressed = true;
+                    break;
+                }
+            }
+            if (!isKeyPressed)
+            {
+                Display.SetBlinking("\t[Press enter to continue]", bottom);
+            }
+            else
+            {
+                Console.ReadKey(true);
+            }
+        }
     }
 }

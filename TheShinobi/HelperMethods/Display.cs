@@ -155,14 +155,12 @@ namespace TheShinobi.HelperMethods
         public static void BattleFrame(string title, List<string> stats, int height)
         {
             int length = 41;
-            ColorConsole.WriteEmbedded($"\n\t┏━{title}");
-            
+            ColorConsole.WriteEmbedded($"\n\t┏━{title}");            
             for (int i = 0; i < length - title.Length + Get.ColorLength(title) + 2; i++)
             {
                 Console.Write("━");
             }
-            Console.Write("┳");
-            
+            Console.Write("┳");           
             for (int i = 0; i < length + 3; i++)
             {
                 Console.Write("━");
@@ -184,8 +182,6 @@ namespace TheShinobi.HelperMethods
             int length2 = length + colorLength2;
             stat = $"{stats[3]}: {stats[4]}, {stats[5]}";
             ColorConsole.WriteEmbedded($"┃ {stat.PadRight(length2)}  ┃\n");
-
-            // ColorConsole.WriteEmbedded($"\t┃ {stats[0].PadRight(length1)}  ┃ {stats[1].PadRight(length2)}  ┃\n");
             Console.Write("\t┣");
             for (int i = 0; i < length + 3; i++)
             {
@@ -254,6 +250,26 @@ namespace TheShinobi.HelperMethods
         }
 
         public static void Blinking(string text)
+        {
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    Console.WriteLine("                                        ");
+                    Console.ReadKey(true);
+                    Console.SetCursorPosition(0, Console.CursorTop - 1);
+                    break;
+                }
+                Console.WriteLine(text);
+                Thread.Sleep(600);
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                Console.WriteLine("                                        ");
+                Thread.Sleep(300);
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+            }
+        }
+
+        public static void SetBlinking(string text, int bottom)
         {
             while (true)
             {

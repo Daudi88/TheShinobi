@@ -53,15 +53,16 @@ namespace TheShinobi.Characters
             {
                 if (int.TryParse(ColorConsole.ReadLine(), out int choice))
                 {
-                    Console.SetCursorPosition(10 + 1, Console.CursorTop - 1);
-                    Console.Write("                                              ");
+                    int bottom = Console.CursorTop;
+                    //Console.SetCursorPosition(10 + 1, Console.CursorTop - 1);
+                    //Console.Write("                                              ");
                     string text = "";
                     if (Utility.RollDice("1d20") + Chakra.Current >= defender.Defence)
                     {
                         if (choice == 1)
                         {
                             text = $"You hit {defender.Name} with your {Weapon.Name} dealing [Yellow]{Utility.RollDice(Weapon.Damage)}[/Yellow] damage!";
-                            ColorConsole.WriteEmbeddedSetDelayed(text, top);
+                            ColorConsole.WriteEmbeddedSetDelayed(text, top, bottom);
                         }
                         else if (choice - 2 < Ninjutsus.Count)
                         {
