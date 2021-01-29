@@ -20,21 +20,19 @@ namespace TheShinobi.Structures
         static string soundLocation2 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Adventure.wav");
         static string soundLocation3 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Treasure.wav");
         static string soundLocation4 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\AbuHassan.wav");
-        static string soundLocation5 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Hiruzen.wav");
-        static string soundLocation6 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Graveyard.wav");
-        static string soundLocation7 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\KakashiFightSongUP3.wav");
-        static string soundLocation8 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Battle.wav");
-        static string soundLocation9 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\BossStory.wav");
+        static string soundLocation5 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Graveyard.wav");
+        static string soundLocation6 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\KakashiFightSong.wav");
+        static string soundLocation7 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Battle.wav");
+        static string soundLocation8 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\BossStory.wav");
 
         public static SoundPlayer villagePlayer = new SoundPlayer(soundLocation1);
         public static SoundPlayer adventurePlayer = new SoundPlayer(soundLocation2);
         static SoundPlayer treasurePlayer = new SoundPlayer(soundLocation3);
         static SoundPlayer abuHassanPlayer = new SoundPlayer(soundLocation4);
-        static SoundPlayer hiruzenPlayer = new SoundPlayer(soundLocation5);
-        static SoundPlayer graveyardPlayer = new SoundPlayer(soundLocation6);
-        public static SoundPlayer endPlayer = new SoundPlayer(soundLocation7);
-        static SoundPlayer battlePlayer = new SoundPlayer(soundLocation8);
-        static SoundPlayer bossPlayer = new SoundPlayer(soundLocation9);
+        static SoundPlayer graveyardPlayer = new SoundPlayer(soundLocation5);
+        public static SoundPlayer endPlayer = new SoundPlayer(soundLocation6);
+        static SoundPlayer battlePlayer = new SoundPlayer(soundLocation7);
+        static SoundPlayer bossPlayer = new SoundPlayer(soundLocation8);
 
         private static bool isTreasureTaken = false;
         private static bool isGraveyardVisited = false;
@@ -47,8 +45,8 @@ namespace TheShinobi.Structures
         public static void Menu(Player player)
         {
             player.Pos += 0.1;
-            adventurePlayer.PlayLooping();
-            string story = $"\n\n\n\t All of your clan members are away to practice at Daisan Enshūjō." +
+            adventurePlayer.PlayLooping();            
+            string story = $"\n\n\t All of your clan members are away to practice at Daisan Enshūjō." +
                 "\n\t They are five days away in the south and have taken most of the" +
                 "\n\t village's equipment with them." +
                 "\n\n\t You will have to rescue Hanare on your own!" +
@@ -60,13 +58,18 @@ namespace TheShinobi.Structures
                 "\n\n\t There are rumors about treasures containing some usefull loot outside the village." +
                 "\n\t Also, take care and don't loose yourself in the wild...";
 
-            ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
+            if (isLeavingHome)
+            {
+                ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
+                isLeavingHome = false;
+            }
+            
             bool exit = false;
             Console.SetWindowPosition(0, Console.CursorTop - V);
             while (!exit)
             {
+                ColorConsole.WriteDelayedLine("\n\n\t What do you want to do?");
                 player.Pos = Math.Round(player.Pos, 1);
-                Console.WriteLine("\n\n");
                 var options = Get.Options(player, out List<string> content);
                 Display.WithFrame(content, "[Yellow]ADVENTURE[/Yellow]", true);
                 ChooseANumber(content.Count, out int choice, player, true);
@@ -154,12 +157,12 @@ namespace TheShinobi.Structures
                 Weapon[] swords = Get.SevenSwords(player);
                 Weapon sword = swords[random.Next(swords.Length)];
                 AddToBackpack(player, sword);
-                ColorConsole.WriteEmbeddedDelayed($"\t  You find the [Yellow]{sword.Name}[/Yellow], a sword of the Seven Swordsmen!\n");
+                ColorConsole.WriteEmbeddedDelayed($"\t You find the [Yellow]{sword.Name}[/Yellow], a legendary sword of the Seven Swordsmen!\n");
                 isGraveyardVisited = true;
             }
             else
             {
-                ColorConsole.WriteOver("\t  The graveyard is dead silent.", ConsoleColor.Red);
+                ColorConsole.WriteOver("\t The graveyard is dead silent.", ConsoleColor.Red);
             }
             adventurePlayer.PlayLooping();
             return false;
@@ -203,7 +206,6 @@ namespace TheShinobi.Structures
             ColorConsole.WriteDelayedLine("\n\n\t Welcome to Abu Hassan's one stop shop for everything" +
                 "\n\t a real Shinobi from the hood could ever want!");
             int top = Console.CursorTop;
-            int left = 9;
             while (true)
             {
                 Console.SetCursorPosition(0, top);
@@ -251,10 +253,11 @@ namespace TheShinobi.Structures
         /// <returns></returns>
         public static bool ToHiruzen(Player player)
         {
-            hiruzenPlayer.PlayLooping();
+            treasurePlayer.PlayLooping();
             player.Pos -= 1.0;
             if (!isHiruzenVisited)
             {
+                Console.WriteLine("\n\n");
                 Console.SetWindowPosition(0, Console.CursorTop - V);
                 Weapon weapon = new Kusarigama();
                 Armor armor = new InfiniteArmor();
@@ -341,6 +344,7 @@ namespace TheShinobi.Structures
             if (isBoss)
             {
                 enemy = new Enemy("Orochimaru", "Konohagakure", 10, new ShinobiBattleArmor(), new Kusanagi(), new DragonFire());
+                enemy.Stamina.Current = 100;
                 bossPlayer.PlayLooping();
                 string[] story = Get.OrochimaruStory(player);
                 int ctr = 0;
@@ -439,7 +443,7 @@ namespace TheShinobi.Structures
                             EnergyDip(player, textTop);
                         }
                         WaitSetForUser(bottom - 5);
-                        Console.WriteLine("\n\n");
+                        Console.WriteLine("\n");
                         adventurePlayer.PlayLooping();
                     }
                 }

@@ -416,7 +416,7 @@ namespace TheShinobi.HelperMethods
                 $"\n\t  There is no time to loose Hanare must be found quickly, you attack {enemy.Name}!",
 
                 $"\t  You sence there is trouble ahead! " +
-                $"nt  The {enemy.Clan} clan is trying to hide around the corner" +
+                $"\n\t  The {enemy.Clan} clan is trying to hide around the corner" +
                 $"\n\t  You can both smell and sense them miles away... You attack {enemy.Name}!",
 
                 "\t  You have followed Hanares kidnappers trail for hours when you hear enemies further ahead." +

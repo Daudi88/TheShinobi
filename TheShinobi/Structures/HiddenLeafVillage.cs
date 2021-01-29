@@ -21,7 +21,7 @@ namespace TheShinobi.Structures
                 Console.SetWindowPosition(0, Console.CursorTop - V);
                 if (isVisitingVillage)
                 {
-                    ColorConsole.WriteDelayed(content: "\n\n\n\t Welcome to the Hidden Leaf Village!\n");
+                    ColorConsole.WriteDelayed(content: "\n\n\t Welcome to the Hidden Leaf Village!\n");
                 }
                 else
                 {
@@ -117,7 +117,7 @@ namespace TheShinobi.Structures
         /// <param name="player"></param>
         private static void KonohaHospital(Player player)
         {
-            ColorConsole.WriteDelayed(content: "\n\n\n\t Welcome to Konoha Hospital!\n");
+            ColorConsole.WriteDelayed(content: "\n\n\t Welcome to Konoha Hospital!\n");
             int top = Console.CursorTop;
             while (true)
             {
@@ -181,7 +181,7 @@ namespace TheShinobi.Structures
         /// <param name="player"></param>
         private static void NinjaToolShop(Player player)
         {
-            ColorConsole.WriteDelayed(content: "\n\n\n\t Welcome to the Ninja Tool Shop!\n");
+            ColorConsole.WriteDelayed(content: "\n\n\t Welcome to the Ninja Tool Shop!\n");
             int top = Console.CursorTop;
             while (true)
             {

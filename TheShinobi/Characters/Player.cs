@@ -68,7 +68,7 @@ namespace TheShinobi.Characters
             {
                 if (int.TryParse(ColorConsole.ReadLine(), out int choice))
                 {
-                    if (Utility.RollDice("1d12") + Chakra.Current >= defender.Defence + defender.Chakra.Current)
+                    if (Utility.RollDice("1d100") >= defender.Defence + defender.Chakra.Current)
                     {
                         int damage;
                         if (choice == 1)
