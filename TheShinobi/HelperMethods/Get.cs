@@ -450,7 +450,7 @@ namespace TheShinobi.HelperMethods
                 "\n\t Akatsu scumbag's! \n",
 
                 "\t This fight did not last longer then a few minutes. \n" +
-                "n\t They where weak and in your way. \n" +
+                "\n\t They where weak and in your way. \n" +
                 "\t Now they are all very very dead...\n",
 
                 "\t You sense Hanare is close and you walk into one of the dark side tunnels...\n" +
