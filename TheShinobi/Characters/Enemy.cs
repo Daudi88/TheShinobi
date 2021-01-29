@@ -41,7 +41,7 @@ namespace TheShinobi.Characters
         public override string Attack(Character defender)
         {
             string text = "";            
-            if (Utility.RollDice("1d100") >= defender.Defence + defender.Chakra.Current)
+            if (Utility.RollDice("1d20") >= defender.Defence)
             {
                 string weapon;
                 int damage;

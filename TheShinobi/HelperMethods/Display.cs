@@ -151,7 +151,7 @@ namespace TheShinobi.HelperMethods
                 $"Exp: [Yellow]{player.Exp}[/Yellow]",
                 $"Stamina: [{color}]{player.Stamina} {bonus}[/{color}]",
                 $"Chakra: [{color}]{player.Chakra} {bonus}[/{color}]",
-                $"Defence: [{color}]{player.Defence + player.Chakra.Current} {bonus}[/{color}]",
+                $"Defence: [{color}]{player.Defence} {bonus}[/{color}]",
                 $"Damage: [{color}]{player.Damage} {bonus}[/{color}]",
                 $"Ryō: [Yellow]{player.Ryō}[/Yellow]",
             };
