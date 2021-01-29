@@ -154,32 +154,50 @@ namespace TheShinobi.HelperMethods
 
         public static void BattleFrame(string title, List<string> stats, int height)
         {
+            int length = 41;
             ColorConsole.WriteEmbedded($"\n\t┏━{title}");
-            int length1 = stats[0].Length - Get.ColorLength(stats[0]);
-            for (int i = 0; i < length1 - title.Length + Get.ColorLength(title) + 2; i++)
+            
+            for (int i = 0; i < length - title.Length + Get.ColorLength(title) + 2; i++)
             {
                 Console.Write("━");
             }
             Console.Write("┳");
-            int length2 = stats[1].Length - Get.ColorLength(stats[1]);
-            for (int i = 0; i < length2 + 3; i++)
+            
+            for (int i = 0; i < length + 3; i++)
             {
                 Console.Write("━");
             }
             Console.WriteLine("┓");
-            ColorConsole.WriteEmbedded($"\t┃ {stats[0].PadRight(length1)}  ┃ {stats[1].PadRight(length2)}  ┃\n");
+            int colorLength1 = 0;
+            for (int i = 0; i < 3; i++)
+            {
+                colorLength1 += Get.ColorLength(stats[i]);
+            }
+            int length1 = length + colorLength1;
+            string stat = $"{stats[0]}: {stats[1]}, {stats[2]}";
+            ColorConsole.WriteEmbedded($"\t┃ {stat.PadRight(length1)}  ");
+            int colorLength2 = 0;
+            for (int i = 3; i < 6; i++)
+            {
+                colorLength2 += Get.ColorLength(stats[i]);
+            }
+            int length2 = length + colorLength2;
+            stat = $"{stats[3]}: {stats[4]}, {stats[5]}";
+            ColorConsole.WriteEmbedded($"┃ {stat.PadRight(length2)}  ┃\n");
+
+            // ColorConsole.WriteEmbedded($"\t┃ {stats[0].PadRight(length1)}  ┃ {stats[1].PadRight(length2)}  ┃\n");
             Console.Write("\t┣");
-            for (int i = 0; i < length1 + 3; i++)
+            for (int i = 0; i < length + 3; i++)
             {
                 Console.Write("━");
             }
             Console.Write("┻");
-            for (int i = 0; i < length2 + 3; i++)
+            for (int i = 0; i < length + 3; i++)
             {
                 Console.Write("━");
             }
             Console.WriteLine("┫");
-            int length = length1 + length2 + 4;
+            length = length * 2 + 4;
             for (int i = 0; i < height; i++)
             {
                 Console.Write("\t┃ ");

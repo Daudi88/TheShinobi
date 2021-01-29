@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TheShinobi.Abilities;
 using TheShinobi.HelperMethods;
 using TheShinobi.Items;
@@ -11,7 +12,6 @@ namespace TheShinobi.Characters
     {
         public double Pos { get; set; } = 2.0;
         public int AttackBonus { get; set; }
-        public Ability Chakra { get; set; }
         public List<Item> Backpack { get; set; } = new List<Item>();
         public Player(string name)
         {
@@ -19,8 +19,10 @@ namespace TheShinobi.Characters
             Level = 1;
             Rank = "Genin";
             Exp = new Ability(0, 200);
-            Stamina = new Ability(31, 31);
-            Chakra = new Ability(5, 5);
+            Stamina.Max = Utility.random.Next(28, 36);
+            Stamina.Current = Stamina.Max;
+            Chakra.Max = Utility.random.Next(5, 13);
+            Chakra.Current = Chakra.Max;
             Armor = new Shirt();
             Defence = Armor.Defence;
             Weapon = new Fists();
@@ -45,22 +47,45 @@ namespace TheShinobi.Characters
             Stamina.Current = Stamina.Max;
         }
 
-        public void Attack(Character defender, int top, int choice)
+        public void Attack(Character defender, int top)
         {
-            string text = "";
-            if (Utility.RollDice("1d20") + Chakra.Current >= defender.Defence)
+            while (true)
             {
-                if (choice == 1)
+                if (int.TryParse(ColorConsole.ReadLine(), out int choice))
                 {
-                    text = $"You hit {defender.Name} with your {Weapon.Name}!";
-                    ColorConsole.WriteSetDelayed(text, top);
-                }             
+                    Console.SetCursorPosition(10 + 1, Console.CursorTop - 1);
+                    Console.Write("                                              ");
+                    string text = "";
+                    if (Utility.RollDice("1d20") + Chakra.Current >= defender.Defence)
+                    {
+                        if (choice == 1)
+                        {
+                            text = $"You hit {defender.Name} with your {Weapon.Name} dealing [Yellow]{Utility.RollDice(Weapon.Damage)}[/Yellow] damage!";
+                            ColorConsole.WriteEmbeddedSetDelayed(text, top);
+                        }
+                        else if (choice - 2 < Ninjutsus.Count)
+                        {
+                            Ninjutsu jutsu = Ninjutsus[choice - 2];
+                            text = $"You hit {defender.Name} with your {jutsu.Name} dealing [DarkCyan]{Utility.RollDice(jutsu.Damage)}[/DarkCyan] damage!";
+                        }
+                        else
+                        {
+                            ColorConsole.WriteOver("\t Invalid choice. Try again!", ConsoleColor.Red);
+                        }
+                    }
+                    else
+                    {
+                        text = "You miss!";
+                        ColorConsole.WriteSetDelayed(text, top);
+                    }
+                }
+                else
+                {
+                    ColorConsole.WriteOver("\t Invalid choice. Try again!", ConsoleColor.Red);
+                }
+                
             }
-            else
-            {
-                text = "You miss!";
-                ColorConsole.WriteSetDelayed(text, top);
-            }
+            
         }
     }
 }

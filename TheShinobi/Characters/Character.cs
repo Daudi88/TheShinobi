@@ -11,6 +11,7 @@ namespace TheShinobi.Characters
         public string Rank { get; set; }
         public int Level { get; set; }
         public Ability Stamina { get; set; } = new Ability();
+        public Ability Chakra { get; set; } = new Ability();
         public Ability Exp { get; set; } = new Ability();
         public Armor Armor { get; set; }
         public Weapon Weapon { get; set; }

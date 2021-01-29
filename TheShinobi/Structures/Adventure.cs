@@ -281,36 +281,28 @@ namespace TheShinobi.Structures
             while (!exit)
             {
                 Console.SetCursorPosition(0, top);
-                string text;
-                if (player.Stamina.Current < player.Stamina.Max / 5)
-                {
-                    text = $"[Red]{player.Stamina.Current}[/Red]";
-                }
-                else
-                {
-                    text = player.Stamina.Current.ToString();
-                }
+                string stat;
                 List<string> fighterStats = new List<string>()
                 {
-                    $"{player.Name}: {text} Stamina, {player.Chakra.Current} Chakra",
-                    $"{enemy.Name}: {enemy.Stamina.Current} Stamina"
+                    $"{player.Name}",
+                    $"{stat = Get.Status(player.Stamina, "Yellow")} Stamina",
+                    $"{stat = Get.Status(player.Chakra, "DarkCyan")} Chakra",
+                    $"{enemy.Name}",
+                    $"{stat = Get.Status(enemy.Stamina, "Yellow")} Stamina",
+                    $"{stat = Get.Status(enemy.Chakra, "DarkCyan")} Chakra"
                 };
                 Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats, 5);
-                Console.WriteLine("\t Choose a weapon to attack with");
-                int ctr = 1;
-                Console.WriteLine($"\t {ctr++}. {player.Weapon.Name} {player.Weapon.BonusText()}");
-                foreach (var jutsu in player.Ninjutsus)
-                {
-                    Console.WriteLine($"\t {ctr++}. {jutsu}");
-                }
-                Console.Write("\t > ");
-                int.TryParse(ColorConsole.ReadLine(), out int choice);
-                Console.SetCursorPosition(left + 1, Console.CursorTop - 1);
-                Console.Write("                                              ");
-
                 if (enemy.Stamina.Current > 0)
                 {
-                    player.Attack(enemy, textTop++, choice);
+                    Console.WriteLine("\t Choose a weapon or jutsu to attack with:");
+                    int ctr = 1;
+                    Console.WriteLine($"\t {ctr++}. {player.Weapon.Name} {player.Weapon.BonusText()}");
+                    foreach (var jutsu in player.Ninjutsus)
+                    {
+                        Console.WriteLine($"\t {ctr++}. {jutsu}");
+                    }
+                    Console.Write("\t > ");
+                    player.Attack(enemy, textTop++);
                 }
                 Console.ReadLine();
 

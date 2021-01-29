@@ -69,11 +69,11 @@ namespace TheShinobi.Structures
                 {
                     ColorConsole.WriteOver("\t The name cannot contain digits. Try again!", ConsoleColor.Red);
                 }
-                else if (name.Length < 5)
+                else if (name.Length < 4)
                 {
                     ColorConsole.WriteOver("\t The name is too short. Try again!", ConsoleColor.Red);
                 }
-                else if (name.Length > 12)
+                else if (name.Length > 14)
                 {
                     ColorConsole.WriteOver("\t The name is too long. Try again!", ConsoleColor.Red);
                 }

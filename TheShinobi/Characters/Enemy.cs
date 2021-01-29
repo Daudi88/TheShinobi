@@ -8,12 +8,15 @@ namespace TheShinobi.Characters
     class Enemy : Character
     {
         public string Clan { get; set; }
-        public Enemy(string name, string clan, int level, int stamina, Armor armor, Weapon weapon)
+        public Enemy(string name, string clan, int level, Armor armor, Weapon weapon)
         {
             Name = name;
             Clan = clan;
             Level = level;
-            Stamina.Current = stamina;
+            Stamina.Max = Utility.random.Next(3 * Level + 12, 3 * Level + 33);
+            Stamina.Current = Stamina.Max;
+            Chakra.Max = Utility.random.Next(5 * Level, 6 * Level + 5);
+            Chakra.Current = Chakra.Max;
             Armor = armor;
             Weapon = weapon;
             Defence = Armor.Defence;

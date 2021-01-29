@@ -110,6 +110,34 @@ namespace TheShinobi.HelperMethods
             }
         }
 
+        public static void WriteEmbeddedSetDelayed(string text, int top, int bottom)
+        {
+            bool result;
+            while (true)
+            {
+                var match = colorRegex.Match(text);
+                if (match.Length < 1)
+                {
+                    result = WriteDelayed(content: text);
+                    break;
+                }
+                WriteDelayed(content: text.Substring(0, match.Index));
+                string hightlight = match.Groups["text"].Value;
+                string color = match.Groups["color"].Value;
+                Enum.TryParse(color, out ConsoleColor col);
+                WriteDelayed(col, content: hightlight);
+                text = text.Substring(match.Index + match.Value.Length);
+            }
+            if (result)
+            {
+                Console.ReadKey(true);
+            }
+            else
+            {
+                Utility.WaitForUser();
+            }
+        }
+
         public static bool WriteDelayed(ConsoleColor color = ConsoleColor.White, int delay = 20, bool exitable = true, params string[] content)
         {
             bool isKeyPressed = false;

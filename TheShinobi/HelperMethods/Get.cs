@@ -51,6 +51,18 @@ namespace TheShinobi.HelperMethods
             return 0;
         }
 
+        public static string Status(Ability ability, string color)
+        {
+            if (ability.Current < ability.Max / 5)
+            {
+                return $"[Red]{ability.Current}[/Red]";
+            }
+            else
+            {
+                return $"[{color}]{ability.Current}[/{color}]";
+            }
+        }
+
         public static string DamageDice(int level)
         {
             return level switch
@@ -159,25 +171,25 @@ namespace TheShinobi.HelperMethods
         {
             Enemy[] enemies = new Enemy[]
             {
-                new Enemy("Sakon", "Sound Five", 1, 30, new FlakJacket(), new Kiba()),
-                new Enemy("Tayuya","Sound Four", 1, 30, new Shirt(), new Fists()),
-                new Enemy("Ukon", "Sound Five", 2, 32, new Shirt(), new Kusarigama()),
-                new Enemy("Sasori", "Akatsuki", 2, 32, new Shirt(), new TekagiShuko()),
-                new Enemy("Konan", "Amegakure", 3, 35, new FlakJacket(), new Kubikiribōchō()),
-                new Enemy("Nagato", "Uzumaki", 3, 35, new SteamArmor(), new Kunai()),
-                new Enemy("Haku", "Yuki", 4, 39, new FlakJacket(), new Shuriken()),
-                new Enemy("Obito", "Uchiha", 4, 39, new ChakraArmor(), new Gunbai()),
-                new Enemy("Kaguya", "Kaguya", 5, 44, new FlakJacket(), new FistsOfBones()),
-                new Enemy("Ginkaku", "Kinkaku Force", 5, 44, new SteamArmor(), new Shichiseiken()),
-                new Enemy("Madara", "Uchiha", 6, 50, new InfiniteArmor(), new Gunbai()),
-                new Enemy("Hanzō", "Amegakure", 6, 50, new InfiniteArmor(), new Kusarigama()),
-                new Enemy("Deidara", "Akatsuki", 7, 57, new SteamArmor(), new Shuriken()),
-                new Enemy("Kimimaro", "Kaguya", 7, 57, new ChakraArmor(), new FistsOfBones()),
-                new Enemy("Kabuto", "Konohagakure", 7, 57, new SteamArmor(), new Shichiseiken()),
-                new Enemy("Kisame", "Hoshigaki", 8, 65, new FlakJacket(), new Kunai()),
-                new Enemy("Kakuzu", "Akatsuki", 8, 65, new InfiniteArmor(), new Kusarigama()),
-                new Enemy("Hocke", "1337", 8, 70, new BulletproofVest(), new AK47()),
-                new Enemy("Daudi", "1337", 9, 74, new BulletproofVest(), new AK47()),
+                new Enemy("Sakon", "Sound Five", 1, new FlakJacket(), new Kiba()),
+                new Enemy("Tayuya","Sound Four", 1, new Shirt(), new Fists()),
+                new Enemy("Ukon", "Sound Five", 2, new Shirt(), new Kusarigama()),
+                new Enemy("Sasori", "Akatsuki", 2, new Shirt(), new TekagiShuko()),
+                new Enemy("Konan", "Amegakure", 3, new FlakJacket(), new Kubikiribōchō()),
+                new Enemy("Nagato", "Uzumaki", 3, new SteamArmor(), new Kunai()),
+                new Enemy("Haku", "Yuki", 4, new FlakJacket(), new Shuriken()),
+                new Enemy("Obito", "Uchiha", 4, new ChakraArmor(), new Gunbai()),
+                new Enemy("Kaguya", "Kaguya", 5, new FlakJacket(), new FistsOfBones()),
+                new Enemy("Ginkaku", "Kinkaku Force", 5, new SteamArmor(), new Shichiseiken()),
+                new Enemy("Madara", "Uchiha", 6, new InfiniteArmor(), new Gunbai()),
+                new Enemy("Hanzō", "Amegakure", 6, new InfiniteArmor(), new Kusarigama()),
+                new Enemy("Deidara", "Akatsuki", 7, new SteamArmor(), new Shuriken()),
+                new Enemy("Kimimaro", "Kaguya", 7, new ChakraArmor(), new FistsOfBones()),
+                new Enemy("Kabuto", "Konohagakure", 7, new SteamArmor(), new Shichiseiken()),
+                new Enemy("Kisame", "Hoshigaki", 8, new FlakJacket(), new Kunai()),
+                new Enemy("Kakuzu", "Akatsuki", 8, new InfiniteArmor(), new Kusarigama()),
+                new Enemy("Hocke", "1337", 8, new BulletproofVest(), new AK47()),
+                new Enemy("Daudi", "1337", 9, new BulletproofVest(), new AK47()),
 
             };
             return enemies;
