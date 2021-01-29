@@ -73,7 +73,11 @@ namespace TheShinobi.HelperMethods
                 return $"[{color}]{ability.Current}[/{color}]";
             }
         }
-
+        /// <summary>
+        ///  Checks dice for damage. 
+        /// </summary>
+        /// <param name="level"></param>
+        /// <returns></returns>
         public static string DamageDice(int level)
         {
             return level switch
@@ -177,13 +181,16 @@ namespace TheShinobi.HelperMethods
             positions.Add(5.4, new Tuple<int, int, string>(80, 5, "WS"));
             return positions;
         }
-
+        /// <summary>
+        /// Enemies are randomised from this Enemy array.
+        /// </summary>
+        /// <returns></returns>
         public static Enemy[] Enemies()
         {
             Enemy[] enemies = new Enemy[]
             {
-                new Enemy("Zetsu Putih", "Akatsuki", 1, new Shirt(), new Fists(), new DecapitatingAirwaves()),
-                new Enemy("Zetsu Hitam", "Akatsuki", 1, new FlakJacket(), new Kunai(), new Chidori()),
+                new Enemy("Putih", "Akatsuki", 1, new Shirt(), new Fists(), new DecapitatingAirwaves()),
+                new Enemy("Hitam", "Akatsuki", 1, new FlakJacket(), new Kunai(), new Chidori()),
                 new Enemy("Zabuza", "Akatsuki", 1, new ChakraArmor(), new ChakraBlade(), new ChidoriSenbon()),
                 new Enemy("Kabuto", "Akatsuki", 1, new FlakJacket(), new FistsOfBones(), new Rasengan()),
                 new Enemy("Jugo", "a villan", 1, new Shirt(), new Kunai(), new DragonFire()),
@@ -213,7 +220,11 @@ namespace TheShinobi.HelperMethods
             };
             return enemies;
         }
-
+        /// <summary>
+        /// Controls the Ninjutsu ranks.
+        /// </summary>
+        /// <param name="rank"></param>
+        /// <returns></returns>
         public static Ninjutsu Ninjutsu(string rank)
         {
             switch (rank)
