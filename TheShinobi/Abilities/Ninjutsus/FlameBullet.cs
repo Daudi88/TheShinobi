@@ -4,13 +4,13 @@ using System.Text;
 
 namespace TheShinobi.Abilities.Ninjutsus
 {
-    class Chūnin : Ninjutsu
+    class FlameBullet : Ninjutsu
     {
-        public Chūnin()
+        public FlameBullet()
         {
-            Name = "Rasengan";
-            Damage = "4d12";
-            Cost = 50;
+            Name = "Flame Bullet";
+            Damage = "3d8";
+            Cost = 20;
         }
     }
 }

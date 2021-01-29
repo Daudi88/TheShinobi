@@ -53,7 +53,7 @@ namespace TheShinobi.HelperMethods
 
         public static string Status(Ability ability, string color)
         {
-            if (ability.Current < ability.Max / 5)
+            if (ability.Current < Math.Ceiling((double)ability.Max / 5))
             {
                 return $"[Red]{ability.Current}[/Red]";
             }
@@ -171,9 +171,9 @@ namespace TheShinobi.HelperMethods
         {
             Enemy[] enemies = new Enemy[]
             {
-                new Enemy("Shinobi", "Sound Four", 1, new Shirt(), new Fists(), new PaperShuriken()),
-                new Enemy("Sakon", "Sound Five", 2, new FlakJacket(), new Kiba()),
-                new Enemy("Tayuya","Sound Four", 2, new Shirt(), new Fists()),
+                //new Enemy("Shinobi", "Sound Four", 1, new Shirt(), new Fists(), new PaperShuriken()),
+                new Enemy("Sakon", "Sound Five", 1, new FlakJacket(), new Kiba()),
+                new Enemy("Tayuya","Sound Four", 1, new Shirt(), new Fists()),
                 new Enemy("Ukon", "Sound Five", 2, new Shirt(), new Kusarigama()),
                 new Enemy("Sasori", "Akatsuki", 2, new Shirt(), new TekagiShuko()),
                 new Enemy("Konan", "Amegakure", 3, new FlakJacket(), new Kubikiribōchō()),

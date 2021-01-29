@@ -4,11 +4,12 @@ using System.Text;
 
 namespace TheShinobi.Abilities.Ninjutsus
 {
-    class Genin : Ninjutsu
+    class Rasengan : Ninjutsu
     {
-        public Chūnin()
+        public Rasengan()
         {
             Name = "Rasengan";
+            Rank = 'A';
             Damage = "4d12";
             Cost = 50;
         }

@@ -152,7 +152,7 @@ namespace TheShinobi.HelperMethods
             Utility.WaitForUser();
         }
 
-        public static void BattleFrame(string title, List<string> stats, int height, int top)
+        public static void BattleFrame(string title, List<string> stats, int height, int top, bool reset = false)
         {
             Console.SetCursorPosition(0, top);
             int length = 41;
@@ -195,8 +195,6 @@ namespace TheShinobi.HelperMethods
             }
             Console.WriteLine("┫");
             length = length * 2 + 4;
-            //if (Utility.isBattleBeginning)
-            //{
             top = Console.CursorTop;
             for (int i = 0; i < height; i++)
             {
@@ -207,7 +205,7 @@ namespace TheShinobi.HelperMethods
             }
             BottomOfFrame(length);
             int bottom = Console.CursorTop;
-            if (Utility.isBattleBeginning)
+            if (reset)
             {
                 Utility.WaitForUser();
                 for (int i = 0; i < height; i++)
@@ -219,23 +217,7 @@ namespace TheShinobi.HelperMethods
                     }
                 }
                 Console.SetCursorPosition(0, bottom);
-                Utility.isBattleBeginning = false;
             }
-            //Utility.WaitSetForUser(Console.CursorTop);
-            //Console.SetCursorPosition(0, top);
-            //Utility.isBattleBeginning = false;
-            //}
-
-            //for (int i = 0; i < height; i++)
-            //{
-            //    Console.Write("\t┃ ");
-            //    for (int j = 0; j < length; j++)
-            //    {
-            //        Console.Write(" ");
-            //    }
-            //    Console.WriteLine("  ┃");
-            //}
-            //BottomOfFrame(length);
         }
 
         internal static void Map(Player player)

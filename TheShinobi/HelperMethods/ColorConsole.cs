@@ -1,6 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using System.Threading;
 using System;
+using System.Reflection;
 
 namespace TheShinobi.HelperMethods
 {
@@ -110,7 +111,7 @@ namespace TheShinobi.HelperMethods
             }
         }
 
-        public static void WriteEmbeddedSetDelayed(string text, int top, int bottom, bool blink = true)
+        public static void WriteEmbeddedSetDelayed(string text, int top, int bottom, bool blink = true, int delay = 1800)
         {
             bool result;
             bool firstPart = true;
@@ -150,7 +151,7 @@ namespace TheShinobi.HelperMethods
             }
             else if (!result)
             {
-                Thread.Sleep(1800);
+                Thread.Sleep(delay);
             }
         }
 

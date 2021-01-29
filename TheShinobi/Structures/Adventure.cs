@@ -283,7 +283,7 @@ namespace TheShinobi.Structures
             string battleText = "";
             while (!exit)
             {
-                
+                bool reset = true;
                 string stat;
                 List<string> fighterStats = new List<string>()
                 {
@@ -294,7 +294,7 @@ namespace TheShinobi.Structures
                     $"{stat = Get.Status(enemy.Stamina, "Yellow")} Stamina",
                     $"{stat = Get.Status(enemy.Chakra, "DarkCyan")} Chakra"
                 };                
-                Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats, 6, top);
+                Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats, 6, top, reset);
                 if (player.Stamina.Current > 0)
                 {
                     Console.WriteLine("\t Choose a weapon or jutsu to attack with:");
@@ -309,9 +309,9 @@ namespace TheShinobi.Structures
                     battleText = player.Attack(enemy);
                     ColorConsole.WriteEmbeddedSetDelayed(battleText, textTop, bottom, false);
                     Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats, 6, top);
-                    Console.SetCursorPosition()
-                    ColorConsole.WriteOver("          ", ConsoleColor.Black);
-                    ColorConsole.WriteEmbeddedSetDelayed(battleText, textTop, bottom, false);
+                    Console.SetCursorPosition(0, bottom);
+                    ColorConsole.WriteOver("", ConsoleColor.Black);
+                    ColorConsole.WriteEmbeddedSetDelayed(battleText, textTop, bottom, false, 0);
                 }
                 else
                 {

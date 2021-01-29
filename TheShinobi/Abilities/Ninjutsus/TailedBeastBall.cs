@@ -4,9 +4,9 @@ using System.Text;
 
 namespace TheShinobi.Abilities.Ninjutsus
 {
-    class Hokage : Ninjutsu
+    class TailedBeastBall : Ninjutsu
     {
-        public Hokage()
+        public TailedBeastBall()
         {
             Name = "Tailed Beast Ball";
             Damage = "5d20";
