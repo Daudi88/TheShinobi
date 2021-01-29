@@ -298,7 +298,7 @@ namespace TheShinobi.HelperMethods
             return items;
         }
 
-        //public static string OrochimaruStory(Player player)
+        //public static string HiruzenStory(Player player)
         //{
         //    string[] story = new string[]
         //    {
@@ -319,7 +319,7 @@ namespace TheShinobi.HelperMethods
         //    return story;
         //}
 
-        public static string BeforeBoss(Player player)
+        public static string[] OrochimaruStory(Player player)
         {
             string[] story = new string[]
             {

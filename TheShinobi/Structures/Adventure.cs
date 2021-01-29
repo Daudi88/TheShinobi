@@ -271,20 +271,29 @@ namespace TheShinobi.Structures
         {
             Enemy[] enemies = Get.Enemies().Where(e => e.Level <= player.Level).ToArray();
             Enemy enemy = enemies[random.Next(enemies.Length)];
-            string[] stories = Get.FightStories(enemy);
-            string story = stories[random.Next(stories.Length)];
-            
-            if (isBoss)
-            {
-                //enemy = new Enemy("Orochimaru", "", 10, new ShinobiBattleArmor(), new ChakraBlade()); Lägg till en jutsu här1 :D
-                story = Get.OrochimaruStory();
-            }
-
             int top = Console.CursorTop;
             int bottom = 0;
             int textTop = top + 4;
-            Console.SetCursorPosition(0, textTop);
-            ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
+
+            if (isBoss)
+            {
+                enemy = new Enemy("Orochimaru", "", 10, new ShinobiBattleArmor(), new ChakraBlade());
+                string[] story = Get.OrochimaruStory(player);
+                foreach (var part in story)
+                {
+                    Console.SetCursorPosition(0, textTop);
+                    ColorConsole.WriteDelayedLine(part, ConsoleColor.Yellow);
+                }
+            }
+            else
+            {
+                string[] stories = Get.FightStories(enemy);
+                string story = stories[random.Next(stories.Length)];
+                Console.SetCursorPosition(0, textTop);
+                ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
+            }
+
+            
             battlePlayer.PlayLooping();
             bool exit = false;
             string battleText = "";
