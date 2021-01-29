@@ -291,7 +291,7 @@ namespace TheShinobi.HelperMethods
                  "\n\t As you walk through The Shikkotsu Forest you sense Hanare is further North!" +
                  "\n\t You start running towards the montains!",
 
-                 "\n\t You aproach a empty camp, the fireplace is still smoldering a little and are signs of someone who has been tied up!" +
+                 "\n\t You aproach a empty camp, the fireplace is still smoldering a little and there are signs of someone who has been tied up!" +
                  "\n\t In the soil you see one of Hanare's black gloves! You follow their trail...",
 
                  "\n\t You sense that you are all alone at this place, the sun is shining and everything is calm" +
@@ -398,21 +398,25 @@ namespace TheShinobi.HelperMethods
             string[] stories = new string[]
             {
                 "\t After fighting Orochimaru for hours you finally wear him down and kill him. \n" +
-                $"\t As you dry the Orochimaru's blood of your {player.Weapon} on his now torn up Flack jacket" +
-                "\n\t" +
-                "\n\t You hear faint sounds further into the cave and you sense it must be Hanare!\n " +
-                "\n\t As you walked further into the huge cave system Hanares sounds get louder.",
+                $"\t As you dry Orochimaru's blood from your weapon on his Flack jacket.",
 
-                "\t You are closing in on her! \n" +
-                "\t As you walk further into the cave towards where you last heard Hanare \n" +
-                "\t You sense danger and instinctivly make a Shinobi backflip \n" +
-                "\n\t You manage to dodge the sword that was beeing aimed at your back! \n" +
+                "\n\t This fight is far from over, Orochimura did not do this on his own..." +
+                "\n\t And you both sense and hear more enemies deeper inside tha cave system.",
+
+                "\n\t You hear faint sounds deeper into the cave and you sense it is Hanare!\n " +
+                "\n\t As you walked further into the huge cave system Hanares cry for help \n" +
+                "\t get's clearer. You are closing in on her!",
+
+
+
+                "\t Suddenly you sense danger! and instinctivly make a Shinobi backflip! \n" +
+                "\n\t You dodge the sword that was beeing aimed at your back with full force!" +
                 "\n\t You knew it! It is the filty backstabbing Akatsuku Clan! \n" +
                 "\n\t Nobody else would ever try to kill a Shinobi from behinde." +
                 "\n\t Three Akatsuku are attacking and they have you cornered. \n",
 
-                "\t Beeing a true ninjutsu hero you are draw your {player.weapon} and counter attack. \n" +
-                "\t The closest attacker throws a Kunai aimed at your heart! \n" +
+                "\t Beeing a true ninjutsu hero you are draw your Weapon and counter attack. \n" +
+                "\t The closest attacker throws a Kunai aimed at your heart! " +
                 "\n\t You use your chakra and redirect the knife into on of the other dirty Akatsu scumbag's! \n",
 
                 "\t This fight did not last longer then a few minutes. They where weak and in your way. \n" +

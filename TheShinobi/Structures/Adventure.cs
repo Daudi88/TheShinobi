@@ -288,11 +288,6 @@ namespace TheShinobi.Structures
                 Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats);
                 Console.ReadKey(true);
 
-
-
-
-
-
                 if (energyDrink.IsEnergized)
                 {
                     EnergyDip(player);
