@@ -1,4 +1,4 @@
-﻿namespace TheShinobi.Abilities
+﻿namespace TheShinobi.Abilities.Ninjutsus
 {
     class Ninjutsu
     {
@@ -9,7 +9,7 @@
 
         public override string ToString()
         {
-            return $"{Name} ({Damage} Damage, -{Cost} Chakra)";
+            return $"{Name} ({Damage} Damage, {Cost} Chakra)";
         }
     }
 }

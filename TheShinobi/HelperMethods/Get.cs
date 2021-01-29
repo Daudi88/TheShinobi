@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TheShinobi.Abilities;
+using TheShinobi.Abilities.Ninjutsus;
 using TheShinobi.Characters;
 using TheShinobi.Items;
 using TheShinobi.Items.Armors;
@@ -172,7 +173,7 @@ namespace TheShinobi.HelperMethods
             Enemy[] enemies = new Enemy[]
             {
                 //new Enemy("Shinobi", "Sound Four", 1, new Shirt(), new Fists(), new PaperShuriken()),
-                new Enemy("Sakon", "Sound Five", 1, new FlakJacket(), new Kiba()),
+                new Enemy("Sakon", "Sound Five", 1, new FlakJacket(), new Kiba(), "her"),
                 new Enemy("Tayuya","Sound Four", 1, new Shirt(), new Fists()),
                 new Enemy("Ukon", "Sound Five", 2, new Shirt(), new Kusarigama()),
                 new Enemy("Sasori", "Akatsuki", 2, new Shirt(), new TekagiShuko()),
@@ -201,15 +202,15 @@ namespace TheShinobi.HelperMethods
             switch (rank)
             {
                 case "Genin":
-                    return new Ninjutsu("Paper Shuriken", "1d6", 5);
+                    return new PaperShuriken();
                 case "Chūnin":
-                    return new Ninjutsu("Flame Bullet", "3d8", 20);
+                    return new FlameBullet();
                 case "Jōnin":
-                    return new Ninjutsu("Rasengan", "4d12", 50);
+                    return new Rasengan();
                 case "Hokage":
-                    return new Ninjutsu("Tailed Beast Ball", "5d20", 150);
+                    return new TailedBeastBall();
                 default:
-                    return new Ninjutsu("", "", 0);
+                    return new PaperShuriken();
             }
         }
 

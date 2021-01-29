@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using TheShinobi.Abilities;
+using TheShinobi.Abilities.Ninjutsus;
 using TheShinobi.Characters;
 using TheShinobi.HelperMethods;
 using TheShinobi.Items;
@@ -99,7 +100,7 @@ namespace TheShinobi.Structures
                 Armor = new FlakJacket(),
                 Weapon = new Kubikiribōchō(),
             };
-            kakashi.Ninjutsus.Add(new Ninjutsu("Chidori", "4d16", 100));
+            kakashi.Ninjutsus.Add(new Chidori());
             kakashi.Defence = kakashi.Armor.Defence;
             kakashi.Damage = kakashi.Weapon.Damage;
             Item redBull = new EnergyDrink("Red Bull", 50, 10, "You get wings")

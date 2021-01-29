@@ -1,4 +1,5 @@
-﻿using TheShinobi.HelperMethods;
+﻿using TheShinobi.Abilities.Ninjutsus;
+using TheShinobi.HelperMethods;
 using TheShinobi.Items;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
@@ -7,10 +8,12 @@ namespace TheShinobi.Characters
 {
     class Enemy : Character
     {
+        public string Pronoun { get; set; }
         public string Clan { get; set; }
-        public Enemy(string name, string clan, int level, Armor armor, Weapon weapon)
+        public Enemy(string name, string clan, int level, Armor armor, Weapon weapon, string pronoun = "his")
         {
             Name = name;
+            Pronoun = pronoun;
             Clan = clan;
             Level = level;
             Stamina.Max = Utility.random.Next(3 * Level + 12, 3 * Level + 33);
@@ -27,14 +30,26 @@ namespace TheShinobi.Characters
 
         public override string Attack(Character defender)
         {
-            string text = "";
-            if (Utility.random.Next(100) >= defender.Defence)
+            string text = "";            
+            if (Utility.RollDice("1d20") + Chakra.Current >= defender.Defence)
             {
-                
+                int damage;
+                Ninjutsu jutsu = Ninjutsus[Utility.random.Next(Ninjutsus.Count)];
+                if (Utility.random.Next(101) > 50 && Chakra.Current - jutsu.Cost > 0)
+                {
+                    damage = Utility.RollDice(jutsu.Damage);
+                    text = $"{Name} hits you with {Pronoun} {jutsu.Name} dealing [Yellow]{damage}[/Yellow] damage!";
+                    defender.Stamina.Current -= damage;
+                    Chakra.Current -= jutsu.Cost;
+                }
+                else
+                {
+                    damage = Utility.RollDice(Weapon.Damage)
+                }
             }
             else
             {
-                
+                text = $"{Name} miss!";
             }
             return text;
         }

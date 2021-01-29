@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using TheShinobi.Abilities;
+using TheShinobi.Abilities.Ninjutsus;
 using TheShinobi.HelperMethods;
 using TheShinobi.Items;
 using TheShinobi.Items.Armors;

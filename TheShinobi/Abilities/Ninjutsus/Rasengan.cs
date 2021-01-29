@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TheShinobi.Abilities.Ninjutsus
+﻿namespace TheShinobi.Abilities.Ninjutsus
 {
     class Rasengan : Ninjutsu
     {
