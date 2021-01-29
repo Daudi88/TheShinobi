@@ -172,7 +172,6 @@ namespace TheShinobi.HelperMethods
         {
             Enemy[] enemies = new Enemy[]
             {
-                //new Enemy("Shinobi", "Sound Four", 1, new Shirt(), new Fists(), new PaperShuriken()),
                 new Enemy("Sakon", "Sound Five", 1, new FlakJacket(), new Kiba()),
                 new Enemy("Tayuya","Sound Four", 1, new Shirt(), new Fists(), "her"),
                 new Enemy("Ukon", "Sound Five", 2, new Shirt(), new Kusarigama()),
@@ -192,7 +191,6 @@ namespace TheShinobi.HelperMethods
                 new Enemy("Kakuzu", "Akatsuki", 8, new InfiniteArmor(), new Kusarigama()),
                 new Enemy("Hocke", "1337", 8, new BulletproofVest(), new AK47()),
                 new Enemy("Daudi", "1337", 9, new BulletproofVest(), new AK47()),
-
             };
             return enemies;
         }
@@ -301,39 +299,39 @@ namespace TheShinobi.HelperMethods
 
         internal static string OrochimaruStory()
         {
-            throw new NotImplementedException();
+            return "Håkan";
         }
 
         public static string[] NoFightStories()
         {
             string[] stories = new string[]
             {
-                 "\n\t As you walk up the mountain trail you sense a group of ninjas from the Uchicha Clan ahead." +
-                 "\n\t You easily sneak past them on your way to rescue Hanare!",
+                 "\t  As you walk up the mountain trail you sense a group of ninjas from the Uchicha Clan ahead." +
+                 "\n\t  You easily sneak past them on your way to rescue Hanare!",
 
-                 "\n\t You hear something in the distance and use your Sharingan to see a group of Ninjas lying in ambush for travelers." +
-                 "\n\t If it wasn't for that you are in a rush to rescue Hanare you would have made minced meat of them all!",
+                 "\t  You hear something in the distance and use your Sharingan to see a group of Ninjas lying in ambush for travelers." +
+                 "\n\t  If it wasn't for that you are in a rush to rescue Hanare you would have made minced meat of them all!",
 
-                 "\n\t You use your senses and feel that no enemy is near, you set up camp and light a fire" +
-                 "\n\t You eat a delicious Green Chilli Burger while watching the Sunset over The Hidden Leaf Village.",
+                 "\t  You use your senses and feel that no enemy is near, you set up camp and light a fire" +
+                 "\n\t  You eat a delicious Green Chilli Burger while watching the Sunset over The Hidden Leaf Village.",
 
-                 "\n\t As the sun sets over the mountains you see a clan who has setup camp on your land!" +
-                 "\n\t There is no time to engage them now, first you must rescue Hanare!",
+                 "\t  As the sun sets over the mountains you see a clan who has setup camp on your land!" +
+                 "\n\t  There is no time to engage them now, first you must rescue Hanare!",
 
-                 "\n\t As you walk through The Shikkotsu Forest you sense Hanare is further North!" +
-                 "\n\t You start running towards the montains!",
+                 "\t  As you walk through The Shikkotsu Forest you sense Hanare is further North!" +
+                 "\n\t  You start running towards the montains!",
 
-                 "\n\t You aproach a empty camp, the fireplace is still smoldering a little and there are signs of someone who has been tied up!" +
-                 "\n\t In the soil you see one of Hanare's black gloves! You follow their trail...",
+                 "\t  You aproach a empty camp, the fireplace is still smoldering a little and there are signs of someone who has been tied up!" +
+                 "\n\t  In the soil you see one of Hanare's black gloves! You follow their trail...",
 
-                 "\n\t You sense that you are all alone at this place, the sun is shining and everything is calm" +
-                 "\n\t You set up camp for the night and eat some Ramen from Ichiraku...",
+                 "\t  You sense that you are all alone at this place, the sun is shining and everything is calm" +
+                 "\n\t  You set up camp for the night and eat some Ramen from Ichiraku...",
 
-                 "\n\t This area is very peacefull, Hanare is not here you better get going again!" +
-                 "\n\t You keep searching for tracks and see them leading towards the mountains...",
+                 "\t  This area is very peacefull, Hanare is not here you better get going again!" +
+                 "\n\t  You keep searching for tracks and see them leading towards the mountains...",
 
-                 "\n\t There is nobody around and you take some time to eat and drink before \n" +
-                 "\t You keep searching for Hanare."
+                 "\t  There is nobody around and you take some time to eat and drink before" +
+                 "\n\t  You keep searching for Hanare."
 
             };
             return stories;
@@ -344,32 +342,32 @@ namespace TheShinobi.HelperMethods
             string[] stories = new string[]
             {
                 "\t  You walk down the bushy trail and sence there is trouble ahead!" +
-                $"\n\t  You can smell that dirty {enemy.Name} from the {enemy.Clan} clan \n" + 
-                "\t  from miles away and you attack instantly!",
+                $"\n\t  You can smell that dirty {enemy.Name} from the {enemy.Clan} clan" + 
+                "\n\t  from miles away and you attack instantly!",
 
-                "\t  While climbing up the mountains in search of Hanare you get ambushed by some filthy \n" + 
-                $"\t  {enemy.Clan} villains!" +
+                "\t  While climbing up the mountains in search of Hanare you get ambushed by some filthy" + 
+                $"\n\t  {enemy.Clan} villains!" +
                 "\n\t  You attack, maybe they know more about Hanare's kidnapping!",
 
                 "\t  You have walked for hours when you decide to set up camp at a lake." +
                 $"\n\t  Suddenly some low life from the {enemy.Clan} Clan attacks you!" +
-                "\n\t  Four of them run away when they see that it is you \n" + 
-                $"\t  but {enemy.Name} stays behind to fight!",
+                "\n\t  Four of them run away when they see that it is you" + 
+                $"\n\t  but {enemy.Name} stays behind to fight!",
 
-                "\t  Ahead you hear fighting going on! \n" + 
-                $"\t  It is some bastards from the {enemy.Clan} robbing a villager!" +
+                "\t  Ahead you hear fighting going on!" + 
+                $"\n\t  It is some bastards from the {enemy.Clan} robbing a villager!" +
                 $"\n\t  You draw your weapon and attack! {enemy.Name} fights back...",
 
                 "\t  The sky is full of dark clouds and when lightning strikes the ground vibrates!" +
-                $"\n\t  As you set up camp in the mountains to escape the bad weather \n" + 
-                $"\t  {enemy.Name} from the {enemy.Clan} Clan attacks!",
+                $"\n\t  As you set up camp in the mountains to escape the bad weather" + 
+                $"\n\t  {enemy.Name} from the {enemy.Clan} Clan attacks!",
 
                 "\t  The sky is blue and the sun is shining. As you walk past a shrubbery you hear a noice!" +
                 $"\n\t  A lowlife from the {enemy.Clan} Clan attacks you!",
 
                 "\t  Walking on a narrow trail in search of tracks from the kidnappers" +
-                $"\n\t  {enemy.Name} and his friends from the {enemy.Clan} Clan \n" + 
-                "\t  suddenly attacks from all sides!",
+                $"\n\t  {enemy.Name} and his friends from the {enemy.Clan} Clan" + 
+                "\n\t  suddenly attacks from all sides!",
 
                 $"\t  A group of {enemy.Clan} clan are blocking your path ahead!" +
                 $"\n\t  As you approach {enemy.Name} attack you!",
@@ -381,7 +379,7 @@ namespace TheShinobi.HelperMethods
                 $"\n\t  You can both smell and sense them miles away... You attack {enemy.Name}!",
 
                 "\t  You have followed Hanares kidnappers trail for hours when you hear enemies further ahead." +
-                $"\n\t  It is {enemy.Name} from the {enemy.Clan} You draw your weapon and attack! the enemies  ",
+                $"\n\t  It is {enemy.Name} from the {enemy.Clan} You draw your weapon and attack! the enemies",
 
                 $"\t  As you reach the lake you see {enemy.Name} from the {enemy.Clan} Clan!" +
                 $"\n\t {enemy.Name} attacks you!"
