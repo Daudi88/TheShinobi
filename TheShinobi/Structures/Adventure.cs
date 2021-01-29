@@ -49,13 +49,13 @@ namespace TheShinobi.Structures
             player.Pos += 0.1;
             adventurePlayer.PlayLooping();
             string story = $"\n\t All of your clan members are away to practice at Daisan Enshūjō. \n" +
-                "\t They are five days away in the south and have taken most of the \n" + 
+                "\t They are five days away in the south and have taken most of the \n" +
                 "\t village's equipment with them. \n" +
                 "\n\t You will have to rescue Hanare on your own! \n" +
-                "\n\t You took the little gear you had and are now on your way to leave \n" + 
+                "\n\t You took the little gear you had and are now on your way to leave \n" +
                 "\t the Hidden Leaf Village. \n" +
                 "\n\t Hanare's kidnappers brought her towards the mountains up in the north." +
-                "\n\t It is now your duty to quickly kill all the enemies intruding your territory \n " + 
+                "\n\t It is now your duty to quickly kill all the enemies intruding your territory \n " +
                 "\t and search for better gear so you can go and rescue her! \n" +
                 "\n\t * There are rumors about treasures containing some usefull loot outside the village." +
                 "\n\t * Also take care and dont loose yourself in the wild...";
@@ -275,9 +275,11 @@ namespace TheShinobi.Structures
             string story = stories[random.Next(stories.Length)];
             ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
             bool exit = false;
+            int top = Console.CursorTop;
+            int textTop = top + 4;
+            int left = 10;
             while (!exit)
             {
-                int top = Console.CursorTop;
                 Console.SetCursorPosition(0, top);
                 string text;
                 if (player.Stamina.Current < player.Stamina.Max / 5)
@@ -294,16 +296,23 @@ namespace TheShinobi.Structures
                     $"{enemy.Name}: {enemy.Stamina.Current} Stamina"
                 };
                 Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats, 5);
-                int textTop = top + 4;
-                int left = 10;
-                Console.SetCursorPosition(left, textTop++);
-                Console.WriteLine("You hit the enemy with your jutsu dealing 20 damage!");
-                Console.ReadKey(true);
+                Console.WriteLine("\t Choose a weapon to attack with");
+                int ctr = 1;
+                Console.WriteLine($"\t {ctr++}. {player.Weapon.Name} {player.Weapon.BonusText()}");
+                foreach (var jutsu in player.Ninjutsus)
+                {
+                    Console.WriteLine($"\t {ctr++}. {jutsu}");
+                }
+                Console.Write("\t > ");
+                int.TryParse(ColorConsole.ReadLine(), out int choice);
+                Console.SetCursorPosition(left + 1, Console.CursorTop - 1);
+                Console.Write("                                              ");
+
                 if (enemy.Stamina.Current > 0)
                 {
-                    player.Attack(enemy, textTop++);
+                    player.Attack(enemy, textTop++, choice);
                 }
-
+                Console.ReadLine();
 
 
             }

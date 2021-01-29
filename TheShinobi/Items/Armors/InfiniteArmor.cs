@@ -6,7 +6,7 @@
         {
             Name = "Infinite Armour";
             Price = 10000;
-            Defence = 45;
+            Defence = 12;
             IndefiniteArticle = "an";
         }
     }

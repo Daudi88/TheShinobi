@@ -19,7 +19,5 @@ namespace TheShinobi.Characters
         public int Defence { get; set; }
         public string Damage { get; set; }
         public int Ryō { get; set; }
-
-        public abstract int Attack(Character defender, int top);
     }
 }

@@ -6,7 +6,7 @@
         {
             Name = "Bulletproof Vest";
             Price = 50000;
-            Defence = 100;
+            Defence = 15;
             IndefiniteArticle = "a";
         }
     }

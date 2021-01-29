@@ -8,12 +8,12 @@ namespace TheShinobi.Characters
     class Enemy : Character
     {
         public string Clan { get; set; }
-        public Enemy(string name, string clan, int level, int hp, Armor armor, Weapon weapon)
+        public Enemy(string name, string clan, int level, int stamina, Armor armor, Weapon weapon)
         {
             Name = name;
             Clan = clan;
             Level = level;
-            Stamina.Current = hp;
+            Stamina.Current = stamina;
             Armor = armor;
             Weapon = weapon;
             Defence = Armor.Defence;
@@ -22,15 +22,15 @@ namespace TheShinobi.Characters
             Exp.Current = Utility.random.Next(10 * Level, 40 * Level + 1);
         }
 
-        public override int Attack(Character defender, int top)
+        public void Attack(Character defender, int top)
         {
             if (Utility.random.Next(100) >= defender.Defence)
             {
-                return Utility.RollDice(Damage);
+                
             }
             else
             {
-                return 0;
+                
             }
         }
 

@@ -233,8 +233,8 @@ namespace TheShinobi.HelperMethods
             var position = positions[player.Pos];
             Console.SetCursorPosition(position.Item1, top += position.Item2);
             ColorConsole.Write("●", ConsoleColor.Red);
-        }       
-        
+        }
+
         public static void Blinking(string text)
         {
             while (true)

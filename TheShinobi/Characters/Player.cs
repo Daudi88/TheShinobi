@@ -19,8 +19,8 @@ namespace TheShinobi.Characters
             Level = 1;
             Rank = "Genin";
             Exp = new Ability(0, 200);
-            Stamina = new Ability(60, 60);
-            Chakra = new Ability(10, 10);
+            Stamina = new Ability(31, 31);
+            Chakra = new Ability(5, 5);
             Armor = new Shirt();
             Defence = Armor.Defence;
             Weapon = new Fists();
@@ -35,7 +35,7 @@ namespace TheShinobi.Characters
                 Ninjutsus.Add(Get.Ninjutsu(rank));
             }
             Rank = rank;
-            Chakra.Max += 10;
+            Chakra.Max += 5;
             Chakra.Current = Chakra.Max;
             Exp.Max = 250 * Level;
             if (Stamina.Max + Level <= 100)
@@ -45,15 +45,21 @@ namespace TheShinobi.Characters
             Stamina.Current = Stamina.Max;
         }
 
-        public override int Attack(Character defender, int top)
+        public void Attack(Character defender, int top, int choice)
         {
-            if (Utility.random.Next(100 + AttackBonus) >= defender.Defence)
+            string text = "";
+            if (Utility.RollDice("1d20") + Chakra.Current >= defender.Defence)
             {
-                return Utility.RollDice(Damage) + AttackBonus;
+                if (choice == 1)
+                {
+                    text = $"You hit {defender.Name} with your {Weapon.Name}!";
+                    ColorConsole.WriteSetDelayed(text, top);
+                }             
             }
             else
             {
-                return 0;
+                text = "You miss!";
+                ColorConsole.WriteSetDelayed(text, top);
             }
         }
     }
