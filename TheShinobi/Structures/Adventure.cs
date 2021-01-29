@@ -277,12 +277,27 @@ namespace TheShinobi.Structures
 
             if (isBoss)
             {
-                enemy = new Enemy("Orochimaru", "", 10, new ShinobiBattleArmor(), new ChakraBlade());
+                //enemy = new Enemy("Orochimaru", "", 10, new ShinobiBattleArmor(), new ChakraBlade(), );
                 string[] story = Get.OrochimaruStory(player);
+                int ctr = 0;
                 foreach (var part in story)
                 {
                     Console.SetCursorPosition(0, textTop);
-                    ColorConsole.WriteDelayedLine(part, ConsoleColor.Yellow);
+                    ColorConsole.WriteDelayedLine(part, ConsoleColor.Yellow, 50, false);
+                    Console.SetCursorPosition(0, textTop);
+                    if (ctr < 2)
+                    {
+                        for (int i = 0; i < 4; i++)
+                        {
+                            Console.Write("\t");
+                            for (int j = 0; j < 90; j++)
+                            {
+                                Console.Write(" ");
+                            }
+                            Console.WriteLine();
+                        } 
+                    }
+                    ctr++;
                 }
             }
             else
@@ -293,7 +308,7 @@ namespace TheShinobi.Structures
                 ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
             }
 
-            
+
             battlePlayer.PlayLooping();
             bool exit = false;
             string battleText = "";

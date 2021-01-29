@@ -377,7 +377,7 @@ namespace TheShinobi.HelperMethods
             {
                 story = Get.EndStory(player);
             }
-            ColorConsole.WriteDelayed(ConsoleColor.Yellow, exitable: false, content: story);
+            ColorConsole.WriteDelayed(ConsoleColor.Yellow, 80, false, story);
             Game.PlayAgain(player);
         }
     }

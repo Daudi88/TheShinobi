@@ -155,7 +155,7 @@ namespace TheShinobi.HelperMethods
             }
         }
 
-        public static bool WriteDelayed(ConsoleColor color = ConsoleColor.White, int delay = 20, bool exitable = true, params string[] content)
+        public static bool WriteDelayed(ConsoleColor color = ConsoleColor.White, int delay = 20, bool isExitable = true, params string[] content)
         {
             bool isKeyPressed = false;
             Thread.Sleep(delay);
@@ -164,7 +164,7 @@ namespace TheShinobi.HelperMethods
                 foreach (var letter in text)
                 {
                     Write(letter.ToString(), color);
-                    if (Console.KeyAvailable && exitable)
+                    if (Console.KeyAvailable && isExitable)
                     {
                         isKeyPressed = true;
                     }
@@ -174,7 +174,7 @@ namespace TheShinobi.HelperMethods
                         Thread.Sleep(delay);
                     }
                 }
-                if (!exitable)
+                if (!isExitable)
                 {
                     Console.SetWindowPosition(0, Console.CursorTop - Utility.V);
                 }
@@ -182,14 +182,14 @@ namespace TheShinobi.HelperMethods
             return isKeyPressed;
         }
 
-        public static void WriteDelayedLine(string text, ConsoleColor color = ConsoleColor.White, int delay = 30, bool blink = false)
+        public static void WriteDelayedLine(string text, ConsoleColor color = ConsoleColor.White, int delay = 30,bool isExitable = true, bool blink = false)
         {
             bool isKeyPressed = false;
             Thread.Sleep(delay);
             foreach (var letter in text)
             {
                 Write(letter.ToString(), color);
-                if (Console.KeyAvailable)
+                if (Console.KeyAvailable && isExitable)
                 {
                     isKeyPressed = true;
                 }

@@ -323,19 +323,17 @@ namespace TheShinobi.HelperMethods
         {
             string[] story = new string[]
             {
-                "\n\t  You have searched all over the territory and all of the tracks \n" +
-                "\n\t  leads to this cave!",
+                "\t  You have searched all over the territory and all the tracks have lead you to this cave!",
 
-                "\n\t  As you enter the dark cave you sense there are many enemies ahead! \n" +
-                "\n\t  In a big room inside the cave you see Orochimaru drawing his blade... " +
-                "\n\t  Orochimaru says “I knew you would come!“ \n" +
-                $"\n\t  Now the time has come for you to die {player.Name}\n",
+                "\t  As you enter the dark cave you sense there are many enemies ahead!" +
+                "\n\t  In a big room inside you see a dark figure drawing his blade..." + 
+                $"\n\t  The dark figure says “I knew you would come {player.Name}!“" +
+                "\n\t  Now the time has come for you to die!!!",
 
-                "\n\t  As you draw your weapon and attack Orochimaru you see that " +
-               $"\n\t  some filthy clan members are carrying a tied up Hanare " +
-                "\n\t  deeper into the cave! \n",
-
-                "\n\t  You get into a rage and furiosly attack Orochimaru!\n"
+                $"\t  As you draw your {player.Weapon.Name} the dark figure reveals himself" +
+                "\n\t  and you see that it is Orochimaru who steps into the light!" +
+                "\n\n\t  Some filthy shinobi are carrying a tied up Hanare deeper into the cave" +
+                "\n\t  You get into a rage and furiosly attack!"                
             };
             return story;
         }
