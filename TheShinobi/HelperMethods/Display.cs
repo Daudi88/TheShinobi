@@ -137,16 +137,22 @@ namespace TheShinobi.HelperMethods
             Console.SetWindowPosition(0, Console.CursorTop - Utility.V);
             Console.WriteLine("\n");
             string title = "[DarkCyan]DETAILS[/DarkCyan]";
-            string color = Utility.energyDrink.IsEnergized ? "DarkCyan" : "Yellow";
+            string color = "Yellow";
+            string bonus = "";
+            if (Utility.energyDrink.IsEnergized)
+            {
+                color = "DarkCyan";
+                bonus = Utility.energyDrink.BonusText();
+            }
             List<string> content1 = new List<string>()
             {
                 $"Name: [Yellow]{player.Name}[/Yellow]",
                 $"Level: [Yellow]{player.Level}[/Yellow]",
                 $"Exp: [Yellow]{player.Exp}[/Yellow]",
-                $"Stamina: [{color}]{player.Stamina} {Utility.energyDrink.BonusText()}[/{color}]",
-                $"Chakra: [{color}]{player.Chakra} {Utility.energyDrink.BonusText()}[/{color}]",
-                $"Defence: [{color}]{player.Defence + player.Chakra.Current} {Utility.energyDrink.BonusText()}[/{color}]",
-                $"Damage: [{color}]{player.Damage} {Utility.energyDrink.BonusText()}[/{color}]",
+                $"Stamina: [{color}]{player.Stamina} {bonus}[/{color}]",
+                $"Chakra: [{color}]{player.Chakra} {bonus}[/{color}]",
+                $"Defence: [{color}]{player.Defence + player.Chakra.Current} {bonus}[/{color}]",
+                $"Damage: [{color}]{player.Damage} {bonus}[/{color}]",
                 $"Ryō: [Yellow]{player.Ryō}[/Yellow]",
             };
             string title2 = "[DarkCyan]EQUIPPED[/DarkCyan]";

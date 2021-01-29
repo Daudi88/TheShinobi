@@ -109,7 +109,9 @@ namespace TheShinobi.Structures
                 Armor = new FlakJacket(),
                 Weapon = new Kubikiribōchō(),
             };
+            kakashi.Ninjutsus.Add(new FlameBullet());
             kakashi.Ninjutsus.Add(new Chidori());
+            kakashi.Ninjutsus.Add(new TailedBeastBall());
             kakashi.Defence = kakashi.Armor.Defence;
             kakashi.Damage = kakashi.Weapon.Damage;
             Item redBull = new EnergyDrink("Red Bull", 50, 10, "You get wings")

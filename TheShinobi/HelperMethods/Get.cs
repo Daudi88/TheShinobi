@@ -224,7 +224,7 @@ namespace TheShinobi.HelperMethods
             return enemies;
         }
         /// <summary>
-        /// Returns the Ninjutsu ranks.
+        /// Returns a Ninjutsu based on rank.
         /// </summary>
         /// <param name="rank"></param>
         /// <returns></returns>

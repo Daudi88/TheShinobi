@@ -46,8 +46,10 @@ namespace TheShinobi.HelperMethods
         {
             string ending = energyCtr > 1 ? "s are" : " is";
             ColorConsole.WriteSetDelayed($"The effect of the energy drink{ending} wearing off!", top, color: ConsoleColor.Red);
-            int energy = energyDrink.Energy;
+            int energy = energyDrink.Energy * energyCtr;
             player.Stamina.Max -= energy;
+            player.Chakra.Max -= energy;
+            player.Chakra.Current -= energy;
             if (player.Stamina.Current - energy > 0)
             {
                 player.Stamina.Current -= energy;
@@ -55,6 +57,10 @@ namespace TheShinobi.HelperMethods
             else
             {
                 player.Stamina.Current = 1;
+            }
+            if (player.Chakra.Current - energy < 0)
+            {
+                player.Chakra.Current = 0;
             }
             player.Defence -= energy;
             player.AttackBonus -= energy;

@@ -15,7 +15,7 @@ using TheShinobi.Abilities.Ninjutsus;
 namespace TheShinobi.Structures
 {
     class Adventure
-    {        
+    {
         static string soundLocation1 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\HiddenLeafVillage.Wav");
         static string soundLocation2 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Adventure.wav");
         static string soundLocation3 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Treasure.wav");
@@ -45,7 +45,7 @@ namespace TheShinobi.Structures
         public static void Menu(Player player)
         {
             player.Pos += 0.1;
-            adventurePlayer.PlayLooping();            
+            adventurePlayer.PlayLooping();
             string story = $"\n\n\t All of your clan members are away to practice at Daisan Enshūjō." +
                 "\n\t They are five days away in the south and have taken most of the" +
                 "\n\t village's equipment with them." +
@@ -63,11 +63,11 @@ namespace TheShinobi.Structures
                 ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
                 isLeavingHome = false;
             }
-            
+
             bool exit = false;
-            Console.SetWindowPosition(0, Console.CursorTop - V);
             while (!exit)
             {
+                Console.SetWindowPosition(0, Console.CursorTop - V);
                 ColorConsole.WriteDelayedLine("\n\n\t What do you want to do?");
                 player.Pos = Math.Round(player.Pos, 1);
                 var options = Get.Options(player, out List<string> content);
@@ -443,11 +443,11 @@ namespace TheShinobi.Structures
                             EnergyDip(player, textTop);
                         }
                         WaitSetForUser(bottom - 5);
-                        Console.WriteLine("\n");
+                        Console.WriteLine("\n\n");
                         adventurePlayer.PlayLooping();
                     }
                 }
-            }            
+            }
         }
     }
 }
