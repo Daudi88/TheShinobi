@@ -153,7 +153,10 @@ namespace TheShinobi.HelperMethods
             }
             return options;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static Dictionary<double, Tuple<int, int, string>> Positions()
         {
             var positions = new Dictionary<double, Tuple<int, int, string>>();
