@@ -23,7 +23,7 @@ namespace TheShinobi.Items.Armors
 
         public override string BonusText()
         {
-            return $"({Defence} Defence)";
+            return $"(+{Defence} Defence)";
         }
     }
 }

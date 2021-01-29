@@ -50,24 +50,25 @@ namespace TheShinobi.Structures
         {
             player.Pos += 0.1;
             adventurePlayer.PlayLooping();
-            string story = $"\n\t All of your clan members are away to practice at Daisan Enshūjō. \n" +
-                "\t They are five days away in the south and have taken most of the \n" +
-                "\t village's equipment with them. \n" +
-                "\n\t You will have to rescue Hanare on your own! \n" +
-                "\n\t You took the little gear you had and are now on your way to leave \n" +
-                "\t the Hidden Leaf Village. \n" +
-                "\n\t Hanare's kidnappers brought her towards the mountains up in the north." +
-                "\n\t It is now your duty to quickly kill all the enemies intruding your territory \n " +
-                "\t and search for better gear so you can go and rescue her! \n" +
-                "\n\t * There are rumors about treasures containing some usefull loot outside the village." +
-                "\n\t * Also take care and dont loose yourself in the wild...";
+            string story = $"\n\n\n\t All of your clan members are away to practice at Daisan Enshūjō." +
+                "\n\t They are five days away in the south and have taken most of the" +
+                "\n\t village's equipment with them." +
+                "\n\n\t You will have to rescue Hanare on your own!" +
+                "\n\n\t You took the little gear you had and are now on your way to leave" +
+                "\n\t the Hidden Leaf Village." +
+                "\n\n\t Hanare's kidnappers brought her towards the mountains up in the north." +
+                "\n\t It is now your duty to quickly defeat all the enemies intruding your territory" +
+                "\n\t and search for better gear so you can go and rescue her!" +
+                "\n\n\t There are rumors about treasures containing some usefull loot outside the village." +
+                "\n\t Also, take care and don't loose yourself in the wild...";
 
             ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
             bool exit = false;
+            Console.SetWindowPosition(0, Console.CursorTop - V);
             while (!exit)
             {
                 player.Pos = Math.Round(player.Pos, 1);
-                Console.WriteLine("\n");
+                Console.WriteLine("\n\n");
                 var options = Get.Options(player, out List<string> content);
                 Display.WithFrame(content, "[Yellow]ADVENTURE[/Yellow]", true);
                 ChooseANumber(content.Count, out int choice, player, true);
@@ -125,12 +126,12 @@ namespace TheShinobi.Structures
                 Weapon[] swords = Get.SevenSwords(player);
                 Weapon sword = swords[random.Next(swords.Length)];
                 AddToBackpack(player, sword);
-                ColorConsole.WriteEmbeddedDelayed($"\t You find the [Yellow]{sword.Name}[/Yellow], a sword of the Seven Swordsmen!\n");
+                ColorConsole.WriteEmbeddedDelayed($"\t  You find the [Yellow]{sword.Name}[/Yellow], a sword of the Seven Swordsmen!\n");
                 isGraveyardVisited = true;
             }
             else
             {
-                ColorConsole.WriteOver("\t The graveyard is dead silent.", ConsoleColor.Red);
+                ColorConsole.WriteOver("\t  The graveyard is dead silent.", ConsoleColor.Red);
             }
             adventurePlayer.PlayLooping();
             return false;
@@ -247,6 +248,7 @@ namespace TheShinobi.Structures
             {
                 string[] stories = Get.NoFightStories();
                 string story = stories[random.Next(stories.Length)];
+                Console.SetCursorPosition(0, Console.CursorTop + 4);
                 ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
             }
             else
@@ -298,7 +300,7 @@ namespace TheShinobi.Structures
                                 Console.Write(" ");
                             }
                             Console.WriteLine();
-                        } 
+                        }
                     }
                     ctr++;
                 }

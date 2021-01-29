@@ -110,7 +110,7 @@ namespace TheShinobi.HelperMethods
                 $"Exp: [Yellow]{player.Exp}[/Yellow]",
                 $"Stamina: [{color}]{player.Stamina} {Utility.energyDrink.BonusText()}[/{color}]",
                 $"Chakra: [{color}]{player.Chakra} {Utility.energyDrink.BonusText()}[/{color}]",
-                $"Defence: [{color}]{player.Defence} {Utility.energyDrink.BonusText()}[/{color}]",
+                $"Defence: [{color}]{player.Defence + player.Chakra.Current} {Utility.energyDrink.BonusText()}[/{color}]",
                 $"Damage: [{color}]{player.Damage} {Utility.energyDrink.BonusText()}[/{color}]",
                 $"Ryō: [Yellow]{player.Ryō}[/Yellow]",
             };

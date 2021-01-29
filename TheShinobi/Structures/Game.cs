@@ -45,15 +45,15 @@ namespace TheShinobi.Structures
             Adventure.villagePlayer.PlayLooping();
             Display.Title();
             Player player = CharacterCreation();
-            string intro = $"\n\t You, {player.Name}, suddenly wakes up from Hanare screaming!" +
-            " It sound's as if she is in real trouble..." +
-            "\n\t Frightened villagers call for help “somebody is kidnapping Hanare!“ \n" +
-            "\n\t After some intense fighting with the villagers the attackers manages" +
-            "\n\t to vanish north towards the mountains with Hanare! \n" +
-            "\n\t You couldn't reach them in time “Kono-kuso onna!!!“ \n" +
-            "\n\t It is still dark outside as you prepare to leave The Hidden Leaf Village" +
-            "\n\t in search of Hanare and her soon to be dead kidnappers...\n" +
-            "\n\t * You should probobly buy better equipment from the stores before you leave! ";
+            string intro = $"\n\n\t You, {player.Name}, suddenly wake up from hearing Hanare screaming!" +
+            "\n\t It sound's as if she is in real trouble..." +
+            "\n\t Frightened villagers call for help “somebody is kidnapping Hanare!“" +
+            "\n\n\t After some intense fighting with the villagers the attackers manages" +
+            "\n\t to vanish north towards the mountains with Hanare!" +
+            "\n\n\t You couldn't reach them in time “Kono-kuso onna!!!“" +
+            "\n\n\t It is still dark outside as you prepare to leave The Hidden Leaf Village" +
+            "\n\t in search of Hanare and her soon to be dead kidnappers..." +
+            "\n\n\t You should probobly buy better equipment from the stores before you leave!";
             ColorConsole.WriteDelayedLine(intro, ConsoleColor.Yellow, 40, blink: true);
             HiddenLeafVillage.Menu(player);
         }

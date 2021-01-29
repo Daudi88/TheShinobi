@@ -32,7 +32,7 @@ namespace TheShinobi.Characters
         public override string Attack(Character defender)
         {
             string text = "";            
-            if (Utility.RollDice("1d12") + Chakra.Current >= defender.Defence)
+            if (Utility.RollDice("1d12") + Chakra.Current >= defender.Defence + defender.Chakra.Current)
             {
                 string weapon;
                 int damage;
