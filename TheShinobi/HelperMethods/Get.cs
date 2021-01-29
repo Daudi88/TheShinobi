@@ -339,14 +339,19 @@ namespace TheShinobi.HelperMethods
         {
             string[] stories = new string[]
             {
-                 "\t  As you walk up the mountain trail you sense a group of ninjas from the Uchicha Clan ahead." +
+                 "\t  As you walk up the mountain trail you sense a group of ninjas " +
+                  "\n\t  from the Uchicha Clan ahead." +
                  "\n\t  You easily sneak past them on your way to rescue Hanare!",
 
-                 "\t  You hear something in the distance and use your Sharingan to see a group of Ninjas lying in ambush for travelers." +
-                 "\n\t  If it wasn't for that you are in a rush to rescue Hanare you would have made minced meat of them all!",
+                 "\t  You hear something in the distance and use your Sharingan to see " +
+                 "\n\t  a group of Ninjas lying in ambush for travelers." +
+                 "\n\t  If it wasn't for that you are in a rush to rescue Hanare " + 
+                 "\n\t  you would have made minced meat of them all!",
 
-                 "\t  You use your senses and feel that no enemy is near, you set up camp and light a fire" +
-                 "\n\t  You eat a delicious Green Chilli Burger while watching the Sunset over The Hidden Leaf Village.",
+                 "\t  You use your senses and feel that no enemy is near, " +
+                 "\n\t  you set up camp and light a fire" +
+                 "\n\t  You eat a delicious Green Chilli Burger " +
+                 "\n\t  while watching the Sunset over The Hidden Leaf Village.",
 
                  "\t  As the sun sets over the mountains you see a clan who has setup camp on your land!" +
                  "\n\t  There is no time to engage them now, first you must rescue Hanare!",
@@ -354,10 +359,12 @@ namespace TheShinobi.HelperMethods
                  "\t  As you walk through The Shikkotsu Forest you sense Hanare is further North!" +
                  "\n\t  You start running towards the montains!",
 
-                 "\t  You aproach a empty camp, the fireplace is still smoldering a little and there are signs of someone who has been tied up!" +
+                 "\t  You aproach a empty camp, the fireplace is still smoldering a little and there are " + 
+                 "\n\t  signs of someone who has been tied up!" +
                  "\n\t  In the soil you see one of Hanare's black gloves! You follow their trail...",
 
-                 "\t  You sense that you are all alone at this place, the sun is shining and everything is calm" +
+                 "\t  You sense that you are all alone at this place, " + 
+                 "\n\t  the sun is shining and everything is calm" +
                  "\n\t  You set up camp for the night and eat some Ramen from Ichiraku...",
 
                  "\t  This area is very peacefull, Hanare is not here you better get going again!" +
@@ -406,13 +413,15 @@ namespace TheShinobi.HelperMethods
                 $"\n\t  As you approach {enemy.Name} attack you!",
 
                 $"\t  Some enemies from {enemy.Clan} clan are blocking your path" +
-                $"\n\t  There is no time to loose Hanare must be found quickly, you attack! {enemy.Name}",
+                $"\n\t  There is no time to loose Hanare must be found quickly, you attack {enemy.Name}!",
 
-                $"\t  You sence there is trouble ahead! The {enemy.Clan} clan is trying to hide around the corner" +
+                $"\t  You sence there is trouble ahead! " +
+                $"nt  The {enemy.Clan} clan is trying to hide around the corner" +
                 $"\n\t  You can both smell and sense them miles away... You attack {enemy.Name}!",
 
                 "\t  You have followed Hanares kidnappers trail for hours when you hear enemies further ahead." +
-                $"\n\t  It is {enemy.Name} from the {enemy.Clan} You draw your weapon and attack! the enemies",
+                $"\n\t  It is {enemy.Name} from the {enemy.Clan} " +
+                $"\n\t  You draw your weapon and attack! the enemies",
 
                 $"\t  As you reach the lake you see {enemy.Name} from the {enemy.Clan} Clan!" +
                 $"\n\t  {enemy.Name} attacks you!"
@@ -479,52 +488,52 @@ namespace TheShinobi.HelperMethods
                 "\n\t As you dry Orochimaru's blood from your weapon on his Flack jacket. \n" +
                 "\t You hear faint sounds deeper into the cave and you sense it is Hanare!\n " +
                 "\n\t This fight is far from over, Orochimura did not do this on his own..." +
-                "\n\t You both sense and hear more enemies deeper inside tha cave system. ",
+                "\n\t You both sense and hear more enemies deeper inside tha cave system. \n",
 
 
-                "\n\t As you walked further into the huge cave system Hanares cry for help \n" +
+                "\n\t As you walk further into the huge cave system Hanares cry for help \n" +
                 "\t get's clearer. You are closing in on her! \n",
 
-                "\t Suddenly you sense danger from behinde and instinctivly make a Shinobi backflip! \n" +
+                "\n\t Suddenly you sense danger from behinde and instinctivly make a Shinobi backflip! \n" +
                 "\n\t You dodge the sword that was beeing aimed at your back with full force!" +
                 "\n\t You knew it! It is the filty backstabbing Akatsuku Clan! \n" +
                 "\n\t Nobody else would ever try to kill a Shinobi from behinde." +
                 "\n\t Three Akatsuku are attacking and they have you cornered. \n",
 
-                "\t Beeing a true ninjutsu hero you are draw your Weapon and counter attack. \n" +
+                "\n\t Beeing the true ninjutsu hero you are, you draw your Weapon and attack. \n" +
                 "\t The closest attacker throws a Kunai aimed at your heart! \n" +
-                "\n\t You use your chakra and redirect the knife into on of the other dirty" +
+                "\n\t You use your chakra and redirect the knife into one of the other dirty" +
                 "\n\t Akatsu scumbag's! \n",
 
                 "\t This fight did not last longer then a few minutes. \n" +
                 "\n\t They where weak and in your way. \n" +
                 "\t Now they are all very very dead...\n",
 
-                "\t You sense Hanare is close and you walk into one of the dark side tunnels...\n" +
+                "\n\t You sense Hanare is close and you walk into one of the dark side tunnels...\n" +
                 "\t Your senses also tells you that Hanare is not alone! \n" +
                 "\t Someone with the ability to hide his true powers is also present.\n",
 
-                "\t Who is this, and how can he block your senses? \n" +
+                "\n\t Who is this, and how can he block your senses? \n" +
                 "\t You know that the enemy and Hanare is just around the next corner. \n" +
                 "\t As you draw your weapon and sneak around the corner you se Hanare and him, HIM...\n\n",
 
-                "\t This is impossible... He is dead!?! \n" +
+                "\n\t This is impossible, it cant be... He is dead!?! \n" +
                 "\t you know you killed him and every last member of their Clan. \n" +
-                "\t this cant be!?! Kakuzu's alive? \n",
+                "\n\t this cant be!?! Kakuzu's alive? \n",
 
-                "\t Kakuzu laughs like a mad man when he sees your confusion “HA HA HA HA“ \n" +
+                "\n\t Kakuzu laughs like a mad man when he sees your confusion “HA HA HA HA“ \n" +
                 "\n\t “Did you not know that I teamed up with Orihime Inoue years ago? YOU FOOL!“ \n" +
                 "\t “Orihime brought me back from the dead not more then 30 minutes after you left! \n" +
-                "\t “She truly is special my dear Orihime...“",
+                "\n\t “She truly is special my dear Orihime...“",
 
-                "\t “You should have killed her when you had the chance!“ \n" +
+                "\n\t “You should have killed her when you had the chance!“ \n" +
                 "\n\t “Instead I will now kill someone near and dear to you! \n" +
                 "\t “I want you to watch me kill Hanare before I come back and kill you to!” \n" +
-                "\t “GRAB HIM!!!“\n",
+                "\n\t “GRAB HIM!!!“\n",
 
                 "\t You are suddenly overwhelmed by enemies pulling you down towards the ground, \n" +
                 "\t where did they come from!? \n" +
-                "\t Kakuzu must have used his {ability} to block your senses! \n",
+                "\n\t Kakuzu must have used his {ability} to block your senses! \n",
 
                 "\t Well, if this how he wants to play, fine by me! \n" +
                 "\t “You shall meet your own powers you fool!“ \n\n" +
@@ -539,7 +548,7 @@ namespace TheShinobi.HelperMethods
                 "\n\t A true Shinobi are known to keep their cool even when angry! \n" +
                 "\t The story of this fight will live on as a tale forever...“\n",
 
-                "\t As you come back to your senses you rush to Hanare \n" +
+                "\n\t As you come back to your senses you rush to Hanare \n" +
                 "\t and untie the ropes around her hands and neck \n" +
                 "\t she is still unconscious and very very weak. \n ",
 
@@ -569,7 +578,7 @@ namespace TheShinobi.HelperMethods
                 "\t Youtube 8 Bit Music Worl - Naruto - The Raising Fighting Spirit (8 bit)\n\n" +
                 "\t CREATORS\n" +
                 "\t Daudi - David Ström \n" +
-                "\t Hocke - Håkan Eriksson"
+                "\t Hocke - Håkan Eriksson\n\n\n\n"
                 };
             return stories;
         }
