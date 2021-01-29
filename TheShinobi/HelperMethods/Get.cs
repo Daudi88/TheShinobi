@@ -589,7 +589,7 @@ namespace TheShinobi.HelperMethods
                 "\t Youtube 8 Bit Music Worl - Naruto - The Raising Fighting Spirit (8 bit)\n\n" +
                 "\t CREATORS\n" +
                 "\t Daudi - David Ström \n" +
-                "\t Hocke - Håkan Eriksson"
+                "\t Hocke - Håkan Eriksson\n\n\n\n"
                 };
             return stories;
         }
