@@ -413,7 +413,8 @@ namespace TheShinobi.HelperMethods
                 $"\n\t  As you set up camp in the mountains to escape the bad weather" + 
                 $"\n\t  {enemy.Name} from the {enemy.Clan} Clan attacks!",
 
-                "\t  The sky is blue and the sun is shining. As you walk past a shrubbery you hear a noice!" +
+                "\t  The sky is blue and the sun is shining." +
+                "\n\t  As you walk past a shrubbery you hear a noice!" +
                 $"\n\t  A lowlife from the {enemy.Clan} Clan attacks you!",
 
                 "\t  Walking on a narrow trail in search of tracks from the kidnappers" +
@@ -424,13 +425,16 @@ namespace TheShinobi.HelperMethods
                 $"\n\t  As you approach {enemy.Name} attack you!",
 
                 $"\t  Some enemies from {enemy.Clan} clan are blocking your path" +
-                $"\n\t  There is no time to loose Hanare must be found quickly, you attack {enemy.Name}!",
+                $"\n\t  There is no time to loose Hanare must be found quickly!" + 
+                $"\n\t  you attack {enemy.Name}!",
 
                 $"\t  You sence there is trouble ahead! " +
                 $"nt  The {enemy.Clan} clan is trying to hide around the corner" +
-                $"\n\t  You can both smell and sense them miles away... You attack {enemy.Name}!",
+                $"\n\t  You can both smell and sense them miles away..." + 
+                $"n\t  You attack {enemy.Name}!",
 
-                "\t  You have followed Hanares kidnappers trail for hours when you hear enemies further ahead." +
+                "\t  You have followed Hanares kidnappers trail for hours n" +
+                "\t\nwhen you hear enemies further ahead." +
                 $"\n\t  It is {enemy.Name} from the {enemy.Clan} " +
                 $"\n\t  You draw your weapon and attack! the enemies",
 
