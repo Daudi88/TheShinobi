@@ -299,6 +299,11 @@ namespace TheShinobi.HelperMethods
             return items;
         }
 
+        internal static string OrochimaruStory()
+        {
+            throw new NotImplementedException();
+        }
+
         public static string[] NoFightStories()
         {
             string[] stories = new string[]

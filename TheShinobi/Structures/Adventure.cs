@@ -257,7 +257,7 @@ namespace TheShinobi.Structures
         {
             if (player.Level >= 10)
             {
-                // FightTheBoss(player);
+                Battle(player, true);
                 Display.Credits(player);
             }
             else
@@ -267,12 +267,19 @@ namespace TheShinobi.Structures
             return false;
         }
 
-        public static void Battle(Player player)
+        public static void Battle(Player player, bool isBoss = false)
         {
             Enemy[] enemies = Get.Enemies().Where(e => e.Level <= player.Level).ToArray();
             Enemy enemy = enemies[random.Next(enemies.Length)];
             string[] stories = Get.FightStories(enemy);
             string story = stories[random.Next(stories.Length)];
+            
+            if (isBoss)
+            {
+                enemy = new Enemy("Orochimaru", "", 10, new ShinobiBattleArmor(), new ChakraBlade());
+                story = Get.OrochimaruStory();
+            }
+
             int top = Console.CursorTop;
             int bottom = 0;
             int textTop = top + 4;
@@ -319,8 +326,8 @@ namespace TheShinobi.Structures
                         battleText = $"You were defeated by {enemy.Name}...";
                         ColorConsole.WriteSetDelayed(battleText, textTop);
                         WaitSetForUser(bottom - 4);
-                        Display.Credits(player);
                         exit = true;
+                        Display.Credits(player);
                     }
                 }
                 else
@@ -330,9 +337,11 @@ namespace TheShinobi.Structures
                     ColorConsole.WriteSetDelayed(battleText, textTop);
                     WaitSetForUser(bottom - 6);
                     exit = true;
+                    if (isBoss)
+                    {
+                        Display.Credits(player);
+                    }
                 }
-
-
             }
 
             if (energyDrink.IsEnergized)
@@ -340,100 +349,8 @@ namespace TheShinobi.Structures
                 EnergyDip(player);
             }
         }
-
-        //private static void Battle(Player player)
-        //{
-        //    if (isRedBull)
-        //    {
-        //        player.Defence += 2;
-        //    }
-        //    Character[] enemies = Utility.GetEnemies().Where(e => e.Level <= player.Level).ToArray();
-        //    Character enemy = enemies[Utility.RollDice(enemies.Length)];
-        //    int battleCtr = 0;
-        //    List<string> content = new List<string>();
-        //    while (enemy.Hp > 0)
-        //    {
-        //        content.Clear();
-        //        if (battleCtr == 0)
-        //        {
-        //            content.Add($"You have encountered {enemy.Name}!");
-        //            battleCtr++;
-        //        }
-        //        int damage = player.Attack(enemy);
-        //        enemy.Hp -= damage;
-        //        content.Add($"You hit {enemy.Name} with your {player.Weapon.Name} dealing {damage} damage!");
-        //        if (enemy.Hp <= 0)
-        //        {
-        //            content.Add($"You defeated {enemy.Name}!");
-        //            content.Add($"You gained {enemy.Exp} Exp and {enemy.Gold} gold!");
-        //            player.Exp += enemy.Exp;
-        //            player.Gold += enemy.Gold;
-
-        //            if (player.Exp >= player.MaxExp)
-        //            {
-        //                content.Add("Well Done! You leveled up!");
-        //                player.LevelUp();
-        //            }
-        //        }
-        //        else
-        //        {
-        //            damage = enemy.Attack(player);
-        //            player.Hp -= damage;
-        //            content.Add($"{enemy.Name} hits you dealing {damage} damage!");
-        //            if (player.Hp <= 0)
-        //            {
-        //                content.Add($"You were defeated by { enemy.Name}!");
-        //                content.Add("You lose...");
-        //            }
-        //            else
-        //            {
-        //                if (player.Hp < player.MaxHp)
-        //                {
-        //                    content.Add($"{player.Name} Hp: [red]{player.Hp}[/red]");
-        //                }
-        //                else
-        //                {
-        //                    content.Add($"{player.Name} Hp: {player.Hp}");
-        //                }
-        //                content.Add($"{enemy.Name} Hp: {enemy.Hp}");
-        //            }
-        //        }
-        //        Display.WithFrame("[red]BATTLE[/red]", content.ToArray());
-
-        //        if (player.Hp <= 0)
-        //        {
-        //            Display.LoseScreen();
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine("\t [Press enter to continue]");
-        //            Console.ReadLine();
-        //        }
-        //        Console.SetWindowPosition(0, Console.CursorTop - 30);
-        //    }
-        //    if (isRedBull == true)
-        //    {
-        //        player.Defence -= 2;
-        //        isRedBull = false;
-        //    }
-        //}
     }
 }
 
-//        private static void BossFight(Player player)
-//        {
-//            Character boss = new Enemy("Orochimaru", 10, 100, new ShinobiBattleArmor(), new ChakraBlade());
-//            player.Hp -= 1000;
-//            Console.WriteLine("\n\t You were not ready!");
-//            string[] haha = new string[] { "Ha! ", "Ha! ", "Ha! ", };
-//            Console.SetWindowPosition(0, Console.CursorTop - 30);
-//            Console.Write("\t ");
-//            Thread.Sleep(1000);
-//            foreach (var ha in haha)
-//            {
-//                ColorConsole.WriteInRed(ha);
-//                Thread.Sleep(1000);
-//            }
-//        }
-//    }
-//}
+
+
