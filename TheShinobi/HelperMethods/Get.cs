@@ -368,7 +368,10 @@ namespace TheShinobi.HelperMethods
             };
             return story;
         }
-
+        /// <summary>
+        /// Returns random string array with storys for when there is no enemies.
+        /// </summary>
+        /// <returns></returns>
         public static string[] NoFightStories()
         {
             string[] stories = new string[]
@@ -410,7 +413,11 @@ namespace TheShinobi.HelperMethods
             };
             return stories;
         }
-
+        /// <summary>
+        /// Returns a random string array with fight storys if there is an enemy to fight.
+        /// </summary>
+        /// <param name="enemy"></param>
+        /// <returns></returns>
         public static string[] FightStories(Enemy enemy)
         {
             string[] stories = new string[]
@@ -466,7 +473,12 @@ namespace TheShinobi.HelperMethods
             };
             return stories;
         }
-
+        /// <summary>
+        /// Controls the Rank lvl system.
+        /// </summary>
+        /// <param name="level"></param>
+        /// <param name="rank"></param>
+        /// <returns></returns>
         public static bool NewRank(int level, out string rank)
         {
             switch (level)
@@ -506,7 +518,11 @@ namespace TheShinobi.HelperMethods
                     return false;
             }
         }
-
+        /// <summary>
+        /// Returns the different exp limits.
+        /// </summary>
+        /// <param name="rank"></param>
+        /// <returns></returns>
         internal static int ExpLimit(string rank)
         {
             return rank switch
@@ -517,6 +533,11 @@ namespace TheShinobi.HelperMethods
                 _ => 0
             };
         }
+        /// <summary>
+        /// Returns a string array with the end story for when the boss is defeated.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public static string[] EndStory(Player player)
         {
             string[] stories = new string[]
