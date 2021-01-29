@@ -104,7 +104,7 @@ namespace TheShinobi.Structures
                     }
                     else
                     {
-                        ColorConsole.WriteDelayedLine("\t Thank you for visiting Lightning Burger!\n", ConsoleColor.Yellow);
+                        ColorConsole.WriteDelayedLine("\t Thank you for visiting Ramen Ichiraku!\n", ConsoleColor.Yellow);
                         exit = true;
                         break;
                     }
@@ -144,7 +144,7 @@ namespace TheShinobi.Structures
                 }
                 else
                 {
-                    ColorConsole.WriteDelayedLine("\t Thank you for visiting Konoha Hospital\n!", ConsoleColor.Yellow);
+                    ColorConsole.WriteDelayedLine("\t Thank you for visiting Konoha Hospital!\n", ConsoleColor.Yellow);
                     break;
                 }
             }
@@ -170,7 +170,7 @@ namespace TheShinobi.Structures
 
         private static void NinjaToolShop(Player player)
         {
-            ColorConsole.WriteDelayed(content: "\n\n\t Welcome to the Ninja Tool Shop\n");
+            ColorConsole.WriteDelayed(content: "\n\n\t Welcome to the Ninja Tool Shop!\n");
             int top = Console.CursorTop;
             while (true)
             {
@@ -209,7 +209,7 @@ namespace TheShinobi.Structures
                 }
                 else
                 {
-                    ColorConsole.WriteDelayedLine("\t Thank you for visiting the Ninja Tool Shop\n!", ConsoleColor.Yellow);
+                    ColorConsole.WriteDelayedLine("\t Thank you for visiting the Ninja Tool Shop!\n", ConsoleColor.Yellow);
                     break;
                 }
             }
