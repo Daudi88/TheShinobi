@@ -171,9 +171,9 @@ namespace TheShinobi.HelperMethods
         {
             Enemy[] enemies = new Enemy[]
             {
-                new Enemy("a shinobi", "Sound Four", 1, new Shirt(), new Fists()),
-                new Enemy("Sakon", "Sound Five", 1, new FlakJacket(), new Kiba()),
-                new Enemy("Tayuya","Sound Four", 1, new Shirt(), new Fists()),
+                new Enemy("Shinobi", "Sound Four", 1, new Shirt(), new Fists()),
+                new Enemy("Sakon", "Sound Five", 2, new FlakJacket(), new Kiba()),
+                new Enemy("Tayuya","Sound Four", 2, new Shirt(), new Fists()),
                 new Enemy("Ukon", "Sound Five", 2, new Shirt(), new Kusarigama()),
                 new Enemy("Sasori", "Akatsuki", 2, new Shirt(), new TekagiShuko()),
                 new Enemy("Konan", "Amegakure", 3, new FlakJacket(), new Kubikiribōchō()),
@@ -314,14 +314,14 @@ namespace TheShinobi.HelperMethods
             string[] stories = new string[]
             {
                 "\t  You walk down the bushy trail and sence there is trouble ahead!" +
-                $"\n\t  You can smell that dirty {enemy.Clan} member miles away and you attack instantly!",
+                $"\n\t  You can smell that dirty {enemy.Name} from the {enemy.Clan} clan miles away and you attack instantly!",
 
                 $"\t  While climbing up the mountains in search of Hanare you get ambushed by some filthyKLIPPHÄR {enemy.Clan} villains!" +
                 "\n\t  You attack, maybe they know more about Hanare's kidnapping!",
 
                 "\t  You have walked for hours when you decide to set up camp at a lake." +
                 $"\n\t  Suddenly some low life from the {enemy.Clan} Clan attacks you!" +
-                "\n\t  Four of them run away when they see that it is you but one stays behind to fight!",
+                $"\n\t  Four of them run away when they see that it is you but {enemy.Name} stays behind to fight!",
 
                 $"\t  Ahead you hear fighting going on! It is some bastards from the {enemy.Clan} robbing a villager!" +
                 $"\n\t  You draw your weapon and attack!",
@@ -330,10 +330,10 @@ namespace TheShinobi.HelperMethods
                 $"\n\t  As you set up camp in the mountains to escape the bad weather some villains from the {enemy.Clan} Clan attacks!",
 
                 "\t  The sky is blue and the sun is shining. As you walk past a shrubbery you hear a noice!" +
-                $"\n\t A lowlife from the {enemy.Clan} Clan attacks you!",
+                $"\n\t  A lowlife from the {enemy.Clan} Clan attacks you!",
 
                 "\t  Walking on a narrow trail in search of tracks from the kidnappers" +
-                $"\n\t The {enemy.Clan} Clan suddenly attacks from all sides!",
+                $"\n\t  The {enemy.Clan} Clan suddenly attacks from all sides!",
 
                 $"\t  A group of {enemy.Clan} clan are blocking your path ahead!" +
                 "\n\t  As you approach they attack you!",
@@ -344,7 +344,7 @@ namespace TheShinobi.HelperMethods
                 $"\t  You sence there is trouble ahead! The {enemy.Clan} clan is trying to hide around the corner" +
                 $"\n\t  You can both smell and sense them miles away... You attack!",
 
-                "\t   You have followed Hanares kidnappers trail for hours when you hear enemies further ahead." +
+                "\t  You have followed Hanares kidnappers trail for hours when you hear enemies further ahead." +
                 $"\n\t  You draw your weapon and attack! the enemies from the {enemy.Clan} ",
             };
             return stories;

@@ -110,7 +110,7 @@ namespace TheShinobi.HelperMethods
             }
         }
 
-        public static void WriteEmbeddedSetDelayed(string text, int top, int bottom)
+        public static void WriteEmbeddedSetDelayed(string text, int top, int bottom, bool blink = true)
         {
             bool result;
             bool firstPart = true;
@@ -137,13 +137,20 @@ namespace TheShinobi.HelperMethods
                 WriteDelayed(col, content: hightlight);
                 text = text.Substring(match.Index + match.Value.Length);
             }
-            if (result)
+            if (blink)
             {
-                Console.ReadKey(true);
+                if (result)
+                {
+                    Console.ReadKey(true);
+                }
+                else
+                {
+                    Utility.WaitSetForUser(bottom);
+                } 
             }
-            else
+            else if (!result)
             {
-                Utility.WaitSetForUser(bottom);
+                Thread.Sleep(1800);
             }
         }
 
@@ -191,7 +198,7 @@ namespace TheShinobi.HelperMethods
                     Thread.Sleep(delay);
                 }
             }
-            Thread.Sleep(600);
+            Thread.Sleep(800);
             Console.WriteLine();
             if (isKeyPressed)
             {

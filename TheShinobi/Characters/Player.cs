@@ -47,27 +47,25 @@ namespace TheShinobi.Characters
             Stamina.Current = Stamina.Max;
         }
 
-        public void Attack(Character defender, int top)
+        public string Attack(Character defender)
         {
+            string text = "";
             while (true)
             {
                 if (int.TryParse(ColorConsole.ReadLine(), out int choice))
                 {
-                    int bottom = Console.CursorTop;
-                    //Console.SetCursorPosition(10 + 1, Console.CursorTop - 1);
-                    //Console.Write("                                              ");
-                    string text = "";
                     if (Utility.RollDice("1d20") + Chakra.Current >= defender.Defence)
                     {
                         if (choice == 1)
                         {
                             text = $"You hit {defender.Name} with your {Weapon.Name} dealing [Yellow]{Utility.RollDice(Weapon.Damage)}[/Yellow] damage!";
-                            ColorConsole.WriteEmbeddedSetDelayed(text, top, bottom);
+                            break;
                         }
                         else if (choice - 2 < Ninjutsus.Count)
                         {
                             Ninjutsu jutsu = Ninjutsus[choice - 2];
-                            text = $"You hit {defender.Name} with your {jutsu.Name} dealing [DarkCyan]{Utility.RollDice(jutsu.Damage)}[/DarkCyan] damage!";
+                            text = $"You hit {defender.Name} with your {jutsu.Name} dealing [Yellow]{Utility.RollDice(jutsu.Damage)}[/Yellow] damage!";
+                            break;
                         }
                         else
                         {
@@ -77,16 +75,15 @@ namespace TheShinobi.Characters
                     else
                     {
                         text = "You miss!";
-                        ColorConsole.WriteSetDelayed(text, top);
+                        break;
                     }
                 }
                 else
                 {
                     ColorConsole.WriteOver("\t Invalid choice. Try again!", ConsoleColor.Red);
-                }
-                
+                }                
             }
-            
+            return text;
         }
     }
 }

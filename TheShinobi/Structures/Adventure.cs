@@ -29,6 +29,7 @@ namespace TheShinobi.Structures
         static string soundLocation5 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Hiruzen.wav");
         static string soundLocation6 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Graveyard.wav");
         static string soundLocation7 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\KakashiFightSongUP3.wav");
+        static string soundLocation8 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Battle.wav");
 
         public static SoundPlayer villagePlayer = new SoundPlayer(soundLocation1);
         static SoundPlayer adventurePlayer = new SoundPlayer(soundLocation2);
@@ -37,6 +38,7 @@ namespace TheShinobi.Structures
         static SoundPlayer hiruzenPlayer = new SoundPlayer(soundLocation5);
         static SoundPlayer graveyardPlayer = new SoundPlayer(soundLocation6);
         public static SoundPlayer endPlayer = new SoundPlayer(soundLocation7);
+        static SoundPlayer battlePlayer = new SoundPlayer(soundLocation8);
 
         private static bool isTreasureTaken = false;
         private static bool isGraveyardVisited = false;
@@ -272,11 +274,13 @@ namespace TheShinobi.Structures
             string[] stories = Get.FightStories(enemy);
             string story = stories[random.Next(stories.Length)];
             int top = Console.CursorTop;
+            int bottom = 0;
             int textTop = top + 4;
             Console.SetCursorPosition(0, textTop);
             ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
-            
+            battlePlayer.PlayLooping();
             bool exit = false;
+            string text = "";
             while (!exit)
             {
                 Console.SetCursorPosition(0, top);
@@ -301,9 +305,10 @@ namespace TheShinobi.Structures
                         Console.WriteLine($"\t {ctr++}. {jutsu}");
                     }
                     Console.Write("\t > ");
-                    player.Attack(enemy, textTop++);
+                    bottom = Console.CursorTop + 1;
+                    text = player.Attack(enemy);
+                    ColorConsole.WriteEmbeddedSetDelayed(text, textTop++, bottom, false);
                 }
-                Console.ReadLine();
 
 
             }
