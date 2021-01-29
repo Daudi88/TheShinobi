@@ -328,8 +328,23 @@ namespace TheShinobi.HelperMethods
                 "\t  The sky is full of dark clouds and when lightning strikes the ground vibrates!" +
                 $"\n\t  As you set up camp in the mountains to escape the bad weather some villains from the {enemy.Clan} Clan attacks!",
 
-                "\t  The sky is blue and the sun is shining. As you walk past a shrubbery you hear a noice!" +
-                $"\n\t  A lowlife from the {enemy.Clan} Clan attacks you!"
+                "\n\t The sky is blue and the sun is shining. As you walk past a shrubbery you hear a noice!" +
+                $"\n\t A lowlife from the {enemy.Clan} Clan attacks you!",
+
+                "\n\t Walking on a narrow trail in search of tracks from the kidnappers" +
+                $"\n\t The {enemy.Clan} Clan suddenly attacks from all sides!",
+
+                $"\n\t A group of {enemy.Clan} clan are blocking your path ahead!" +
+                "\n\t As you approach they attack you!",
+
+                $"\n\t Some enemies from {enemy.Clan} clan are blocking your path" +
+                "\n\t There is no time to loose Hanare must be found quickly, you attack!",
+
+                $"\n\t You sence there is trouble ahead! The {enemy.Clan} clan is trying to hide around the corner" +
+                $"\n\t You can both smell and sense them miles away... You attack!",
+
+                "\n\t  You have followed Hanares kidnappers trail for hours when you hear enemies further ahead." +
+                $"\n\t You draw your weapon and attack! the enemies from the {enemy.Clan} ",
             };
             return stories;
         }
