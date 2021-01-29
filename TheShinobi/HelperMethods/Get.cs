@@ -173,7 +173,7 @@ namespace TheShinobi.HelperMethods
             Enemy[] enemies = new Enemy[]
             {
                 //new Enemy("Shinobi", "Sound Four", 1, new Shirt(), new Fists(), new PaperShuriken()),
-                new Enemy("Sakon", "Sound Five", 1, new FlakJacket(), new Kiba(), new FlameBullet()),
+                new Enemy("Sakon", "Sound Five", 1, new FlakJacket(), new Kunai(), new FlameBullet()),
                 new Enemy("Tayuya","Sound Four", 1, new Shirt(), new Fists(), new Chidori(), "her"),
                 new Enemy("Ukon", "Sound Five", 2, new Shirt(), new Kusarigama(), new ChidoriSenbon()),
                 new Enemy("Sasori", "Akatsuki", 2, new Shirt(), new TekagiShuko(), new EarthSpear()),

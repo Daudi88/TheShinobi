@@ -30,15 +30,17 @@ namespace TheShinobi.Structures
         static string soundLocation6 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Graveyard.wav");
         static string soundLocation7 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\KakashiFightSongUP3.wav");
         static string soundLocation8 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Battle.wav");
+        static string soundLocation9 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\BossStory.wav");
 
         public static SoundPlayer villagePlayer = new SoundPlayer(soundLocation1);
-        static SoundPlayer adventurePlayer = new SoundPlayer(soundLocation2);
+        public static SoundPlayer adventurePlayer = new SoundPlayer(soundLocation2);
         static SoundPlayer treasurePlayer = new SoundPlayer(soundLocation3);
         static SoundPlayer abuHassanPlayer = new SoundPlayer(soundLocation4);
         static SoundPlayer hiruzenPlayer = new SoundPlayer(soundLocation5);
         static SoundPlayer graveyardPlayer = new SoundPlayer(soundLocation6);
         public static SoundPlayer endPlayer = new SoundPlayer(soundLocation7);
         static SoundPlayer battlePlayer = new SoundPlayer(soundLocation8);
+        static SoundPlayer bossPlayer = new SoundPlayer(soundLocation9);
 
         private static bool isTreasureTaken = false;
         private static bool isGraveyardVisited = false;
@@ -278,6 +280,7 @@ namespace TheShinobi.Structures
             if (isBoss)
             {
                 //enemy = new Enemy("Orochimaru", "", 10, new ShinobiBattleArmor(), new ChakraBlade(), );
+                bossPlayer.PlayLooping();
                 string[] story = Get.OrochimaruStory(player);
                 int ctr = 0;
                 foreach (var part in story)
@@ -306,9 +309,9 @@ namespace TheShinobi.Structures
                 string story = stories[random.Next(stories.Length)];
                 Console.SetCursorPosition(0, textTop);
                 ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
+                battlePlayer.PlayLooping();
             }
 
-            battlePlayer.PlayLooping();
             bool exit = false;
             string battleText = "";
             while (!exit)

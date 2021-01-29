@@ -32,12 +32,12 @@ namespace TheShinobi.Characters
         public override string Attack(Character defender)
         {
             string text = "";            
-            if (Utility.RollDice("1d20") + Chakra.Current >= defender.Defence)
+            if (Utility.RollDice("1d12") + Chakra.Current >= defender.Defence)
             {
                 string weapon;
                 int damage;
                 Ninjutsu jutsu = Ninjutsus[Utility.random.Next(Ninjutsus.Count)];
-                if (Utility.random.Next(101) > 50 && Chakra.Current - jutsu.Cost > 0)
+                if (Utility.random.Next(200) > 30 && Chakra.Current - jutsu.Cost > 0)
                 {
                     damage = Utility.RollDice(jutsu.Damage);
                     weapon = jutsu.Name;

@@ -199,7 +199,7 @@ namespace TheShinobi.HelperMethods
                     Thread.Sleep(delay);
                 }
             }
-            Thread.Sleep(800);
+            Thread.Sleep(1000);
             Console.WriteLine();
             if (isKeyPressed)
             {
