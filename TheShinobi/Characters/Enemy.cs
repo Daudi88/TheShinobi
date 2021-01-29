@@ -25,8 +25,9 @@ namespace TheShinobi.Characters
             Exp.Current = Utility.random.Next(10 * Level, 40 * Level + 1);
         }
 
-        public void Attack(Character defender, int top)
+        public override string Attack(Character defender)
         {
+            string text = "";
             if (Utility.random.Next(100) >= defender.Defence)
             {
                 
@@ -35,6 +36,7 @@ namespace TheShinobi.Characters
             {
                 
             }
+            return text;
         }
 
         public void DropItems(Player player)

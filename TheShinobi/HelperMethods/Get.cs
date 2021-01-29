@@ -171,7 +171,7 @@ namespace TheShinobi.HelperMethods
         {
             Enemy[] enemies = new Enemy[]
             {
-                new Enemy("Shinobi", "Sound Four", 1, new Shirt(), new Fists()),
+                new Enemy("Shinobi", "Sound Four", 1, new Shirt(), new Fists(), new PaperShuriken()),
                 new Enemy("Sakon", "Sound Five", 2, new FlakJacket(), new Kiba()),
                 new Enemy("Tayuya","Sound Four", 2, new Shirt(), new Fists()),
                 new Enemy("Ukon", "Sound Five", 2, new Shirt(), new Kusarigama()),
@@ -194,6 +194,23 @@ namespace TheShinobi.HelperMethods
 
             };
             return enemies;
+        }
+
+        public static Ninjutsu Ninjutsu(string rank)
+        {
+            switch (rank)
+            {
+                case "Genin":
+                    return new Ninjutsu("Paper Shuriken", "1d6", 5);
+                case "Chūnin":
+                    return new Ninjutsu("Flame Bullet", "3d8", 20);
+                case "Jōnin":
+                    return new Ninjutsu("Rasengan", "4d12", 50);
+                case "Hokage":
+                    return new Ninjutsu("Tailed Beast Ball", "5d20", 150);
+                default:
+                    return new Ninjutsu("", "", 0);
+            }
         }
 
         public static Armor[] Armors()
@@ -354,23 +371,6 @@ namespace TheShinobi.HelperMethods
                 $"\n\t  It is {enemy.Name} from the {enemy.Clan} You draw your weapon and attack! the enemies  ",
             };
             return stories;
-        }
-
-        public static Ninjutsu Ninjutsu(string rank)
-        {
-            switch (rank)
-            {
-                case "Genin":
-                    return new Ninjutsu("Paper Shuriken", "1d6", 5);
-                case "Chūnin":
-                    return new Ninjutsu("Flame Bullet", "3d8", 20);
-                case "Jōnin":
-                    return new Ninjutsu("Rasengan", "4d12", 50);
-                case "Hokage":
-                    return new Ninjutsu("Tailed Beast Ball", "5d20", 150);
-                default:
-                    return new Ninjutsu("", "", 0);
-            }
         }
 
         public static bool NewRank(int level, out string rank)

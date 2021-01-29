@@ -152,8 +152,9 @@ namespace TheShinobi.HelperMethods
             Utility.WaitForUser();
         }
 
-        public static void BattleFrame(string title, List<string> stats, int height)
+        public static void BattleFrame(string title, List<string> stats, int height, int top)
         {
+            Console.SetCursorPosition(0, top);
             int length = 41;
             ColorConsole.WriteEmbedded($"\n\t┏━{title}");
             for (int i = 0; i < length - title.Length + Get.ColorLength(title) + 2; i++)
@@ -194,32 +195,47 @@ namespace TheShinobi.HelperMethods
             }
             Console.WriteLine("┫");
             length = length * 2 + 4;
-            if (Utility.isBattleBeginning)
-            {
-                int top = Console.CursorTop;
-                for (int i = 0; i < height; i++)
-                {
-                    Console.SetCursorPosition(0, Console.CursorTop);
-                    Console.Write("\t┃");
-                    Console.SetCursorPosition(10 + length + 2, Console.CursorTop);
-                    Console.WriteLine("┃");
-                }
-                BottomOfFrame(length);
-                Utility.WaitSetForUser(Console.CursorTop);
-                Console.SetCursorPosition(0, top);
-                Utility.isBattleBeginning = false;
-            }
-
+            //if (Utility.isBattleBeginning)
+            //{
+            top = Console.CursorTop;
             for (int i = 0; i < height; i++)
             {
-                Console.Write("\t┃ ");
-                for (int j = 0; j < length; j++)
-                {
-                    Console.Write(" ");
-                }
-                Console.WriteLine("  ┃");
+                Console.SetCursorPosition(0, Console.CursorTop);
+                Console.Write("\t┃");
+                Console.SetCursorPosition(10 + length + 2, Console.CursorTop);
+                Console.WriteLine("┃");
             }
             BottomOfFrame(length);
+            int bottom = Console.CursorTop;
+            if (Utility.isBattleBeginning)
+            {
+                Utility.WaitForUser();
+                for (int i = 0; i < height; i++)
+                {
+                    Console.SetCursorPosition(9, top++);
+                    for (int j = 0; j < length - 2; j++)
+                    {
+                        Console.Write(" ");
+                    }
+                }
+                Console.SetCursorPosition(0, bottom);
+                Utility.isBattleBeginning = false;
+            }
+            //Utility.WaitSetForUser(Console.CursorTop);
+            //Console.SetCursorPosition(0, top);
+            //Utility.isBattleBeginning = false;
+            //}
+
+            //for (int i = 0; i < height; i++)
+            //{
+            //    Console.Write("\t┃ ");
+            //    for (int j = 0; j < length; j++)
+            //    {
+            //        Console.Write(" ");
+            //    }
+            //    Console.WriteLine("  ┃");
+            //}
+            //BottomOfFrame(length);
         }
 
         internal static void Map(Player player)

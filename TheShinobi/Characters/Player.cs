@@ -47,7 +47,7 @@ namespace TheShinobi.Characters
             Stamina.Current = Stamina.Max;
         }
 
-        public string Attack(Character defender)
+        public override string Attack(Character defender)
         {
             string text = "";
             while (true)
@@ -56,15 +56,21 @@ namespace TheShinobi.Characters
                 {
                     if (Utility.RollDice("1d20") + Chakra.Current >= defender.Defence)
                     {
+                        int damage;
                         if (choice == 1)
                         {
-                            text = $"You hit {defender.Name} with your {Weapon.Name} dealing [Yellow]{Utility.RollDice(Weapon.Damage)}[/Yellow] damage!";
+                            damage = Utility.RollDice(Weapon.Damage);
+                            text = $"You hit {defender.Name} with your {Weapon.Name} dealing [Yellow]{damage}[/Yellow] damage!";
+                            defender.Stamina.Current -= damage;
                             break;
                         }
                         else if (choice - 2 < Ninjutsus.Count)
                         {
                             Ninjutsu jutsu = Ninjutsus[choice - 2];
-                            text = $"You hit {defender.Name} with your {jutsu.Name} dealing [Yellow]{Utility.RollDice(jutsu.Damage)}[/Yellow] damage!";
+                            damage = Utility.RollDice(jutsu.Damage);
+                            text = $"You hit {defender.Name} with your {jutsu.Name} dealing [Yellow]{damage}[/Yellow] damage!";
+                            defender.Stamina.Current -= damage;
+                            Chakra.Current -= jutsu.Cost;
                             break;
                         }
                         else

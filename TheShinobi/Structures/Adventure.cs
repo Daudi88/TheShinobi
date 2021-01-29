@@ -280,10 +280,10 @@ namespace TheShinobi.Structures
             ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
             battlePlayer.PlayLooping();
             bool exit = false;
-            string text = "";
+            string battleText = "";
             while (!exit)
             {
-                Console.SetCursorPosition(0, top);
+                
                 string stat;
                 List<string> fighterStats = new List<string>()
                 {
@@ -293,9 +293,9 @@ namespace TheShinobi.Structures
                     $"{enemy.Name}",
                     $"{stat = Get.Status(enemy.Stamina, "Yellow")} Stamina",
                     $"{stat = Get.Status(enemy.Chakra, "DarkCyan")} Chakra"
-                };
-                Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats, 6);
-                if (enemy.Stamina.Current > 0)
+                };                
+                Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats, 6, top);
+                if (player.Stamina.Current > 0)
                 {
                     Console.WriteLine("\t Choose a weapon or jutsu to attack with:");
                     int ctr = 1;
@@ -306,8 +306,21 @@ namespace TheShinobi.Structures
                     }
                     Console.Write("\t > ");
                     bottom = Console.CursorTop + 1;
-                    text = player.Attack(enemy);
-                    ColorConsole.WriteEmbeddedSetDelayed(text, textTop++, bottom, false);
+                    battleText = player.Attack(enemy);
+                    ColorConsole.WriteEmbeddedSetDelayed(battleText, textTop, bottom, false);
+                    Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats, 6, top);
+                    Console.SetCursorPosition()
+                    ColorConsole.WriteOver("          ", ConsoleColor.Black);
+                    ColorConsole.WriteEmbeddedSetDelayed(battleText, textTop, bottom, false);
+                }
+                else
+                {
+                    
+                }
+
+                if (enemy.Stamina.Current > 0)
+                {
+                    enemy.Attack(player);
                 }
 
 
