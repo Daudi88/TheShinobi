@@ -300,7 +300,7 @@ namespace TheShinobi.HelperMethods
 
         internal static string OrochimaruStory()
         {
-            return "Håkan";
+            return "\t  Håkan";
         }
 
         public static string[] NoFightStories()
