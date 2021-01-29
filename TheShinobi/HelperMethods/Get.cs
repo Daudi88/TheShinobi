@@ -30,6 +30,11 @@ namespace TheShinobi.HelperMethods
          * GetAbuHassanItems()  - Returns an array of Abu Hassan's special items.
          */
 
+        /// <summary>
+        /// Compares the length of the <paramref name="content"/>"/>
+        /// </summary>
+        /// <param name="content"></param>
+        /// <returns>Length of longest string in <paramref name="content"/>.</returns>
         public static int ContentLength(List<string> content)
         {
             List<int> lengths = new List<int>();
@@ -41,6 +46,11 @@ namespace TheShinobi.HelperMethods
             return lengths.OrderByDescending(i => i).First();
         }
 
+        /// <summary>
+        /// Checks text for embedded coloring.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns>length of the color text.</returns>
         public static int ColorLength(string text)
         {
             if (text.Contains("["))
@@ -176,7 +186,7 @@ namespace TheShinobi.HelperMethods
                 new Enemy("Zetsu Hitam", "Akatsuki", 1, new FlakJacket(), new Kunai(), new Chidori()),
                 new Enemy("Zabuza", "Akatsuki", 1, new ChakraArmor(), new ChakraBlade(), new ChidoriSenbon()),
                 new Enemy("Kabuto", "Akatsuki", 1, new FlakJacket(), new FistsOfBones(), new Rasengan()),
-                new Enemy("Jugo", "villan", 1, new Shirt(), new Kunai(), new DragonFire()),
+                new Enemy("Jugo", "a villan", 1, new Shirt(), new Kunai(), new DragonFire()),
                 new Enemy("Hidan", "Akatsuki", 1, new FlakJacket(), new Fists(), new FlameBullet()),
                 new Enemy("Karin", "Uzumaki", 1, new FlakJacket(), new FistsOfBones(), new AshPileBurning(), "her"),
                 new Enemy("Mizuki", "Otogakure", 1, new Shirt(), new Kunai(), new Chidori()),
@@ -305,27 +315,6 @@ namespace TheShinobi.HelperMethods
             };
             return items;
         }
-
-        //public static string HiruzenStory(Player player)
-        //{
-        //    string[] story = new string[]
-        //    {
-        //        "\n\t  An old man with white beard appears in front of you sitting next to a fire." +
-        //        "\n\t  The man who is dressed in red and white looks upon you. \n" +
-        //        "\n\t  It seems as if he was expecting your arrival and with a big smile on his face," +
-        //        $"\n\t  he says “I knew you would come {player.Name}“" +
-        //        $"\n\t  Hanare is in troubble and you need to rescue her quickly! \n",
-
-        //        "\n\t  You instantly recognice the old man as Hiruzen Sarutobi! \n",
-        //       $"\n\t  {player.Name} Hiruzen says while smoking on his pipe... \n" +
-        //        "\n\t  There is little time and you need to go on with your quest" +
-        //        "\n\t  to save Hanare! \n",
-        //        "\n\t  Take these items and be on your way!\n",
-        //       $"\n\t  You get a {name} and {potion} \n" +
-        //       $"\n\t  Go now {player.Name}, go save Hanare! "
-        //    };
-        //    return story;
-        //}
 
         public static string[] OrochimaruStory(Player player)
         {

@@ -26,7 +26,7 @@ namespace TheShinobi.Items
 
         public override string BonusText()
         {
-            return IsEnergized ? $"(+{Energy * EnergyCtr} Energy)" : "";
+            return $"(+{Energy} Energy)";
         }
 
         public void Consume(Player player)
@@ -34,8 +34,11 @@ namespace TheShinobi.Items
             ColorConsole.WriteOver($"\t {Text} and are energized with {Energy} energy!", ConsoleColor.Yellow);
             player.Stamina.Max += Energy;
             player.Stamina.Current += Energy;
+            player.Chakra.Max += Energy;
+            player.Chakra.Current += Energy;
             player.Defence += Energy;
             player.AttackBonus += Energy;
+            Utility.energyCtr++;
             Utility.energyDrink.EnergyCtr++;
             Utility.energyDrink.Name = Name;
             Utility.energyDrink.Energy += Energy;

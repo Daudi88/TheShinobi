@@ -35,6 +35,9 @@ namespace TheShinobi.Characters
             Ryō = Utility.random.Next(50, 200);
         }
 
+        /// <summary>
+        /// Increases the player stats when enough experience points are earned.
+        /// </summary>
         public void LevelUp()
         {
             if (Get.NewRank(Level, out string rank))
@@ -52,6 +55,12 @@ namespace TheShinobi.Characters
             Stamina.Current = Stamina.Max;
         }
 
+        /// <summary>
+        /// <see cref="Player"/> character attempts on attacking 
+        /// <see cref="Enemy"/>. Choice of action is decided by the player.
+        /// </summary>
+        /// <param name="defender"></param>
+        /// <returns></returns>
         public override string Attack(Character defender)
         {
             string text = "";

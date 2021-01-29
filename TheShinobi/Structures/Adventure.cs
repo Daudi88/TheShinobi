@@ -220,13 +220,13 @@ namespace TheShinobi.Structures
                     switch (choice)
                     {
                         case 1:
-                            Remove(left, top);
+                            Remove(top, bottom);
                             Store.BuyItems(player, "item", Get.AbuHassanItems());
                             break;
                         case 2:
                             if (player.Backpack.Count > 0)
                             {
-                                Remove(left, top);
+                                Remove(top, bottom);
                             }
                             Store.SellItems(player);
                             break;
@@ -261,7 +261,7 @@ namespace TheShinobi.Structures
                 Consumable[] potions = Get.Potions();
                 Consumable potion = potions.Where(p => p.Name.Contains("Superior")).First();
                 potion.Quantity = random.Next(5, 11);
-                string story = "\n\t An old man with white beard appears in front of you." + // Kopierat från denna rad till 226 -> Get Orish story
+                string story = "\n\t An old man with white beard appears in front of you." +
                     "\n\t The man, dressed in red and white, looks upon you as if" +
                     "\n\t he was expecting your arrival with a big smile on his face." +
                     "\n\t You instantly recognice the old man as Hiruzen Sarutobi!\n";
@@ -433,15 +433,17 @@ namespace TheShinobi.Structures
                     {
                         textTop += 2;
                         enemy.DropItems(player, textTop);
+                        if (energyDrink.IsEnergized)
+                        {
+                            textTop += 2;
+                            EnergyDip(player, textTop);
+                        }
                         WaitSetForUser(bottom - 5);
+                        Console.WriteLine("\n\n");
+                        adventurePlayer.PlayLooping();
                     }
                 }
-            }
-
-            if (energyDrink.IsEnergized)
-            {
-                EnergyDip(player);
-            }
+            }            
         }
     }
 }

@@ -113,6 +113,7 @@ namespace TheShinobi.HelperMethods
 
         public static void WriteEmbeddedSetDelayed(string text, int top, bool blink = true, int ?bottom = null, int delay = 1800)
         {
+            int left = 10;
             bool result;
             bool firstPart = true;
             while (true)
@@ -120,7 +121,7 @@ namespace TheShinobi.HelperMethods
                 var match = colorRegex.Match(text);
                 if (match.Length < 1)
                 {
-                    result = WriteDelayed(content: text);
+                    result = WriteSetDelayed(text, top, left);
                     break;
                 }
                 if (firstPart)
@@ -137,6 +138,7 @@ namespace TheShinobi.HelperMethods
                 Enum.TryParse(color, out ConsoleColor col);
                 WriteDelayed(col, content: hightlight);
                 text = text.Substring(match.Index + match.Value.Length);
+                left = Console.CursorLeft;
             }
             if (blink && bottom.HasValue)
             {
@@ -212,15 +214,15 @@ namespace TheShinobi.HelperMethods
             }
         }
 
-        public static void WriteSetDelayed(string text, int top, ConsoleColor color = ConsoleColor.White, int delay = 40)
+        public static bool WriteSetDelayed(string text, int top, int left = 10, ConsoleColor color = ConsoleColor.White, int delay = 40)
         {
-            Console.SetCursorPosition(10, top);
+            Console.SetCursorPosition(left, top);
             bool isKeyPressed = false;
             Thread.Sleep(delay);
 
             foreach (var letter in text)
             {
-                Console.Write(letter.ToString(), color);
+                Write(letter.ToString(), color);
                 if (Console.KeyAvailable)
                 {
                     isKeyPressed = true;
@@ -231,6 +233,7 @@ namespace TheShinobi.HelperMethods
                     Thread.Sleep(delay);
                 }
             }
+            return isKeyPressed;
         }
 
         public static void WriteOver(string message, ConsoleColor color, int time = 400)
