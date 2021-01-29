@@ -33,18 +33,25 @@ namespace TheShinobi.Characters
             string text = "";            
             if (Utility.RollDice("1d20") + Chakra.Current >= defender.Defence)
             {
+                string weapon;
                 int damage;
                 Ninjutsu jutsu = Ninjutsus[Utility.random.Next(Ninjutsus.Count)];
                 if (Utility.random.Next(101) > 50 && Chakra.Current - jutsu.Cost > 0)
                 {
                     damage = Utility.RollDice(jutsu.Damage);
-                    text = $"{Name} hits you with {Pronoun} {jutsu.Name} dealing [Yellow]{damage}[/Yellow] damage!";
-                    defender.Stamina.Current -= damage;
+                    weapon = jutsu.Name;
                     Chakra.Current -= jutsu.Cost;
                 }
                 else
                 {
-                    damage = Utility.RollDice(Weapon.Damage)
+                    damage = Utility.RollDice(Weapon.Damage);
+                    weapon = Weapon.Name;
+                }
+                text = $"{Name} hits you with {Pronoun} {weapon} dealing [Red]{damage}[/Red] damage!";
+                defender.Stamina.Current -= damage;
+                if (defender.Stamina.Current < 0)
+                {
+                    defender.Stamina.Current = 0;
                 }
             }
             else

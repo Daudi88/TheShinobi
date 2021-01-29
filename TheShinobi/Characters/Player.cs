@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TheShinobi.Abilities;
 using TheShinobi.Abilities.Ninjutsus;
 using TheShinobi.HelperMethods;
 using TheShinobi.Items;
@@ -62,16 +63,31 @@ namespace TheShinobi.Characters
                             damage = Utility.RollDice(Weapon.Damage);
                             text = $"You hit {defender.Name} with your {Weapon.Name} dealing [Yellow]{damage}[/Yellow] damage!";
                             defender.Stamina.Current -= damage;
+                            if (defender.Stamina.Current < 0)
+                            {
+                                defender.Stamina.Current = 0;
+                            }
                             break;
                         }
                         else if (choice - 2 < Ninjutsus.Count)
                         {
                             Ninjutsu jutsu = Ninjutsus[choice - 2];
-                            damage = Utility.RollDice(jutsu.Damage);
-                            text = $"You hit {defender.Name} with your {jutsu.Name} dealing [Yellow]{damage}[/Yellow] damage!";
-                            defender.Stamina.Current -= damage;
-                            Chakra.Current -= jutsu.Cost;
-                            break;
+                            if (Chakra.Current >= jutsu.Cost)
+                            {
+                                damage = Utility.RollDice(jutsu.Damage);
+                                text = $"You hit {defender.Name} with your {jutsu.Name} dealing [Yellow]{damage}[/Yellow] damage!";
+                                defender.Stamina.Current -= damage;
+                                if (defender.Stamina.Current < 0)
+                                {
+                                    defender.Stamina.Current = 0;
+                                }
+                                Chakra.Current -= jutsu.Cost;
+                                break;
+                            }
+                            else
+                            {
+                                ColorConsole.WriteOver($"\t You don't have enough chakra to use {jutsu.Name}. Try something else!", ConsoleColor.Red);
+                            }
                         }
                         else
                         {

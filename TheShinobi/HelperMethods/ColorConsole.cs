@@ -111,7 +111,7 @@ namespace TheShinobi.HelperMethods
             }
         }
 
-        public static void WriteEmbeddedSetDelayed(string text, int top, int bottom, bool blink = true, int delay = 1800)
+        public static void WriteEmbeddedSetDelayed(string text, int top, bool blink = true, int ?bottom = null, int delay = 1800)
         {
             bool result;
             bool firstPart = true;
@@ -138,7 +138,7 @@ namespace TheShinobi.HelperMethods
                 WriteDelayed(col, content: hightlight);
                 text = text.Substring(match.Index + match.Value.Length);
             }
-            if (blink)
+            if (blink && bottom.HasValue)
             {
                 if (result)
                 {
@@ -146,7 +146,7 @@ namespace TheShinobi.HelperMethods
                 }
                 else
                 {
-                    Utility.WaitSetForUser(bottom);
+                    Utility.WaitSetForUser(bottom.Value);
                 } 
             }
             else if (!result)

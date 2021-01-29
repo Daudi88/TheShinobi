@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Media;
-using System.Net.Http.Headers;
 using System.Threading;
-using TheShinobi.Abilities;
+using TheShinobi.Abilities.Ninjutsus;
 using TheShinobi.Characters;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
@@ -152,8 +150,18 @@ namespace TheShinobi.HelperMethods
             Utility.WaitForUser();
         }
 
-        public static void BattleFrame(string title, List<string> stats, int height, int top, bool reset = false)
+        public static void BattleFrame(Player player, Enemy enemy, string title, int height, int top, bool reset = false)
         {
+            string[] stats = new string[]
+            {
+                $"{player.Name}",
+                $"{Get.Status(player.Stamina, "Yellow")} Stamina",
+                $"[DarkCyan]{player.Chakra.Current}[/DarkCyan] Chakra",
+                $"{enemy.Name}",
+                $"{Get.Status(enemy.Stamina, "Yellow")} Stamina",
+                $"[DarkCyan]{enemy.Chakra.Current}[/DarkCyan] Chakra"
+            };
+
             Console.SetCursorPosition(0, top);
             int length = 41;
             ColorConsole.WriteEmbedded($"\n\t┏━{title}");
@@ -211,7 +219,7 @@ namespace TheShinobi.HelperMethods
                 for (int i = 0; i < height; i++)
                 {
                     Console.SetCursorPosition(9, top++);
-                    for (int j = 0; j < length - 2; j++)
+                    for (int j = 0; j < length + 3; j++)
                     {
                         Console.Write(" ");
                     }

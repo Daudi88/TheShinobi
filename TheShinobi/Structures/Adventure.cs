@@ -281,20 +281,12 @@ namespace TheShinobi.Structures
             battlePlayer.PlayLooping();
             bool exit = false;
             string battleText = "";
+            player.Stamina.Current = 1;
             while (!exit)
             {
+                textTop = top + 4;
                 bool reset = true;
-                string stat;
-                List<string> fighterStats = new List<string>()
-                {
-                    $"{player.Name}",
-                    $"{stat = Get.Status(player.Stamina, "Yellow")} Stamina",
-                    $"{stat = Get.Status(player.Chakra, "DarkCyan")} Chakra",
-                    $"{enemy.Name}",
-                    $"{stat = Get.Status(enemy.Stamina, "Yellow")} Stamina",
-                    $"{stat = Get.Status(enemy.Chakra, "DarkCyan")} Chakra"
-                };                
-                Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats, 6, top, reset);
+                Display.BattleFrame(player, enemy, "[Red]BATTLE[/Red]", 6, top, reset);
                 if (player.Stamina.Current > 0)
                 {
                     Console.WriteLine("\t Choose a weapon or jutsu to attack with:");
@@ -307,20 +299,37 @@ namespace TheShinobi.Structures
                     Console.Write("\t > ");
                     bottom = Console.CursorTop + 1;
                     battleText = player.Attack(enemy);
-                    ColorConsole.WriteEmbeddedSetDelayed(battleText, textTop, bottom, false);
-                    Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats, 6, top);
-                    Console.SetCursorPosition(0, bottom);
-                    ColorConsole.WriteOver("", ConsoleColor.Black);
-                    ColorConsole.WriteEmbeddedSetDelayed(battleText, textTop, bottom, false, 0);
-                }
-                else
-                {
-                    
+                    ColorConsole.WriteEmbeddedSetDelayed(battleText, textTop, false, delay: 0);
+                    Display.BattleFrame(player, enemy, "[Red]BATTLE[/Red]", 6, top);
+                    for (int i = 0; i < ctr + 1; i++)
+                    {
+                        Console.WriteLine("\t                                                       ");
+                    }
                 }
 
                 if (enemy.Stamina.Current > 0)
                 {
-                    enemy.Attack(player);
+                    textTop++;
+                    battleText = enemy.Attack(player);
+                    ColorConsole.WriteEmbeddedSetDelayed(battleText, textTop, false, delay: 0);
+                    Display.BattleFrame(player, enemy, "[Red]BATTLE[/Red]", 6, top);
+                    if (player.Stamina.Current <= 0)
+                    {
+                        textTop++;
+                        battleText = $"You were defeated by {enemy.Name}...";
+                        ColorConsole.WriteSetDelayed(battleText, textTop);
+                        WaitSetForUser(bottom - 4);
+                        Display.Credits(player);
+                        exit = true;
+                    }
+                }
+                else
+                {
+                    textTop++;
+                    battleText = $"You defeated {enemy.Name}!";
+                    ColorConsole.WriteSetDelayed(battleText, textTop);
+                    WaitSetForUser(bottom - 6);
+                    exit = true;
                 }
 
 

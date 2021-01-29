@@ -30,8 +30,9 @@ namespace TheShinobi.HelperMethods
 
         public static int RollDice(string dice)
         {
-            int times = int.Parse(dice[0].ToString());
-            int sides = int.Parse(dice[2..]);
+            string[] parts = dice.Split('d');
+            int times = int.Parse(parts[0]);
+            int sides = int.Parse(parts[1]);
             int result = 0;
             for (int i = 0; i < times; i++)
             {

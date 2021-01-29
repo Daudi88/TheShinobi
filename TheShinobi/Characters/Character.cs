@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using TheShinobi.Abilities;
+using TheShinobi.Abilities.Ninjutsus;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
 
