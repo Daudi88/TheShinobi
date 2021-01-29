@@ -236,7 +236,7 @@ namespace TheShinobi.HelperMethods
             return isKeyPressed;
         }
 
-        public static void WriteOver(string message, ConsoleColor color, int time = 400)
+        public static void WriteOver(string message, ConsoleColor color, int time = 800)
         {
             int left = 9;
             int top = Console.CursorTop;

@@ -85,6 +85,10 @@ namespace TheShinobi.Structures
                 else
                 {
                     name = char.ToUpper(name[0]) + name[1..].ToLower();
+                    if (name.ToLower() == "robin")
+                    {
+                        ColorConsole.WriteDelayedLine("\t Hokage mode accepted!", ConsoleColor.Yellow);
+                    }
                     break;
                 }
             }
