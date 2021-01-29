@@ -88,7 +88,7 @@ namespace TheShinobi.Characters
             {
                 eDrop = true;
                 Item equipable;
-                if (rnd > 80)
+                if (rnd > 80 && !Weapon.Name.Contains("Fists"))
                 {
                     equipable = Weapon;
                 }
