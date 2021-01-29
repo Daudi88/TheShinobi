@@ -155,12 +155,12 @@ namespace TheShinobi.HelperMethods
         public static void BattleFrame(string title, List<string> stats, int height)
         {
             int length = 41;
-            ColorConsole.WriteEmbedded($"\n\t┏━{title}");            
+            ColorConsole.WriteEmbedded($"\n\t┏━{title}");
             for (int i = 0; i < length - title.Length + Get.ColorLength(title) + 2; i++)
             {
                 Console.Write("━");
             }
-            Console.Write("┳");           
+            Console.Write("┳");
             for (int i = 0; i < length + 3; i++)
             {
                 Console.Write("━");
@@ -194,15 +194,27 @@ namespace TheShinobi.HelperMethods
             }
             Console.WriteLine("┫");
             length = length * 2 + 4;
+            int top = Console.CursorTop;
             for (int i = 0; i < height; i++)
             {
                 Console.SetCursorPosition(0, Console.CursorTop);
                 Console.Write("\t┃");
                 Console.SetCursorPosition(10 + length + 2, Console.CursorTop);
                 Console.WriteLine("┃");
-
             }
             BottomOfFrame(length);
+            int bottom = Console.CursorTop;
+            Utility.WaitSetForUser(bottom);
+            Console.SetCursorPosition(0, top);
+            for (int i = 0; i < height; i++)
+            {
+                Console.Write("\t┃ ");
+                for (int j = 0; j < length; j++)
+                {
+                    Console.Write(" ");
+                }
+                Console.WriteLine("  ┃");
+            }
         }
 
         internal static void Map(Player player)
@@ -274,17 +286,18 @@ namespace TheShinobi.HelperMethods
             {
                 if (Console.KeyAvailable)
                 {
+                    Console.SetCursorPosition(0, bottom);
                     Console.WriteLine("                                        ");
                     Console.ReadKey(true);
-                    Console.SetCursorPosition(0, Console.CursorTop - 1);
                     break;
                 }
+
+                Console.SetCursorPosition(0, bottom);
                 Console.WriteLine(text);
                 Thread.Sleep(600);
-                Console.SetCursorPosition(0, Console.CursorTop - 1);
+                Console.SetCursorPosition(0, bottom);
                 Console.WriteLine("                                        ");
                 Thread.Sleep(300);
-                Console.SetCursorPosition(0, Console.CursorTop - 1);
             }
         }
 

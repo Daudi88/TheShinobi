@@ -30,7 +30,6 @@ namespace TheShinobi.Structures
         static string soundLocation6 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Graveyard.wav");
         static string soundLocation7 = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\KakashiFightSongUP3.wav");
 
-
         public static SoundPlayer villagePlayer = new SoundPlayer(soundLocation1);
         static SoundPlayer adventurePlayer = new SoundPlayer(soundLocation2);
         static SoundPlayer treasurePlayer = new SoundPlayer(soundLocation3);
@@ -38,7 +37,6 @@ namespace TheShinobi.Structures
         static SoundPlayer hiruzenPlayer = new SoundPlayer(soundLocation5);
         static SoundPlayer graveyardPlayer = new SoundPlayer(soundLocation6);
         public static SoundPlayer endPlayer = new SoundPlayer(soundLocation7);
-
 
         private static bool isTreasureTaken = false;
         private static bool isGraveyardVisited = false;
@@ -277,6 +275,7 @@ namespace TheShinobi.Structures
             int textTop = top + 4;
             Console.SetCursorPosition(0, textTop);
             ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
+            
             bool exit = false;
             while (!exit)
             {
@@ -294,7 +293,7 @@ namespace TheShinobi.Structures
                 Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats, 5);
                 if (enemy.Stamina.Current > 0)
                 {
-                    Console.WriteLine("\t Choose a weapon or jutsu to attack with:");
+                    Console.WriteLine("\n\t Choose a weapon or jutsu to attack with:");
                     int ctr = 1;
                     Console.WriteLine($"\t {ctr++}. {player.Weapon.Name} {player.Weapon.BonusText()}");
                     foreach (var jutsu in player.Ninjutsus)
