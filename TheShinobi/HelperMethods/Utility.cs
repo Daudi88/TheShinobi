@@ -25,6 +25,7 @@ namespace TheShinobi.HelperMethods
         public static readonly Random random = new Random();
         public static EnergyDrink energyDrink = new EnergyDrink();
         public static bool isVisitingVillage = true;
+        public static bool isBattleBeginning = true;
 
 
         public static int RollDice(string dice)

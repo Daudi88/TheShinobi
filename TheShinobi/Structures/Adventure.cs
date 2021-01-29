@@ -294,10 +294,10 @@ namespace TheShinobi.Structures
                     $"{stat = Get.Status(enemy.Stamina, "Yellow")} Stamina",
                     $"{stat = Get.Status(enemy.Chakra, "DarkCyan")} Chakra"
                 };
-                Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats, 5);
+                Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats, 6);
                 if (enemy.Stamina.Current > 0)
                 {
-                    Console.WriteLine("\n\t Choose a weapon or jutsu to attack with:");
+                    Console.WriteLine("\t Choose a weapon or jutsu to attack with:");
                     int ctr = 1;
                     Console.WriteLine($"\t {ctr++}. {player.Weapon.Name} {player.Weapon.BonusText()}");
                     foreach (var jutsu in player.Ninjutsus)
