@@ -308,7 +308,6 @@ namespace TheShinobi.Structures
                 ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
             }
 
-
             battlePlayer.PlayLooping();
             bool exit = false;
             string battleText = "";
@@ -359,12 +358,18 @@ namespace TheShinobi.Structures
                     textTop++;
                     battleText = $"You defeated {enemy.Name}!";
                     ColorConsole.WriteSetDelayed(battleText, textTop);
-                    WaitSetForUser(bottom - 5);
                     exit = true;
                     if (isBoss)
                     {
+                        WaitSetForUser(bottom - 5);
                         Console.SetCursorPosition(0, bottom - 2);
                         Display.Credits(player);
+                    }
+                    else
+                    {
+                        textTop += 2;
+                        enemy.DropItems(player, textTop);
+                        WaitSetForUser(bottom - 5);
                     }
                 }
             }

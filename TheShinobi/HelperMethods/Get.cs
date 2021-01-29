@@ -418,7 +418,7 @@ namespace TheShinobi.HelperMethods
                 $"\n\t  It is {enemy.Name} from the {enemy.Clan} You draw your weapon and attack! the enemies",
 
                 $"\t  As you reach the lake you see {enemy.Name} from the {enemy.Clan} Clan!" +
-                $"\n\t {enemy.Name} attacks you!"
+                $"\n\t  {enemy.Name} attacks you!"
             };
             return stories;
         }

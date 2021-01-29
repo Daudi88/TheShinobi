@@ -48,7 +48,7 @@ namespace TheShinobi.Characters
                     damage = Utility.RollDice(Weapon.Damage);
                     weapon = Weapon.Name;
                 }
-                text = $"{Name} hits you with {Pronoun} {weapon} dealing [Red]{damage}[/Red] damage!";
+                text = $"{Name} hits you with {Pronoun} {weapon} dealing [Yellow]{damage}[/Yellow] damage!";
                 defender.Stamina.Current -= damage;
                 if (defender.Stamina.Current < 0)
                 {
@@ -62,18 +62,18 @@ namespace TheShinobi.Characters
             return text;
         }
 
-        public void DropItems(Player player)
+        public void DropItems(Player player, int top)
         {
-            int rnd = Utility.random.Next(10);
+            int rnd = Utility.random.Next(100);
             bool eDrop = false;
             bool cDrop = false;
             string eDropText = "";
             string cDropText = "";
-            if (rnd > 7)
+            if (rnd > 60)
             {
                 eDrop = true;
                 Item equipable;
-                if (rnd > 8)
+                if (rnd > 80)
                 {
                     equipable = Weapon;
                 }
@@ -105,9 +105,9 @@ namespace TheShinobi.Characters
                 }
             }
             string separator = eDrop ? " and " : eDrop && cDrop ? ", " : "";
-            ColorConsole.WriteEmbedded($"\t {Name} drops {eDropText}{separator}{cDropText}[Yellow]{Ryō}[/Yellow] ryō!");
+            string text = $"{Name} drops {eDropText}{separator}{cDropText}[Yellow]{Ryō}[/Yellow] ryō!";
+            ColorConsole.WriteEmbeddedSetDelayed(text, top);
             player.Ryō += Ryō;
-            Display.Blinking("\t [Press enter to continue]");
         }
     }
 }

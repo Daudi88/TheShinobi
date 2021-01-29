@@ -36,8 +36,7 @@ namespace TheShinobi.Structures
         public void Test()
         {
             Player player = CharacterCreation();
-            Adventure.Battle(player, true);
-            Console.ReadLine();
+            Adventure.Battle(player);
         }
 
         public void Start()
