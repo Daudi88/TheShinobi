@@ -322,7 +322,14 @@ namespace TheShinobi.HelperMethods
                  "\n\t In the soil you see one of Hanare's black gloves! You follow their trail...",
 
                  "\n\t You sense that you are all alone at this place, the sun is shining and everything is calm" +
-                 "\n\t You set up camp for the night and eat some Ramen from Ichiraku..."
+                 "\n\t You set up camp for the night and eat some Ramen from Ichiraku...",
+
+                 "\n\t This area is very peacefull, Hanare is not here you better get going again!" +
+                 "\n\t You keep searching for tracks and see them leading towards the mountains...",
+
+                 "\n\t There is nobody around and you take some time to eat and drink before \n" +
+                 "\t You keep searching for Hanare."
+
             };
             return stories;
         }
@@ -370,6 +377,9 @@ namespace TheShinobi.HelperMethods
 
                 "\t  You have followed Hanares kidnappers trail for hours when you hear enemies further ahead." +
                 $"\n\t  It is {enemy.Name} from the {enemy.Clan} You draw your weapon and attack! the enemies  ",
+
+                $"\t  As you reach the lake you see {enemy.Name} from the {enemy.Clan} Clan!" +
+                $"\n\t {enemy.Name} attacks you!"
             };
             return stories;
         }
