@@ -45,7 +45,7 @@ namespace TheShinobi.Characters
             Stamina.Current = Stamina.Max;
         }
 
-        public override int Attack(Character defender)
+        public override int Attack(Character defender, int top)
         {
             if (Utility.random.Next(100 + AttackBonus) >= defender.Defence)
             {

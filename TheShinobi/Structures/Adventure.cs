@@ -10,7 +10,6 @@ using static TheShinobi.HelperMethods.Utility;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Consumables;
 using TheShinobi.Items.Weapons;
-using TheShinobi.Characters.Enemies;
 
 namespace TheShinobi.Structures
 {
@@ -283,7 +282,7 @@ namespace TheShinobi.Structures
             return false;
         }
 
-        private static void Battle(Player player)
+        public static void Battle(Player player)
         {
             Enemy[] enemies = Get.Enemies().Where(e => e.Level <= player.Level).ToArray();
             Enemy enemy = enemies[random.Next(enemies.Length)];
@@ -295,24 +294,38 @@ namespace TheShinobi.Structures
             {
                 int top = Console.CursorTop;
                 Console.SetCursorPosition(0, top);
+                string text;
+                if (player.Stamina.Current < player.Stamina.Max / 5)
+                {
+                    text = $"[Red]{player.Stamina.Current}[/Red]";
+                }
+                else
+                {
+                    text = player.Stamina.Current.ToString();
+                }
                 List<string> fighterStats = new List<string>()
                 {
-                    $"{player.Name}: {player.Stamina} Stamina  {player.Chakra} Chakra",
-                    $"{enemy.Name}: {enemy.Stamina} Stamina"
+                    $"{player.Name}: {text} Stamina, {player.Chakra.Current} Chakra",
+                    $"{enemy.Name}: {enemy.Stamina.Current} Stamina"
                 };
-                Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats);
+                Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats, 5);
+                int textTop = top + 4;
+                int left = 10;
+                Console.SetCursorPosition(left, textTop++);
+                Console.WriteLine("You hit the enemy with your jutsu dealing 20 damage!");
                 Console.ReadKey(true);
-
-
-
-
-
-
-                if (energyDrink.IsEnergized)
+                if (enemy.Stamina.Current > 0)
                 {
-                    EnergyDip(player);
+                    player.Attack(enemy, textTop++);
                 }
-                break;
+
+
+
+            }
+
+            if (energyDrink.IsEnergized)
+            {
+                EnergyDip(player);
             }
         }
 

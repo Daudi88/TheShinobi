@@ -35,8 +35,7 @@ namespace TheShinobi.Structures
         public void Test()
         {
             Player player = CharacterCreation();
-            Adventure.endPlayer.PlayLooping();
-            ColorConsole.WriteDelayed(ConsoleColor.Yellow, delay: 80, exitable: false, content: Get.EndStory(player));
+            Adventure.Battle(player);
             Console.ReadLine();
         }
 
@@ -45,7 +44,7 @@ namespace TheShinobi.Structures
             Adventure.villagePlayer.PlayLooping();
             Display.Title();
             Player player = CharacterCreation();
-            string intro = $"\n\t You {player.Name} wake up from a woman screaming!" +
+            string intro = $"\n\t You, {player.Name}, wake up from a woman screaming!" +
             " It sound's as if she is in real trouble..." +
             "\n\t Frightened villagers scream for help “somebody is kidnapping Hanare!“ \n" +
             "\n\t After some intense fighting with the guards the attackers manages" +

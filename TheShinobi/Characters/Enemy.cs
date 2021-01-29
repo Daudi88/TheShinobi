@@ -1,10 +1,9 @@
-﻿using System;
-using TheShinobi.HelperMethods;
+﻿using TheShinobi.HelperMethods;
 using TheShinobi.Items;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
 
-namespace TheShinobi.Characters.Enemies
+namespace TheShinobi.Characters
 {
     class Enemy : Character
     {
@@ -23,7 +22,7 @@ namespace TheShinobi.Characters.Enemies
             Exp.Current = Utility.random.Next(10 * Level, 40 * Level + 1);
         }
 
-        public override int Attack(Character defender)
+        public override int Attack(Character defender, int top)
         {
             if (Utility.random.Next(100) >= defender.Defence)
             {

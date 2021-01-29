@@ -51,13 +51,7 @@ namespace TheShinobi.HelperMethods
         private static void TopOfFrame(string title, int length)
         {
             ColorConsole.WriteEmbedded($"\t┏━{title}");
-            int colorLength = 0;
-            if (title.Contains("["))
-            {
-                colorLength = Get.ColorLength(title);
-            }
-
-            for (int i = 0; i < length - title.Length + colorLength + 2; i++)
+            for (int i = 0; i < length - (title.Length - Get.ColorLength(title)) + 2; i++)
             {
                 Console.Write("━");
             }
@@ -68,25 +62,14 @@ namespace TheShinobi.HelperMethods
         {
             foreach (string text in content)
             {
-                int colorLength = 0;
-                if (text.Contains("["))
-                {
-                    colorLength = Get.ColorLength(text);
-                }
-                ColorConsole.WriteEmbedded($"\t┃ {text.PadRight(length + colorLength)}  ┃\n");
+                ColorConsole.WriteEmbedded($"\t┃ {text.PadRight(length + Get.ColorLength(text))}  ┃\n");
             }
         }
 
         private static void DividingLine(string title, int length)
         {
             ColorConsole.WriteEmbedded($"\t┣━{title}");
-            int colorLength = 0;
-            if (title.Contains("["))
-            {
-                colorLength = Get.ColorLength(title);
-            }
-
-            for (int i = 0; i < length - title.Length + colorLength + 2; i++)
+            for (int i = 0; i < length - (title.Length - Get.ColorLength(title)) + 2; i++)
             {
                 Console.Write("━");
             }
@@ -169,6 +152,46 @@ namespace TheShinobi.HelperMethods
             Utility.WaitForUser();
         }
 
+        public static void BattleFrame(string title, List<string> stats, int height)
+        {
+            ColorConsole.WriteEmbedded($"\n\t┏━{title}");
+            int length1 = stats[0].Length - Get.ColorLength(stats[0]);
+            for (int i = 0; i < length1 - title.Length + Get.ColorLength(title) + 2; i++)
+            {
+                Console.Write("━");
+            }
+            Console.Write("┳");
+            int length2 = stats[1].Length - Get.ColorLength(stats[1]);
+            for (int i = 0; i < length2 + 3; i++)
+            {
+                Console.Write("━");
+            }
+            Console.WriteLine("┓");
+            ColorConsole.WriteEmbedded($"\t┃ {stats[0].PadRight(length1)}  ┃ {stats[1].PadRight(length2)}  ┃\n");
+            Console.Write("\t┣");
+            for (int i = 0; i < length1 + 3; i++)
+            {
+                Console.Write("━");
+            }
+            Console.Write("┻");
+            for (int i = 0; i < length2 + 3; i++)
+            {
+                Console.Write("━");
+            }
+            Console.WriteLine("┫");
+            int length = length1 + length2 + 4;
+            for (int i = 0; i < height; i++)
+            {
+                Console.Write("\t┃ ");
+                for (int j = 0; j < length; j++)
+                {
+                    Console.Write(" ");
+                }
+                Console.WriteLine("  ┃");
+            }
+            BottomOfFrame(length);
+        }
+
         internal static void Map(Player player)
         {
             Console.SetWindowPosition(0, Console.CursorTop - Utility.V);
@@ -210,29 +233,7 @@ namespace TheShinobi.HelperMethods
             var position = positions[player.Pos];
             Console.SetCursorPosition(position.Item1, top += position.Item2);
             ColorConsole.Write("●", ConsoleColor.Red);
-        }
-
-        public static void BattleFrame(string title, List<string> fighterStats)
-        {
-            int length = Get.ContentLength(fighterStats);
-            ColorConsole.WriteEmbedded($"\t┏━{title}");
-            int colorLength = 0;
-            if (title.Contains("["))
-            {
-                colorLength = Get.ColorLength(title);
-            }
-            for (int i = 0; i < length / 2 - title.Length + colorLength + 2; i++)
-            {
-                Console.Write("━");
-            }
-            Console.Write("┳");
-            for (int i = 0; i < length / 2 + 2; i++)
-            {
-                Console.Write("━");
-            }
-            Console.WriteLine("┓");
-
-        }
+        }       
         
         public static void Blinking(string text)
         {
