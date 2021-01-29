@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Media;
-using System.Runtime.InteropServices.WindowsRuntime;
 using TheShinobi.Abilities;
 using TheShinobi.Characters;
-using TheShinobi.Characters.Enemies;
 using TheShinobi.Items;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Consumables;
@@ -39,20 +35,20 @@ namespace TheShinobi.HelperMethods
             foreach (var text in content)
             {
                 int length = text.Length;
-                if (text.Contains("["))
-                {
-                    length -= ColorLength(text);
-                }
-                lengths.Add(length);
+                lengths.Add(length -= ColorLength(text));
             }
             return lengths.OrderByDescending(i => i).First();
         }
 
         public static int ColorLength(string text)
         {
-            int at = text.IndexOf("[");
-            int at2 = text.IndexOf("]");
-            return text.Substring(at, at2 - at + 1).Length * 2 + 1;
+            if (text.Contains("["))
+            {
+                int at = text.IndexOf("[");
+                int at2 = text.IndexOf("]");
+                return text.Substring(at, at2 - at + 1).Length * 2 + 1;
+            }
+            return 0;
         }
 
         public static string DamageDice(int level)

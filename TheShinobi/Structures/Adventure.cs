@@ -10,7 +10,6 @@ using static TheShinobi.HelperMethods.Utility;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Consumables;
 using TheShinobi.Items.Weapons;
-using TheShinobi.Characters.Enemies;
 
 namespace TheShinobi.Structures
 {
@@ -50,13 +49,13 @@ namespace TheShinobi.Structures
             player.Pos += 0.1;
             adventurePlayer.PlayLooping();
             string story = $"\n\t All of your clan members are away to practice at Daisan Enshūjō. \n" +
-                "\t They are five days away in the south and have taken most of the \n" + 
+                "\t They are five days away in the south and have taken most of the \n" +
                 "\t village's equipment with them. \n" +
                 "\n\t You will have to rescue Hanare on your own! \n" +
-                "\n\t You took the little gear you had and are now on your way to leave \n" + 
+                "\n\t You took the little gear you had and are now on your way to leave \n" +
                 "\t the Hidden Leaf Village. \n" +
                 "\n\t Hanare's kidnappers brought her towards the mountains up in the north." +
-                "\n\t It is now your duty to quickly kill all the enemies intruding your territory \n " + 
+                "\n\t It is now your duty to quickly kill all the enemies intruding your territory \n " +
                 "\t and search for better gear so you can go and rescue her! \n" +
                 "\n\t * There are rumors about treasures containing some usefull loot outside the village." +
                 "\n\t * Also take care and dont loose yourself in the wild...";
@@ -268,7 +267,7 @@ namespace TheShinobi.Structures
             return false;
         }
 
-        private static void Battle(Player player)
+        public static void Battle(Player player)
         {
             Enemy[] enemies = Get.Enemies().Where(e => e.Level <= player.Level).ToArray();
             Enemy enemy = enemies[random.Next(enemies.Length)];
@@ -276,23 +275,51 @@ namespace TheShinobi.Structures
             string story = stories[random.Next(stories.Length)];
             ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
             bool exit = false;
+            int top = Console.CursorTop;
+            int textTop = top + 4;
+            int left = 10;
             while (!exit)
             {
-                int top = Console.CursorTop;
                 Console.SetCursorPosition(0, top);
+                string text;
+                if (player.Stamina.Current < player.Stamina.Max / 5)
+                {
+                    text = $"[Red]{player.Stamina.Current}[/Red]";
+                }
+                else
+                {
+                    text = player.Stamina.Current.ToString();
+                }
                 List<string> fighterStats = new List<string>()
                 {
-                    $"{player.Name}: {player.Stamina} Stamina  {player.Chakra} Chakra",
-                    $"{enemy.Name}: {enemy.Stamina} Stamina"
+                    $"{player.Name}: {text} Stamina, {player.Chakra.Current} Chakra",
+                    $"{enemy.Name}: {enemy.Stamina.Current} Stamina"
                 };
-                Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats);
-                Console.ReadKey(true);
-
-                if (energyDrink.IsEnergized)
+                Display.BattleFrame("[Red]BATTLE[/Red]", fighterStats, 5);
+                Console.WriteLine("\t Choose a weapon to attack with");
+                int ctr = 1;
+                Console.WriteLine($"\t {ctr++}. {player.Weapon.Name} {player.Weapon.BonusText()}");
+                foreach (var jutsu in player.Ninjutsus)
                 {
-                    EnergyDip(player);
+                    Console.WriteLine($"\t {ctr++}. {jutsu}");
                 }
-                break;
+                Console.Write("\t > ");
+                int.TryParse(ColorConsole.ReadLine(), out int choice);
+                Console.SetCursorPosition(left + 1, Console.CursorTop - 1);
+                Console.Write("                                              ");
+
+                if (enemy.Stamina.Current > 0)
+                {
+                    player.Attack(enemy, textTop++, choice);
+                }
+                Console.ReadLine();
+
+
+            }
+
+            if (energyDrink.IsEnergized)
+            {
+                EnergyDip(player);
             }
         }
 

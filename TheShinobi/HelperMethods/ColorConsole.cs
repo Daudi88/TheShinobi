@@ -167,6 +167,27 @@ namespace TheShinobi.HelperMethods
             }
         }
 
+        public static void WriteSetDelayed(string text, int top, ConsoleColor color = ConsoleColor.White, int delay = 40)
+        {
+            Console.SetCursorPosition(10, top);
+            bool isKeyPressed = false;
+            Thread.Sleep(delay);
+
+            foreach (var letter in text)
+            {
+                Console.Write(letter.ToString(), color);
+                if (Console.KeyAvailable)
+                {
+                    isKeyPressed = true;
+                }
+
+                if (!isKeyPressed)
+                {
+                    Thread.Sleep(delay);
+                }
+            }
+        }
+
         public static void WriteOver(string message, ConsoleColor color, int time = 400)
         {
             int left = 9;

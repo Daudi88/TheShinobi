@@ -35,8 +35,7 @@ namespace TheShinobi.Structures
         public void Test()
         {
             Player player = CharacterCreation();
-            Adventure.endPlayer.PlayLooping();
-            ColorConsole.WriteDelayed(ConsoleColor.Yellow, delay: 80, exitable: false, content: Get.EndStory(player));
+            Adventure.Battle(player);
             Console.ReadLine();
         }
 
@@ -70,7 +69,7 @@ namespace TheShinobi.Structures
                 {
                     ColorConsole.WriteOver("\t The name cannot contain digits. Try again!", ConsoleColor.Red);
                 }
-                else if (name.Length < 3)
+                else if (name.Length < 5)
                 {
                     ColorConsole.WriteOver("\t The name is too short. Try again!", ConsoleColor.Red);
                 }

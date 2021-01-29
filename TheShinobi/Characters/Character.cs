@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Reflection.Metadata.Ecma335;
 using TheShinobi.Abilities;
 using TheShinobi.Items.Armors;
 using TheShinobi.Items.Weapons;
@@ -20,7 +19,5 @@ namespace TheShinobi.Characters
         public int Defence { get; set; }
         public string Damage { get; set; }
         public int Ryō { get; set; }
-
-        public abstract int Attack(Character defender);
     }
 }

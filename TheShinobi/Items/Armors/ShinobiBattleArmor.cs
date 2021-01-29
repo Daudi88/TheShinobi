@@ -10,7 +10,7 @@ namespace TheShinobi.Items.Armors
         {
             Name = "Shinobi Battle Armor";
             Price = 1000;
-            Defence = 8;
+            Defence = 10;
             IndefiniteArticle = "a";
         }
     }
