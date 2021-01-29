@@ -221,7 +221,7 @@ namespace TheShinobi.HelperMethods
             return enemies;
         }
         /// <summary>
-        /// Controls the Ninjutsu ranks.
+        /// Returns the Ninjutsu ranks.
         /// </summary>
         /// <param name="rank"></param>
         /// <returns></returns>
@@ -241,7 +241,10 @@ namespace TheShinobi.HelperMethods
                     return new PaperShuriken();
             }
         }
-
+        /// <summary>
+        /// Returns an array of armors.
+        /// </summary>
+        /// <returns></returns>
         public static Armor[] Armors()
         {
             Armor[] armors = new Armor[]
@@ -254,7 +257,10 @@ namespace TheShinobi.HelperMethods
             };
             return armors;
         }
-
+        /// <summary>
+        /// Returns an array of weapons.
+        /// </summary>
+        /// <returns></returns>
         public static Weapon[] Weapons()
         {
             Weapon[] weapons = new Weapon[]
@@ -270,7 +276,11 @@ namespace TheShinobi.HelperMethods
             };
             return weapons;
         }
-
+        /// <summary>
+        /// Returns an array of Seven Swords weapons.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public static Weapon[] SevenSwords(Player player)
         {
             List<Weapon> weapons = new List<Weapon>()
@@ -289,7 +299,10 @@ namespace TheShinobi.HelperMethods
             }
             return weapons.ToArray();
         }
-
+        /// <summary>
+        /// Returns an array of consumable potions.
+        /// </summary>
+        /// <returns></returns>
         public static Consumable[] Potions()
         {
             Consumable[] potions = new Consumable[]
@@ -301,7 +314,10 @@ namespace TheShinobi.HelperMethods
             };
             return potions;
         }
-
+        /// <summary>
+        /// Retruns an array of consumable meals.
+        /// </summary>
+        /// <returns></returns>
         public static Consumable[] Meals()
         {
             string text = "You eat a bowl of";
@@ -316,7 +332,10 @@ namespace TheShinobi.HelperMethods
             };
             return meals;
         }
-
+        /// <summary>
+        /// Returns an array of Abu Hassans items.
+        /// </summary>
+        /// <returns></returns>
         public static Item[] AbuHassanItems()
         {
             Item[] items = new Item[]
@@ -326,7 +345,11 @@ namespace TheShinobi.HelperMethods
             };
             return items;
         }
-
+        /// <summary>
+        /// Returns a string array cointaining Orochimarus story.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public static string[] OrochimaruStory(Player player)
         {
             string[] story = new string[]
