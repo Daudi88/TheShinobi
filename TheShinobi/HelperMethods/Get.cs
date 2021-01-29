@@ -73,7 +73,11 @@ namespace TheShinobi.HelperMethods
                 return $"[{color}]{ability.Current}[/{color}]";
             }
         }
-
+        /// <summary>
+        ///  Checks dice for damage. 
+        /// </summary>
+        /// <param name="level"></param>
+        /// <returns></returns>
         public static string DamageDice(int level)
         {
             return level switch
@@ -177,13 +181,16 @@ namespace TheShinobi.HelperMethods
             positions.Add(5.4, new Tuple<int, int, string>(80, 5, "WS"));
             return positions;
         }
-
+        /// <summary>
+        /// Enemies are randomised from this Enemy array.
+        /// </summary>
+        /// <returns></returns>
         public static Enemy[] Enemies()
         {
             Enemy[] enemies = new Enemy[]
             {
-                new Enemy("Zetsu Putih", "Akatsuki", 1, new Shirt(), new Fists(), new DecapitatingAirwaves()),
-                new Enemy("Zetsu Hitam", "Akatsuki", 1, new FlakJacket(), new Kunai(), new Chidori()),
+                new Enemy("Putih", "Akatsuki", 1, new Shirt(), new Fists(), new DecapitatingAirwaves()),
+                new Enemy("Hitam", "Akatsuki", 1, new FlakJacket(), new Kunai(), new Chidori()),
                 new Enemy("Zabuza", "Akatsuki", 1, new ChakraArmor(), new ChakraBlade(), new ChidoriSenbon()),
                 new Enemy("Kabuto", "Akatsuki", 1, new FlakJacket(), new FistsOfBones(), new Rasengan()),
                 new Enemy("Jugo", "a villan", 1, new Shirt(), new Kunai(), new DragonFire()),
@@ -213,7 +220,11 @@ namespace TheShinobi.HelperMethods
             };
             return enemies;
         }
-
+        /// <summary>
+        /// Returns the Ninjutsu ranks.
+        /// </summary>
+        /// <param name="rank"></param>
+        /// <returns></returns>
         public static Ninjutsu Ninjutsu(string rank)
         {
             switch (rank)
@@ -230,7 +241,10 @@ namespace TheShinobi.HelperMethods
                     return new PaperShuriken();
             }
         }
-
+        /// <summary>
+        /// Returns an array of armors.
+        /// </summary>
+        /// <returns></returns>
         public static Armor[] Armors()
         {
             Armor[] armors = new Armor[]
@@ -243,7 +257,10 @@ namespace TheShinobi.HelperMethods
             };
             return armors;
         }
-
+        /// <summary>
+        /// Returns an array of weapons.
+        /// </summary>
+        /// <returns></returns>
         public static Weapon[] Weapons()
         {
             Weapon[] weapons = new Weapon[]
@@ -259,7 +276,11 @@ namespace TheShinobi.HelperMethods
             };
             return weapons;
         }
-
+        /// <summary>
+        /// Returns an array of Seven Swords weapons.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public static Weapon[] SevenSwords(Player player)
         {
             List<Weapon> weapons = new List<Weapon>()
@@ -278,7 +299,10 @@ namespace TheShinobi.HelperMethods
             }
             return weapons.ToArray();
         }
-
+        /// <summary>
+        /// Returns an array of consumable potions.
+        /// </summary>
+        /// <returns></returns>
         public static Consumable[] Potions()
         {
             Consumable[] potions = new Consumable[]
@@ -290,7 +314,10 @@ namespace TheShinobi.HelperMethods
             };
             return potions;
         }
-
+        /// <summary>
+        /// Retruns an array of consumable meals.
+        /// </summary>
+        /// <returns></returns>
         public static Consumable[] Meals()
         {
             string text = "You eat a bowl of";
@@ -305,7 +332,10 @@ namespace TheShinobi.HelperMethods
             };
             return meals;
         }
-
+        /// <summary>
+        /// Returns an array of Abu Hassans items.
+        /// </summary>
+        /// <returns></returns>
         public static Item[] AbuHassanItems()
         {
             Item[] items = new Item[]
@@ -315,7 +345,11 @@ namespace TheShinobi.HelperMethods
             };
             return items;
         }
-
+        /// <summary>
+        /// Returns a string array cointaining Orochimarus story.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public static string[] OrochimaruStory(Player player)
         {
             string[] story = new string[]
@@ -334,7 +368,10 @@ namespace TheShinobi.HelperMethods
             };
             return story;
         }
-
+        /// <summary>
+        /// Returns random string array with storys for when there is no enemies.
+        /// </summary>
+        /// <returns></returns>
         public static string[] NoFightStories()
         {
             string[] stories = new string[]
@@ -376,7 +413,11 @@ namespace TheShinobi.HelperMethods
             };
             return stories;
         }
-
+        /// <summary>
+        /// Returns a random string array with fight storys if there is an enemy to fight.
+        /// </summary>
+        /// <param name="enemy"></param>
+        /// <returns></returns>
         public static string[] FightStories(Enemy enemy)
         {
             string[] stories = new string[]
@@ -402,7 +443,8 @@ namespace TheShinobi.HelperMethods
                 $"\n\t  As you set up camp in the mountains to escape the bad weather" + 
                 $"\n\t  {enemy.Name} from the {enemy.Clan} Clan attacks!",
 
-                "\t  The sky is blue and the sun is shining. As you walk past a shrubbery you hear a noice!" +
+                "\t  The sky is blue and the sun is shining." +
+                "\n\t  As you walk past a shrubbery you hear a noice!" +
                 $"\n\t  A lowlife from the {enemy.Clan} Clan attacks you!",
 
                 "\t  Walking on a narrow trail in search of tracks from the kidnappers" +
@@ -413,13 +455,16 @@ namespace TheShinobi.HelperMethods
                 $"\n\t  As you approach {enemy.Name} attack you!",
 
                 $"\t  Some enemies from {enemy.Clan} clan are blocking your path" +
-                $"\n\t  There is no time to loose Hanare must be found quickly, you attack {enemy.Name}!",
+                $"\n\t  There is no time to loose Hanare must be found quickly!" + 
+                $"\n\t  you attack {enemy.Name}!",
 
                 $"\t  You sence there is trouble ahead! " +
-                $"\n\t  The {enemy.Clan} clan is trying to hide around the corner" +
-                $"\n\t  You can both smell and sense them miles away... You attack {enemy.Name}!",
+                $"nt  The {enemy.Clan} clan is trying to hide around the corner" +
+                $"\n\t  You can both smell and sense them miles away..." + 
+                $"n\t  You attack {enemy.Name}!",
 
-                "\t  You have followed Hanares kidnappers trail for hours when you hear enemies further ahead." +
+                "\t  You have followed Hanares kidnappers trail for hours n" +
+                "\t\nwhen you hear enemies further ahead." +
                 $"\n\t  It is {enemy.Name} from the {enemy.Clan} " +
                 $"\n\t  You draw your weapon and attack! the enemies",
 
@@ -428,7 +473,12 @@ namespace TheShinobi.HelperMethods
             };
             return stories;
         }
-
+        /// <summary>
+        /// Controls the Rank lvl system.
+        /// </summary>
+        /// <param name="level"></param>
+        /// <param name="rank"></param>
+        /// <returns></returns>
         public static bool NewRank(int level, out string rank)
         {
             switch (level)
@@ -468,7 +518,11 @@ namespace TheShinobi.HelperMethods
                     return false;
             }
         }
-
+        /// <summary>
+        /// Returns the different exp limits.
+        /// </summary>
+        /// <param name="rank"></param>
+        /// <returns></returns>
         internal static int ExpLimit(string rank)
         {
             return rank switch
@@ -479,6 +533,11 @@ namespace TheShinobi.HelperMethods
                 _ => 0
             };
         }
+        /// <summary>
+        /// Returns a string array with the end story for when the boss is defeated.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public static string[] EndStory(Player player)
         {
             string[] stories = new string[]
