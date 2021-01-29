@@ -72,7 +72,7 @@ namespace TheShinobi.Structures
                 player.Pos = Math.Round(player.Pos, 1);
                 var options = Get.Options(player, out List<string> content);
                 Display.WithFrame(content, "[Yellow]ADVENTURE[/Yellow]", true);
-                ChooseANumber(content.Count, out int choice, player, true);
+                ChooseANumber(options.Count, out int choice, player, true);
                 if (choice > 0)
                 {
                     Console.SetWindowPosition(0, Console.CursorTop - V);
