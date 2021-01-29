@@ -276,7 +276,7 @@ namespace TheShinobi.Structures
             int top = Console.CursorTop;
             int textTop = top + 4;
             Console.SetCursorPosition(0, textTop);
-            ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow, blink: true);
+            ColorConsole.WriteDelayedLine(story, ConsoleColor.Yellow);
             bool exit = false;
             while (!exit)
             {
