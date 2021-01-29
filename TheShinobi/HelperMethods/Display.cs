@@ -14,8 +14,9 @@ namespace TheShinobi.HelperMethods
     class Display
     {
         /* This class contains the following methods:
-         * 
-         * 
+         * WithFrame()
+         * TopOfFrame()
+         * SideOfFrame()
          */
 
         static string soundLocation = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\Credits.Wav");
