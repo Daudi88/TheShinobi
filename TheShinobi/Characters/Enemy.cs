@@ -10,7 +10,7 @@ namespace TheShinobi.Characters
     {
         public string Pronoun { get; set; }
         public string Clan { get; set; }
-        public Enemy(string name, string clan, int level, Armor armor, Weapon weapon, string pronoun = "his")
+        public Enemy(string name, string clan, int level, Armor armor, Weapon weapon, Ninjutsu jutsu, string pronoun = "his")
         {
             Name = name;
             Pronoun = pronoun;
@@ -22,6 +22,7 @@ namespace TheShinobi.Characters
             Chakra.Current = Chakra.Max;
             Armor = armor;
             Weapon = weapon;
+            Ninjutsus.Add(jutsu);
             Defence = Armor.Defence;
             Damage = Weapon.Damage;
             Ryō = Utility.random.Next(1, 100 * Level + 1);
