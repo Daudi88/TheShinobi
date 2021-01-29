@@ -511,24 +511,24 @@ namespace TheShinobi.HelperMethods
                 "\n\t They where weak and in your way. \n" +
                 "\t Now they are all very very dead...\n",
 
-                "\t You sense Hanare is close and you walk into one of the dark side tunnels...\n" +
+                "\n\t You sense Hanare is close and you walk into one of the dark side tunnels...\n" +
                 "\t Your senses also tells you that Hanare is not alone! \n" +
                 "\t Someone with the ability to hide his true powers is also present.\n",
 
-                "\t Who is this, and how can he block your senses? \n" +
+                "\n\t Who is this, and how can he block your senses? \n" +
                 "\t You know that the enemy and Hanare is just around the next corner. \n" +
                 "\t As you draw your weapon and sneak around the corner you se Hanare and him, HIM...\n\n",
 
                 "\n\t This is impossible, it cant be... He is dead!?! \n" +
                 "\t you know you killed him and every last member of their Clan. \n" +
-                "\t this cant be!?! Kakuzu's alive? \n",
+                "\n\t this cant be!?! Kakuzu's alive? \n",
 
-                "\t Kakuzu laughs like a mad man when he sees your confusion “HA HA HA HA“ \n" +
+                "\n\t Kakuzu laughs like a mad man when he sees your confusion “HA HA HA HA“ \n" +
                 "\n\t “Did you not know that I teamed up with Orihime Inoue years ago? YOU FOOL!“ \n" +
                 "\t “Orihime brought me back from the dead not more then 30 minutes after you left! \n" +
                 "\t “She truly is special my dear Orihime...“",
 
-                "\t “You should have killed her when you had the chance!“ \n" +
+                "\n\t “You should have killed her when you had the chance!“ \n" +
                 "\n\t “Instead I will now kill someone near and dear to you! \n" +
                 "\t “I want you to watch me kill Hanare before I come back and kill you to!” \n" +
                 "\t “GRAB HIM!!!“\n",
