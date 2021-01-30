@@ -94,7 +94,7 @@ namespace TheShinobi.Structures
                         Consumable meal = meals[choice - 1];
                         if (player.Ryō >= meal.Price)
                         {
-                            Store.MakePurchase(player, meal, meal.Price, true);
+                            Store.MakePurchase(player, meal, meal.Price, eat: true);
                         }
                         else
                         {
@@ -166,6 +166,7 @@ namespace TheShinobi.Structures
             else if (player.Ryō >= 300)
             {
                 player.Stamina.Current = player.Stamina.Max;
+                player.Chakra.Current = player.Chakra.Max;
                 player.Ryō -= 300;
                 ColorConsole.WriteOver("\t Tsunade patch you up and you gain full health!", ConsoleColor.Yellow);
             }

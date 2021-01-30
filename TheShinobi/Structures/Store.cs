@@ -69,7 +69,7 @@ namespace TheShinobi.Structures
                                     {
                                         price *= quantity;
                                         ColorConsole.WriteOver($"\t You buy {amount} {item.Name}{plural} for {price} ryō.", ConsoleColor.Yellow);
-                                        MakePurchase(player, item, price);
+                                        MakePurchase(player, item, price, quantity);
                                         break;
                                     }
                                     else
@@ -111,7 +111,7 @@ namespace TheShinobi.Structures
         /// <param name="item"></param>
         /// <param name="price"></param>
         /// <param name="eat"></param>
-        public static void MakePurchase(Player player, Item item, int price, bool eat = false)
+        public static void MakePurchase(Player player, Item item, int price, int quantity = 1, bool eat = false)
         {
             player.Ryō -= price;
             if (eat && item is IConsumable meal)
@@ -120,7 +120,7 @@ namespace TheShinobi.Structures
             }
             else
             {
-                Utility.AddToBackpack(player, item);
+                Utility.AddToBackpack(player, item, quantity);
             }
         }
 

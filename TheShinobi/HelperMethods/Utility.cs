@@ -112,7 +112,7 @@ namespace TheShinobi.HelperMethods
             return result;
         }
 
-        public static void AddToBackpack(Player player, Item thing)
+        public static void AddToBackpack(Player player, Item thing, int quantity = 1)
         {
             if (player.Backpack.Contains(thing))
             {
@@ -120,13 +120,13 @@ namespace TheShinobi.HelperMethods
                 {
                     if (item.Name == thing.Name)
                     {
-                        item.Quantity += thing.Quantity;
+                        item.Quantity += quantity;
                     }
                 }
             }
             else
             {
-                thing.Quantity++;
+                thing.Quantity = quantity;
                 player.Backpack.Add(thing);
             }
         }

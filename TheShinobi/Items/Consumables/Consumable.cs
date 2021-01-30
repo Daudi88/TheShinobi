@@ -23,23 +23,44 @@ namespace TheShinobi.Items.Consumables
 
         public void Consume(Player player)
         {
+            string healthText = "";
+            string chakraText = "";
             if (player.Stamina.Current < player.Stamina.Max)
-            {
+            {                
+                
                 player.Stamina.Current += Health;
                 if (player.Stamina.Current >= player.Stamina.Max)
                 {
                     player.Stamina.Current = player.Stamina.Max;
-                    ColorConsole.WriteOver($"\t {Text} {Name} and gain full health!", ConsoleColor.Yellow);
+                    healthText = "full health";
                 }
                 else
                 {
-                    ColorConsole.WriteOver($"\t {Text} {Name} and gain {Health} health!", ConsoleColor.Yellow);
+                    healthText = $"{Health} health";
                 }
             }
             else
             {
-                ColorConsole.WriteOver($"\t {Text} {Name} but already have full health!", ConsoleColor.Yellow);
+                healthText = "no health";
             }
+            if (player.Chakra.Current < player.Chakra.Max)
+            {
+                player.Chakra.Current += Health;
+                if (player.Chakra.Current >= player.Chakra.Max)
+                {
+                    player.Chakra.Current = player.Chakra.Max;
+                    chakraText = "full chakra";
+                }
+                else
+                {
+                    chakraText = $"{Health} chakra";
+                }
+            }
+            else
+            {
+                chakraText = "no chakra";
+            }
+            ColorConsole.WriteOver($"\t {Text} {Name} gaining {healthText} and {chakraText}!", ConsoleColor.Yellow);
         }
 
         public override string BonusText()

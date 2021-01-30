@@ -154,9 +154,6 @@ namespace TheShinobi.Structures
         {
             ColorConsole.WriteDelayed(ConsoleColor.Red, content: "\t Exiting game");
             ColorConsole.WriteDelayedLine("...", ConsoleColor.Red, 800);
-            Adventure.endPlayer.PlayLooping();
-            ColorConsole.WriteDelayed(ConsoleColor.Yellow, delay: 80, isExitable: false, content: Get.EndStory(player));
-            Console.ReadLine();
             Environment.Exit(0);
         }
     }
