@@ -151,35 +151,38 @@ namespace TheShinobi.Structures
                     {
                         Item item = player.Backpack[choice - 1];
                         int price = item.Price;
-                        int quantity;
-                        Console.Write("                                              ");
-                        Console.SetCursorPosition(0, Console.CursorTop - 1);
-                        ColorConsole.WriteDelayedLine($"\t How many {item.Name}s do you want to sell?");
-                        Console.Write("\t > ");
-                        while (true)
+                        int quantity = 1;
+                        if (item.Quantity > 1)
                         {
-                            if (int.TryParse(ColorConsole.ReadLine(), out quantity) && quantity > 1)
+                            Console.Write("                                              ");
+                            Console.SetCursorPosition(0, Console.CursorTop - 1);
+                            ColorConsole.WriteDelayedLine($"\t How many {item.Name}s do you want to sell?");
+                            Console.Write("\t > ");
+                            while (true)
                             {
-                                if (quantity <= item.Quantity && quantity != 69)
+                                if (int.TryParse(ColorConsole.ReadLine(), out quantity) && quantity > 0)
                                 {
-                                    price *= quantity;
-                                    string plural = quantity > 1 ? "s" : "";
-                                    ColorConsole.WriteOver($"\t You sell {quantity} {item.Name}{plural} and gain {price} ryō.", ConsoleColor.Yellow);
-                                    break;
-                                }
-                                else if (quantity == 69)
-                                {
-                                    ColorConsole.WriteOver("\t You naughty ninja!", ConsoleColor.Red);
+                                    if (quantity <= item.Quantity && quantity != 69)
+                                    {
+                                        price *= quantity;
+                                        string plural = quantity > 1 ? "s" : "";
+                                        ColorConsole.WriteOver($"\t You sell {quantity} {item.Name}{plural} and gain {price} ryō.", ConsoleColor.Yellow);
+                                        break;
+                                    }
+                                    else if (quantity == 69)
+                                    {
+                                        ColorConsole.WriteOver("\t You naughty ninja!", ConsoleColor.Red);
+                                    }
+                                    else
+                                    {
+                                        ColorConsole.WriteOver($"\t You cannot sell that many {item.Name}s...", ConsoleColor.Red);
+                                    }
                                 }
                                 else
                                 {
-                                    ColorConsole.WriteOver($"\t You cannot sell that many {item.Name}s...", ConsoleColor.Red);
+                                    ColorConsole.WriteOver($"\t Invalid choice! Sale is canceled...", ConsoleColor.Red);
+                                    break;
                                 }
-                            }
-                            else
-                            {
-                                ColorConsole.WriteOver($"\t Invalid choice! Sale is canceled...", ConsoleColor.Red);
-                                break;
                             }
                         }
                         item.Quantity -= quantity;
