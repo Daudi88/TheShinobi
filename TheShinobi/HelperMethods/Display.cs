@@ -433,6 +433,7 @@ namespace TheShinobi.HelperMethods
         /// </summary>
         public static void Title()
         {
+            Console.CursorVisible = false;
             int top = 2;
             int left = 8;
             int ctr = 0;
