@@ -616,7 +616,7 @@ namespace TheShinobi.HelperMethods
                 "\n\t has never been seen from any Shinobi ever before.",
 
                 "\n\n\t A true Shinobi are known to keep their cool even when angry!" +
-                "\n\t The story of this fight will live on as a tale forever...“",
+                "\n\t The story of this fight will live on as a tale forever...",
 
                 "\n\n\t As you come back to your senses you rush to Hanare" +
                 "\n\t and untie the ropes around her hands and neck" +
