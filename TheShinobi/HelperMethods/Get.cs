@@ -14,22 +14,6 @@ namespace TheShinobi.HelperMethods
 {
     static class Get
     {
-        /* This class contains the following methods:
-         * GetEnemies()         - Returns an array of Enemies the player can 
-         *                        encountered in the game.
-         * GetArmors()          - Returns an array of Armors common enemies use 
-         *                        in the game and that can be purchased at the  
-         *                        Ninja Tool Shop.
-         * GetWeapons()         - Returns an array of Weapons common enemies use
-         *                        in the game that can be purchased at the  
-         *                        Ninja Tool Shop.
-         * GetSevenSwords()     - Returns an array of the seven legendary swords 
-         *                        that can be found at the graveyard.
-         * Getpotions()         - Returns an array of common potions used in the game.
-         * GetMeals()           - Returns an array of meals for Lightning Burger Shop.
-         * GetAbuHassanItems()  - Returns an array of Abu Hassan's special items.
-         */
-
         /// <summary>
         /// Compares the length of the <paramref name="content"/>"/>
         /// </summary>
@@ -73,6 +57,7 @@ namespace TheShinobi.HelperMethods
                 return $"[{color}]{ability.Current}[/{color}]";
             }
         }
+
         /// <summary>
         ///  Checks dice for damage. 
         /// </summary>
@@ -153,6 +138,7 @@ namespace TheShinobi.HelperMethods
             }
             return options;
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -184,6 +170,7 @@ namespace TheShinobi.HelperMethods
             positions.Add(5.4, new Tuple<int, int, string>(80, 5, "WS"));
             return positions;
         }
+
         /// <summary>
         /// Enemies are randomised from this Enemy array.
         /// </summary>
@@ -223,6 +210,7 @@ namespace TheShinobi.HelperMethods
             };
             return enemies;
         }
+
         /// <summary>
         /// Returns a Ninjutsu based on rank.
         /// </summary>
@@ -244,6 +232,7 @@ namespace TheShinobi.HelperMethods
                     return new PaperShuriken();
             }
         }
+
         /// <summary>
         /// Returns an array of armors.
         /// </summary>
@@ -260,6 +249,7 @@ namespace TheShinobi.HelperMethods
             };
             return armors;
         }
+
         /// <summary>
         /// Returns an array of weapons.
         /// </summary>
@@ -279,6 +269,7 @@ namespace TheShinobi.HelperMethods
             };
             return weapons;
         }
+
         /// <summary>
         /// Returns an array of Seven Swords weapons.
         /// </summary>
@@ -302,6 +293,7 @@ namespace TheShinobi.HelperMethods
             }
             return weapons.ToArray();
         }
+
         /// <summary>
         /// Returns an array of consumable potions.
         /// </summary>
@@ -317,6 +309,7 @@ namespace TheShinobi.HelperMethods
             };
             return potions;
         }
+
         /// <summary>
         /// Retruns an array of consumable meals.
         /// </summary>
@@ -335,6 +328,7 @@ namespace TheShinobi.HelperMethods
             };
             return meals;
         }
+
         /// <summary>
         /// Returns an array of Abu Hassans items.
         /// </summary>
@@ -348,6 +342,7 @@ namespace TheShinobi.HelperMethods
             };
             return items;
         }
+
         /// <summary>
         /// Returns a string array cointaining Orochimarus story.
         /// </summary>
@@ -371,6 +366,7 @@ namespace TheShinobi.HelperMethods
             };
             return story;
         }
+
         /// <summary>
         /// Returns random string array with storys for when there is no enemies.
         /// </summary>
@@ -416,6 +412,7 @@ namespace TheShinobi.HelperMethods
             };
             return stories;
         }
+
         /// <summary>
         /// Returns a random string array with fight storys if there is an enemy to fight.
         /// </summary>
@@ -475,6 +472,7 @@ namespace TheShinobi.HelperMethods
             };
             return stories;
         }
+
         /// <summary>
         /// Controls the Rank lvl system.
         /// </summary>
@@ -520,6 +518,7 @@ namespace TheShinobi.HelperMethods
                     return false;
             }
         }
+
         /// <summary>
         /// Returns the different exp limits.
         /// </summary>
@@ -535,6 +534,7 @@ namespace TheShinobi.HelperMethods
                 _ => 0
             };
         }
+
         /// <summary>
         /// Returns a string array with the end story for when the boss is defeated.
         /// </summary>

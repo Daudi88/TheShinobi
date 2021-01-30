@@ -43,8 +43,6 @@ namespace TheShinobi.Items
             Utility.energyDrink.Name = Name;
             Utility.energyDrink.Energy += Energy;
             Utility.energyDrink.IsEnergized = true;
-        }
-
-        
+        }        
     }
 }

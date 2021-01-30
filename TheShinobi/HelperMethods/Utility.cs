@@ -8,19 +8,6 @@ namespace TheShinobi.HelperMethods
 {
     static class Utility
     {
-        /* This class contains the folowing methods:
-         * RollDice()           - Uses the Random function to to simulate dice's
-         *                        beeing rolled.                  
-         * ChooseANumber()      - Lets the player make a choice while listening 
-         *                        to see if it is Backpack, Details, Map or Ending.        
-         * AddToBackpack()      - If the player buys or picks up loot from enemies
-         *                        this method is used to add the item / items to 
-         *                        the backpack.
-         * OpenBackpack()       - Displays the items inside the backpack and gives
-         *                        the player the option to use items if any.         
-         * Remove()             - Removes texts in order to give a cleaner experience.         
-         */
-
         public const int V = 15;
         public static readonly Random random = new Random();
         public static EnergyDrink energyDrink = new EnergyDrink();
@@ -29,6 +16,11 @@ namespace TheShinobi.HelperMethods
         public static bool isLeavingHome = true;
         public static int energyCtr = 0;
 
+        /// <summary>
+        /// Uses the Random function to to simulate dice's beeing rolled.
+        /// </summary>
+        /// <param name="dice"></param>
+        /// <returns></returns>
         public static int RollDice(string dice)
         {
             string[] parts = dice.Split('d');
@@ -42,6 +34,12 @@ namespace TheShinobi.HelperMethods
             return result;
         }
 
+        /// <summary>
+        /// Resets the energy levels after a fight is 
+        /// energy drink has been consumed.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="top"></param>
         public static void EnergyDip(Player player, int top)
         {
             string ending = energyCtr > 1 ? "s are" : " is";
@@ -68,6 +66,16 @@ namespace TheShinobi.HelperMethods
             energyDrink.IsEnergized = false;
         }
 
+        /// <summary>
+        /// Lets the player make a choice while listening 
+        /// to see if it is Backpack, Details, Map or Ending.
+        /// </summary>
+        /// <param name="length"></param>
+        /// <param name="choice"></param>
+        /// <param name="player"></param>
+        /// <param name="std"></param>
+        /// <param name="ending"></param>
+        /// <returns></returns>
         public static bool ChooseANumber(int length, out int choice, Player player = null, bool std = false, bool ending = false)
         {
             bool result = false;
@@ -112,6 +120,13 @@ namespace TheShinobi.HelperMethods
             return result;
         }
 
+        /// <summary>
+        /// If the player buys or picks up loot from enemies 
+        /// this method is used to add the item/items to the backpack
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="thing"></param>
+        /// <param name="quantity"></param>
         public static void AddToBackpack(Player player, Item thing, int quantity = 1)
         {
             if (player.Backpack.Contains(thing))
@@ -131,6 +146,12 @@ namespace TheShinobi.HelperMethods
             }
         }
 
+        /// <summary>
+        /// Displays the items inside the backpack and gives 
+        /// the player the option to use items if any.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public static bool OpenBackpack(Player player)
         {
             if (player.Backpack.Count > 0)
@@ -175,6 +196,11 @@ namespace TheShinobi.HelperMethods
             }
         }
 
+        /// <summary>
+        /// Removes texts in order to give a cleaner experience.
+        /// </summary>
+        /// <param name="top"></param>
+        /// <param name="bottom"></param>
         public static void Remove(int top, int bottom)
         {
             int ctr = top;
@@ -189,6 +215,10 @@ namespace TheShinobi.HelperMethods
             Console.SetCursorPosition(0, top);
         }
 
+        /// <summary>
+        /// Waits for the user to press a key.
+        /// Places a blinking label at the bottom.
+        /// </summary>
         public static void WaitForUser()
         {
             bool isKeyPressed = false;
@@ -211,6 +241,11 @@ namespace TheShinobi.HelperMethods
             }
         }
 
+        /// <summary>
+        /// Waiths for the user to press a key. 
+        /// Places a blinking label at the bottom with custom placement.
+        /// </summary>
+        /// <param name="bottom"></param>
         public static void WaitSetForUser(int bottom)
         {
             bool isKeyPressed = false;
