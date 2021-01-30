@@ -454,8 +454,8 @@ namespace TheShinobi.HelperMethods
                 $"\n\t  As you approach {enemy.Name} attacks you!",
 
                 $"\t  Some enemies from {enemy.Clan} clan are blocking your path" +
-                "\n\t  There is no time to loose Hanare must be found quickly!" + 
-                $"\n\t  you attack {enemy.Name}!",
+                "\n\t  There is no time to loose. Hanare must be found quickly!" + 
+                $"\n\t  You attack {enemy.Name}!",
 
                 "\t  You sence there is trouble ahead! " +
                 $"\n\t  The {enemy.Clan} clan is trying to hide around the corner" +
