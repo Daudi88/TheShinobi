@@ -185,6 +185,10 @@ namespace TheShinobi.Structures
                                 }
                             }
                         }
+                        else
+                        {
+                            ColorConsole.WriteOver($"\t You sell {quantity} {item.Name} and gain {price} ryō.", ConsoleColor.Yellow);
+                        }
                         item.Quantity -= quantity;
                         player.Ryō += price;
                         if (item.Quantity < 1)
