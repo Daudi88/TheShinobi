@@ -443,7 +443,7 @@ namespace TheShinobi.Structures
                             textTop += 2;
                             EnergyDip(player, textTop);
                         }
-                        WaitSetForUser(bottom - 5);
+                        WaitSetForUser(bottom - 7);
                         Console.WriteLine("\n\n");
                         adventurePlayer.PlayLooping();
                     }

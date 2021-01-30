@@ -104,9 +104,9 @@ namespace TheShinobi.Characters
             {
                 cDrop = true;
                 consumable = new EnergyDrink("Monster Energy", 100, 20, "You unleash the beast");
-                consumable.Quantity = Utility.random.Next(1, 11);
-                player.Backpack.Add(consumable);
-                cDropText = $"[Yellow]{consumable.Quantity} Monster Energy[/Yellow] and ";
+                int quantity = Utility.random.Next(1, 11);
+                Utility.AddToBackpack(player, consumable, quantity);
+                cDropText = $"[Yellow]{quantity} Monster Energy[/Yellow] and ";
             }
             else
             {
@@ -116,9 +116,7 @@ namespace TheShinobi.Characters
                     consumable = Get.Potions()[Utility.random.Next(Get.Potions().Length)];
                     int quantity = Utility.random.Next(1, 11);
                     Utility.AddToBackpack(player, consumable, quantity);
-                    player.Backpack.Add(consumable);
-                    cDropText = $"[Yellow]{consumable.Quantity} {consumable.Name}[/Yellow] and ";
-
+                    cDropText = $"[Yellow]{quantity} {consumable.Name}[/Yellow] and ";
                 }
             }
             string separator = eDrop ? " and " : eDrop && cDrop ? ", " : "";
@@ -126,7 +124,7 @@ namespace TheShinobi.Characters
             ColorConsole.WriteEmbeddedSetDelayed(text, top, blink: false, delay: 0);
             top++;
             text = $"You gain [Yellow]{Exp.Current}[/Yellow] exp from defeating {Name}!";
-            ColorConsole.WriteEmbeddedSetDelayed(text, top, blink: false);
+            ColorConsole.WriteEmbeddedSetDelayed(text, top, blink: false, delay: 0);
             player.Ryō += Ryō;
             player.Exp.Current += Exp.Current;
         }
