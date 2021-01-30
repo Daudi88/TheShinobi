@@ -8,7 +8,7 @@ namespace TheShinobi.Abilities.Ninjutsus
     {
         public AshPileBurning()
         {
-            Name = "AshPile Burning";
+            Name = "Ash Pile Burning";
             Damage = "2d10";
             Cost = 20;
         }

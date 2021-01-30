@@ -97,8 +97,7 @@ namespace TheShinobi.Characters
                     equipable = Armor;
                 }
                 eDropText = $"{equipable.IndefiniteArticle} [Yellow]{equipable.Name}[/Yellow]";
-                equipable.Quantity = 1;
-                player.Backpack.Add(equipable);
+                Utility.AddToBackpack(player, equipable);
             }
             Item consumable;
             if (Name == "Hocke" || Name == "Daudi")
@@ -115,7 +114,8 @@ namespace TheShinobi.Characters
                 {
                     cDrop = true;
                     consumable = Get.Potions()[Utility.random.Next(Get.Potions().Length)];
-                    consumable.Quantity = Utility.random.Next(1, 11);
+                    int quantity = Utility.random.Next(1, 11);
+                    Utility.AddToBackpack(player, consumable, quantity);
                     player.Backpack.Add(consumable);
                     cDropText = $"[Yellow]{consumable.Quantity} {consumable.Name}[/Yellow] and ";
 
