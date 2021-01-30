@@ -493,7 +493,7 @@ namespace TheShinobi.HelperMethods
             creditsPlayer.PlayLooping();
             if (player.Stamina.Current > 0)
             {
-                ColorConsole.WriteDelayed(ConsoleColor.Yellow, 80, false, Get.EndStory(player));
+                ColorConsole.WriteDelayed(ConsoleColor.Yellow, 70, false, Get.EndStory(player));
             }
             Game.PlayAgain(player);
         }

@@ -430,7 +430,7 @@ namespace TheShinobi.Structures
                     exit = true;
                     if (isBoss)
                     {
-                        WaitSetForUser(bottom - 5);
+                        WaitSetForUser(bottom - 7);
                         Console.SetCursorPosition(0, bottom - 2);
                         Display.Credits(player);
                     }

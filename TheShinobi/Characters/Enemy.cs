@@ -123,7 +123,7 @@ namespace TheShinobi.Characters
             }
             string separator = eDrop ? " and " : eDrop && cDrop ? ", " : "";
             string text = $"{Name} drops {eDropText}{separator}{cDropText}[Yellow]{Ryō}[/Yellow] ryō!";
-            ColorConsole.WriteEmbeddedSetDelayed(text, top);
+            ColorConsole.WriteEmbeddedSetDelayed(text, top, blink: false, delay: 0);
             top++;
             ColorConsole.WriteEmbeddedSetDelayed($"You gain [Yellow]{Exp.Current}[/Yellow] exp from defeating {Name}!", top);
             player.Ryō += Ryō;

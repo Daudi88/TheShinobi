@@ -32,7 +32,7 @@ namespace TheShinobi.Structures
         {
             Adventure.adventurePlayer.Play();
             Player player = CharacterCreation();
-            Adventure.Battle(player);
+            Adventure.Battle(player, true);
             Console.ReadLine();
         }
 
@@ -132,7 +132,7 @@ namespace TheShinobi.Structures
         /// <param name="player"></param>
         public static void PlayAgain(Player player)
         {
-            ColorConsole.WriteDelayedLine("\t Do you want to play again? (y/n)");
+            ColorConsole.WriteDelayedLine("\t Do you want to play again? (Y/N)");
             Console.Write("\t > ");
             string choice = ColorConsole.ReadLine();
             if (choice.ToLower() == "y")
