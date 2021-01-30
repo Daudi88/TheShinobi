@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using TheShinobi.Structures;
+﻿using TheShinobi.Structures;
 
 namespace TheShinobi
 {
