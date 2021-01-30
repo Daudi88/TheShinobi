@@ -158,7 +158,7 @@ namespace TheShinobi.Structures
                         Console.Write("\t > ");
                         while (true)
                         {
-                            if (int.TryParse(ColorConsole.ReadLine(), out quantity) && quantity > 0)
+                            if (int.TryParse(ColorConsole.ReadLine(), out quantity) && quantity > 1)
                             {
                                 if (quantity <= item.Quantity && quantity != 69)
                                 {
