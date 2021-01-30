@@ -267,13 +267,13 @@ namespace TheShinobi.Structures
                 string story = "\n\t An old man with white beard appears in front of you." +
                     "\n\t The man, dressed in red and white, looks upon you as if" +
                     "\n\t he was expecting your arrival with a big smile on his face." +
-                    "\n\t You instantly recognice the old man as Hiruzen Sarutobi!\n";
+                    "\n\t You instantly recognice the old man as the hokage Hiruzen Sarutobi!\n";
                 ColorConsole.WriteDelayed(ConsoleColor.Yellow, content: story);
-                string story2 = $"\n\t {player.Name}, he says while smoking on his pipe..." +
+                string story2 = $"\n\t {player.Name}, he says, while smoking on his pipe..." +
                     "\n\t There is little time and you need to go on with your quest" +
-                    "\n\t to save Hanare!Take these items and be on your way!\n";
+                    "\n\t to save Hanare! Take these items and be on your way!\n";
                 ColorConsole.WriteDelayed(ConsoleColor.Yellow, content: story2);
-                ColorConsole.WriteEmbeddedDelayed($"\n\t You get a [Yellow]{weapon.Name}[/Yellow], " +
+                ColorConsole.WriteEmbeddedDelayed($"\n\t You recieve a [Yellow]{weapon.Name}[/Yellow], " +
                     $"an [Yellow]{armor.Name}[/Yellow] and [Yellow]{potion.Quantity} {potion.Name}s[/Yellow].\n");
                 player.Backpack.Add(weapon);
                 player.Backpack.Add(armor);
@@ -377,13 +377,14 @@ namespace TheShinobi.Structures
                 battlePlayer.PlayLooping();
             }
 
+            Display.Flashing3Times(player, enemy, top);
             bool exit = false;
             string battleText = "";
             while (!exit)
             {
                 textTop = top + 4;
                 bool reset = true;
-                Display.BattleFrame(player, enemy, "[Red]BATTLE[/Red]", 6, top, reset);
+                Display.BattleFrame(player, enemy, top, reset);
                 if (player.Stamina.Current > 0)
                 {
                     Console.WriteLine("\t Choose a weapon or jutsu to attack with:");
@@ -397,7 +398,7 @@ namespace TheShinobi.Structures
                     bottom = Console.CursorTop + 1;
                     battleText = player.Attack(enemy);
                     ColorConsole.WriteEmbeddedSetDelayed(battleText, textTop, false, delay: 0);
-                    Display.BattleFrame(player, enemy, "[Red]BATTLE[/Red]", 6, top);
+                    Display.BattleFrame(player, enemy, top);
                     for (int i = 0; i < ctr + 1; i++)
                     {
                         Console.WriteLine("\t                                                       ");
@@ -409,7 +410,7 @@ namespace TheShinobi.Structures
                     textTop++;
                     battleText = enemy.Attack(player);
                     ColorConsole.WriteEmbeddedSetDelayed(battleText, textTop, false, delay: 0);
-                    Display.BattleFrame(player, enemy, "[Red]BATTLE[/Red]", 6, top);
+                    Display.BattleFrame(player, enemy, top);
                     if (player.Stamina.Current <= 0)
                     {
                         textTop++;

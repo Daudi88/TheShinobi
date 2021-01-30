@@ -78,7 +78,7 @@ namespace TheShinobi.Structures
             bool exit = false;
             while (!exit)
             {
-                ColorConsole.WriteDelayed(content: "\n\n\n\t Welcome to Ramen Ichiraku!\n");
+                ColorConsole.WriteDelayed(content: "\n\n\t Welcome to Ramen Ichiraku!\n");
                 ColorConsole.WriteDelayedLine("\t What can we do for you?");                
                 List<string> menu = new List<string>();
                 int ctr = 1;
@@ -159,9 +159,9 @@ namespace TheShinobi.Structures
         /// <param name="player"></param>
         private static void SeeTsunade(Player player)
         {
-            if (player.Stamina.Current == player.Stamina.Max)
+            if (player.Stamina.Current == player.Stamina.Max && player.Chakra.Current == player.Chakra.Max)
             {
-                ColorConsole.WriteOver("\t No need to see Tsunade, you have full health!", ConsoleColor.Yellow);
+                ColorConsole.WriteOver("\t No need to see Tsunade, you have full health and full chakra!", ConsoleColor.Yellow);
             }
             else if (player.Ryō >= 300)
             {

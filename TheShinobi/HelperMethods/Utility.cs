@@ -194,7 +194,7 @@ namespace TheShinobi.HelperMethods
             bool isKeyPressed = false;
             for (int i = 0; i < 100; i++)
             {
-                Thread.Sleep(40);
+                Thread.Sleep(30);
                 if (Console.KeyAvailable)
                 {
                     isKeyPressed = true;
@@ -216,7 +216,7 @@ namespace TheShinobi.HelperMethods
             bool isKeyPressed = false;
             for (int i = 0; i < 100; i++)
             {
-                Thread.Sleep(40);
+                Thread.Sleep(30);
                 if (Console.KeyAvailable)
                 {
                     isKeyPressed = true;

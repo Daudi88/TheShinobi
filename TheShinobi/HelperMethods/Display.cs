@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Media;
 using System.Threading;
+using System.Xml.Schema;
 using TheShinobi.Abilities.Ninjutsus;
 using TheShinobi.Characters;
 using TheShinobi.Items.Armors;
@@ -201,8 +202,10 @@ namespace TheShinobi.HelperMethods
         /// <param name="height"></param>
         /// <param name="top"></param>
         /// <param name="reset"></param>
-        public static void BattleFrame(Player player, Enemy enemy, string title, int height, int top, bool reset = false)
+        public static void BattleFrame(Player player, Enemy enemy, int top, bool reset = false)
         {
+            string title = "[Red]BATTLE[/Red]";
+            int height = 6;
             string[] stats = new string[]
             {
                 $"{player.Name}",
@@ -279,6 +282,33 @@ namespace TheShinobi.HelperMethods
             }
         }
 
+        private static void EmptyBattleFrame(int top)
+        {
+            int height = 6;
+            Console.SetCursorPosition(0, top);
+            Console.Write("\n\t");
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 100; j++)
+                {
+                    Console.Write(" ");
+                }
+                Console.WriteLine();
+            }
+            top = Console.CursorTop;
+            for (int i = 0; i < height; i++)
+            {
+                Console.SetCursorPosition(0, Console.CursorTop);
+                Console.Write("\t ");
+                Console.SetCursorPosition(98, Console.CursorTop);
+                Console.WriteLine(" ");
+            }
+            for (int j = 0; j < 100; j++)
+            {
+                Console.Write(" ");
+            }
+        }
+
         /// <summary>
         /// Prints out the map to the screen.
         /// </summary>
@@ -329,6 +359,23 @@ namespace TheShinobi.HelperMethods
             var position = positions[player.Pos];
             Console.SetCursorPosition(position.Item1, top += position.Item2);
             ColorConsole.Write("●", ConsoleColor.Red);
+        }
+
+        /// <summary>
+        /// Flashes the Battleframe 3 times.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="enemy"></param>
+        /// <param name="top"></param>
+        public static void Flashing3Times(Player player, Enemy enemy, int top)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                BattleFrame(player, enemy, top);
+                Thread.Sleep(400);
+                EmptyBattleFrame(top);
+                Thread.Sleep(400);
+            }
         }
 
         /// <summary>

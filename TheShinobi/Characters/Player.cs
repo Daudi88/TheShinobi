@@ -63,60 +63,57 @@ namespace TheShinobi.Characters
         /// <returns></returns>
         public override string Attack(Character defender)
         {
-            string text;
+            int damage = 0;
+            string attackName = "";
+            string text = "";
             while (true)
-            {
+            {                
                 if (int.TryParse(ColorConsole.ReadLine(), out int choice))
                 {
-                    if (Utility.RollDice("1d20") >= defender.Defence)
+                    if (choice == 1)
                     {
-                        int damage;
-                        if (choice == 1)
+                        damage = Utility.RollDice(Weapon.Damage);
+                        attackName = Weapon.Name;
+                        break;
+                    }
+                    else if (choice - 2 < Ninjutsus.Count)
+                    {
+                        Ninjutsu jutsu = Ninjutsus[choice - 2];
+                        if (Chakra.Current >= jutsu.Cost)
                         {
-                            damage = Utility.RollDice(Weapon.Damage);
-                            text = $"You hit {defender.Name} with your {Weapon.Name} dealing [Yellow]{damage}[/Yellow] damage!";
-                            defender.Stamina.Current -= damage;
-                            if (defender.Stamina.Current < 0)
-                            {
-                                defender.Stamina.Current = 0;
-                            }
+                            damage = Utility.RollDice(jutsu.Damage);
+                            attackName = jutsu.Name;
+                            Chakra.Current -= jutsu.Cost;
                             break;
-                        }
-                        else if (choice - 2 < Ninjutsus.Count)
-                        {
-                            Ninjutsu jutsu = Ninjutsus[choice - 2];
-                            if (Chakra.Current >= jutsu.Cost)
-                            {
-                                damage = Utility.RollDice(jutsu.Damage);
-                                text = $"You hit {defender.Name} with your {jutsu.Name} dealing [Yellow]{damage}[/Yellow] damage!";
-                                defender.Stamina.Current -= damage;
-                                if (defender.Stamina.Current < 0)
-                                {
-                                    defender.Stamina.Current = 0;
-                                }
-                                Chakra.Current -= jutsu.Cost;
-                                break;
-                            }
-                            else
-                            {
-                                ColorConsole.WriteOver($"\t You don't have enough chakra to use {jutsu.Name}. Try something else!", ConsoleColor.Red);
-                            }
                         }
                         else
                         {
-                            ColorConsole.WriteOver("\t Invalid choice. Try again!", ConsoleColor.Red);
+                            ColorConsole.WriteOver($"\t You don't have enough chakra to use {jutsu.Name}. Try something else!", ConsoleColor.Red);
                         }
                     }
                     else
                     {
-                        text = $"You miss {defender.Name} with your attack!";
-                        break;
-                    }
+                        ColorConsole.WriteOver("\t Invalid choice. Try again!", ConsoleColor.Red);
+                    }                    
                 }
                 else
                 {
                     ColorConsole.WriteOver("\t Invalid choice. Try again!", ConsoleColor.Red);
-                }                
+                } 
+            }
+
+            if (Utility.RollDice("1d20") + Level >= defender.Defence)
+            {
+                text = $"You hit {defender.Name} with your {attackName} dealing [Yellow]{damage}[/Yellow] damage!";
+                defender.Stamina.Current -= damage;
+                if (defender.Stamina.Current < 0)
+                {
+                    defender.Stamina.Current = 0;
+                }
+            }
+            else
+            {
+                text = $"You miss {defender.Name} with your {attackName}!";
             }
             return text;
         }

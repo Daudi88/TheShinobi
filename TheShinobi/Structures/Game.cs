@@ -32,7 +32,7 @@ namespace TheShinobi.Structures
         {
             Adventure.adventurePlayer.Play();
             Player player = CharacterCreation();
-            Adventure.ToAbuHassan(player);
+            Adventure.Battle(player);
             Console.ReadLine();
         }
 

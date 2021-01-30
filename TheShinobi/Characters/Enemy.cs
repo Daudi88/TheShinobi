@@ -97,6 +97,7 @@ namespace TheShinobi.Characters
                     equipable = Armor;
                 }
                 eDropText = $"{equipable.IndefiniteArticle} [Yellow]{equipable.Name}[/Yellow]";
+                player.Backpack.Add(equipable);
             }
             Item consumable;
             if (Name == "Hocke" || Name == "Daudi")

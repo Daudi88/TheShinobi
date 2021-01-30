@@ -430,8 +430,7 @@ namespace TheShinobi.HelperMethods
                 "\n\t  from miles away and you attack instantly!",
 
                 "\t  While climbing up the mountains in search of Hanare you get ambushed by some filthy" + 
-                $"\n\t  {enemy.Clan} villains!" +
-                "\n\t  You attack, maybe they know more about Hanare's kidnapping!",
+                $"\n\t  {enemy.Clan} villains! You attack, maybe they know more about Hanare's kidnapping!",
 
                 "\t  You have walked for hours when you decide to set up camp at a lake." +
                 $"\n\t  Suddenly some low life from the {enemy.Clan} Clan attacks you!" +
@@ -443,33 +442,33 @@ namespace TheShinobi.HelperMethods
                 $"\n\t  You draw your weapon and attack! {enemy.Name} fights back...",
 
                 "\t  The sky is full of dark clouds and when lightning strikes the ground vibrates!" +
-                $"\n\t  As you set up camp in the mountains to escape the bad weather" + 
+                "\n\t  As you set up camp in the mountains to escape the bad weather" + 
                 $"\n\t  {enemy.Name} from the {enemy.Clan} Clan attacks!",
 
                 "\t  The sky is blue and the sun is shining." +
                 "\n\t  As you walk past a shrubbery you hear a noice!" +
                 $"\n\t  A lowlife from the {enemy.Clan} Clan attacks you!",
 
-                "\t  Walking on a narrow trail in search of tracks from the kidnappers" +
-                $"\n\t  {enemy.Name} and his friends from the {enemy.Clan} Clan" + 
-                "\n\t  suddenly attacks from all sides!",
+                "\t  Walking on a narrow trail in search of tracks from the kidnappers " +
+                $"\n\t  {enemy.Name} and his friends from the {enemy.Clan} Clan suddenly" +
+                $"\n\t  attacks from all sides!",
 
                 $"\t  A group of {enemy.Clan} clan are blocking your path ahead!" +
                 $"\n\t  As you approach {enemy.Name} attack you!",
 
                 $"\t  Some enemies from {enemy.Clan} clan are blocking your path" +
-                $"\n\t  There is no time to loose Hanare must be found quickly!" + 
+                "\n\t  There is no time to loose Hanare must be found quickly!" + 
                 $"\n\t  you attack {enemy.Name}!",
 
-                $"\t  You sence there is trouble ahead! " +
+                "\t  You sence there is trouble ahead! " +
                 $"\n\t  The {enemy.Clan} clan is trying to hide around the corner" +
-                $"\n\t  You can both smell and sense them miles away..." + 
+                "\n\t  You can both smell and sense them miles away..." + 
                 $"\n\t  You attack {enemy.Name}!",
 
-                "\t  You have followed Hanares kidnappers trail for hours n" +
-                "\t\nwhen you hear enemies further ahead." +
+                "\t  You have followed Hanares kidnappers trail for hours" +
+                "\n\t  when you hear enemies further ahead." +
                 $"\n\t  It is {enemy.Name} from the {enemy.Clan} " +
-                $"\n\t  You draw your weapon and attack! the enemies",
+                "\n\t  You draw your weapon and attack! the enemies",
 
                 $"\t  As you reach the lake you see {enemy.Name} from the {enemy.Clan} Clan!" +
                 $"\n\t  {enemy.Name} attacks you!"
