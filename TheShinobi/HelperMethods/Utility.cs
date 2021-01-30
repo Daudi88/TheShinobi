@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using TheShinobi.Characters;
 using TheShinobi.Interfaces;
@@ -129,7 +130,8 @@ namespace TheShinobi.HelperMethods
         /// <param name="quantity"></param>
         public static void AddToBackpack(Player player, Item thing, int quantity = 1)
         {
-            if (player.Backpack.Contains(thing))
+            var matches = player.Backpack.Where(i => i.Name == thing.Name).ToList();
+            if (matches.Count > 0)
             {
                 foreach (var item in player.Backpack)
                 {

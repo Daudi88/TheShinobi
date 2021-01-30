@@ -125,7 +125,8 @@ namespace TheShinobi.Characters
             string text = $"{Name} drops {eDropText}{separator}{cDropText}[Yellow]{Ryō}[/Yellow] ryō!";
             ColorConsole.WriteEmbeddedSetDelayed(text, top, blink: false, delay: 0);
             top++;
-            ColorConsole.WriteEmbeddedSetDelayed($"You gain [Yellow]{Exp.Current}[/Yellow] exp from defeating {Name}!", top);
+            text = $"You gain [Yellow]{Exp.Current}[/Yellow] exp from defeating {Name}!";
+            ColorConsole.WriteEmbeddedSetDelayed(text, top, blink: false);
             player.Ryō += Ryō;
             player.Exp.Current += Exp.Current;
         }
