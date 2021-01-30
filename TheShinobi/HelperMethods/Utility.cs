@@ -113,6 +113,12 @@ namespace TheShinobi.HelperMethods
                     result = true;
                     break;
                 }
+                else if (input.ToUpper() == "H")
+                {
+                    string[] hints = Get.Hints();
+                    string hint = hints[random.Next(hints.Length)];
+                    ColorConsole.WriteOver($"\t {hint}", ConsoleColor.DarkCyan, 2000);
+                }
                 else
                 {
                     ColorConsole.WriteOver("\t Invalid choice. Try again!", ConsoleColor.Red);

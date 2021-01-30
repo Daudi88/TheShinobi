@@ -42,7 +42,7 @@ namespace TheShinobi.Structures
         /// </summary>
         public void Start()
         {
-            Console.ReadLine();
+            Console.Clear();
             Adventure.villagePlayer.PlayLooping();
             Display.Title();
             Player player = CharacterCreation();

@@ -34,7 +34,7 @@ namespace TheShinobi.HelperMethods
         /// Checks text for embedded coloring.
         /// </summary>
         /// <param name="text"></param>
-        /// <returns>length of the color text.</returns>
+        /// <returns>The length of the color text.</returns>
         public static int ColorLength(string text)
         {
             if (text.Contains("["))
@@ -46,6 +46,13 @@ namespace TheShinobi.HelperMethods
             return 0;
         }
 
+        /// <summary>
+        /// Checks the <paramref name="ability"/> status.
+        /// </summary>
+        /// <param name="ability"></param>
+        /// <param name="color"></param>
+        /// <returns>The ´<paramref name="ability"/> colored red if Current is under 20% of Max. 
+        /// Otherwise in the preferred <paramref name="color"/>.</returns>
         public static string Status(Ability ability, string color)
         {
             if (ability.Current < Math.Ceiling((double)ability.Max / 5))
@@ -59,10 +66,10 @@ namespace TheShinobi.HelperMethods
         }
 
         /// <summary>
-        ///  Checks dice for damage. 
+        ///  Method for getting the Damage depending on the <paramref name="level"/>.
         /// </summary>
         /// <param name="level"></param>
-        /// <returns></returns>
+        /// <returns>The Damage Dice represented in a string.</returns>
         public static string DamageDice(int level)
         {
             return level switch
@@ -81,6 +88,12 @@ namespace TheShinobi.HelperMethods
             };
         }
 
+        /// <summary>
+        /// With the help of the <see cref="Player"/> coordinates, different options are presented.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="content"></param>
+        /// <returns>A <see cref="List{T}"/> of methods available to choose from.</returns>
         public static List<Func<Player, bool>> Options(Player player, out List<string> content)
         {
             var positions = Positions();
@@ -139,8 +152,21 @@ namespace TheShinobi.HelperMethods
             return options;
         }
 
+        internal static string[] Hints()
+        {
+            string[] hints = new string[]
+            {
+                "Chakra is used to power your ninjutsu abilities.",
+                "You can regain chakra by drinking potions, eating food or visiting the hospital.",
+                "An energy drink will boost most pf your abilities for a period of time."
+            };
+            return hints;
+        }
+
         /// <summary>
-        /// 
+        /// The key is the <see cref="Player"/> position. The int values are the 
+        /// left and top coordinates for the map and the string gives the different 
+        /// options available to the player on the current position.
         /// </summary>
         /// <returns></returns>
         public static Dictionary<double, Tuple<int, int, string>> Positions()
@@ -159,7 +185,7 @@ namespace TheShinobi.HelperMethods
             positions.Add(2.4, new Tuple<int, int, string>(38, 5, "BE"));
             positions.Add(3.2, new Tuple<int, int, string>(49, 15, "NEW"));
             positions.Add(3.3, new Tuple<int, int, string>(48, 9, "NWS"));
-            positions.Add(3.4, new Tuple<int, int, string>(48, 5, "EW"));
+            positions.Add(3.4, new Tuple<int, int, string>(48, 5, "EWS"));
             positions.Add(4.1, new Tuple<int, int, string>(72, 21, "NG"));
             positions.Add(4.2, new Tuple<int, int, string>(69, 15, "EWS"));
             positions.Add(4.3, new Tuple<int, int, string>(70, 10, "E"));
@@ -560,7 +586,7 @@ namespace TheShinobi.HelperMethods
 
                 "\n\n\t You knew it! It is the filty backstabbing Akatsuku Clan!",
 
-                "\n\n\t Nobody else would ever try to kill a Shinobi from behinde." +
+                "\n\n\t Nobody else would ever try to kill a Shinobi from behind." +
                 "\n\t Three Akatsuku are attacking and they have you cornered.",
 
                 $"\n\n\t Beeing the true ninjutsu hero you are, you draw your {player.Weapon} and attack." +

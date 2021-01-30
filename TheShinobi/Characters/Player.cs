@@ -32,7 +32,7 @@ namespace TheShinobi.Characters
             Weapon = new Fists();
             Damage = Weapon.Damage;
             Ninjutsus.Add(Get.Ninjutsu(Rank));
-            Ryō = Utility.random.Next(50, 200);
+            Ryō = Utility.random.Next(200, 1000);
         }
 
         /// <summary>
