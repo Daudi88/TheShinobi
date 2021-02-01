@@ -30,7 +30,7 @@ namespace TheShinobi.HelperMethods
         /// <param name="title"></param>
         /// <param name="std"></param>
         /// <param name="ending"></param>
-        public static void WithFrame(List<string> content, string title = "", bool std = false, string ending = null)
+        public static void WithFrame(List<string> content, string title = "", bool std = false, string ending = null, string bottomText = "")
         {
             if (std)
             {
@@ -49,9 +49,9 @@ namespace TheShinobi.HelperMethods
             }
 
             int length = Get.ContentLength(content);
-            TopOfFrame(title, length);
-            SidesOfFrame(content, length);
-            BottomOfFrame(length);
+            TopOfFrame(length, title);
+            SidesOfFrame(length, content);
+            BottomOfFrame(length, bottomText);
             Console.Write("\t > ");
         }
 
@@ -60,14 +60,9 @@ namespace TheShinobi.HelperMethods
         /// </summary>
         /// <param name="title"></param>
         /// <param name="length"></param>
-        private static void TopOfFrame(string title, int length)
+        private static void TopOfFrame(int length, string title = "")
         {
-            ColorConsole.WriteEmbedded($"\t┏━{title}");
-            for (int i = 0; i < length - (title.Length - Get.ColorLength(title)) + 2; i++)
-            {
-                Console.Write("━");
-            }
-            Console.WriteLine("┓");
+            ColorConsole.WriteEmbedded($"\t┏━{title.PadRight(length + Get.ColorLength(title), '━')}━━┓\n");
         }
 
         /// <summary>
@@ -75,7 +70,7 @@ namespace TheShinobi.HelperMethods
         /// </summary>
         /// <param name="content"></param>
         /// <param name="length"></param>
-        private static void SidesOfFrame(List<string> content, int length)
+        private static void SidesOfFrame(int length, List<string> content)
         {
             foreach (string text in content)
             {
@@ -88,7 +83,7 @@ namespace TheShinobi.HelperMethods
         /// </summary>
         /// <param name="title"></param>
         /// <param name="length"></param>
-        private static void DividingLine(string title, int length)
+        private static void DividingLine(int length, string title = "")
         {
             ColorConsole.WriteEmbedded($"\t┣━{title}");
             for (int i = 0; i < length - (title.Length - Get.ColorLength(title)) + 2; i++)
@@ -102,14 +97,9 @@ namespace TheShinobi.HelperMethods
         /// Prints out bottom of the frame.
         /// </summary>
         /// <param name="length"></param>
-        private static void BottomOfFrame(int length)
+        private static void BottomOfFrame(int length, string text = "")
         {
-            Console.Write("\t┗");
-            for (int i = 0; i < length + 3; i++)
-            {
-                Console.Write("━");
-            }
-            Console.WriteLine("┛");
+            ColorConsole.WriteEmbedded($"\t┗━━{text.PadLeft(length + Get.ColorLength(text), '━')}━┛\n");
         }
 
         /// <summary>
@@ -126,7 +116,7 @@ namespace TheShinobi.HelperMethods
                 string price = sell ? $"- {item.Price}g " : "";
                 content.Add($"{ctr++}. [Yellow]{item.Quantity} {item.Name} {price}{item.BonusText()}[/Yellow]");
             }
-            WithFrame(content, "[DarkCyan]BACKPACK[/DarkCyan]", ending: "Close backpack");
+            WithFrame(content, "[DarkCyan]BACKPACK[/DarkCyan]", ending: "Close backpack", bottomText: $"[Yellow]{player.Ryō} Ryō[/Yellow]");
         }
 
         /// <summary>
@@ -183,12 +173,12 @@ namespace TheShinobi.HelperMethods
             contents.AddRange(content2);
             contents.AddRange(content3);
             int length = Get.ContentLength(contents);
-            TopOfFrame(title, length);
-            SidesOfFrame(content1, length);
-            DividingLine(title2, length);
-            SidesOfFrame(content2, length);
-            DividingLine(title3, length);
-            SidesOfFrame(content3, length);
+            TopOfFrame(length, title);
+            SidesOfFrame(length, content1);
+            DividingLine(length, title2);
+            SidesOfFrame(length, content2);
+            DividingLine(length, title3);
+            SidesOfFrame(length, content3);
             BottomOfFrame(length);
             Utility.WaitForUser();
         }

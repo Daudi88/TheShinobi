@@ -263,7 +263,7 @@ namespace TheShinobi.Structures
                 Armor armor = new InfiniteArmor();
                 Consumable[] potions = Get.Potions();
                 Consumable potion = potions.Where(p => p.Name.Contains("Superior")).First();
-                potion.Quantity = random.Next(5, 11);
+                int quantity = random.Next(5, 11);
                 string story = "\n\t An old man with white beard appears in front of you." +
                     "\n\t The man, dressed in red and white, looks upon you as if" +
                     "\n\t he was expecting your arrival with a big smile on his face." +
@@ -274,10 +274,10 @@ namespace TheShinobi.Structures
                     "\n\t to save Hanare! Take these items and be on your way!\n";
                 ColorConsole.WriteDelayed(ConsoleColor.Yellow, content: story2);
                 ColorConsole.WriteEmbeddedDelayed($"\n\t You recieve a [Yellow]{weapon.Name}[/Yellow], " +
-                    $"an [Yellow]{armor.Name}[/Yellow] and [Yellow]{potion.Quantity} {potion.Name}s[/Yellow].\n");
-                player.Backpack.Add(weapon);
-                player.Backpack.Add(armor);
-                player.Backpack.Add(potion);
+                    $"an [Yellow]{armor.Name}[/Yellow] and [Yellow]{quantity} {potion.Name}s[/Yellow].\n");
+                AddToBackpack(player, weapon);
+                AddToBackpack(player, armor);
+                AddToBackpack(player, potion, quantity);
                 isHiruzenVisited = true;
             }
             else

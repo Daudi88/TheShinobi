@@ -64,7 +64,7 @@ namespace TheShinobi.Characters
         public override string Attack(Character defender)
         {
             int damage = 0;
-            string attackName = "";
+            string attack = "";
             string text = "";
             while (true)
             {                
@@ -73,7 +73,7 @@ namespace TheShinobi.Characters
                     if (choice == 1)
                     {
                         damage = Utility.RollDice(Weapon.Damage);
-                        attackName = Weapon.Name;
+                        attack = Weapon.Name;
                         break;
                     }
                     else if (choice - 2 < Ninjutsus.Count)
@@ -82,7 +82,7 @@ namespace TheShinobi.Characters
                         if (Chakra.Current >= jutsu.Cost)
                         {
                             damage = Utility.RollDice(jutsu.Damage);
-                            attackName = jutsu.Name;
+                            attack = jutsu.Name;
                             Chakra.Current -= jutsu.Cost;
                             break;
                         }
@@ -104,7 +104,7 @@ namespace TheShinobi.Characters
 
             if (Utility.RollDice("1d20") + Level >= defender.Defence)
             {
-                text = $"You hit {defender.Name} with your {attackName} dealing [Yellow]{damage}[/Yellow] damage!";
+                text = $"You hit {defender.Name} with your {attack} dealing [Yellow]{damage}[/Yellow] damage!";
                 defender.Stamina.Current -= damage;
                 if (defender.Stamina.Current < 0)
                 {
@@ -113,7 +113,7 @@ namespace TheShinobi.Characters
             }
             else
             {
-                text = $"You miss {defender.Name} with your {attackName}!";
+                text = $"You try to hit {defender.Name} with your {attack} but you miss!";
             }
             return text;
         }

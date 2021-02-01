@@ -40,24 +40,24 @@ namespace TheShinobi.Characters
         /// <returns></returns>
         public override string Attack(Character defender)
         {
-            string text = "";            
+            string text, attack;
+            int damage;
+            Ninjutsu jutsu = Ninjutsus[Utility.random.Next(Ninjutsus.Count)];
+            if (Utility.random.Next(200) > 30 && Chakra.Current - jutsu.Cost > 0)
+            {
+                damage = Utility.RollDice(jutsu.Damage);
+                attack = jutsu.Name;
+                Chakra.Current -= jutsu.Cost;
+            }
+            else
+            {
+                damage = Utility.RollDice(Weapon.Damage);
+                attack = Weapon.Name;
+            }            
+            
             if (Utility.RollDice("1d20") >= defender.Defence)
             {
-                string weapon;
-                int damage;
-                Ninjutsu jutsu = Ninjutsus[Utility.random.Next(Ninjutsus.Count)];
-                if (Utility.random.Next(200) > 30 && Chakra.Current - jutsu.Cost > 0)
-                {
-                    damage = Utility.RollDice(jutsu.Damage);
-                    weapon = jutsu.Name;
-                    Chakra.Current -= jutsu.Cost;
-                }
-                else
-                {
-                    damage = Utility.RollDice(Weapon.Damage);
-                    weapon = Weapon.Name;
-                }
-                text = $"{Name} hits you with {Pronoun} {weapon} dealing [Yellow]{damage}[/Yellow] damage!";
+                text = $"{Name} hits you with {Pronoun} {attack} dealing [Yellow]{damage}[/Yellow] damage!";
                 defender.Stamina.Current -= damage;
                 if (defender.Stamina.Current < 0)
                 {
@@ -66,8 +66,9 @@ namespace TheShinobi.Characters
             }
             else
             {
-                text = $"{Name} misses you with {Pronoun} attack!";
+                text = $"{Name} tries to hit you with {Pronoun} {attack} but you dodge the attack!";
             }
+            
             return text;
         }
 
